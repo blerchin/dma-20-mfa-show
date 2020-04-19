@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import config from './config';
+import config from 'src/config';
 
 function App() {
   console.log(config);
