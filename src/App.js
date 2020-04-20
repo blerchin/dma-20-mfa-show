@@ -1,17 +1,12 @@
 import React from 'react';
 import './App.css';
-import config from 'src/config';
+import Index from 'src/index/Index.js';
 
 function App() {
-  console.log(config);
   return (
     <div className="App">
       <header className="App-header">
-        <ul>
-          { config.artists.map(({ name }) =>
-            <li key={name}>{name}</li>
-          )}
-        </ul>
+        <Index />
       </header>
     </div>
   );
