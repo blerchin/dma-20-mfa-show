@@ -18,11 +18,11 @@ function generateCmdString(rules, iterations = 10, axiom = 'FX')
     return lsys.generate();
 }
 
-function renderCmds(canvas, g_renderer, g_commands)
+function renderCmds(svgPath, g_renderer, g_commands)
 {
       // calc new distance based on screen res
-      var width = canvas.width;
-      var height = canvas.height;
+      var width = g_renderer._width;
+      var height = g_renderer._height;
       var oldDistance = 10.0;
       var newDistance;
       g_renderer.process(g_commands, false);
@@ -52,15 +52,16 @@ function renderCmds(canvas, g_renderer, g_commands)
       // reprocess...
       g_renderer.setOffsets(xoffset, yoffset);
       g_renderer.setDistance(newDistance);
-      g_renderer.process(g_commands, canvas);
+      g_renderer.process(g_commands, svgPath);
 }
 
-export function render(canvas, iterations, angle, constants, axiom, ...rules) {
+export function render(svg, svgPath, iterations, angle, constants, axiom, ...rules) {
     const cmds = generateCmdString(rules, iterations, axiom);
-    const renderer = new LSystems.TurtleRenderer(canvas.width, canvas.height);
+    const bb = svg.getBoundingClientRect();
+    const renderer = new LSystems.TurtleRenderer(bb.width, bb.height);
     renderer.setAngle(angle);
     renderer.setConstants(constants);
-    renderCmds(canvas, renderer, cmds);
+    renderCmds(svgPath, renderer, cmds);
 }
 
 export const examples =
@@ -387,7 +388,7 @@ const RAD = Math.PI/180.0;
        * @param cmds {string}    string of valid command characters
        * @param draw {boolean}   True if the turtle should draw, false otherwise
        */
-      process: function process(cmds, canvas)
+      process: function process(cmds, pathEl)
       {
          this._stack = [];
          
@@ -396,20 +397,17 @@ const RAD = Math.PI/180.0;
          var lastX;
          var lastY;
          
-         if (canvas)
+         if (pathEl)
          {
-            var ctx = canvas.getContext('2d');
-            
             // clear the background 
-            ctx.save();
-            ctx.fillStyle = "rgb(255,255,255)";
-            ctx.fillRect(0, 0, this._width, this._height);
+            //ctx.save();
+            //ctx.fillStyle = "rgb(255,255,255)";
+            //ctx.fillRect(0, 0, this._width, this._height);
             
             // offset as required
-            ctx.translate(this._xOffset, 0);
-            
+            pathEl.setAttribute('transform', `translate(${this._xOffset}, 0)`);
             // initial colour if specific colouring not used
-            ctx.strokeStyle = "rgb(0,0,0)";
+            pathEl.stroke = 'rgb(0,0,0)';
          }
          
          // start at grid 0,0 facing north with no colour index
@@ -421,6 +419,7 @@ const RAD = Math.PI/180.0;
          var renderLineWidths = this._renderLineWidths;
          var rad, width, colour, lastColour = null;
          var c, len = cmds.length;
+         let path = null;
          for (var i=0; i<len; i++)
          {
             c = cmds.charAt(i);
@@ -470,25 +469,14 @@ const RAD = Math.PI/180.0;
                      pos.x += distance * Math.cos(rad);
                      pos.y += distance * Math.sin(rad);
                      
-                     if (canvas)
+                     if (pathEl)
                      {
-                        // render this element
-                        if (renderLineWidths)
-                        {
-                           width = (maxStackDepth - stack.length);
-                           ctx.lineWidth = width >= 1 ? width : 1;
-                        }
-                        colour = colourList[pos.colour];
-                        if (colour && lastColour !== colour)
-                        {
-                           ctx.strokeStyle = colour;
-                           lastColour = colour;
-                        }
-                        ctx.beginPath();
-                        ctx.moveTo(lastX, this._height - (lastY + yOffset));
-                        ctx.lineTo(pos.x, this._height - (pos.y + yOffset));
-                        ctx.closePath();
-                        ctx.stroke();
+                         const coords = `${pos.x} ${this._height - (pos.y + yOffset)}`;
+                         if (!path) {
+                           path = `M ${coords} `;
+                         } else {
+                            path += `L ${coords} `;
+                         }
                      }
                      else
                      {
@@ -504,12 +492,9 @@ const RAD = Math.PI/180.0;
                }
             }
          }
-         
-         // finalise rendering
-         if (canvas)
-         {
-            ctx.restore();
-         }
+        if (pathEl) {
+            pathEl.setAttribute('d', path);
+        }
       }
    };
 })();

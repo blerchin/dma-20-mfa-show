@@ -1,0 +1,14 @@
+:local(.wrapper) {
+    height: 1100vh;
+}
+.animation {
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+}
+.textPath {
+    transform: rotate(90deg);
+    transform-origin: center;
+}
