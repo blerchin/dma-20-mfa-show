@@ -1,3 +1,4 @@
+import { controlPoint } from 'src/utils';
 /**
  * L-Systems
  * 
@@ -52,7 +53,7 @@ function renderCmds(svgPath, g_renderer, g_commands)
       // reprocess...
       g_renderer.setOffsets(xoffset, yoffset);
       g_renderer.setDistance(newDistance);
-      g_renderer.process(g_commands, svgPath);
+      g_renderer.process(g_commands, svgPath, true);
 }
 
 export function render(svg, svgPath, iterations, angle, constants, axiom, ...rules) {
@@ -388,7 +389,7 @@ const RAD = Math.PI/180.0;
        * @param cmds {string}    string of valid command characters
        * @param draw {boolean}   True if the turtle should draw, false otherwise
        */
-      process: function process(cmds, pathEl)
+      process: function process(cmds, pathEl, smooth = false)
       {
          this._stack = [];
          
@@ -414,12 +415,11 @@ const RAD = Math.PI/180.0;
          var pos = new LSystems.Location(0.0, 0.0, 90.0, -1);
          
          // process each command in turn
-         var yOffset = this._yOffset, maxStackDepth = this._maxStackDepth;
-         var colourList = this._colourList, stack = this._stack;
-         var renderLineWidths = this._renderLineWidths;
-         var rad, width, colour, lastColour = null;
+         var yOffset = this._yOffset;
+         var stack = this._stack;
+         var rad;
          var c, len = cmds.length;
-         let path = null;
+         let points = [];
          for (var i=0; i<len; i++)
          {
             c = cmds.charAt(i);
@@ -471,12 +471,7 @@ const RAD = Math.PI/180.0;
                      
                      if (pathEl)
                      {
-                         const coords = `${pos.x} ${this._height - (pos.y + yOffset)}`;
-                         if (!path) {
-                           path = `M ${coords} `;
-                         } else {
-                            path += `L ${coords} `;
-                         }
+                        points.push([pos.x, this._height - (pos.y + yOffset)])
                      }
                      else
                      {
@@ -493,7 +488,17 @@ const RAD = Math.PI/180.0;
             }
          }
         if (pathEl) {
-            pathEl.setAttribute('d', path);
+         let path = `M ${points[0][0]} ${points[0][1]} `;
+         for (let i=1; i < points.length; i++) {
+            if (smooth) {
+               const startCP = controlPoint(points[i - 1], points[i - 2], points[i]);
+               const endCP = controlPoint(points[i - 1], points[i - 2], points[i]);
+               path += `C ${startCP[0]} ${startCP[1]} ${endCP[0]} ${endCP[1]} ${points[i][0]} ${points[i][1]} `;
+            } else {
+               path += `L ${points[i][0]} ${points[i][1]} `;
+            }
+         }
+         pathEl.setAttribute('d', path);
         }
       }
    };
