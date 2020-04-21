@@ -19,50 +19,13 @@ function generateCmdString(rules, iterations = 10, axiom = 'FX')
     return lsys.generate();
 }
 
-function renderCmds(svgPath, g_renderer, g_commands)
-{
-      // calc new distance based on screen res
-      var width = g_renderer._width;
-      var height = g_renderer._height;
-      var oldDistance = 10.0;
-      var newDistance;
-      g_renderer.process(g_commands, false);
-      var dim = g_renderer.getMinMaxValues();;
-      if (dim.maxx - dim.minx > dim.maxy - dim.miny)
-      {
-         // X has the largest delta - use that
-         newDistance = (width / (dim.maxx - dim.minx)) * oldDistance;
-      }
-      else
-      {
-         // Y has the largest delta - use that
-         newDistance = (height / (dim.maxy - dim.miny)) * oldDistance;
-      }
-      
-      // calc rendering offsets
-      
-      // scale min/max values by new distance
-      dim.minx *= (newDistance / oldDistance);
-      dim.maxx *= (newDistance / oldDistance);
-      dim.miny *= (newDistance / oldDistance);
-      dim.maxy *= (newDistance / oldDistance);
-      
-      var xoffset = (width / 2) - (((dim.maxx - dim.minx) / 2) + dim.minx);
-      var yoffset = (width / 2) - (((dim.maxy - dim.miny) / 2) + dim.miny);
-      
-      // reprocess...
-      g_renderer.setOffsets(xoffset, yoffset);
-      g_renderer.setDistance(newDistance);
-      g_renderer.process(g_commands, svgPath, true);
-}
-
-export function render(svg, svgPath, iterations, angle, constants, axiom, ...rules) {
+export function render( svgPath, { width, height, rules, iterations, angle, constants, axiom, distance = 10 }) {
     const cmds = generateCmdString(rules, iterations, axiom);
-    const bb = svg.getBoundingClientRect();
-    const renderer = new LSystems.TurtleRenderer(bb.width, bb.height);
+    const renderer = new LSystems.TurtleRenderer(width, height);
     renderer.setAngle(angle);
     renderer.setConstants(constants);
-    renderCmds(svgPath, renderer, cmds);
+    renderer.setDistance(distance);
+    renderer.process(cmds, svgPath, true);
 }
 
 export const examples =
@@ -406,7 +369,7 @@ const RAD = Math.PI/180.0;
             //ctx.fillRect(0, 0, this._width, this._height);
             
             // offset as required
-            pathEl.setAttribute('transform', `translate(${this._xOffset}, 0)`);
+            //pathEl.setAttribute('transform', `translate(${this._xOffset}, ${this._yOffset})`);
             // initial colour if specific colouring not used
             pathEl.stroke = 'rgb(0,0,0)';
          }
@@ -471,17 +434,14 @@ const RAD = Math.PI/180.0;
                      
                      if (pathEl)
                      {
-                        points.push([pos.x, this._height - (pos.y + yOffset)])
+                        points.push([pos.x, pos.y])
                      }
-                     else
-                     {
-                        // remember min/max position
-                        if (pos.x < this._minx) this._minx = pos.x;
-                        else if (pos.x > this._maxx) this._maxx = pos.x;
-                        if (pos.y < this._miny) this._miny = pos.y;
-                        else if (pos.y > this._maxy) this._maxy = pos.y;
-                        if (stack.length > this._maxStackDepth) this._maxStackDepth = stack.length;
-                     }
+                     // remember min/max position
+                     if (pos.x < this._minx) this._minx = pos.x;
+                     else if (pos.x > this._maxx) this._maxx = pos.x;
+                     if (pos.y < this._miny) this._miny = pos.y;
+                     else if (pos.y > this._maxy) this._maxy = pos.y;
+                     if (stack.length > this._maxStackDepth) this._maxStackDepth = stack.length;
                   }
                   break;
                }
@@ -498,6 +458,9 @@ const RAD = Math.PI/180.0;
                path += `L ${points[i][0]} ${points[i][1]} `;
             }
          }
+         var xoffset = (this._width / 2 ) - (((this._maxx - this._minx) / 2) + this._minx);
+         var yoffset = (this._height / 2) - (((this._maxy - this._miny) / 2) + this._miny);
+         pathEl.setAttribute('transform', `translate(${xoffset}, ${yoffset})`);
          pathEl.setAttribute('d', path);
         }
       }

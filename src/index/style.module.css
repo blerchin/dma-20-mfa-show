@@ -9,6 +9,8 @@
     width: 100vw;
 }
 .textPath {
-    transform: rotate(90deg);
     transform-origin: center;
+}
+.names {
+    font-size: 18px;
 }
