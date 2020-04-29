@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
-import SoftBodies from 'src/SoftBodies';
+import BlobField from 'src/BlobField';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <SoftBodies />
+        <BlobField />
       </header>
     </div>
   );
