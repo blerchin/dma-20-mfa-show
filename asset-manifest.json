@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/dma-20-mfa-show/static/css/main.a199c174.chunk.css",
-    "main.js": "/dma-20-mfa-show/static/js/main.82a15217.chunk.js",
-    "main.js.map": "/dma-20-mfa-show/static/js/main.82a15217.chunk.js.map",
+    "main.js": "/dma-20-mfa-show/static/js/main.9fb64992.chunk.js",
+    "main.js.map": "/dma-20-mfa-show/static/js/main.9fb64992.chunk.js.map",
     "runtime-main.js": "/dma-20-mfa-show/static/js/runtime-main.452545c6.js",
     "runtime-main.js.map": "/dma-20-mfa-show/static/js/runtime-main.452545c6.js.map",
     "static/js/2.c2bb7aa1.chunk.js": "/dma-20-mfa-show/static/js/2.c2bb7aa1.chunk.js",
     "static/js/2.c2bb7aa1.chunk.js.map": "/dma-20-mfa-show/static/js/2.c2bb7aa1.chunk.js.map",
     "index.html": "/dma-20-mfa-show/index.html",
-    "precache-manifest.c26b7fdd77c4bfe1ceb564e9f46ea735.js": "/dma-20-mfa-show/precache-manifest.c26b7fdd77c4bfe1ceb564e9f46ea735.js",
+    "precache-manifest.918af6949bc17701f2b0cffead7fa8dc.js": "/dma-20-mfa-show/precache-manifest.918af6949bc17701f2b0cffead7fa8dc.js",
     "service-worker.js": "/dma-20-mfa-show/service-worker.js",
     "static/css/main.a199c174.chunk.css.map": "/dma-20-mfa-show/static/css/main.a199c174.chunk.css.map",
     "static/js/2.c2bb7aa1.chunk.js.LICENSE.txt": "/dma-20-mfa-show/static/js/2.c2bb7aa1.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.452545c6.js",
     "static/js/2.c2bb7aa1.chunk.js",
     "static/css/main.a199c174.chunk.css",
-    "static/js/main.82a15217.chunk.js"
+    "static/js/main.9fb64992.chunk.js"
   ]
 }
