@@ -48,7 +48,7 @@ export default function BlobField({ scale = 20}) {
             {groupLocations.map(({ initialPoint }, i) => (
               <g key={`artist-${i}`}>
                 <rect className={artistNameTag} x={initialPoint[0]} y={initialPoint[1]} width={120} height={20}></rect>
-                <text className={artistName} x={initialPoint[0]} y={initialPoint[1]+16} width={120}>
+                <text className={artistName} x={initialPoint[0]} y={initialPoint[1] + 16} width={120}>
                     {config.artists[i].name.toUpperCase()}
                 </text>
               </g>

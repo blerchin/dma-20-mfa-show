@@ -40,10 +40,10 @@ export default function createElasticParticles({ world, numBlobs = 11, width=800
     ground.CreateFixtureFromShape(shape3, 0);
     
     const shape4 = new b2PolygonShape();
-    shape4.vertices.push(new b2Vec2(-1, h));
-    shape4.vertices.push(new b2Vec2(w + 1, h));
-    shape4.vertices.push(new b2Vec2(w, h + 1));
-    shape4.vertices.push(new b2Vec2(-1, h + 1));
+    shape4.vertices.push(new b2Vec2(-1, h - 2));
+    shape4.vertices.push(new b2Vec2(w + 1, h - 2));
+    shape4.vertices.push(new b2Vec2(w, h - 1 ));
+    shape4.vertices.push(new b2Vec2(-1, h - 1));
     ground.CreateFixtureFromShape(shape4, 0);
   
     const psd = new b2ParticleSystemDef();
