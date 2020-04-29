@@ -14,11 +14,10 @@ export default function createElasticParticles({ world, numBlobs = 11, width=800
     var bd = new b2BodyDef();
     var ground = world.CreateBody(bd);
 
-    window.world = world; //fuckkkkkkkk me
-
     const w = width/scale;
     const h = height/scale
-  
+
+    //set boundary box
     const shape1 = new b2PolygonShape();
     shape1.vertices.push(new b2Vec2(0, -1));
     shape1.vertices.push(new b2Vec2(w, -1));
@@ -48,13 +47,13 @@ export default function createElasticParticles({ world, numBlobs = 11, width=800
     ground.CreateFixtureFromShape(shape4, 0);
   
     const psd = new b2ParticleSystemDef();
-    psd.radius = 0.1;
+    psd.radius = 0.2;
     const particleSystem = world.CreateParticleSystem(psd);
   
     for(let i = 0; i < numBlobs; i++) {
         const circle = new b2CircleShape();
         circle.position.Set( Math.floor(i / 4) * 10 + 10, (i % 4) *6 + 5);
-        circle.radius = 4;
+        circle.radius = 3;
         const pgd = new b2ParticleGroupDef();
         pgd.flags = b2_springParticle;
         pgd.groupFlags = b2_solidParticleGroup;

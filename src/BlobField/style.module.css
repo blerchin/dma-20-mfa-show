@@ -1,0 +1,8 @@
+.artistName {
+    font-size: 14px;
+    fill: #000;
+}
+.artistNameTag {
+    fill: rgba(255,255,255,0.7);
+    stroke: transparent;
+}
