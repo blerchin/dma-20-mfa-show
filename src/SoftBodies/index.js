@@ -62,7 +62,7 @@ function getClose(body, bodies, maxDistance) {
     return close;
 }
 
-function addSprings(group, length, constraintOptions = { stiffness: 0.5, damping: 1.0, render: { visible: false } }) {
+function addSprings(group, length, constraintOptions = { stiffness: 0.2, damping: 0, render: { visible: false } }) {
     const particles = Composite.allBodies(group);
     for (let i = 0; i < particles.length; i++) {
         const close = getClose(particles[i], particles, length + 0.01);
@@ -76,6 +76,7 @@ function addSprings(group, length, constraintOptions = { stiffness: 0.5, damping
             const constraint = Constraint.create({
                 bodyA: particles[i],
                 bodyB: particle,
+                length: length * 1.1,
                 ...constraintOptions
             });
             Composite.add(group, constraint);
@@ -83,10 +84,10 @@ function addSprings(group, length, constraintOptions = { stiffness: 0.5, damping
     }
 }
 
-function createParticleGroup(shape = Bodies.circle(100, 100, 10), particleRadius, particleOptions = { density: 10, restitution: 0, friction: 1, frictionStatic: 10}, constraintOptions = null) {
+function createParticleGroup(shape = Bodies.circle(100, 100, 10), particleRadius, particleOptions = { density: 1, restitution: 0, friction: 1, frictionStatic: 10}, constraintOptions = null) {
     console.log("create group")
     const group = Composite.create();
-    fillShape(group, shape, 2 * particleRadius, (x, y) => Bodies.circle(x, y, particleRadius, particleOptions));
+    fillShape(group, shape, 1.5 * particleRadius, (x, y) => Bodies.circle(x, y, particleRadius, particleOptions));
     addSprings(group, particleRadius * 2);
     return group;
 }
@@ -98,19 +99,19 @@ export default function SoftBodies({
             frictionStatic: 0.5,
             render: { visible: true}
         },
-        blobRadius = 60,
-        particleRadius = 10
+        blobRadius = 100,
+        particleRadius = 15
     ) {
     const wrapper = useRef(null);
     const [paths, setPaths] = useState([]);
 
     useEffect(() => {
-        const engine = Engine.create();
+        const engine = Engine.create({ constraintIterations: 30, positionIterations: 10, enableSleeping: true });
         const world = engine.world;
         
         const runner = Runner.create();
         const blobs = bodies.map((el, i) => createParticleGroup(
-            Bodies.circle(80 + (i % 4) * 200, 100 + Math.floor(i/4) * 100, blobRadius),
+            Bodies.circle(120 + (i % 4) * 200 + Math.random()* 120, 200 + Math.floor(i/4) * 200, blobRadius),
             particleRadius
             ));
         World.add(world, [
@@ -132,7 +133,7 @@ export default function SoftBodies({
     return (
         <div ref={wrapper}>
             <svg width={1280} height={800}> 
-                { paths.map((path) => (<path fill="transparent" stroke="black" d={path} />)) }
+                { paths.map((path, i) => (<path key={i} fill="transparent" stroke="black" d={path} />)) }
             </svg>
          </div>
     );
