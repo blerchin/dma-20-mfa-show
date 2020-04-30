@@ -1,3 +1,4 @@
+
 const { 
     b2BodyDef,
     b2CircleShape,
@@ -10,7 +11,8 @@ const {
     b2_dynamicBody
 } = liquidfun;
 
-export default function createElasticParticles({ world, numBlobs = 11, width=800, height=600, scale=10}) {
+
+export function createElasticParticles({ world, numBlobs = 11, width=800, height=600, scale=10}) {
     var bd = new b2BodyDef();
     var ground = world.CreateBody(bd);
 
@@ -61,13 +63,15 @@ export default function createElasticParticles({ world, numBlobs = 11, width=800
         pgd.color.Set(Math.random()*255, Math.random()*255, Math.random()*255, 255);
         particleSystem.CreateParticleGroup(pgd);
     }
-  
-    // circle
-    bd = new b2BodyDef();
+}
+
+export function createCursor(world, { initialPosition = [1, 1], radius = 1 } = {}) {
+    const bd = new b2BodyDef();
     const circle = new b2CircleShape();
     bd.type = b2_dynamicBody;
     const body = world.CreateBody(bd);
-    circle.position.Set(0, 8);
-    circle.radius = 0.5;
-    body.CreateFixtureFromShape(circle, 0.5);
-  }
+    circle.position.Set(...initialPosition);
+    circle.radius = radius;
+    body.CreateFixtureFromShape(circle, 3);
+    return body;
+}

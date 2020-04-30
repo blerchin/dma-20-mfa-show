@@ -1,3 +1,6 @@
+import { blob, cursor as cursorClass } from './style.module.scss';
+const { b2_dynamicBody } = liquidfun;
+
 function getCenterParticles(p) {
   var xSum = 0;
   var ySum = 0;
@@ -106,14 +109,29 @@ export default class Renderer {
     }
     path += 'z';
     
-    let el = this.svgEl.children[groupIndex];
-    if (typeof el == 'undefined') {
+    let el = this.svgEl.querySelectorAll(`.${blob}`)[groupIndex];
+    if (typeof el === 'undefined') {
       el = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      el.setAttribute('class', blob);
       this.svgEl.appendChild(el);
     }
     el.setAttribute('d', path);
     el.setAttribute('stroke', 'black');
     el.setAttribute('fill', 'transparent');
+  }
+
+  drawCursor(cursor) {
+    const position = cursor.GetPosition();
+    let el = this.svgEl.querySelector('#cursor');
+    if (!el) {
+      el = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      el.id = 'cursor';
+      el.setAttribute('class', cursorClass);
+      this.svgEl.appendChild(el);
+    }
+    el.setAttribute('cx', position.x * this.scale);
+    el.setAttribute('cy', position.y * this.scale);
+    el.setAttribute('r', cursor.fixtures[0].shape.radius * this.scale);
   }
 
   drawParticleSystem(system) {
