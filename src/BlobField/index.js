@@ -1,9 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { createElasticParticles, createCursor } from './particles';
+import { createParticleSystem, createBlob, createBounds, createCursor } from './particles';
 import Renderer from './Renderer';
 import config from 'src/config';
 
-import { artistName, artistNameTag } from './style.module.scss';
+import { artistName, artistNameTag, wrapper } from './style.module.scss';
 
 const { b2AABB, b2_dynamicBody, b2BodyDef, b2MouseJointDef, b2Vec2, b2World } = liquidfun; 
 
@@ -79,8 +79,16 @@ const handleMouseUp = (world, mouseJoint) => (evt) => {
   }
 }
 
-export default function BlobField({ scale = 20}) {
+export default function BlobField({
+  height = 600,
+  positionIterations = 1,
+  velocityIterations = 2,
+  scale = 35,
+  width = 800,
+  particleRadius = 0.3
+}) {
     const animationEl = useRef(null); 
+    const wrapperEl = useRef(null); 
     const svgEl = useRef(null);
     const [groupLocations, setGroupLocations] = useState([]);
 
@@ -90,47 +98,63 @@ export default function BlobField({ scale = 20}) {
         resetWorld(world);
         const gd = new b2BodyDef();
         const groundBody = world.CreateBody(gd);
+
+        createBounds({ world, scale, width, height });
+        const particleSystem = createParticleSystem(world, particleRadius);
         
-        createElasticParticles({ world, scale, numBlobs: config.artists.length });
         const cursor = createCursor(world);
         var md = new b2MouseJointDef();
         md.bodyA = groundBody;
         md.bodyB = cursor;
-        md.maxForce = 20 * cursor.GetMass();
+        md.maxForce = 150 * cursor.GetMass();
         const mouseJoint = world.CreateJoint(md);
         cursor.SetAwake(true);
         
         const renderer = new Renderer(world, animationEl.current, { scale });
-        renderer.draw();
-        
-        window.setInterval(() => {
-          world.Step(1.0 / 60.0, 5, 3);
-          renderer.draw();
-          renderer.drawCursor(cursor);
+
+        let shouldRender = true;
+        let blobsToCreate = config.artists.length;
+        const render = () => {
+          if (!shouldRender) {
+            return;
+          }
+          if (blobsToCreate) {
+            createBlob({ particleSystem, width, scale});
+            blobsToCreate--;
+          }
+          world.Step(1.0 / 40.0, velocityIterations, positionIterations);
+          requestAnimationFrame(() => {
+            renderer.draw();
+              //renderer.drawCursor(cursor);
+              render();
+          });
           setGroupLocations(renderer.getGroupLocations());
-        }, 1000/60);
+        };
+        render();
 
         //El.current.addEventListener('mousedown', handleMouseDown(world, scale, groundBody, mouseJoint));
-        svgEl.current.addEventListener('mousemove', handleMouseMove(world, scale, mouseJoint));
+        wrapperEl.current.addEventListener('mousemove', handleMouseMove(world, scale, mouseJoint));
         //window.addEventListener('mouseup', handleMouseUp(world, mouseJoint));
 
-    }, [scale]);
+        return () => { shouldRender = false; }
+
+    }, [scale, height, width,]);
 
     return (
-        <div>
-          <svg ref={svgEl} width={800} height={600}>
+        <div className={wrapper} ref={wrapperEl} style={{ width, height }}>
+          <canvas ref={animationEl} width={width} height={height} />
+          <svg ref={svgEl} width={width} height={height}>
             <defs>
               <radialGradient id="cursorGradient">
-                <stop offset="0%" stop-color="#00ff3399" />
-                <stop offset="100%" stop-color="#00ff3300" />
+                <stop offset="0%" stopColor="#00ff3399" />
+                <stop offset="100%" stopColor="#00ff3300" />
               </radialGradient>
             </defs>
-            <g ref={animationEl} style={{ transform: 'scale(1)' }}/>
             {groupLocations.map(({ initialPoint }, i) => (
               <g key={`artist-${i}`}>
                 <rect className={artistNameTag} x={initialPoint[0]} y={initialPoint[1]} width={120} height={20}></rect>
                 <text className={artistName} x={initialPoint[0]} y={initialPoint[1] + 16} width={120}>
-                    {config.artists[i].name.toUpperCase()}
+                    {config.artists[i] && config.artists[i].name.toUpperCase()}
                 </text>
               </g>
              ))}

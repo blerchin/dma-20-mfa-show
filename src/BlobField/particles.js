@@ -12,7 +12,7 @@ const {
 } = liquidfun;
 
 
-export function createElasticParticles({ world, numBlobs = 11, width=800, height=600, scale=10}) {
+export function createBounds({ world, width=800, height=600, scale=10}) {
     var bd = new b2BodyDef();
     var ground = world.CreateBody(bd);
 
@@ -47,22 +47,24 @@ export function createElasticParticles({ world, numBlobs = 11, width=800, height
     shape4.vertices.push(new b2Vec2(w, h - 1 ));
     shape4.vertices.push(new b2Vec2(-1, h - 1));
     ground.CreateFixtureFromShape(shape4, 0);
-  
+}
+
+export function createParticleSystem(world, radius = 0.3) {
     const psd = new b2ParticleSystemDef();
-    psd.radius = 0.2;
-    const particleSystem = world.CreateParticleSystem(psd);
-  
-    for(let i = 0; i < numBlobs; i++) {
-        const circle = new b2CircleShape();
-        circle.position.Set( Math.floor(i / 4) * 10 + 10, (i % 4) *6 + 5);
-        circle.radius = 3;
-        const pgd = new b2ParticleGroupDef();
-        pgd.flags = b2_springParticle;
-        pgd.groupFlags = b2_solidParticleGroup;
-        pgd.shape = circle;
-        pgd.color.Set(Math.random()*255, Math.random()*255, Math.random()*255, 255);
-        particleSystem.CreateParticleGroup(pgd);
-    }
+    psd.radius = radius;
+    return world.CreateParticleSystem(psd);
+};
+
+export function createBlob({ particleSystem, radius = 3, width, scale = 10 }) {
+    const circle = new b2CircleShape();
+    circle.position.Set( width / scale / 2, radius);
+    circle.radius = radius;
+    const pgd = new b2ParticleGroupDef();
+    pgd.flags = b2_springParticle;
+    pgd.groupFlags = b2_solidParticleGroup;
+    pgd.shape = circle;
+    pgd.color.Set(Math.random()*255, Math.random()*255, Math.random()*255, 255);
+    particleSystem.CreateParticleGroup(pgd);
 }
 
 export function createCursor(world, { initialPosition = [1, 1], radius = 1 } = {}) {

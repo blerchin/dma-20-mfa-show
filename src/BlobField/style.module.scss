@@ -1,12 +1,12 @@
 .artistName {
     font-size: 14px;
     fill: #000;
-    pointer-events: none;;
+    pointer-events: none;
 }
 .artistNameTag {
     fill: rgb(255,255,255);
     stroke: transparent;
-    pointer-events: none;;
+    pointer-events: none;
 }
 .blob {
     fill: transparent;
@@ -17,5 +17,16 @@
 }
 .cursor {
     fill: url(#cursorGradient)
+}
+.wrapper {
+    position: relative;
+    overflow: hidden;
+    svg, canvas {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: 0;
+    }
 
 }

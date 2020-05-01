@@ -1,5 +1,4 @@
 import { blob, cursor as cursorClass } from './style.module.scss';
-const { b2_dynamicBody } = liquidfun;
 
 function getCenterParticles(p) {
   var xSum = 0;
@@ -24,7 +23,7 @@ function getClosestParticleToPosition(gp, x, y) {
       var b = y - y2;
       var dist = Math.sqrt(a*a + b*b);
 
-      if(minDist == -1 || dist < minDist) {
+      if(minDist === -1 || dist < minDist) {
         minDist = dist;
         closest = [x2,y2]
       }
@@ -75,15 +74,19 @@ function controlPoint (current, previous, next, reverse, smoothing = 0.1) {
 }
 
 export default class Renderer {
-  constructor(world, svgEl, { scale = 10} = {}) {
+  constructor(world, canvasEl, { scale = 10} = {}) {
       // init large buffer geometry
       this.world = world;
-      this.svgEl = svgEl;
+      this.canvasEl = canvasEl;
+      this.ctx = canvasEl.getContext('2d');
       this.scale = scale;
       this.groupLocations = []
   }
 
   draw() {
+    this.ctx.fillStyle = '#389e6b';
+    this.ctx.fillRect(0, 0, this.canvasEl.width, this.canvasEl.height);
+
     // draw particle systems
     for (let i = 0, max = this.world.particleSystems.length; i < max; i++) {
         this.drawParticleSystem(this.world.particleSystems[i]);
@@ -95,43 +98,37 @@ export default class Renderer {
   }
 
 
-  upsertPath(particles, groupIndex, smooth = true) {
+  upsertPath(particles, groupIndex, smooth = false) {
     const points = particles.map((p) => [p[0] * this.scale, p[1] * this.scale]);
-    let path = `M ${points[0][0]} ${points[0][1]} `;
+    this.ctx.beginPath();
+    this.lineWidth = '1';
+    this.strokeStyle = 'black';
+    this.ctx.fillStyle = ''
+    this.ctx.moveTo(points[0][0], points[0][1]);
     for(var i = 1; i < particles.length; i++) {
       if (smooth) {
-        const startCP = controlPoint(points[i - 1], points[i - 2], points[i]);
-        const endCP = controlPoint(points[i], points[i - 1],  points[i + 1], true);
-        path += `C ${startCP[0]},${startCP[1]} ${endCP[0]}, ${endCP[1]}, ${points[i][0]} ${points[i][1]}`;
+        //const startCP = controlPoint(points[i - 1], points[i - 2], points[i]);
+        //const endCP = controlPoint(points[i], points[i - 1],  points[i + 1], true);
+        //path += `C ${startCP[0]},${startCP[1]} ${endCP[0]}, ${endCP[1]}, ${points[i][0]} ${points[i][1]}`;
       } else {
-        path += `L ${points[i][0]} ${points[i][1]} `;
+        this.ctx.lineTo(points[i][0], points[i][1]);
       }
     }
-    path += 'z';
-    
-    let el = this.svgEl.querySelectorAll(`.${blob}`)[groupIndex];
-    if (typeof el === 'undefined') {
-      el = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      el.setAttribute('class', blob);
-      this.svgEl.appendChild(el);
-    }
-    el.setAttribute('d', path);
-    el.setAttribute('stroke', 'black');
-    el.setAttribute('fill', 'transparent');
+    this.ctx.closePath();
+    this.ctx.stroke();
   }
 
   drawCursor(cursor) {
     const position = cursor.GetPosition();
-    let el = this.svgEl.querySelector('#cursor');
-    if (!el) {
-      el = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-      el.id = 'cursor';
-      el.setAttribute('class', cursorClass);
-      this.svgEl.appendChild(el);
-    }
-    el.setAttribute('cx', position.x * this.scale);
-    el.setAttribute('cy', position.y * this.scale);
-    el.setAttribute('r', cursor.fixtures[0].shape.radius * this.scale);
+    this.ctx.arc(
+      position.x * this.scale,
+      position.y * this.scale,
+      cursor.fixtures[0].shape.radius * this.scale,
+      2 * Math.PI,
+      false
+      );
+    this.ctx.fillStyle = '#00ff3399';
+    this.ctx.fill();
   }
 
   drawParticleSystem(system) {
