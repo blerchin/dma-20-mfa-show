@@ -35,7 +35,7 @@ function getClosestParticleToPosition(gp, x, y) {
 
 function getOuterParticles(gp, center, radius) {
   const outerParticles = [];
-  var numOuterParticles = 10;
+  var numOuterParticles = 7;
 
   for(var i = 0; i < numOuterParticles; i++) {
     var ang = (i / numOuterParticles) * (Math.PI * 2);
@@ -106,22 +106,23 @@ export default class Renderer {
     ctx.beginPath();
     ctx.strokeWidth = 1;
     ctx.strokeStyle='black';
-    ctx.fillStyle = 'black';
+    ctx.fillStyle = 'rgba(255,255,255,0.5)';
     //start by drawing all the particles
+    /*
     for(var i = 0; i < points.length; i++) {
       ctx.beginPath();
       ctx.arc(points[i][0], points[i][1], this.radius * this.scale, 0, 2 * Math.PI);
       ctx.fill();
     }
+    */
     //then make metaballs of each pair of points
     ctx.beginPath();
-    metaball(ctx, this.radius * this.scale, points[0], points[points.length - 1], 2);
-    ctx.fill();
+    metaball(ctx, this.radius * this.scale, points[0], points[points.length - 1]);
     for(var i = 0; i < points.length - 1; i++) {
-      ctx.beginPath();
-      metaball(ctx, this.radius * this.scale, points[i], points[i + 1], 2);
-      ctx.fill();
+      metaball(ctx, this.radius * this.scale, points[i + 1], points[i]);
     }
+    ctx.closePath();
+    ctx.fill();
     //finally draw crude outline and fill it
     /*
     ctx.beginPath();

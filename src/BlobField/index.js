@@ -86,13 +86,13 @@ export default function BlobField({
   gravity = 5,
   initialScale = 35,
   width = window.innerWidth,
-  particleRadius = 0.8
+  particleRadius = 0.4
 }) {
     const animationEl = useRef(null); 
     const wrapperEl = useRef(null); 
     const svgEl = useRef(null);
     const [groupLocations, setGroupLocations] = useState([]);
-    const scale = Math.sqrt(width * height) / config.artists.length * initialScale / 60;
+    const scale = Math.sqrt(width * height) / config.artists.length * initialScale / 70;
 
     useEffect(() => {
         const world = new b2World(new b2Vec2(0, gravity));
@@ -115,14 +115,17 @@ export default function BlobField({
         const renderer = new Renderer(world, animationEl.current, { scale, radius: particleRadius });
 
         let shouldRender = true;
-        let blobsToCreate = config.artists.length;
+        config.artists.forEach((_, i) =>
+          createBlob({ 
+            particleSystem,
+            y: ((height - 5 * scale) / config.artists.length) * i,
+            radius: 3,
+            width,
+            scale
+          }));
         const render = () => {
           if (!shouldRender) {
             return;
-          }
-          if (blobsToCreate) {
-            createBlob({ particleSystem, width, scale});
-            blobsToCreate--;
           }
           world.Step(1.0 / 40.0, velocityIterations, positionIterations);
           requestAnimationFrame(() => {

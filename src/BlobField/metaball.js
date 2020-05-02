@@ -8,7 +8,7 @@ import React, { useEffect, useRef } from 'react';
  */
 
 
-export default function metaball(ctx, radius, center1, center2, handleSize = 2.4, v = 0.5) {
+export default function metaball(ctx, radius, center1, center2, handleSize = 0.8, v = 0.6) {
     const radius1 = radius;
     const radius2 = radius;
     const HALF_PI = Math.PI / 2;
@@ -72,9 +72,9 @@ export default function metaball(ctx, radius, center1, center2, handleSize = 2.4
   }
   
   function metaballToPath(ctx, p1, p2, p3, p4, h1, h2, h3, h4, escaped, r) {
-    ctx.moveTo(...p1);
-    ctx.bezierCurveTo(...h1, ...h3, ...p3);
-    ctx.lineTo(...p4);
+    //ctx.moveTo(...p1);
+    //ctx.bezierCurveTo(...h1, ...h3, ...p3);
+    //ctx.lineTo(...p4);
     ctx.bezierCurveTo(...h4, ...h2, ...p2);
     /*
     return [
