@@ -1,4 +1,5 @@
 import { blob, cursor as cursorClass } from './style.module.scss';
+import metaball from './metaball';
 
 function getCenterParticles(p) {
   var xSum = 0;
@@ -34,7 +35,7 @@ function getClosestParticleToPosition(gp, x, y) {
 
 function getOuterParticles(gp, center, radius) {
   const outerParticles = [];
-  var numOuterParticles = 20;
+  var numOuterParticles = 10;
 
   for(var i = 0; i < numOuterParticles; i++) {
     var ang = (i / numOuterParticles) * (Math.PI * 2);
@@ -56,7 +57,7 @@ function line(pointA, pointB) {
   }
 }
 
-function controlPoint (current, previous, next, reverse, smoothing = 0.1) {
+function controlPoint (current, previous, next, reverse, smoothing = 0.2) {
   // When 'current' is the first or last point of the array
   // 'previous' or 'next' don't exist.
   // Replace with 'current'
@@ -74,12 +75,13 @@ function controlPoint (current, previous, next, reverse, smoothing = 0.1) {
 }
 
 export default class Renderer {
-  constructor(world, canvasEl, { scale = 10} = {}) {
+  constructor(world, canvasEl, { radius = .25, scale = 10} = {}) {
       // init large buffer geometry
       this.world = world;
       this.canvasEl = canvasEl;
       this.ctx = canvasEl.getContext('2d');
       this.scale = scale;
+      this.radius = radius;
       this.groupLocations = []
   }
 
@@ -98,37 +100,38 @@ export default class Renderer {
   }
 
 
-  upsertPath(particles, groupIndex, smooth = false) {
+  upsertPath(particles, groupIndex, smooth=true) {
     const points = particles.map((p) => [p[0] * this.scale, p[1] * this.scale]);
-    this.ctx.beginPath();
-    this.lineWidth = '1';
-    this.strokeStyle = 'black';
-    this.ctx.fillStyle = ''
-    this.ctx.moveTo(points[0][0], points[0][1]);
-    for(var i = 1; i < particles.length; i++) {
-      if (smooth) {
-        //const startCP = controlPoint(points[i - 1], points[i - 2], points[i]);
-        //const endCP = controlPoint(points[i], points[i - 1],  points[i + 1], true);
-        //path += `C ${startCP[0]},${startCP[1]} ${endCP[0]}, ${endCP[1]}, ${points[i][0]} ${points[i][1]}`;
-      } else {
-        this.ctx.lineTo(points[i][0], points[i][1]);
-      }
+    const ctx = this.ctx;
+    ctx.beginPath();
+    ctx.strokeWidth = 1;
+    ctx.strokeStyle='black';
+    ctx.fillStyle = 'black';
+    //start by drawing all the particles
+    for(var i = 0; i < points.length; i++) {
+      ctx.beginPath();
+      ctx.arc(points[i][0], points[i][1], this.radius * this.scale, 0, 2 * Math.PI);
+      ctx.fill();
     }
-    this.ctx.closePath();
-    this.ctx.stroke();
-  }
-
-  drawCursor(cursor) {
-    const position = cursor.GetPosition();
-    this.ctx.arc(
-      position.x * this.scale,
-      position.y * this.scale,
-      cursor.fixtures[0].shape.radius * this.scale,
-      2 * Math.PI,
-      false
-      );
-    this.ctx.fillStyle = '#00ff3399';
-    this.ctx.fill();
+    //then make metaballs of each pair of points
+    ctx.beginPath();
+    metaball(ctx, this.radius * this.scale, points[0], points[points.length - 1], 2);
+    ctx.fill();
+    for(var i = 0; i < points.length - 1; i++) {
+      ctx.beginPath();
+      metaball(ctx, this.radius * this.scale, points[i], points[i + 1], 2);
+      ctx.fill();
+    }
+    //finally draw crude outline and fill it
+    /*
+    ctx.beginPath();
+    ctx.moveTo(points[0][0], points[0][1]);
+    for(var i = 1; i < points.length; i++) {
+       this.ctx.lineTo(points[i][0], points[i][1]);
+    }
+    ctx.closePath();
+    ctx.fill();
+    */
   }
 
   drawParticleSystem(system) {

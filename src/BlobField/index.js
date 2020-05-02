@@ -80,20 +80,22 @@ const handleMouseUp = (world, mouseJoint) => (evt) => {
 }
 
 export default function BlobField({
-  height = 600,
-  positionIterations = 1,
-  velocityIterations = 2,
-  scale = 35,
-  width = 800,
-  particleRadius = 0.3
+  height = window.innerHeight,
+  positionIterations = 3,
+  velocityIterations = 5,
+  gravity = 5,
+  initialScale = 35,
+  width = window.innerWidth,
+  particleRadius = 0.8
 }) {
     const animationEl = useRef(null); 
     const wrapperEl = useRef(null); 
     const svgEl = useRef(null);
     const [groupLocations, setGroupLocations] = useState([]);
+    const scale = Math.sqrt(width * height) / config.artists.length * initialScale / 60;
 
     useEffect(() => {
-        const world = new b2World(new b2Vec2(0, 5));
+        const world = new b2World(new b2Vec2(0, gravity));
         window.world = world;
         resetWorld(world);
         const gd = new b2BodyDef();
@@ -110,7 +112,7 @@ export default function BlobField({
         const mouseJoint = world.CreateJoint(md);
         cursor.SetAwake(true);
         
-        const renderer = new Renderer(world, animationEl.current, { scale });
+        const renderer = new Renderer(world, animationEl.current, { scale, radius: particleRadius });
 
         let shouldRender = true;
         let blobsToCreate = config.artists.length;
@@ -125,8 +127,7 @@ export default function BlobField({
           world.Step(1.0 / 40.0, velocityIterations, positionIterations);
           requestAnimationFrame(() => {
             renderer.draw();
-              //renderer.drawCursor(cursor);
-              render();
+            render();
           });
           setGroupLocations(renderer.getGroupLocations());
         };
@@ -138,7 +139,7 @@ export default function BlobField({
 
         return () => { shouldRender = false; }
 
-    }, [scale, height, width,]);
+    }, []);
 
     return (
         <div className={wrapper} ref={wrapperEl} style={{ width, height }}>
