@@ -123,39 +123,24 @@ export default class Renderer {
   }
 
 
-  upsertPath(particles, groupIndex, smooth=true) {
+  upsertPath(particles, groupIndex, smooth = true) {
     const points = particles.map((p) => [p[0] * this.scale, p[1] * this.scale]);
-    const ctx = this.ctx;
-    ctx.beginPath();
-    ctx.strokeWidth = 1;
-    ctx.strokeStyle='black';
-    ctx.fillStyle = 'rgba(255,255,255,0.5)';
-    //start by drawing all the particles
-    /*
-    for(var i = 0; i < points.length; i++) {
-      ctx.beginPath();
-      ctx.arc(points[i][0], points[i][1], this.radius * this.scale, 0, 2 * Math.PI);
-      ctx.fill();
+    this.ctx.beginPath();
+    this.lineWidth = '1';
+    this.strokeStyle = 'black';
+    this.ctx.fillStyle = ''
+    this.ctx.moveTo(points[0][0], points[0][1]);
+    for(var i = 1; i < particles.length; i++) {
+      if (smooth) {
+        const startCP = controlPoint(points[i - 1], points[i - 2], points[i]);
+        const endCP = controlPoint(points[i], points[i - 1],  points[i + 1], true);
+        this.ctx.bezierCurveTo(...startCP, ...endCP, ...points[i]);
+      } else {
+        this.ctx.lineTo(points[i][0], points[i][1]);
+      }
     }
-    */
-    //then make metaballs of each pair of points
-    ctx.beginPath();
-    metaball(ctx, this.radius * this.scale, points[0], points[points.length - 1]);
-    for(var i = 0; i < points.length - 1; i++) {
-      metaball(ctx, this.radius * this.scale, points[i + 1], points[i]);
-    }
-    ctx.closePath();
-    ctx.fill();
-    //finally draw crude outline and fill it
-    /*
-    ctx.beginPath();
-    ctx.moveTo(points[0][0], points[0][1]);
-    for(var i = 1; i < points.length; i++) {
-       this.ctx.lineTo(points[i][0], points[i][1]);
-    }
-    ctx.closePath();
-    ctx.fill();
-    */
+    this.ctx.closePath();
+    this.ctx.stroke();
   }
 
   drawParticleSystem(system) {
