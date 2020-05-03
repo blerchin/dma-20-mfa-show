@@ -15,15 +15,15 @@
 //            =0 for P2 on the line
 //            <0 for P2 right of the line
 
-function sortPointX(a, b) {
-    return a.lng() - b.lng();
+export function sortPointX(a, b) {
+    return a[1] - b[1];
 }
-function sortPointY(a, b) {
-    return a.lat() - b.lat();
+export function sortPointY(a, b) {
+    return a[0] - b[0];
 }
 
 function isLeft(P0, P1, P2) {    
-    return (P1.lng() - P0.lng()) * (P2.lat() - P0.lat()) - (P2.lng() - P0.lng()) * (P1.lat() - P0.lat());
+    return (P1[1] - P0[1]) * (P2[0] - P0[0]) - (P2[1] - P0[1]) * (P1[0] - P0[0]);
 }
 //===================================================================
 
@@ -37,7 +37,7 @@ function isLeft(P0, P1, P2) {
 //     Return: the number of points in H[]
 
 
-function chainHull_2D(P, n, H) {
+export function chainHull_2D(P, n, H) {
     // the output array H[] will be used as the stack
     var bot = 0,
     top = (-1); // indices for bottom and top of the stack
@@ -46,9 +46,9 @@ function chainHull_2D(P, n, H) {
     var minmin = 0,
         minmax;
         
-    var xmin = P[0].lng();
+    var xmin = P[0][1];
     for (i = 1; i < n; i++) {
-        if (P[i].lng() != xmin) {
+        if (P[i][1] != xmin) {
             break;
         }
     }
@@ -56,7 +56,7 @@ function chainHull_2D(P, n, H) {
     minmax = i - 1;
     if (minmax == n - 1) { // degenerate case: all x-coords == xmin 
         H[++top] = P[minmin];
-        if (P[minmax].lat() != P[minmin].lat()) // a nontrivial segment
+        if (P[minmax][0] != P[minmin][0]) // a nontrivial segment
             H[++top] = P[minmax];
         H[++top] = P[minmin]; // add polygon endpoint
         return top + 1;
@@ -64,9 +64,9 @@ function chainHull_2D(P, n, H) {
 
     // Get the indices of points with max x-coord and min|max y-coord
     var maxmin, maxmax = n - 1;
-    var xmax = P[n - 1].lng();
+    var xmax = P[n - 1][1];
     for (i = n - 2; i >= 0; i--) {
-        if (P[i].lng() != xmax) {
+        if (P[i][1] != xmax) {
             break; 
         }
     }
@@ -117,7 +117,7 @@ function chainHull_2D(P, n, H) {
             }
         }
         
-        if (P[i].lng() == H[0].lng() && P[i].lat() == H[0].lat()) {
+        if (P[i][1] == H[0][1] && P[i][0] == H[0][0]) {
             return top + 1; // special case (mgomes)
         }
         
