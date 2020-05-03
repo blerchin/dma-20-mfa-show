@@ -1,5 +1,6 @@
 import { blob, cursor as cursorClass } from './style.module.scss';
 import metaball from './metaball';
+import {sortPointX, sortPointY, chainHull_2D} from './convex_hull';
 
 function getCenterParticles(p) {
   var xSum = 0;
@@ -33,8 +34,11 @@ function getClosestParticleToPosition(gp, x, y) {
     return closest;
 }
 
+
+
+
 function getOuterParticles(gp, center, radius) {
-  const outerParticles = [];
+  /*const outerParticles = [];
   var numOuterParticles = 7;
 
   for(var i = 0; i < numOuterParticles; i++) {
@@ -45,8 +49,27 @@ function getOuterParticles(gp, center, radius) {
     outerParticles.push(getClosestParticleToPosition(gp, x, y));
   }
 
-  return outerParticles;
+  return outerParticles;*/
+
+  var points = [];
+  var hullPoints = [];
+  var hullPoints_size;
+  for(var i = 0; i < gp.length - 1; i+= 2) {
+    points.push([gp[i],gp[i+1]]);
+  }
+
+  points.sort(sortPointY);
+  points.sort(sortPointX);
+
+  hullPoints_size = chainHull_2D(points, points.length, hullPoints);
+  console.log(hullPoints_size);
+  return hullPoints;
+
 }
+
+
+
+
 
 function line(pointA, pointB) {
   const lengthX = pointB[0] - pointA[0]
