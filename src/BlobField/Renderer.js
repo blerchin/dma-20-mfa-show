@@ -1,5 +1,4 @@
 import { blob, cursor as cursorClass } from './style.module.scss';
-import metaball from './metaball';
 import ConvexHull from './convex_hull';
 
 function getCenterParticles(p) {
