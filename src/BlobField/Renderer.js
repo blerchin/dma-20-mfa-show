@@ -1,6 +1,6 @@
 import { blob, cursor as cursorClass } from './style.module.scss';
 import metaball from './metaball';
-import {sortPointX, sortPointY, chainHull_2D} from './convex_hull';
+import ConvexHull from './convex_hull';
 
 function getCenterParticles(p) {
   var xSum = 0;
@@ -37,7 +37,7 @@ function getClosestParticleToPosition(gp, x, y) {
 
 
 
-function getOuterParticles(gp, center, radius) {
+function getOuterParticles(gp, scale) {
   /*const outerParticles = [];
   var numOuterParticles = 7;
 
@@ -55,16 +55,11 @@ function getOuterParticles(gp, center, radius) {
   var hullPoints = [];
   var hullPoints_size;
   for(var i = 0; i < gp.length - 1; i+= 2) {
-    points.push([gp[i],gp[i+1]]);
+    points.push({ x: gp[i] * scale, y: gp[i+1] * scale });
   }
 
-  points.sort(sortPointY);
-  points.sort(sortPointX);
-
-  hullPoints_size = chainHull_2D(points, points.length, hullPoints);
-  console.log(hullPoints_size);
-  return hullPoints;
-
+  const ch = new ConvexHull(points);
+  return ch.makeHull().map((p) => [p.x, p.y]);
 }
 
 
@@ -80,7 +75,7 @@ function line(pointA, pointB) {
   }
 }
 
-function controlPoint (current, previous, next, reverse, smoothing = 0.2) {
+function controlPoint (current, previous, next, reverse, smoothing = 0.15) {
   // When 'current' is the first or last point of the array
   // 'previous' or 'next' don't exist.
   // Replace with 'current'
@@ -123,14 +118,14 @@ export default class Renderer {
   }
 
 
-  upsertPath(particles, groupIndex, smooth = true) {
-    const points = particles.map((p) => [p[0] * this.scale, p[1] * this.scale]);
+  upsertPath(points, groupIndex, smooth = true, drawPoints = false) {
+    //const points = particles.map((p) => [p[0] * this.scale, p[1] * this.scale]);
     this.ctx.beginPath();
     this.lineWidth = '1';
     this.strokeStyle = 'black';
     this.ctx.fillStyle = ''
     this.ctx.moveTo(points[0][0], points[0][1]);
-    for(var i = 1; i < particles.length; i++) {
+    for(var i = 1; i < points.length; i++) {
       if (smooth) {
         const startCP = controlPoint(points[i - 1], points[i - 2], points[i]);
         const endCP = controlPoint(points[i], points[i - 1],  points[i + 1], true);
@@ -141,6 +136,15 @@ export default class Renderer {
     }
     this.ctx.closePath();
     this.ctx.stroke();
+    
+    if (drawPoints) {
+      for(var i = 0; i < points.length; i++) {
+        this.ctx.fillStyle='black';
+        this.ctx.beginPath();
+        this.ctx.arc(points[i][0], points[i][1], 3, 0, Math.PI * 2);
+        this.ctx.fill();
+      }
+    }
   }
 
   drawParticleSystem(system) {
@@ -165,7 +169,7 @@ export default class Renderer {
 
       var groupCenter = getCenterParticles(groupParticles);
 
-      var outerParticles = getOuterParticles(groupParticles, groupCenter, 5);
+      var outerParticles = getOuterParticles(groupParticles, this.scale);
 
       this.groupLocations[j] = { 
         centerPoint: [groupCenter[0] * this.scale, groupCenter[1] * this.scale], 
