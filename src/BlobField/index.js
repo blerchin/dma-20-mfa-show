@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { createParticleSystem, createBlob, createBounds, createCursor } from './particles';
+import { createParticleSystem, createBlob, createBounds, createCursor, moveBounds } from './particles';
 import Renderer from './Renderer';
 import config from 'src/config';
 
@@ -84,15 +84,17 @@ export default function BlobField({
   positionIterations = 3,
   velocityIterations = 5,
   gravity = 5,
-  initialScale = 35,
+  initialScale = 50,
   width = window.innerWidth,
   particleRadius = 0.4
 }) {
     const animationEl = useRef(null); 
     const wrapperEl = useRef(null); 
     const svgEl = useRef(null);
+    const bounds = useRef(null);
     const [groupLocations, setGroupLocations] = useState([]);
-    const scale = Math.sqrt(width * height) / config.artists.length * initialScale / 70;
+    //const getScale = () => Math.sqrt(width * height) / config.artists.length * initialScale / 70;
+    const getScale = () => 50;
 
     useEffect(() => {
         const world = new b2World(new b2Vec2(0, gravity));
@@ -100,8 +102,10 @@ export default function BlobField({
         resetWorld(world);
         const gd = new b2BodyDef();
         const groundBody = world.CreateBody(gd);
+        const scale = getScale();
 
-        createBounds({ world, scale, width, height });
+        bounds.current = createBounds({ world, scale, width, height });
+        moveBounds({ bounds: bounds.current, width, height, scale });
         const particleSystem = createParticleSystem(world, particleRadius);
         
         const cursor = createCursor(world);
@@ -119,7 +123,7 @@ export default function BlobField({
           createBlob({ 
             particleSystem,
             y: ((height - 5 * scale) / config.artists.length) * i,
-            radius: 3,
+            radius: 2.5,
             width,
             scale
           }));
@@ -129,7 +133,7 @@ export default function BlobField({
           }
           world.Step(1.0 / 40.0, velocityIterations, positionIterations);
           requestAnimationFrame(() => {
-            renderer.draw();
+            renderer.draw(getScale());
             render();
           });
           setGroupLocations(renderer.getGroupLocations());
@@ -137,12 +141,17 @@ export default function BlobField({
         render();
 
         //El.current.addEventListener('mousedown', handleMouseDown(world, scale, groundBody, mouseJoint));
-        wrapperEl.current.addEventListener('mousemove', handleMouseMove(world, scale, mouseJoint));
+        wrapperEl.current.addEventListener('mousemove', handleMouseMove(world, getScale(), mouseJoint));
         //window.addEventListener('mouseup', handleMouseUp(world, mouseJoint));
 
         return () => { shouldRender = false; }
 
     }, []);
+
+    useEffect(() => {
+      bounds.current && moveBounds({ bounds: bounds.current, width, height, scale: getScale() });
+
+    }, [width, height]);
 
     return (
         <div className={wrapper} ref={wrapperEl} style={{ width, height }}>

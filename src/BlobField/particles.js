@@ -2,14 +2,55 @@
 const { 
     b2BodyDef,
     b2CircleShape,
+    b2MouseJointDef,
     b2ParticleGroupDef,
     b2ParticleSystemDef,
     b2PolygonShape,
     b2Vec2,
+    b2Rot,
+    b2_staticBody,
     b2_springParticle,
     b2_solidParticleGroup,
+    b2_kinematicBody,
     b2_dynamicBody
 } = liquidfun;
+
+function createJoint(world, body) {
+    const gd = new b2BodyDef();
+    const ground = world.CreateBody(gd);
+    const jd = new b2MouseJointDef();
+    jd.bodyA = ground;
+    jd.bodyB = body;
+    //jd.maxForce = 200 * body.getMass();
+    body.SetAwake(true);
+    return world.CreateJoint(jd);
+}
+
+export function moveBounds({ bounds, width, height, scale }) {
+    const { bottom, left, right, top } = bounds;
+    const w = width/scale;
+    const h = height/scale
+    
+
+    //bottom.SetTarget(new b2Vec2(0, h));
+    //right.SetTarget(new b2Vec2(w, 0));
+    bottom.SetTransform(new b2Vec2(0, h + 1), 0);
+    right.SetTransform(new b2Vec2(w + 1, 0), 0);
+
+}
+
+function createBox(world, ...vertices) {
+    const bd = new b2BodyDef();
+    bd.type = b2_staticBody;
+    bd.gravityScale = 0;
+    const body = world.CreateBody(bd);
+    const shape = new b2PolygonShape();
+    vertices.forEach((v) => {
+        shape.vertices.push(v);
+    })
+    body.CreateFixtureFromShape(shape, 1000);
+    return body;
+}
 
 
 export function createBounds({ world, width=800, height=600, scale=10}) {
@@ -18,35 +59,24 @@ export function createBounds({ world, width=800, height=600, scale=10}) {
 
     const w = width/scale;
     const h = height/scale
+    const max = 10000 / scale;
 
-    //set boundary box
-    const shape1 = new b2PolygonShape();
-    shape1.vertices.push(new b2Vec2(0, -1));
-    shape1.vertices.push(new b2Vec2(w, -1));
-    shape1.vertices.push(new b2Vec2(w, 0));
-    shape1.vertices.push(new b2Vec2(0, 0));
-    ground.CreateFixtureFromShape(shape1, 0);
-  
-    const shape2 = new b2PolygonShape();
-    shape2.vertices.push(new b2Vec2(-1, -1));
-    shape2.vertices.push(new b2Vec2(0, -1));
-    shape2.vertices.push(new b2Vec2(0, h));
-    shape2.vertices.push(new b2Vec2(-1, h));
-    ground.CreateFixtureFromShape(shape2, 0);
-  
-    const shape3 = new b2PolygonShape();
-    shape3.vertices.push(new b2Vec2(w + 1, -1));
-    shape3.vertices.push(new b2Vec2(w + 1, h + 1));
-    shape3.vertices.push(new b2Vec2(w, h + 1));
-    shape3.vertices.push(new b2Vec2(w, -1));
-    ground.CreateFixtureFromShape(shape3, 0);
+    // set boundary box
+    // h/v vertices are initially the same and will be translated by #moveBounds
+    const horz = [new b2Vec2(0, -1), new b2Vec2(max, -1), new b2Vec2(max, 0), new b2Vec2(0, 0)];
+    const top = createBox(world, ...horz);
+    const bottom = createBox(world, ...horz);
     
-    const shape4 = new b2PolygonShape();
-    shape4.vertices.push(new b2Vec2(-1, h - 2));
-    shape4.vertices.push(new b2Vec2(w + 1, h - 2));
-    shape4.vertices.push(new b2Vec2(w, h - 1 ));
-    shape4.vertices.push(new b2Vec2(-1, h - 1));
-    ground.CreateFixtureFromShape(shape4, 0);
+    const vert = [new b2Vec2(-1, -1), new b2Vec2(-1, max), new b2Vec2(0, max), new b2Vec2(0, -1)];
+    const left = createBox(world, ...vert);
+    const right = createBox(world, ...vert);
+     
+    return { 
+        bottom,
+        left,
+        right,
+        top
+     };
 }
 
 export function createParticleSystem(world, radius = 0.3) {
@@ -57,7 +87,7 @@ export function createParticleSystem(world, radius = 0.3) {
 
 export function createBlob({ particleSystem, radius = 3, y, width, scale = 10 }) {
     const circle = new b2CircleShape();
-    circle.position.Set( width / scale / 2, radius + y / scale);
+    circle.position.Set( 2 * radius, radius + y / scale);
     circle.radius = radius;
     const pgd = new b2ParticleGroupDef();
     pgd.flags = b2_springParticle;
@@ -71,6 +101,7 @@ export function createCursor(world, { initialPosition = [1, 1], radius = 1 } = {
     const bd = new b2BodyDef();
     const circle = new b2CircleShape();
     bd.type = b2_dynamicBody;
+    bd.gravityScale = 0;
     const body = world.CreateBody(bd);
     circle.position.Set(...initialPosition);
     circle.radius = radius;

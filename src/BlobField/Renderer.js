@@ -1,5 +1,6 @@
 import { blob, cursor as cursorClass } from './style.module.scss';
 import ConvexHull from './convex_hull';
+const { b2PolygonShape } = liquidfun;
 
 function getCenterParticles(p) {
   var xSum = 0;
@@ -12,29 +13,6 @@ function getCenterParticles(p) {
 
   return [xSum/(p.length/2), ySum/(p.length/2)];
 }
-
-function getClosestParticleToPosition(gp, x, y) {
-    var minDist = -1;
-    var closest = [0,0];
-
-    for(var i = 0; i < gp.length; i+=2) {
-      var x2 = gp[i];
-      var y2 = gp[i+1];
-      var a = x - x2;
-      var b = y - y2;
-      var dist = Math.sqrt(a*a + b*b);
-
-      if(minDist === -1 || dist < minDist) {
-        minDist = dist;
-        closest = [x2,y2]
-      }
-    }
-
-    return closest;
-}
-
-
-
 
 function getOuterParticles(gp, scale) {
   /*const outerParticles = [];
@@ -60,10 +38,6 @@ function getOuterParticles(gp, scale) {
   const ch = new ConvexHull(points);
   return ch.makeHull().map((p) => [p.x, p.y]);
 }
-
-
-
-
 
 function line(pointA, pointB) {
   const lengthX = pointB[0] - pointA[0]
@@ -97,19 +71,19 @@ export default class Renderer {
       this.world = world;
       this.canvasEl = canvasEl;
       this.ctx = canvasEl.getContext('2d');
-      this.scale = scale;
       this.radius = radius;
       this.groupLocations = []
   }
 
-  draw() {
+  draw(scale) {
     this.ctx.fillStyle = '#389e6b';
     this.ctx.fillRect(0, 0, this.canvasEl.width, this.canvasEl.height);
 
     // draw particle systems
     for (let i = 0, max = this.world.particleSystems.length; i < max; i++) {
-        this.drawParticleSystem(this.world.particleSystems[i]);
+        this.drawParticleSystem(this.world.particleSystems[i], scale);
     }
+    this.drawBounds(this.world, scale);
   }
 
   getGroupLocations() {
@@ -118,7 +92,6 @@ export default class Renderer {
 
 
   upsertPath(points, groupIndex, smooth = true, drawPoints = false) {
-    //const points = particles.map((p) => [p[0] * this.scale, p[1] * this.scale]);
     this.ctx.beginPath();
     this.lineWidth = '1';
     this.strokeStyle = 'black';
@@ -146,7 +119,32 @@ export default class Renderer {
     }
   }
 
-  drawParticleSystem(system) {
+  drawPolygon(vertices, scale) {
+    const ctx = this.ctx;
+    ctx.strokeStyle='black';
+    ctx.fillStyle='black';
+    ctx.beginPath();
+    ctx.moveTo(vertices[0].x * scale, vertices[0].y * scale);
+    for (let i = 1; i < vertices.length; i++) {
+      ctx.lineTo(vertices[i].x * scale, vertices[i].y * scale);
+    }
+    ctx.fill();
+  }
+
+  drawBounds(world, scale) {
+    for (let i = 0; i < world.bodies.length; i++) {
+      const body = world.bodies[i];
+      for (var j = 0; j < body.fixtures.length; j++) {
+        if (body.fixtures[j].shape instanceof b2PolygonShape ) {
+          const transform = body.GetTransform().p;
+          const vertices = body.fixtures[j].shape.vertices.map((v) => ({ x: v.x + transform.x, y: v.y + transform.y }));
+          this.drawPolygon(vertices, scale);
+        }
+      }
+    }
+  }
+
+  drawParticleSystem(system, scale) {
     const particles = system.GetPositionBuffer();
     const particleGroups = system.particleGroups;
     //need to reset this on each step so React knows to rerender
@@ -168,11 +166,11 @@ export default class Renderer {
 
       var groupCenter = getCenterParticles(groupParticles);
 
-      var outerParticles = getOuterParticles(groupParticles, this.scale);
+      var outerParticles = getOuterParticles(groupParticles, scale);
 
       this.groupLocations[j] = { 
-        centerPoint: [groupCenter[0] * this.scale, groupCenter[1] * this.scale], 
-        initialPoint: [groupParticles[0] * this.scale, groupParticles[1] * this.scale]
+        centerPoint: [groupCenter[0] * scale, groupCenter[1] * scale], 
+        initialPoint: [groupParticles[0] * scale, groupParticles[1] * scale]
       };
 
       this.upsertPath(outerParticles, j);
