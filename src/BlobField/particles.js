@@ -85,9 +85,9 @@ export function createParticleSystem(world, radius = 0.3) {
     return world.CreateParticleSystem(psd);
 };
 
-export function createBlob({ particleSystem, radius = 3, y, width, scale = 10 }) {
+export function createBlob({ particleSystem, radius = 3, x, y, width, scale = 10 }) {
     const circle = new b2CircleShape();
-    circle.position.Set( 2 * radius, radius + y / scale);
+    circle.position.Set(radius + x / scale, radius + y / scale);
     circle.radius = radius;
     const pgd = new b2ParticleGroupDef();
     pgd.flags = b2_springParticle;

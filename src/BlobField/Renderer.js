@@ -48,7 +48,7 @@ function line(pointA, pointB) {
   }
 }
 
-function controlPoint (current, previous, next, reverse, smoothing = 0.01) {
+function controlPoint (current, previous, next, reverse, smoothing = 0.03) {
   // When 'current' is the first or last point of the array
   // 'previous' or 'next' don't exist.
   // Replace with 'current'

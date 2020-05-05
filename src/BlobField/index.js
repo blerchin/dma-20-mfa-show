@@ -86,7 +86,7 @@ export default function BlobField({
   gravity = 5,
   initialScale = 50,
   width = window.innerWidth,
-  particleRadius = 0.2
+  particleRadius = 0.25
 }) {
     const animationEl = useRef(null);
     const wrapperEl = useRef(null);
@@ -119,10 +119,16 @@ export default function BlobField({
         const renderer = new Renderer(world, animationEl.current, { scale, radius: particleRadius });
 
         let shouldRender = true;
+
+        var spawnRowLen = 5;
+        var spawnColLen = 2
+        var col = 0;
+
         config.artists.forEach((_, i) =>
           createBlob({
             particleSystem,
-            y: ((height - 5 * scale) / config.artists.length) * i,
+            x: ((i % spawnRowLen) / spawnRowLen) * width,
+            y:  Math.floor(i / spawnRowLen) * height/(spawnColLen+1),
             radius: 3.5,
             width,
             scale
