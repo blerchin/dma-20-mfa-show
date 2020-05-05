@@ -76,7 +76,7 @@ export default class Renderer {
   }
 
   draw(scale) {
-    this.ctx.fillStyle = 'rgb(151,202,204)';
+    this.ctx.fillStyle = 'rgb(171,202,204)';
     this.ctx.fillRect(0, 0, this.canvasEl.width, this.canvasEl.height);
 
     // draw particle systems
@@ -97,7 +97,7 @@ export default class Renderer {
     //this.strokeStyle = 'black';
     this.ctx.strokeStyle='rgb(255,255,255)';
     //this.ctx.fillStyle = 'white';
-    this.ctx.fillStyle = 'rgb(170,205,210)'
+    this.ctx.fillStyle = 'rgb(185,205,210)';
     this.ctx.lineWidth = 0.8;
     this.ctx.moveTo(points[0][0], points[0][1]);
     for(var i = 1; i < points.length; i++) {
