@@ -124,15 +124,15 @@ export default function BlobField({
         var spawnColLen = 2
         var col = 0;
 
-        //Find way to do this without magic number 
-        var blobSize = Math.min(width, height) / 300;
+        //Use height and magic number to scale blobs
+        var blobSize = height / 350;
         console.log(blobSize);
 
         config.artists.forEach((_, i) =>
           createBlob({
             particleSystem,
-            x: (((i % spawnRowLen) / spawnRowLen) * width),
-            y:  (Math.floor(i / spawnRowLen) * height/(spawnColLen+1)),
+            x: (((i % spawnRowLen) / spawnRowLen) * (width*.8)),
+            y:  (Math.floor(i / spawnRowLen) * (height*.8)/(spawnColLen+1)),
             radius: blobSize,
             width,
             scale
