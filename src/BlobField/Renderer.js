@@ -106,6 +106,13 @@ export default class Renderer {
     }
   }
 
+  drawName(points, name) {
+    this.ctx.font = config.style.blobFont;
+    this.ctx.fillStyle = config.style.blobTextFill;
+    this.ctx.strokeStyle = '';
+    textPath(this.ctx, name, points.flat());
+  }
+
   drawPolygon(vertices, scale) {
     const ctx = this.ctx;
     ctx.fillStyle='black';
@@ -160,6 +167,7 @@ export default class Renderer {
       };
 
       this.drawPath(outerParticles);
+      this.drawName(outerParticles, config.artists[j].name);
     }
   }
 }
