@@ -1,6 +1,7 @@
 import config from 'src/config';
-import { textPath } from './textPath';
+import { createAlignedText } from './textPath';
 import ConvexHull from './convex_hull';
+import paper from 'paper';
 const { b2PolygonShape } = liquidfun;
 
 function getCenterParticles(p) {
@@ -56,9 +57,10 @@ export default class Renderer {
       // init large buffer geometry
       this.world = world;
       this.canvasEl = canvasEl;
+      paper.setup(canvasEl);
       this.ctx = canvasEl.getContext('2d');
       this.radius = radius;
-      this.groupLocations = []
+      this.blobs = config.artists.map(({ name }) => ({ name, path: new paper.Path(), glyphs: [] }));
   }
 
   draw(scale) {
@@ -69,7 +71,7 @@ export default class Renderer {
     for (let i = 0, max = this.world.particleSystems.length; i < max; i++) {
         this.drawParticleSystem(this.world.particleSystems[i], scale);
     }
-    this.drawBounds(this.world, scale);
+    paper.view.draw();
   }
 
   getGroupLocations() {
@@ -77,24 +79,15 @@ export default class Renderer {
   }
 
 
-  drawPath(points, smooth = true, drawPoints = false) {
-    this.ctx.beginPath();
-    this.ctx.strokeStyle = config.style.blobStroke;
-    this.ctx.fillStyle = config.style.blobFill;
-    this.ctx.lineWidth = 0.8;
-    this.ctx.moveTo(points[0][0], points[0][1]);
-    for(var i = 1; i < points.length; i++) {
-      if (smooth) {
-        const startCP = controlPoint(points[i - 1], points[i - 2], points[i]);
-        const endCP = controlPoint(points[i], points[i - 1],  points[i + 1], true);
-        this.ctx.bezierCurveTo(...startCP, ...endCP, ...points[i]);
-      } else {
-        this.ctx.lineTo(points[i][0], points[i][1]);
-      }
-    }
-    this.ctx.closePath();
-    this.ctx.fill();
-    this.ctx.stroke();
+  drawPath(points, blob, smooth = true, drawPoints = false) {
+    const { path } = blob;
+    path.strokeColor = config.style.blobStroke;
+    path.fillColor = config.style.blobFill;
+    path.lineWidth = 0.8;
+    path.closed = true;
+    path.segments = [];
+    path.segments = points.map((p) => [p, null, null])
+    path.smooth({ type: 'catmull-rom', factor: 0.6 });
 
     if (drawPoints) {
       for(var i = 0; i < points.length; i++) {
@@ -106,11 +99,8 @@ export default class Renderer {
     }
   }
 
-  drawName(points, name) {
-    this.ctx.font = config.style.blobFont;
-    this.ctx.fillStyle = config.style.blobTextFill;
-    this.ctx.strokeStyle = '';
-    textPath(this.ctx, name, points.flat());
+  drawName({ name, path, glyphs }) {
+    createAlignedText(name, path, glyphs, { fontSize: '20px', baselineShift: -10 });
   }
 
   drawPolygon(vertices, scale) {
@@ -166,8 +156,8 @@ export default class Renderer {
         initialPoint: [groupParticles[0] * scale, groupParticles[1] * scale]
       };
 
-      this.drawPath(outerParticles);
-      this.drawName(outerParticles, config.artists[j].name);
+      this.drawPath(outerParticles, this.blobs[j]);
+      this.drawName(this.blobs[j]);
     }
   }
 }

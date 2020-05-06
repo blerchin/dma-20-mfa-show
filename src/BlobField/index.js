@@ -141,7 +141,7 @@ export default function BlobField({
           if (!shouldRender) {
             return;
           }
-          world.Step(1.0 / 40.0, velocityIterations, positionIterations);
+          world.Step(1.0 / 30.0, velocityIterations, positionIterations);
           requestAnimationFrame(() => {
             renderer.draw(getScale());
             render();
@@ -165,7 +165,7 @@ export default function BlobField({
 
     return (
         <div className={wrapper} ref={wrapperEl} style={{ width, height }}>
-          <canvas ref={animationEl} width={width} height={height} />
+          <canvas ref={animationEl} width={width} height={height} resize />
         </div>
     )
 
