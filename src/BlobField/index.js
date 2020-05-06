@@ -97,7 +97,7 @@ export default function BlobField({
     const getScale = () => 50;
 
     useEffect(() => {
-        const world = new b2World(new b2Vec2(0, gravity));
+        const world = new b2World(new b2Vec2(gravity, 0));
         window.world = world;
         resetWorld(world);
         const gd = new b2BodyDef();
