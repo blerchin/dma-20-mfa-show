@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import './App.css';
 import BlobField from 'src/BlobField';
-import { useEffect } from 'react';
+import config from './config';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" style={{ backgroundColor: config.style.background }}>
       <header className="App-header">
         <BlobField />
       </header>

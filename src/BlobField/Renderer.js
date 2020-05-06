@@ -1,4 +1,5 @@
-import { blob, cursor as cursorClass } from './style.module.scss';
+import config from 'src/config';
+import { textPath } from './textPath';
 import ConvexHull from './convex_hull';
 const { b2PolygonShape } = liquidfun;
 
@@ -15,22 +16,7 @@ function getCenterParticles(p) {
 }
 
 function getOuterParticles(gp, scale) {
-  /*const outerParticles = [];
-  var numOuterParticles = 7;
-
-  for(var i = 0; i < numOuterParticles; i++) {
-    var ang = (i / numOuterParticles) * (Math.PI * 2);
-    var x = Math.cos(ang) * radius + center[0];
-    var y = Math.sin(ang) * radius + center[1];
-
-    outerParticles.push(getClosestParticleToPosition(gp, x, y));
-  }
-
-  return outerParticles;*/
-
   var points = [];
-  var hullPoints = [];
-  var hullPoints_size;
   for(var i = 0; i < gp.length - 1; i+= 2) {
     points.push({ x: gp[i] * scale, y: gp[i+1] * scale });
   }
@@ -48,7 +34,7 @@ function line(pointA, pointB) {
   }
 }
 
-function controlPoint (current, previous, next, reverse, smoothing = 0.01) {
+function controlPoint (current, previous, next, reverse, smoothing = 0.12) {
   // When 'current' is the first or last point of the array
   // 'previous' or 'next' don't exist.
   // Replace with 'current'
@@ -76,7 +62,7 @@ export default class Renderer {
   }
 
   draw(scale) {
-    this.ctx.fillStyle = 'rgb(171,202,204)';
+    this.ctx.fillStyle = config.style.background;
     this.ctx.fillRect(0, 0, this.canvasEl.width, this.canvasEl.height);
 
     // draw particle systems
@@ -91,13 +77,10 @@ export default class Renderer {
   }
 
 
-  upsertPath(points, groupIndex, smooth = true, drawPoints = false) {
+  drawPath(points, smooth = true, drawPoints = false) {
     this.ctx.beginPath();
-    this.lineWidth = '0.1';
-    //this.strokeStyle = 'black';
-    this.ctx.strokeStyle='rgb(255,255,255)';
-    //this.ctx.fillStyle = 'white';
-    this.ctx.fillStyle = 'rgb(185,205,210)';
+    this.ctx.strokeStyle = config.style.blobStroke;
+    this.ctx.fillStyle = config.style.blobFill;
     this.ctx.lineWidth = 0.8;
     this.ctx.moveTo(points[0][0], points[0][1]);
     for(var i = 1; i < points.length; i++) {
@@ -176,7 +159,7 @@ export default class Renderer {
         initialPoint: [groupParticles[0] * scale, groupParticles[1] * scale]
       };
 
-      this.upsertPath(outerParticles, j);
+      this.drawPath(outerParticles);
     }
   }
 }

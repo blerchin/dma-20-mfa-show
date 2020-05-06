@@ -166,22 +166,6 @@ export default function BlobField({
     return (
         <div className={wrapper} ref={wrapperEl} style={{ width, height }}>
           <canvas ref={animationEl} width={width} height={height} />
-          <svg ref={svgEl} width={width} height={height}>
-            <defs>
-              <radialGradient id="cursorGradient">
-                <stop offset="0%" stopColor="#00ff3399" />
-                <stop offset="100%" stopColor="#00ff3300" />
-              </radialGradient>
-            </defs>
-            {groupLocations.map(({ initialPoint }, i) => (
-              <g key={`artist-${i}`}>
-                <rect className={artistNameTag} x={initialPoint[0]} y={initialPoint[1]} width={120} height={20}></rect>
-                <text className={artistName} x={initialPoint[0]} y={initialPoint[1] + 16} width={120}>
-                    {config.artists[i] && config.artists[i].name.toUpperCase()}
-                </text>
-              </g>
-             ))}
-          </svg>
         </div>
     )
 

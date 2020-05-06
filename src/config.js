@@ -24,5 +24,12 @@ export default {
             name: 'Leming Z/C'
         }
         
-    ]
+    ],
+    style: {
+        background: 'rgb(171,202,204)',
+        blobFill: 'rgb(185,205,210)',
+        blobStroke: 'rgb(255,255,255)',
+        blobFont: '24px Helvetica Neue',
+        blobTextFill: 'rgb(255,255,255)'
+    }
 }
