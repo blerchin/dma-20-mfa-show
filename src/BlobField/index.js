@@ -146,7 +146,7 @@ export default function BlobField({
             renderer.draw(getScale());
             render();
           });
-          setGroupLocations(renderer.getGroupLocations());
+          //setGroupLocations(renderer.getGroupLocations());
         };
         render();
 
