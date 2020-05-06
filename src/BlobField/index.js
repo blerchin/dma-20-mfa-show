@@ -5,14 +5,14 @@ import config from 'src/config';
 
 import { artistName, artistNameTag, wrapper } from './style.module.scss';
 
-const { b2AABB, b2_dynamicBody, b2BodyDef, b2MouseJointDef, b2Vec2, b2World } = liquidfun; 
+const { b2AABB, b2_dynamicBody, b2BodyDef, b2MouseJointDef, b2Vec2, b2World } = liquidfun;
 
 class QueryCallback {
   constructor(point) {
     this.point = point;
     this.fixture = null;
   }
-  
+
   ReportFixture(fixture) {
     var body = fixture.body;
     if (body.GetType() === b2_dynamicBody) {
@@ -31,11 +31,11 @@ function resetWorld(world) {
         while (world.joints.length > 0) {
           world.DestroyJoint(world.joints[0]);
         }
-    
+
         while (world.bodies.length > 0) {
           world.DestroyBody(world.bodies[0]);
         }
-    
+
         while (world.particleSystems.length > 0) {
           world.DestroyParticleSystem(world.particleSystems[0]);
         }
@@ -86,10 +86,10 @@ export default function BlobField({
   gravity = 5,
   initialScale = 50,
   width = window.innerWidth,
-  particleRadius = 0.4
+  particleRadius = 0.25
 }) {
-    const animationEl = useRef(null); 
-    const wrapperEl = useRef(null); 
+    const animationEl = useRef(null);
+    const wrapperEl = useRef(null);
     const svgEl = useRef(null);
     const bounds = useRef(null);
     const [groupLocations, setGroupLocations] = useState([]);
@@ -107,7 +107,7 @@ export default function BlobField({
         bounds.current = createBounds({ world, scale, width, height });
         moveBounds({ bounds: bounds.current, width, height, scale });
         const particleSystem = createParticleSystem(world, particleRadius);
-        
+
         const cursor = createCursor(world);
         var md = new b2MouseJointDef();
         md.bodyA = groundBody;
@@ -115,15 +115,25 @@ export default function BlobField({
         md.maxForce = 150 * cursor.GetMass();
         const mouseJoint = world.CreateJoint(md);
         cursor.SetAwake(true);
-        
+
         const renderer = new Renderer(world, animationEl.current, { scale, radius: particleRadius });
 
         let shouldRender = true;
+
+        var spawnRowLen = 5;
+        var spawnColLen = 2
+        var col = 0;
+
+        //Use height and magic number to scale blobs
+        var blobSize = height / 350;
+        console.log(blobSize);
+
         config.artists.forEach((_, i) =>
-          createBlob({ 
+          createBlob({
             particleSystem,
-            y: ((height - 5 * scale) / config.artists.length) * i,
-            radius: 2.5,
+            x: (((i % spawnRowLen) / spawnRowLen) * (width*.8)),
+            y:  (Math.floor(i / spawnRowLen) * (height*.8)/(spawnColLen+1)),
+            radius: blobSize,
             width,
             scale
           }));

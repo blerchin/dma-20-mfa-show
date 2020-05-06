@@ -48,7 +48,7 @@ function line(pointA, pointB) {
   }
 }
 
-function controlPoint (current, previous, next, reverse, smoothing = 0.15) {
+function controlPoint (current, previous, next, reverse, smoothing = 0.01) {
   // When 'current' is the first or last point of the array
   // 'previous' or 'next' don't exist.
   // Replace with 'current'
@@ -76,7 +76,7 @@ export default class Renderer {
   }
 
   draw(scale) {
-    this.ctx.fillStyle = '#389e6b';
+    this.ctx.fillStyle = 'rgb(171,202,204)';
     this.ctx.fillRect(0, 0, this.canvasEl.width, this.canvasEl.height);
 
     // draw particle systems
@@ -93,9 +93,12 @@ export default class Renderer {
 
   upsertPath(points, groupIndex, smooth = true, drawPoints = false) {
     this.ctx.beginPath();
-    this.lineWidth = '1';
-    this.strokeStyle = 'black';
-    this.ctx.fillStyle = ''
+    this.lineWidth = '0.1';
+    //this.strokeStyle = 'black';
+    this.ctx.strokeStyle='rgb(255,255,255)';
+    //this.ctx.fillStyle = 'white';
+    this.ctx.fillStyle = 'rgb(185,205,210)';
+    this.ctx.lineWidth = 0.8;
     this.ctx.moveTo(points[0][0], points[0][1]);
     for(var i = 1; i < points.length; i++) {
       if (smooth) {
@@ -107,8 +110,9 @@ export default class Renderer {
       }
     }
     this.ctx.closePath();
+    this.ctx.fill();
     this.ctx.stroke();
-    
+
     if (drawPoints) {
       for(var i = 0; i < points.length; i++) {
         this.ctx.fillStyle='black';
@@ -121,7 +125,6 @@ export default class Renderer {
 
   drawPolygon(vertices, scale) {
     const ctx = this.ctx;
-    ctx.strokeStyle='black';
     ctx.fillStyle='black';
     ctx.beginPath();
     ctx.moveTo(vertices[0].x * scale, vertices[0].y * scale);
@@ -150,11 +153,11 @@ export default class Renderer {
     //need to reset this on each step so React knows to rerender
     this.groupLocations = [];
 
-    // loop through particle groups 
+    // loop through particle groups
     // calculate center of group
-    // get list of outmost particles from center of group 
+    // get list of outmost particles from center of group
     // draw a line connecting them
-    
+
     for(var j = 0; j < particleGroups.length; j++) {
       var bufferIndex = particleGroups[j].GetBufferIndex();
       var numParticles = particleGroups[j].GetParticleCount();
@@ -168,8 +171,8 @@ export default class Renderer {
 
       var outerParticles = getOuterParticles(groupParticles, scale);
 
-      this.groupLocations[j] = { 
-        centerPoint: [groupCenter[0] * scale, groupCenter[1] * scale], 
+      this.groupLocations[j] = {
+        centerPoint: [groupCenter[0] * scale, groupCenter[1] * scale],
         initialPoint: [groupParticles[0] * scale, groupParticles[1] * scale]
       };
 
