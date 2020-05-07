@@ -26,37 +26,12 @@ function getOuterParticles(gp, scale) {
   return ch.makeHull().map((p) => [p.x, p.y]);
 }
 
-function line(pointA, pointB) {
-  const lengthX = pointB[0] - pointA[0]
-  const lengthY = pointB[1] - pointA[1]
-  return {
-    length: Math.sqrt(Math.pow(lengthX, 2) + Math.pow(lengthY, 2)),
-    angle: Math.atan2(lengthY, lengthX)
-  }
-}
-
-function controlPoint (current, previous, next, reverse, smoothing = 0.12) {
-  // When 'current' is the first or last point of the array
-  // 'previous' or 'next' don't exist.
-  // Replace with 'current'
-  const p = previous || current
-  const n = next || current
-  // Properties of the opposed-line
-  const o = line(p, n)
-  // If is end-control-point, add PI to the angle to go backward
-  const angle = o.angle + (reverse ? Math.PI : 0)
-  const length = o.length * smoothing
-  // The control point position is relative to the current point
-  const x = current[0] + Math.cos(angle) * length
-  const y = current[1] + Math.sin(angle) * length
-  return [x, y]
-}
-
 export default class Renderer {
-  constructor(world, canvasEl, { radius = .25, scale = 10} = {}) {
+  constructor(world, canvasEl, particleSystem, { radius = .25, scale = 10} = {}) {
       // init large buffer geometry
       this.world = world;
       this.canvasEl = canvasEl;
+      this.particleSystem = particleSystem;
       paper.setup(canvasEl);
       this.ctx = canvasEl.getContext('2d');
       this.radius = radius;
@@ -68,13 +43,13 @@ export default class Renderer {
     this.ctx.fillRect(0, 0, this.canvasEl.width, this.canvasEl.height);
 
     // draw particle systems
-    for (let i = 0, max = this.world.particleSystems.length; i < max; i++) {
-        this.drawParticleSystem(this.world.particleSystems[i], scale);
-    }
-    paper.view.draw();
+    this.drawParticleSystem(this.particleSystem, scale);
+    
+    // only need to draw bounds for debug purposes. they should be out of frame.
     if (drawBounds) {
       this.drawBounds(this.world, scale);
     }
+    paper.view.draw();
   }
 
   getGroupLocations() {

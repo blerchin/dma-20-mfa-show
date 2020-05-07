@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { createParticleSystem, createBlob, createBounds, createCursor, moveBounds } from './particles';
+import { createParticleSystem, createBlob, createBounds, createCursor, moveBounds, createBlobs } from './particles';
 import Renderer from './Renderer';
 import config from 'src/config';
 
@@ -83,14 +83,13 @@ export default function BlobField({
   height = window.innerHeight,
   positionIterations = 3,
   velocityIterations = 5,
-  gravity = 5,
+  gravity = 3,
   initialScale = 50,
   width = window.innerWidth,
   particleRadius = 0.25
 }) {
     const animationEl = useRef(null);
     const wrapperEl = useRef(null);
-    const svgEl = useRef(null);
     const bounds = useRef(null);
     const [groupLocations, setGroupLocations] = useState([]);
     //const getScale = () => Math.sqrt(width * height) / config.artists.length * initialScale / 70;
@@ -116,30 +115,27 @@ export default function BlobField({
         const mouseJoint = world.CreateJoint(md);
         cursor.SetAwake(true);
 
-        const renderer = new Renderer(world, animationEl.current, { scale, radius: particleRadius });
+        const renderer = new Renderer(world, animationEl.current, particleSystem, { scale, radius: particleRadius });
 
         let shouldRender = true;
+        let iter = 0;
 
-        var spawnRowLen = 5;
-        var spawnColLen = 2
-        var col = 0;
-
-        //Use height and magic number to scale blobs
-        var blobSize = height / 350;
-        console.log(blobSize);
-
-        config.artists.forEach((_, i) =>
-          createBlob({
-            particleSystem,
-            x: (((i % spawnRowLen) / spawnRowLen) * (width*.8)),
-            y:  (Math.floor(i / spawnRowLen) * (height*.8)/(spawnColLen+1)),
-            radius: blobSize,
-            width,
-            scale
-          }));
         const render = () => {
           if (!shouldRender) {
             return;
+          }
+          //wait for bounds to move into position first
+          if (iter === 2) {
+            createBlobs({
+              artists: config.artists,
+              height,
+              particleSystem,
+              scale,
+              width
+            });
+          }
+          if (iter <= 2) {
+            iter++;
           }
           world.Step(1.0 / 30.0, velocityIterations, positionIterations);
           requestAnimationFrame(() => {
