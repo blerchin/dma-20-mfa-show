@@ -63,7 +63,7 @@ export default class Renderer {
       this.blobs = config.artists.map(({ name }) => ({ name, path: new paper.Path(), glyphs: [] }));
   }
 
-  draw(scale) {
+  draw(scale, drawBounds = false) {
     this.ctx.fillStyle = config.style.background;
     this.ctx.fillRect(0, 0, this.canvasEl.width, this.canvasEl.height);
 
@@ -72,6 +72,9 @@ export default class Renderer {
         this.drawParticleSystem(this.world.particleSystems[i], scale);
     }
     paper.view.draw();
+    if (drawBounds) {
+      this.drawBounds(this.world, scale);
+    }
   }
 
   getGroupLocations() {

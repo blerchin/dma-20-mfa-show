@@ -160,12 +160,11 @@ export default function BlobField({
 
     useEffect(() => {
       bounds.current && moveBounds({ bounds: bounds.current, width, height, scale: getScale() });
-
     }, [width, height]);
 
     return (
         <div className={wrapper} ref={wrapperEl} style={{ width, height }}>
-          <canvas ref={animationEl} width={width} height={height} resize />
+          <canvas ref={animationEl} width={width} height={height} resize="true" />
         </div>
     )
 

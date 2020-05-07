@@ -1,4 +1,4 @@
-import { PointText } from 'paper';
+import paper, { PointText } from 'paper';
 
 export function createAlignedText(str, path, glyphTexts, style = {}) {
     if (str && str.length > 0 && path) {
