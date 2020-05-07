@@ -40,7 +40,7 @@ function createBox(world, ...vertices) {
     vertices.forEach((v) => {
         shape.vertices.push(v);
     })
-    body.CreateFixtureFromShape(shape, 1000);
+    body.CreateFixtureFromShape(shape, 10);
     return body;
 }
 
