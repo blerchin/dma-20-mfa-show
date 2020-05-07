@@ -73,12 +73,12 @@ export function createParticleSystem(world, radius = 0.3) {
     return world.CreateParticleSystem(psd);
 };
 
-export function createBlobs({ artists, particleSystem, radius = 3, width, height, scale }) {
+export function createBlobs({ artists, particleSystem, width, height, scale }) {
     var spawnRowLen = 5;
     var spawnColLen = 2
 
     //Use height and magic number to scale blobs
-    var blobSize = height / 350;
+    var blobSize = Math.sqrt((height * height) + (width * width)) / 550;
     artists.forEach((_, i) =>
         createBlob({
         particleSystem,

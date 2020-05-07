@@ -26,22 +26,6 @@ class QueryCallback {
   }
 }
 
-function resetWorld(world) {
-    if (world !== null) {
-        while (world.joints.length > 0) {
-          world.DestroyJoint(world.joints[0]);
-        }
-
-        while (world.bodies.length > 0) {
-          world.DestroyBody(world.bodies[0]);
-        }
-
-        while (world.particleSystems.length > 0) {
-          world.DestroyParticleSystem(world.particleSystems[0]);
-        }
-      }
-}
-
 const handleMouseDown = (world, scale, groundBody, mouseJoint) => (evt) => {
   const coords = new b2Vec2(evt.offsetX / scale, evt.offsetY / scale);
   const bb = new b2AABB();
@@ -83,7 +67,7 @@ export default function BlobField({
   height = window.innerHeight,
   positionIterations = 3,
   velocityIterations = 5,
-  gravity = 3,
+  gravity = 1,
   initialScale = 50,
   width = window.innerWidth,
   particleRadius = 0.25
@@ -98,7 +82,6 @@ export default function BlobField({
     useEffect(() => {
         const world = new b2World(new b2Vec2(gravity, 0));
         window.world = world;
-        resetWorld(world);
         const gd = new b2BodyDef();
         const groundBody = world.CreateBody(gd);
         const scale = getScale();
