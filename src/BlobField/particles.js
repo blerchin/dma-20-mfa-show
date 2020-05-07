@@ -82,7 +82,7 @@ export function createBlobs({ artists, particleSystem, width, height, scale }) {
     artists.forEach((_, i) =>
         createBlob({
         particleSystem,
-        x: (((i % spawnRowLen) / spawnRowLen) * (width*.8)),
+        x: (((i % spawnRowLen) / spawnRowLen) * (width*.7)),
         y:  (Math.floor(i / spawnRowLen) * (height*.8)/(spawnColLen+1)),
         radius: blobSize,
         width,

@@ -143,7 +143,7 @@ export default function BlobField({
 
     return (
         <div className={wrapper} ref={wrapperEl} style={{ width, height }}>
-          <canvas ref={animationEl} width={width} height={height} resize="true" />
+          <canvas ref={animationEl} width={width} height={height} hidpi="off" resize="true" />
         </div>
     )
 
