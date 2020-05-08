@@ -2,7 +2,7 @@
   "name": "dma-20",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://blerchin.github.io/dma-20-mfa-show",
+  "homepage": "https://kind-tesla-a088c1.netlify.app/",
   "dependencies": {
     "@babel/core": "7.9.0",
     "@svgr/webpack": "4.3.3",

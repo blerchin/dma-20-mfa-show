@@ -28,6 +28,12 @@ function App() {
     <Router>
       <div className="App" style={{ backgroundColor: config.style.background }}>
         <Switch>
+          <Route path='/dma-20-mfa-show'>
+            This site has moved due to limitations of Github Pages.
+            <Link to='https://kind-tesla-a088c1.netlify.app/'>
+              Please view at https://kind-tesla-a088c1.netlify.app/
+            </Link>
+          </Route>
           <Route path='/berfin-ataman'>
             <BerfinAtaman />
           </Route>
