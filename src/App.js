@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 import BlobField from 'src/BlobField';
 import config from './config';
@@ -28,12 +28,6 @@ function App() {
     <Router>
       <div className="App" style={{ backgroundColor: config.style.background }}>
         <Switch>
-          <Route path='/dma-20-mfa-show'>
-            This site has moved due to limitations of Github Pages.
-            <Link to='https://kind-tesla-a088c1.netlify.app/'>
-              Please view at https://kind-tesla-a088c1.netlify.app/
-            </Link>
-          </Route>
           <Route path='/berfin-ataman'>
             <BerfinAtaman />
           </Route>
