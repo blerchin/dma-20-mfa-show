@@ -27,7 +27,7 @@ function getOuterParticles(gp, scale) {
 }
 
 export default class Renderer {
-  constructor(world, canvasEl, particleSystem, { radius = .25, scale = 10} = {}) {
+  constructor(world, canvasEl, particleSystem, artists,  { radius = .25, scale = 10} = {}) {
       // init large buffer geometry
       this.world = world;
       this.canvasEl = canvasEl;
@@ -35,7 +35,7 @@ export default class Renderer {
       paper.setup(canvasEl);
       this.ctx = canvasEl.getContext('2d');
       this.radius = radius;
-      this.blobs = config.artists.map(({ name }) => ({ name, path: new paper.Path(), glyphs: [], active: false }));
+      this.blobs = artists.map((artist) => ({ ...artist, path: new paper.Path(), glyphs: [], active: false }));
       this.activePath = null;
   }
 

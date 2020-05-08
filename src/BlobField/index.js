@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import {
   createParticleSystem,
   createMouseJoint,
@@ -26,6 +27,7 @@ export default function BlobField({
     const animationEl = useRef(null);
     const wrapperEl = useRef(null);
     const bounds = useRef(null);
+    const history = useHistory();
     const [groupLocations, setGroupLocations] = useState([]);
     //const getScale = () => Math.sqrt(width * height) / config.artists.length * initialScale / 70;
     const getScale = () => 50;
@@ -43,7 +45,9 @@ export default function BlobField({
         const cursor = createCursor(world);
         const mouseJoint = createMouseJoint(world, cursor, 150 * cursor.GetMass());
 
-        const renderer = new Renderer(world, animationEl.current, particleSystem, { scale, radius: particleRadius });
+        const renderer = new Renderer(
+          world, animationEl.current, particleSystem, config.artists, {scale, radius: particleRadius }
+          );
 
         let shouldRender = true;
         let iter = 0;
@@ -71,8 +75,8 @@ export default function BlobField({
         render();
 
         const handleMouseDown = (evt) => {
-          const coords = new b2Vec2(evt.offsetX / scale, evt.offsetY / scale);
-
+          const activeBlob = renderer.hitTest(evt.offsetX, evt.offsetY);
+          history.push(`/${activeBlob.slug}`);
         };
         const handleMouseMove = (evt) => {
           const coords = new b2Vec2(evt.offsetX / scale, evt.offsetY / scale);
@@ -86,22 +90,14 @@ export default function BlobField({
             wrapperEl.current.style.cursor = 'default';
           }
         };
-        const handleMouseUp = (world, mouseJoint) => (evt) => {
-          if (mouseJoint) {
-            world.DestroyJoint(mouseJoint.current);
-            mouseJoint.current = null;
-          }
-        };
         
-        //wrapperEl.current.addEventListener('mousedown', handleMouseDown);
+        wrapperEl.current.addEventListener('mousedown', handleMouseDown);
         wrapperEl.current.addEventListener('mousemove', handleMouseMove);
-        //wrapperEl.current.addEventListener('mouseup', handleMouseUp);
         
         return () => {
           shouldRender = false; 
-          wrapperEl.current.removeEventListner('mousedown', handleMouseDown);
-          wrapperEl.current.removeEventListner('mousemove', handleMouseMove);
-          wrapperEl.current.removeEventListner('mouseup', handleMouseUp);
+          wrapperEl.current.removeEventListener('mousedown', handleMouseDown);
+          wrapperEl.current.removeEventListener('mousemove', handleMouseMove);
         }
     }, []);
 
