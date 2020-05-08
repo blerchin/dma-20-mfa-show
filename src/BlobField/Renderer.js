@@ -35,7 +35,8 @@ export default class Renderer {
       paper.setup(canvasEl);
       this.ctx = canvasEl.getContext('2d');
       this.radius = radius;
-      this.blobs = config.artists.map(({ name }) => ({ name, path: new paper.Path(), glyphs: [] }));
+      this.blobs = config.artists.map(({ name }) => ({ name, path: new paper.Path(), glyphs: [], active: false }));
+      this.activePath = null;
   }
 
   draw(scale, drawBounds = false) {
@@ -60,7 +61,11 @@ export default class Renderer {
   drawPath(points, blob, smooth = true, drawPoints = false) {
     const { path } = blob;
     path.strokeColor = config.style.blobStroke;
-    path.fillColor = config.style.blobFill;
+    if (blob.active) {
+      path.fillColor = config.style.activeFill;
+    } else {
+      path.fillColor = config.style.blobFill;
+    }
     path.lineWidth = 0.8;
     path.closed = true;
     path.segments = [];
@@ -141,5 +146,21 @@ export default class Renderer {
       this.drawPath(outerParticles, this.blobs[j]);
       this.drawName(this.blobs[j]);
     }
+  }
+
+  hitTest(x, y, _options) {
+    const options = { fill: true, tolerance: 5, ..._options };
+    const result = paper.project.hitTest({ x, y }, options);
+    let activeBlob = null;
+    this.blobs.forEach((b) => b.active = false);
+    if (result) {
+      activeBlob = this.blobs.find(({ path }) => path === result.item);
+      if (activeBlob) {
+        this.activePath = result.item;
+        activeBlob.active = true;
+      }
+    }
+
+    return activeBlob;
   }
 }

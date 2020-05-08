@@ -7,28 +7,12 @@ import {
   moveBounds,
   createBlobs 
 } from './particles';
-import { hitTest } from './hitTest';
 import Renderer from './Renderer';
 import config from 'src/config';
 
 import { wrapper } from './style.module.scss';
 
-const { b2BodyDef, b2MouseJointDef, b2Vec2, b2World } = liquidfun;
-
-
-const handleMouseMove = (world, scale, mouseJoint) => (evt) => {
-  if (mouseJoint) {
-    const coords = new b2Vec2(evt.offsetX / scale, evt.offsetY / scale);
-    mouseJoint.SetTarget(coords);
-  }
-}
-
-const handleMouseUp = (world, mouseJoint) => (evt) => {
-  if (mouseJoint) {
-    world.DestroyJoint(mouseJoint.current);
-    mouseJoint.current = null;
-  }
-}
+const { b2Vec2, b2World } = liquidfun;
 
 export default function BlobField({
   height = window.innerHeight,
@@ -86,19 +70,39 @@ export default function BlobField({
         };
         render();
 
-        wrapperEl.current.addEventListener('mousedown', (evt) => {
+        const handleMouseDown = (evt) => {
           const coords = new b2Vec2(evt.offsetX / scale, evt.offsetY / scale);
-          const body = hitTest(world, coords);
 
-          if (body) {
-            //mouseJoint.current = createMouseJoint(world, body);
+        };
+        const handleMouseMove = (evt) => {
+          const coords = new b2Vec2(evt.offsetX / scale, evt.offsetY / scale);
+          if (mouseJoint) {
+            mouseJoint.SetTarget(coords);
           }
-        });
-        wrapperEl.current.addEventListener('mousemove', handleMouseMove(world, getScale(), mouseJoint));
-        //window.addEventListener('mouseup', handleMouseUp(world, mouseJoint));
-
-        return () => { shouldRender = false; }
-
+          const activeBlob = renderer.hitTest(evt.offsetX, evt.offsetY);
+          if (activeBlob) {
+            wrapperEl.current.style.cursor = 'pointer';
+          } else {
+            wrapperEl.current.style.cursor = 'default';
+          }
+        };
+        const handleMouseUp = (world, mouseJoint) => (evt) => {
+          if (mouseJoint) {
+            world.DestroyJoint(mouseJoint.current);
+            mouseJoint.current = null;
+          }
+        };
+        
+        //wrapperEl.current.addEventListener('mousedown', handleMouseDown);
+        wrapperEl.current.addEventListener('mousemove', handleMouseMove);
+        //wrapperEl.current.addEventListener('mouseup', handleMouseUp);
+        
+        return () => {
+          shouldRender = false; 
+          wrapperEl.current.removeEventListner('mousedown', handleMouseDown);
+          wrapperEl.current.removeEventListner('mousemove', handleMouseMove);
+          wrapperEl.current.removeEventListner('mouseup', handleMouseUp);
+        }
     }, []);
 
     useEffect(() => {

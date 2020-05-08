@@ -1,32 +1,44 @@
 export default {
     artists: [
         {
-            name: 'Zeynep Abes'
+            name: 'Zeynep Abes',
+            slug: 'zeynep-abes'
         }, {
-            name: 'Graham Akins'
+            name: 'Graham Akins',
+            slug: 'graham-akins'
         }, {
-            name: 'Berfin Ataman'
+            name: 'Berfin Ataman',
+            slug: 'berfin-ataman'
         }, {
-            name: 'Erin Cooney'
+            name: 'Erin Cooney',
+            slug: 'erin-cooney'
         }, {
-            name: 'Clara Leivas'
+            name: 'Clara Leivas',
+            slug: 'clara-leivas'
         }, {
-            name: 'Ben Lerchin'
+            name: 'Ben Lerchin',
+            slug: 'ben-lerchin'
         }, {
-            name: "Blaine O'Neill"
+            name: "Blaine O'Neill",
+            slug: 'blaine-oneill'
         }, {
-            name: 'Miles Peyton'
+            name: 'Miles Peyton',
+            slug: 'miles-peyton'
         }, {
-            name: 'Hirad Sab'
+            name: 'Hirad Sab',
+            slug: 'hirad-sab'
         }, {
-            name: 'Dalena Tran'
+            name: 'Dalena Tran',
+            slug: 'dalena-tran'
         }, {
-            name: 'Leming Z/C'
+            name: 'Leming Z/C',
+            slug: 'leming-zc'
         }
         
     ],
     style: {
         background: 'rgb(171,202,204)',
+        activeFill: 'rgb(205, 225, 230)',
         blobFill: 'rgb(185,205,210)',
         blobStroke: 'rgb(255,255,255)',
         blobFont: '24px Helvetica Neue',
