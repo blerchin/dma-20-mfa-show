@@ -2,6 +2,7 @@
 const { 
     b2BodyDef,
     b2CircleShape,
+    b2MouseJointDef,
     b2WeldJointDef,
     b2ParticleGroupDef,
     b2ParticleSystemDef,
@@ -20,6 +21,19 @@ function createJoint(world, body) {
     jd.bodyB = body;
     world.CreateJoint(jd);
     return ground;
+}
+
+
+export function createMouseJoint (world, body, maxForce) {
+    var md = new b2MouseJointDef();
+    const gd = new b2BodyDef();
+    const ground = world.CreateBody(gd);
+    md.bodyA = ground;
+    md.bodyB = body;
+    md.maxForce = maxForce || 100 * body.GetMass();
+    const mouseJoint = world.CreateJoint(md);
+    body.SetAwake(true);
+    return mouseJoint;
 }
 
 export function moveBounds({ bounds, width, height, scale }) {

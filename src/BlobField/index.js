@@ -1,53 +1,20 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { createParticleSystem, createBlob, createBounds, createCursor, moveBounds, createBlobs } from './particles';
+import {
+  createParticleSystem,
+  createMouseJoint,
+  createBounds,
+  createCursor,
+  moveBounds,
+  createBlobs 
+} from './particles';
+import { hitTest } from './hitTest';
 import Renderer from './Renderer';
 import config from 'src/config';
 
-import { artistName, artistNameTag, wrapper } from './style.module.scss';
+import { wrapper } from './style.module.scss';
 
-const { b2AABB, b2_dynamicBody, b2BodyDef, b2MouseJointDef, b2Vec2, b2World } = liquidfun;
+const { b2BodyDef, b2MouseJointDef, b2Vec2, b2World } = liquidfun;
 
-class QueryCallback {
-  constructor(point) {
-    this.point = point;
-    this.fixture = null;
-  }
-
-  ReportFixture(fixture) {
-    var body = fixture.body;
-    if (body.GetType() === b2_dynamicBody) {
-      var inside = fixture.TestPoint(this.point);
-      if (inside) {
-        this.fixture = fixture;
-        return true;
-      }
-    }
-    return false;
-  }
-}
-
-const handleMouseDown = (world, scale, groundBody, mouseJoint) => (evt) => {
-  const coords = new b2Vec2(evt.offsetX / scale, evt.offsetY / scale);
-  const bb = new b2AABB();
-  const affordance = new b2Vec2(0.01, 0.01);
-  b2Vec2.Sub(bb.lowerBound, coords, affordance);
-  b2Vec2.Add(bb.upperBound, coords, affordance);
-
-  const queryCallback = new QueryCallback(coords);
-  world.QueryAABB(queryCallback, bb);
-  console.log(queryCallback);
-
-  if (queryCallback.fixture) {
-    const body = queryCallback.fixture.body;
-    var md = new b2MouseJointDef();
-    md.bodyA = groundBody;
-    md.bodyB = body;
-    md.target = coords;
-    md.maxForce = 100 * body.GetMass();
-    mouseJoint.current = world.CreateJoint(md);
-    body.SetAwake(true);
-  }
-}
 
 const handleMouseMove = (world, scale, mouseJoint) => (evt) => {
   if (mouseJoint) {
@@ -81,9 +48,8 @@ export default function BlobField({
 
     useEffect(() => {
         const world = new b2World(new b2Vec2(gravity, 0));
+        //this is sad, but unfortunately required by liquidfun
         window.world = world;
-        const gd = new b2BodyDef();
-        const groundBody = world.CreateBody(gd);
         const scale = getScale();
 
         bounds.current = createBounds({ world, scale, width, height });
@@ -91,12 +57,7 @@ export default function BlobField({
         const particleSystem = createParticleSystem(world, particleRadius);
 
         const cursor = createCursor(world);
-        var md = new b2MouseJointDef();
-        md.bodyA = groundBody;
-        md.bodyB = cursor;
-        md.maxForce = 150 * cursor.GetMass();
-        const mouseJoint = world.CreateJoint(md);
-        cursor.SetAwake(true);
+        const mouseJoint = createMouseJoint(world, cursor, 150 * cursor.GetMass());
 
         const renderer = new Renderer(world, animationEl.current, particleSystem, { scale, radius: particleRadius });
 
@@ -104,9 +65,7 @@ export default function BlobField({
         let iter = 0;
 
         const render = () => {
-          if (!shouldRender) {
-            return;
-          }
+          if (!shouldRender) { return; }
           //wait for bounds to move into position first
           if (iter === 2) {
             createBlobs({
@@ -117,9 +76,7 @@ export default function BlobField({
               width
             });
           }
-          if (iter <= 2) {
-            iter++;
-          }
+          iter = iter <= 2 ? iter + 1 : iter;
           world.Step(1.0 / 30.0, velocityIterations, positionIterations);
           requestAnimationFrame(() => {
             renderer.draw(getScale());
@@ -129,7 +86,14 @@ export default function BlobField({
         };
         render();
 
-        //El.current.addEventListener('mousedown', handleMouseDown(world, scale, groundBody, mouseJoint));
+        wrapperEl.current.addEventListener('mousedown', (evt) => {
+          const coords = new b2Vec2(evt.offsetX / scale, evt.offsetY / scale);
+          const body = hitTest(world, coords);
+
+          if (body) {
+            //mouseJoint.current = createMouseJoint(world, body);
+          }
+        });
         wrapperEl.current.addEventListener('mousemove', handleMouseMove(world, getScale(), mouseJoint));
         //window.addEventListener('mouseup', handleMouseUp(world, mouseJoint));
 
