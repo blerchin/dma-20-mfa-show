@@ -85,7 +85,7 @@ export default class Renderer {
   drawName({ name, path, glyphs }) {
     const textPath = path.clone();
     textPath.scale(.8);
-    textPath.smooth({ type: 'catmull-rom', factor: 1 });
+    //textPath.smooth({ type: 'catmull-rom', factor: 1 });
     createAlignedText(name, textPath, glyphs, { fontSize: '20px', baselineShift: 0 });
     textPath.remove();
   }

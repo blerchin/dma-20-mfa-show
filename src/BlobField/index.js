@@ -30,7 +30,7 @@ export default function BlobField({
     const history = useHistory();
     const [groupLocations, setGroupLocations] = useState([]);
     //const getScale = () => Math.sqrt(width * height) / config.artists.length * initialScale / 70;
-    const getScale = () => 50;
+    const getScale = () => 100;
 
     useEffect(() => {
         const world = new b2World(new b2Vec2(gravity, 0));
