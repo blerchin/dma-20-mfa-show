@@ -3,25 +3,30 @@ import { useRouteMatch } from 'react-router-dom';
 import BlobField from 'src/BlobField';
 import { debounce } from 'src/utils';
 
-const COLLAPSED_HEIGHT = 50;
+const COLLAPSED_HEIGHT = 100;
+
+const getScale = (width, height) => Math.sqrt(width * height) / 15;
 
 export default function() {
-  const [size, setSize] = useState([window.innerWidth, window.innerHeight]);
+  const [width, setWidth] = useState(window.innerWidth);
+  const [height, setHeight] = useState(window.innerHeight);
   const match = useRouteMatch();
   const resize = debounce(() => {
     const isCollapsed = !Boolean(match.isExact);
-    console.log(isCollapsed);
-    if (isCollapsed && size[1] > COLLAPSED_HEIGHT) {
-      setSize([window.innerWidth - 20, size[1] - 10]);
+    if (isCollapsed && height > COLLAPSED_HEIGHT) {
+      setWidth(window.innerWidth - 10);
+      setHeight(height - 5);
     } else if (isCollapsed) {
-      setSize([window.innerWidth - 20, size[1]]);
-    } else if (size[1] < window.innerHeight) {
-      setSize([window.innerWidth - 20, size[1] + 10]);
-    }
-  }, 20);
+      setWidth(window.innerWidth - 10);
+      setHeight(height);
+    } else if (height < window.innerHeight) {
+      setWidth(window.innerWidth - 10);
+      setHeight(height + 5);
+    }  
+  }, 1);
   useEffect(() => {
     resize();
-  }, [size, match])
+  }, [width, height, match])
   
   useEffect(() => {
     window.addEventListener('resize', resize);
@@ -30,6 +35,6 @@ export default function() {
     };
   },[]);
   return (
-    <BlobField width={size[0]} height={size[1]} scale={Math.sqrt(size[1] * 4)} />
+    <BlobField width={width} height={height} scale={getScale(width, height)} />
   );
 }

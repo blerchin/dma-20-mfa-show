@@ -64,18 +64,26 @@ export default class Renderer {
     const { path } = blob;
     path.strokeWidth = 0;
     path.strokeColor = config.style.blobStroke;
-    path.opacity = 0.9;
+    const radius = dist(blob.center, blob.initialPoint);
     if (blob.active) {
-      path.fillColor = config.style.activeFill;
-    } else {
-      const radius = dist(blob.center, blob.initialPoint) - 20;
+      path.opacity = 1;
       path.fillColor = {
         gradient: {
           stops: ['#e3f994', '#574DC8'],
           radial: true
         },
         origin: blob.center,
-        destination: [blob.center[0] + radius, blob.center[1]]
+        destination: [blob.center[0] + radius + 20, blob.center[1]]
+      };
+    } else {
+      path.opacity = 0.9;
+      path.fillColor = {
+        gradient: {
+          stops: ['#e3f994', '#574DC8'],
+          radial: true
+        },
+        origin: blob.center,
+        destination: [blob.center[0] + radius - 20, blob.center[1]]
       };
     }
     path.lineWidth = 0.8;
