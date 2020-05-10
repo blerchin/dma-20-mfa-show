@@ -61,7 +61,7 @@ function createBox(world, ...vertices) {
 
 export function createBounds({ world, width=800, height=600, scale=10}) {
     var bd = new b2BodyDef();
-    const max = 10000 / scale;
+    const max = 1000;
 
     // set boundary box
     // h/v vertices are initially the same and will be translated by #moveBounds
