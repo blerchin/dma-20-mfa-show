@@ -11,7 +11,7 @@ import {
 import Renderer from './Renderer';
 import config from 'src/config';
 
-import { wrapper } from './style.module.scss';
+import { wrapper, nameTag } from './style.module.scss';
 
 const { b2Vec2, b2World } = liquidfun;
 
@@ -27,16 +27,16 @@ export default function BlobField({
     const animationEl = useRef(null);
     const wrapperEl = useRef(null);
     const bounds = useRef(null);
+    const scaleRef = useRef(scale);
+    scaleRef.current = scale
     const history = useHistory();
-    const [groupLocations, setGroupLocations] = useState([]);
-    //const getScale = () => Math.sqrt(width * height) / config.artists.length * initialScale / 70;
-    const getScale = () => scale;
+    const [blobs, setBlobs] = useState([]);
+    const [activeBlob, setActiveBlob] = useState(null);
 
     useEffect(() => {
         const world = new b2World(new b2Vec2(0, gravity));
         //this is sad, but unfortunately required by liquidfun
         window.world = world;
-        const scale = getScale();
 
         bounds.current = createBounds({ world, scale, width, height });
         moveBounds({ bounds: bounds.current, width, height, scale });
@@ -46,8 +46,11 @@ export default function BlobField({
         const mouseJoint = createMouseJoint(world, cursor, 150 * cursor.GetMass());
 
         const renderer = new Renderer(
-          world, animationEl.current, particleSystem, config.artists, {scale, radius: particleRadius }
+          world, animationEl.current, particleSystem, config.artists, {
+            radius: particleRadius
+          }
           );
+        setBlobs(renderer.getBlobs());
 
         let shouldRender = true;
         let iter = 0;
@@ -67,10 +70,9 @@ export default function BlobField({
           iter = iter <= 2 ? iter + 1 : iter;
           world.Step(1.0 / 30.0, velocityIterations, positionIterations);
           requestAnimationFrame(() => {
-            renderer.draw(getScale());
+            renderer.draw(scaleRef.current);
             render();
           });
-          //setGroupLocations(renderer.getGroupLocations());
         };
         render();
 
@@ -88,8 +90,10 @@ export default function BlobField({
           const activeBlob = renderer.hitTest(evt.offsetX, evt.offsetY);
           if (activeBlob) {
             wrapperEl.current.style.cursor = 'pointer';
+            setActiveBlob({...activeBlob});
           } else {
             wrapperEl.current.style.cursor = 'default';
+            setActiveBlob(null);
           }
         };
         
@@ -104,8 +108,8 @@ export default function BlobField({
     }, []);
 
     useEffect(() => {
-      bounds.current && moveBounds({ bounds: bounds.current, width, height, scale: getScale() });
-    }, [width, height]);
+      bounds.current && moveBounds({ bounds: bounds.current, width, height, scale: scale });
+    }, [width, height, scale]);
 
     return (
         <div className={wrapper} ref={wrapperEl} style={{ width, height }}>

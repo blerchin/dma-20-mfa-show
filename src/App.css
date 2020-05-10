@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  min-height: 100vh;
 }
 
 .App-logo {
@@ -13,7 +14,7 @@
   }
 }
 
-.App-header {
+.App {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -21,6 +22,19 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.title {
+  color: #e3f994;
+  font-size: 17vw;
+  font-family: sans-serif; 
+  font-weight: 700;
+}
+.blobs {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .App-link {

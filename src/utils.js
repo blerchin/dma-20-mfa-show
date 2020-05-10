@@ -13,6 +13,21 @@ export const line = (pointA, pointB) => {
     }
   }
 
+export const debounce = (func, wait, immediate) => {
+    var timeout;
+    return function() {
+      var context = this, args = arguments;
+      var later = function() {
+        timeout = null;
+        if (!immediate) func.apply(context, args);
+      };
+      var callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) func.apply(context, args);
+    };
+  };
+
 export const controlPoint = (current, previous, next, reverse, smoothing = 0.4) => {
     // When 'current' is the first or last point of the array
     // 'previous' or 'next' don't exist.

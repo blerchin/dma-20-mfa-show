@@ -28,7 +28,7 @@ function getOuterParticles(gp, scale) {
 }
 
 export default class Renderer {
-  constructor(world, canvasEl, particleSystem, artists,  { radius = .25, scale = 10} = {}) {
+  constructor(world, canvasEl, particleSystem, artists,  { radius = .25 } = {}) {
       // init large buffer geometry
       this.world = world;
       this.canvasEl = canvasEl;
@@ -36,7 +36,8 @@ export default class Renderer {
       paper.setup(canvasEl);
       this.ctx = canvasEl.getContext('2d');
       this.radius = radius;
-      this.blobs = artists.map((artist) => ({ ...artist, path: new paper.Path(), glyphs: [], active: false }));
+      this.blobs = artists.map((artist) => ({ ...artist, path: new paper.Path(), textItem: null , active: false }));
+      this.bounds = [];
       this.activePath = null;
   }
 
@@ -54,8 +55,8 @@ export default class Renderer {
     paper.view.draw();
   }
 
-  getGroupLocations() {
-    return this.groupLocations;
+  getBlobs() {
+    return this.blobs;
   }
 
 
@@ -63,18 +64,26 @@ export default class Renderer {
     const { path } = blob;
     path.strokeWidth = 0;
     path.strokeColor = config.style.blobStroke;
-    path.opacity = 0.9;
+    const radius = dist(blob.center, blob.initialPoint);
     if (blob.active) {
-      path.fillColor = config.style.activeFill;
-    } else {
-      const radius = dist(blob.center, blob.initialPoint) - 20;
+      path.opacity = 1;
       path.fillColor = {
         gradient: {
           stops: ['#e3f994', '#574DC8'],
           radial: true
         },
         origin: blob.center,
-        destination: [blob.center[0] + radius, blob.center[1]]
+        destination: [blob.center[0] + radius + 20, blob.center[1]]
+      };
+    } else {
+      path.opacity = 0.9;
+      path.fillColor = {
+        gradient: {
+          stops: ['#e3f994', '#574DC8'],
+          radial: true
+        },
+        origin: blob.center,
+        destination: [blob.center[0] + radius - 20, blob.center[1]]
       };
     }
     path.lineWidth = 0.8;
@@ -93,23 +102,29 @@ export default class Renderer {
     }
   }
 
-  drawName({ name, path, glyphs }) {
-    const textPath = path.clone();
-    textPath.scale(.8);
-    textPath.smooth({ type: 'catmull-rom', factor: 1 });
-    createAlignedText(name, textPath, glyphs, { fontSize: '20px', baselineShift: 0 });
-    textPath.remove();
+  drawName(blob) {
+    const { active, name, center } = blob;
+    blob.textItem && blob.textItem.remove();
+    if (active) {
+      blob.textItem = new paper.PointText(new paper.Point(center));
+      const { textItem } = blob;
+      textItem.content = name.toUpperCase().split(' ').join('\n');
+      textItem.justification = 'center';
+      textItem.fillColor = '#574DC8';
+      textItem.fontSize = 18;
+      textItem.fontWeight = 700;
+    }
   }
 
-  drawPolygon(vertices, scale) {
-    const ctx = this.ctx;
-    ctx.fillStyle='black';
-    ctx.beginPath();
-    ctx.moveTo(vertices[0].x * scale, vertices[0].y * scale);
-    for (let i = 1; i < vertices.length; i++) {
-      ctx.lineTo(vertices[i].x * scale, vertices[i].y * scale);
+  drawPolygon(path, vertices, scale) {
+    if (!path) {
+      path = new paper.Path();
     }
-    ctx.fill();
+    path.segments = [];
+    path.fillColor='black';
+    for (let i = 0; i < vertices.length; i++) {
+      path.add(new paper.Point(vertices[i].x * scale, vertices[i].y * scale));
+    }
   }
 
   drawBounds(world, scale) {
@@ -119,7 +134,7 @@ export default class Renderer {
         if (body.fixtures[j].shape instanceof b2PolygonShape ) {
           const transform = body.GetTransform().p;
           const vertices = body.fixtures[j].shape.vertices.map((v) => ({ x: v.x + transform.x, y: v.y + transform.y }));
-          this.drawPolygon(vertices, scale);
+          this.drawPolygon(this.bounds[j], vertices, scale);
         }
       }
     }
@@ -153,7 +168,7 @@ export default class Renderer {
       this.blobs[j].initialPoint = [groupParticles[0] * scale, groupParticles[1] * scale]
 
       this.drawPath(outerParticles, this.blobs[j]);
-      //this.drawName(this.blobs[j]);
+      this.drawName(this.blobs[j]);
     }
   }
 

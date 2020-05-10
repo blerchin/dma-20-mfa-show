@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import React, { useRef, useState, useEffect } from 'react';
+import { BrowserRouter as Router, Switch, Route, matchPath } from 'react-router-dom';
+import { debounce } from 'src/utils';
 import './App.css';
-import BlobField from 'src/BlobField';
+import BlobResizer from 'src/BlobResizer';
 import config from './config';
 import BenLerchin from 'src/work/BenLerchin';
 import BerfinAtaman from 'src/work/BerfinAtaman';
@@ -15,30 +16,8 @@ import LemingZc from 'src/work/LemingZc';
 import MilesPeyton from 'src/work/MilesPeyton';
 import ZeynepAbes from 'src/work/ZeynepAbes';
 
-const COLLAPSED_HEIGHT = 200;
 
 function App() {
-  const [size, setSize] = useState([window.innerWidth, window.innerHeight]);
-  const [isCollapsing, setIsCollapsing] = useState(false);
-  useEffect(() => {
-    if (isCollapsing && size[1] > COLLAPSED_HEIGHT) {
-      setSize([window.innerWidth, size[1] - 1]);
-    } else if (isCollapsing) {
-      setSize([window.innerWidth, size[1]]);
-    }
-    const resize = () => {
-      if (!isCollapsing) {
-        setSize([window.innerWidth, window.innerHeight]);
-      }
-    }
-    window.addEventListener('resize', resize);
-    window.addEventListener('keydown', (evt) => {
-      if (evt.keyCode === 32) {
-        setIsCollapsing(!isCollapsing);
-      };
-    });
-    return () => window.removeEventListener('resize', resize);
-  },[size, isCollapsing]);
   return (
     <Router>
       <div className="App" style={{ backgroundColor: config.style.background }}>
@@ -76,13 +55,18 @@ function App() {
           <Route path='/zeynep-abes'>
             <ZeynepAbes />
           </Route>
-          <Route exact path="/">
-            <BlobField height={size[1]} width={size[0]}  />
+          <Route exact path='/'>
+            <div className='title'>
+              NEARREST NEIGHBOR
+            </div>
           </Route>
           <Route path="*">
             Page not Found ✧・ﾟ:*
           </Route>
         </Switch>
+        <div className="blobs">
+          <BlobResizer />
+        </div>
       </div>
     </Router>
   );
