@@ -177,7 +177,7 @@ export default class Renderer {
     let activeBlob = null;
     this.blobs.forEach((b) => b.active = false);
     if (result) {
-      activeBlob = this.blobs.find(({ path }) => path === result.item);
+      activeBlob = this.blobs.find(({ path, textItem }) => path === result.item || textItem === result.item);
       if (activeBlob) {
         this.activePath = result.item;
         activeBlob.active = true;
