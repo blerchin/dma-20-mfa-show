@@ -36,7 +36,7 @@ export default class Renderer {
       paper.setup(canvasEl);
       this.ctx = canvasEl.getContext('2d');
       this.radius = radius;
-      this.blobs = artists.map((artist) => ({ ...artist, path: new paper.Path(), glyphs: [], active: false }));
+      this.blobs = artists.map((artist) => ({ ...artist, path: new paper.Path(), textItem: null , active: false }));
       this.bounds = [];
       this.activePath = null;
   }
@@ -55,8 +55,8 @@ export default class Renderer {
     paper.view.draw();
   }
 
-  getGroupLocations() {
-    return this.groupLocations;
+  getBlobs() {
+    return this.blobs;
   }
 
 
@@ -102,12 +102,18 @@ export default class Renderer {
     }
   }
 
-  drawName({ name, path, glyphs }) {
-    const textPath = path.clone();
-    textPath.scale(.8);
-    textPath.smooth({ type: 'catmull-rom', factor: 1 });
-    createAlignedText(name, textPath, glyphs, { fontSize: '20px', baselineShift: 0 });
-    textPath.remove();
+  drawName(blob) {
+    const { active, name, center } = blob;
+    blob.textItem && blob.textItem.remove();
+    if (active) {
+      blob.textItem = new paper.PointText(new paper.Point(center));
+      const { textItem } = blob;
+      textItem.content = name.toUpperCase().split(' ').join('\n');
+      textItem.justification = 'center';
+      textItem.fillColor = '#574DC8';
+      textItem.fontSize = 18;
+      textItem.fontWeight = 700;
+    }
   }
 
   drawPolygon(path, vertices, scale) {
@@ -162,7 +168,7 @@ export default class Renderer {
       this.blobs[j].initialPoint = [groupParticles[0] * scale, groupParticles[1] * scale]
 
       this.drawPath(outerParticles, this.blobs[j]);
-      //this.drawName(this.blobs[j]);
+      this.drawName(this.blobs[j]);
     }
   }
 

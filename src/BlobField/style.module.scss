@@ -1,11 +1,8 @@
-.artistName {
+.nameTag {
+    font-family: sans-serif;
+    text-transform: uppercase;
     font-size: 14px;
     fill: #000;
-    pointer-events: none;
-}
-.artistNameTag {
-    fill: rgb(255,255,255);
-    stroke: transparent;
     pointer-events: none;
 }
 .blob {

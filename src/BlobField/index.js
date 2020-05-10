@@ -11,7 +11,7 @@ import {
 import Renderer from './Renderer';
 import config from 'src/config';
 
-import { wrapper } from './style.module.scss';
+import { wrapper, nameTag } from './style.module.scss';
 
 const { b2Vec2, b2World } = liquidfun;
 
@@ -30,8 +30,8 @@ export default function BlobField({
     const scaleRef = useRef(scale);
     scaleRef.current = scale
     const history = useHistory();
-    const [groupLocations, setGroupLocations] = useState([]);
-    //const getScale = () => Math.sqrt(width * height) / config.artists.length * initialScale / 70;
+    const [blobs, setBlobs] = useState([]);
+    const [activeBlob, setActiveBlob] = useState(null);
 
     useEffect(() => {
         const world = new b2World(new b2Vec2(0, gravity));
@@ -46,8 +46,11 @@ export default function BlobField({
         const mouseJoint = createMouseJoint(world, cursor, 150 * cursor.GetMass());
 
         const renderer = new Renderer(
-          world, animationEl.current, particleSystem, config.artists, {radius: particleRadius }
+          world, animationEl.current, particleSystem, config.artists, {
+            radius: particleRadius
+          }
           );
+        setBlobs(renderer.getBlobs());
 
         let shouldRender = true;
         let iter = 0;
@@ -70,7 +73,6 @@ export default function BlobField({
             renderer.draw(scaleRef.current);
             render();
           });
-          //setGroupLocations(renderer.getGroupLocations());
         };
         render();
 
@@ -88,8 +90,10 @@ export default function BlobField({
           const activeBlob = renderer.hitTest(evt.offsetX, evt.offsetY);
           if (activeBlob) {
             wrapperEl.current.style.cursor = 'pointer';
+            setActiveBlob({...activeBlob});
           } else {
             wrapperEl.current.style.cursor = 'default';
+            setActiveBlob(null);
           }
         };
         
