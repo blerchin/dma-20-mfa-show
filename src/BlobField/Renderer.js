@@ -2,6 +2,7 @@ import config from 'src/config';
 import { createAlignedText } from './textPath';
 import ConvexHull from './convex_hull';
 import paper from 'paper';
+import { dist } from 'src/utils';
 const { b2PolygonShape } = liquidfun;
 
 function getCenterParticles(p) {
@@ -60,11 +61,21 @@ export default class Renderer {
 
   drawPath(points, blob, smooth = true, drawPoints = false) {
     const { path } = blob;
+    path.strokeWidth = 0;
     path.strokeColor = config.style.blobStroke;
+    path.opacity = 0.9;
     if (blob.active) {
       path.fillColor = config.style.activeFill;
     } else {
-      path.fillColor = config.style.blobFill;
+      const radius = dist(blob.center, blob.initialPoint) - 20;
+      path.fillColor = {
+        gradient: {
+          stops: ['#e3f994', '#574DC8'],
+          radial: true
+        },
+        origin: blob.center,
+        destination: [blob.center[0] + radius, blob.center[1]]
+      };
     }
     path.lineWidth = 0.8;
     path.closed = true;
@@ -138,13 +149,11 @@ export default class Renderer {
 
       var outerParticles = getOuterParticles(groupParticles, scale);
 
-      this.groupLocations[j] = {
-        centerPoint: [groupCenter[0] * scale, groupCenter[1] * scale],
-        initialPoint: [groupParticles[0] * scale, groupParticles[1] * scale]
-      };
+      this.blobs[j].center = [groupCenter[0] * scale, groupCenter[1] * scale];
+      this.blobs[j].initialPoint = [groupParticles[0] * scale, groupParticles[1] * scale]
 
       this.drawPath(outerParticles, this.blobs[j]);
-      this.drawName(this.blobs[j]);
+      //this.drawName(this.blobs[j]);
     }
   }
 

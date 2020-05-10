@@ -15,15 +15,30 @@ import LemingZc from 'src/work/LemingZc';
 import MilesPeyton from 'src/work/MilesPeyton';
 import ZeynepAbes from 'src/work/ZeynepAbes';
 
+const COLLAPSED_HEIGHT = 200;
+
 function App() {
   const [size, setSize] = useState([window.innerWidth, window.innerHeight]);
+  const [isCollapsing, setIsCollapsing] = useState(false);
   useEffect(() => {
+    if (isCollapsing && size[1] > COLLAPSED_HEIGHT) {
+      setSize([window.innerWidth, size[1] - 1]);
+    } else if (isCollapsing) {
+      setSize([window.innerWidth, size[1]]);
+    }
     const resize = () => {
-      setSize([window.innerWidth, window.innerHeight]);
+      if (!isCollapsing) {
+        setSize([window.innerWidth, window.innerHeight]);
+      }
     }
     window.addEventListener('resize', resize);
+    window.addEventListener('keydown', (evt) => {
+      if (evt.keyCode === 32) {
+        setIsCollapsing(!isCollapsing);
+      };
+    });
     return () => window.removeEventListener('resize', resize);
-  });
+  },[size, isCollapsing]);
   return (
     <Router>
       <div className="App" style={{ backgroundColor: config.style.background }}>
@@ -62,7 +77,7 @@ function App() {
             <ZeynepAbes />
           </Route>
           <Route exact path="/">
-            <BlobField height={size[1]} width={size[0]} />
+            <BlobField height={size[1]} width={size[0]}  />
           </Route>
           <Route path="*">
             Page not Found ✧・ﾟ:*

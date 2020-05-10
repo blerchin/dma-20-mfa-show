@@ -1,8 +1,14 @@
+export const dist = (pointA, pointB) => {
+    const lengthX = pointB[0] - pointA[0]
+    const lengthY = pointB[1] - pointA[1]
+  return Math.sqrt(Math.pow(lengthX, 2) + Math.pow(lengthY, 2))
+}
+
 export const line = (pointA, pointB) => {
     const lengthX = pointB[0] - pointA[0]
     const lengthY = pointB[1] - pointA[1]
     return {
-      length: Math.sqrt(Math.pow(lengthX, 2) + Math.pow(lengthY, 2)),
+      length: dist(pointA, pointB),
       angle: Math.atan2(lengthY, lengthX)
     }
   }

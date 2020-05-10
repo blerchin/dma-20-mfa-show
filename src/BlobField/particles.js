@@ -92,12 +92,12 @@ export function createBlobs({ artists, particleSystem, width, height, scale }) {
     var spawnColLen = 2
 
     //Use height and magic number to scale blobs
-    var blobSize = Math.sqrt((height * height) + (width * width)) / 550;
+    var blobSize = Math.sqrt((height * height) + (width * width)) /850;
     artists.forEach((_, i) =>
         createBlob({
         particleSystem,
-        x: (((i % spawnRowLen) / spawnRowLen) * (width*.7)),
-        y:  (Math.floor(i / spawnRowLen) * (height*.8)/(spawnColLen+1)),
+        x: 20 + (((i % spawnRowLen) / spawnRowLen) * (width*.7)),
+        y: 20 + (Math.floor(i / spawnRowLen) * (height*.8)/(spawnColLen+1)),
         radius: blobSize,
         width,
         scale

@@ -17,12 +17,12 @@ const { b2Vec2, b2World } = liquidfun;
 
 export default function BlobField({
   height = window.innerHeight,
-  positionIterations = 3,
-  velocityIterations = 5,
-  gravity = 1,
-  initialScale = 50,
+  positionIterations = 2,
+  velocityIterations = 4,
+  gravity = 2,
+  scale = 80,
   width = window.innerWidth,
-  particleRadius = 0.25
+  particleRadius = 0.3
 }) {
     const animationEl = useRef(null);
     const wrapperEl = useRef(null);
@@ -30,10 +30,10 @@ export default function BlobField({
     const history = useHistory();
     const [groupLocations, setGroupLocations] = useState([]);
     //const getScale = () => Math.sqrt(width * height) / config.artists.length * initialScale / 70;
-    const getScale = () => 50;
+    const getScale = () => scale;
 
     useEffect(() => {
-        const world = new b2World(new b2Vec2(gravity, 0));
+        const world = new b2World(new b2Vec2(0, gravity));
         //this is sad, but unfortunately required by liquidfun
         window.world = world;
         const scale = getScale();
@@ -42,7 +42,7 @@ export default function BlobField({
         moveBounds({ bounds: bounds.current, width, height, scale });
         const particleSystem = createParticleSystem(world, particleRadius);
 
-        const cursor = createCursor(world);
+        const cursor = createCursor(world, {radius: 0.5});
         const mouseJoint = createMouseJoint(world, cursor, 150 * cursor.GetMass());
 
         const renderer = new Renderer(
@@ -76,7 +76,9 @@ export default function BlobField({
 
         const handleMouseDown = (evt) => {
           const activeBlob = renderer.hitTest(evt.offsetX, evt.offsetY);
-          history.push(`/${activeBlob.slug}`);
+          if(activeBlob) {
+            history.push(`/${activeBlob.slug}`);
+          }
         };
         const handleMouseMove = (evt) => {
           const coords = new b2Vec2(evt.offsetX / scale, evt.offsetY / scale);
