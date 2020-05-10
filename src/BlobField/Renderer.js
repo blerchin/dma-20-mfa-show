@@ -28,7 +28,7 @@ function getOuterParticles(gp, scale) {
 }
 
 export default class Renderer {
-  constructor(world, canvasEl, particleSystem, artists,  { radius = .25, scale = 10} = {}) {
+  constructor(world, canvasEl, particleSystem, artists,  { radius = .25 } = {}) {
       // init large buffer geometry
       this.world = world;
       this.canvasEl = canvasEl;
@@ -37,6 +37,7 @@ export default class Renderer {
       this.ctx = canvasEl.getContext('2d');
       this.radius = radius;
       this.blobs = artists.map((artist) => ({ ...artist, path: new paper.Path(), glyphs: [], active: false }));
+      this.bounds = [];
       this.activePath = null;
   }
 
@@ -101,15 +102,15 @@ export default class Renderer {
     textPath.remove();
   }
 
-  drawPolygon(vertices, scale) {
-    const ctx = this.ctx;
-    ctx.fillStyle='black';
-    ctx.beginPath();
-    ctx.moveTo(vertices[0].x * scale, vertices[0].y * scale);
-    for (let i = 1; i < vertices.length; i++) {
-      ctx.lineTo(vertices[i].x * scale, vertices[i].y * scale);
+  drawPolygon(path, vertices, scale) {
+    if (!path) {
+      path = new paper.Path();
     }
-    ctx.fill();
+    path.segments = [];
+    path.fillColor='black';
+    for (let i = 0; i < vertices.length; i++) {
+      path.add(new paper.Point(vertices[i].x * scale, vertices[i].y * scale));
+    }
   }
 
   drawBounds(world, scale) {
@@ -119,7 +120,7 @@ export default class Renderer {
         if (body.fixtures[j].shape instanceof b2PolygonShape ) {
           const transform = body.GetTransform().p;
           const vertices = body.fixtures[j].shape.vertices.map((v) => ({ x: v.x + transform.x, y: v.y + transform.y }));
-          this.drawPolygon(vertices, scale);
+          this.drawPolygon(this.bounds[j], vertices, scale);
         }
       }
     }

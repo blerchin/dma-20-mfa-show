@@ -41,8 +41,8 @@ export function moveBounds({ bounds, width, height, scale }) {
     const w = width/scale;
     const h = height/scale
 
-    bottom.SetTransform(new b2Vec2(0, h+1), 0);
-    right.SetTransform(new b2Vec2(w+1, 0), 0);
+    bottom.SetTransform(new b2Vec2(0, h + 1), 0);
+    right.SetTransform(new b2Vec2(w + 1, 0), 0);
 }
 
 function createBox(world, ...vertices) {

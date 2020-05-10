@@ -27,16 +27,16 @@ export default function BlobField({
     const animationEl = useRef(null);
     const wrapperEl = useRef(null);
     const bounds = useRef(null);
+    const scaleRef = useRef(scale);
+    scaleRef.current = scale
     const history = useHistory();
     const [groupLocations, setGroupLocations] = useState([]);
     //const getScale = () => Math.sqrt(width * height) / config.artists.length * initialScale / 70;
-    const getScale = () => scale;
 
     useEffect(() => {
         const world = new b2World(new b2Vec2(0, gravity));
         //this is sad, but unfortunately required by liquidfun
         window.world = world;
-        const scale = getScale();
 
         bounds.current = createBounds({ world, scale, width, height });
         moveBounds({ bounds: bounds.current, width, height, scale });
@@ -46,7 +46,7 @@ export default function BlobField({
         const mouseJoint = createMouseJoint(world, cursor, 150 * cursor.GetMass());
 
         const renderer = new Renderer(
-          world, animationEl.current, particleSystem, config.artists, {scale, radius: particleRadius }
+          world, animationEl.current, particleSystem, config.artists, {radius: particleRadius }
           );
 
         let shouldRender = true;
@@ -67,7 +67,7 @@ export default function BlobField({
           iter = iter <= 2 ? iter + 1 : iter;
           world.Step(1.0 / 30.0, velocityIterations, positionIterations);
           requestAnimationFrame(() => {
-            renderer.draw(getScale());
+            renderer.draw(scaleRef.current);
             render();
           });
           //setGroupLocations(renderer.getGroupLocations());
@@ -104,8 +104,8 @@ export default function BlobField({
     }, []);
 
     useEffect(() => {
-      bounds.current && moveBounds({ bounds: bounds.current, width, height, scale: getScale() });
-    }, [width, height]);
+      bounds.current && moveBounds({ bounds: bounds.current, width, height, scale: scale });
+    }, [width, height, scale]);
 
     return (
         <div className={wrapper} ref={wrapperEl} style={{ width, height }}>
