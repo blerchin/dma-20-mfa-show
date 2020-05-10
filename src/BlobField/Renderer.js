@@ -105,15 +105,14 @@ export default class Renderer {
   drawName(blob) {
     const { active, name, center } = blob;
     blob.textItem && blob.textItem.remove();
-    if (active) {
-      blob.textItem = new paper.PointText(new paper.Point(center));
-      const { textItem } = blob;
-      textItem.content = name.toUpperCase().split(' ').join('\n');
-      textItem.justification = 'center';
-      textItem.fillColor = '#574DC8';
-      textItem.fontSize = 18;
-      textItem.fontWeight = 700;
-    }
+    blob.textItem = new paper.PointText(new paper.Point(center));
+    const { textItem } = blob;
+    textItem.content = name.toUpperCase().split(' ').join('\n');
+    textItem.justification = 'center';
+    textItem.fillColor = '#574DC8';
+    textItem.fontSize = 18;
+    textItem.fontWeight = 700;
+    textItem.opacity = active ? 1 : 0.5;
   }
 
   drawPolygon(path, vertices, scale) {
