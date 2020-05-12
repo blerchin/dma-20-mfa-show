@@ -1,0 +1,20 @@
+.container video {
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+}
+
+.cap {
+  text-align: center;
+  font-style: italic;
+}
+
+.fullHeight {
+  height: 100vh;
+}
+
+.fullHeight video {
+  max-height: 100vh;
+  object-fit: contain;
+}

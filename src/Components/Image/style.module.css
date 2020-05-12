@@ -1,0 +1,20 @@
+.container img {
+  max-width: 100%;
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
+.cap {
+  text-align: center;
+  font-style: italic;
+}
+
+.fullHeight {
+  height: 100vh;
+}
+
+.fullHeight img {
+  max-height: 100vh;
+  object-fit: contain;
+}
