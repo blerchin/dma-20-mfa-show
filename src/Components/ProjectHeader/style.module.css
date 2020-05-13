@@ -1,0 +1,21 @@
+.container {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.headerArtist {
+  margin: 0;
+}
+
+.headerTitle {
+  margin: 0;
+}
+
+.headerMaterials {
+  text-decoration: italic;
+}
+
+.headerLink {
+  background-color: white;
+  color: black;
+}

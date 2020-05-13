@@ -1,0 +1,17 @@
+.container {
+  text-align: center;
+}
+
+.container a {
+  display: inline-block;
+  text-align: center;
+  background-color: white;
+  color: black;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.container a:hover {
+  background-color: black;
+  color: white;
+}
