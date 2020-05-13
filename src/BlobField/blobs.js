@@ -3,7 +3,10 @@ import paper from 'paper';
 import Ball from './ball';
 
 export default class Blobs {
-	constructor(artists, { onArtistHovered, onArtistClicked }) {
+	constructor(artists, {
+		onArtistHovered,
+		onArtistClicked
+	}) {
 		this.artists = artists;
 		this.balls = [];
 		this.numBalls = artists.length;
@@ -22,9 +25,9 @@ export default class Blobs {
 		this.hoverFadedOpacity = 0.2;
 		this.hoverActiveOpacity = 1;
 		this.isSlowSim = false;
-    this.collapsed = false;
-    this.onArtistHovered = onArtistHovered;
-    this.onArtistClicked = onArtistClicked;
+		this.collapsed = false;
+		this.onArtistHovered = onArtistHovered;
+		this.onArtistClicked = onArtistClicked;
 	}
 
 	B(idx) {
@@ -121,7 +124,7 @@ export default class Blobs {
 		this.balls[0].radius = this.calcRadius(0) * this.mouseRadiusMultiplier;
 	}
 
-	onMouseMove(x,y) {
+	onMouseMove(x, y) {
 		this.mouseTargetX = x;
 		this.mouseTargetY = y;
 	}
@@ -154,8 +157,8 @@ export default class Blobs {
 					this.animationDuration
 				);
 			}
-    }
-    this.onArtistHovered && this.onArtistHovered(event.target.artist);
+		}
+		this.onArtistHovered && this.onArtistHovered(event);
 	}
 
 	pathOnMouseLeave(event) {
@@ -179,7 +182,7 @@ export default class Blobs {
 			);
 		}
 
-    this.onArtistHovered && this.onArtistHovered();
+		this.onArtistHovered && this.onArtistHovered(event);
 	}
 
 	repulseBall(idx) {
@@ -196,9 +199,8 @@ export default class Blobs {
 		this.collapsed = !this.collapsed;
 		for (let i = 1; i < this.balls.length; i++) {
 			this.balls[i].radius = this.calcRadius(i);
-    }
-    // TODO make this callback work
-    //this.onArtistClicked && this.onArtistClicked(artist)
+		}
+		this.onArtistClicked && this.onArtistClicked(event);
 	}
 
 	onKeyDown(event) {

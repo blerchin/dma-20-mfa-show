@@ -15,13 +15,17 @@ export default function BlobField({
     const history = useHistory();
     const [activeArtist, setActiveArtist] = useState(null);
 
-    const onArtistHovered = (artist) => {
-      console.log(artist);
-      setActiveArtist(artist);
+    const onArtistHovered = (event) => {
+      console.log(event);
+      setActiveArtist(event.target.artist);
+    }
+
+    const onArtistClicked = (event) => {
+      console.log('Clicked', event.target.artist);
     }
 
     useEffect(() => {
-        const blobs = new Blobs(config.artists, { onArtistHovered, onArtistClicked: null });
+        const blobs = new Blobs(config.artists, { onArtistHovered, onArtistClicked });
         paper.setup(animationEl.current);
         blobs.setup();
 
@@ -34,7 +38,7 @@ export default function BlobField({
           }
         };
         const handleMouseMove = (evt) => {
-          blobs.onMouseMove(evt.mouseX, evt.mouseY);
+          blobs.onMouseMove(evt.clientX, evt.clientY);
         };
         
         wrapperEl.current.addEventListener('mousedown', handleMouseDown);
@@ -50,7 +54,7 @@ export default function BlobField({
         <div className={wrapper} ref={wrapperEl} style={{ width, height }}>
           {/*resize="true" breaks things for some reason*/}
           <canvas ref={animationEl} width={width} height={height}  />
-          <div class='title'>
+          <div className='title'>
             {activeArtist ? activeArtist.name.toUpperCase() : 'NEARREST NEIGHBOR'}
           </div>
         </div>
