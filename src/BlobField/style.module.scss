@@ -16,6 +16,9 @@
     fill: url(#cursorGradient)
 }
 .wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     position: relative;
     svg, canvas {
         position: absolute;

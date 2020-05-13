@@ -1,8 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route, matchPath } from 'react-router-dom';
-import { debounce } from 'src/utils';
 import './App.css';
-import BlobResizer from 'src/BlobResizer';
+import BlobField from 'src/BlobField';
 import config from './config';
 import BenLerchin from 'src/work/BenLerchin';
 import BerfinAtaman from 'src/work/BerfinAtaman';
@@ -55,18 +54,15 @@ function App() {
           <Route path='/zeynep-abes'>
             <ZeynepAbes />
           </Route>
-          <Route exact path='/'>
-            <div className='title'>
-              NEARREST NEIGHBOR
+          <Route path="/">
+            <div className="blobs">
+              <BlobField />
             </div>
           </Route>
           <Route path="*">
             Page not Found ✧・ﾟ:*
           </Route>
         </Switch>
-        <div className="blobs">
-          <BlobResizer />
-        </div>
       </div>
     </Router>
   );

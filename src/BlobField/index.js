@@ -1,119 +1,58 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import {
-  createParticleSystem,
-  createMouseJoint,
-  createBounds,
-  createCursor,
-  moveBounds,
-  createBlobs 
-} from './particles';
-import Renderer from './Renderer';
 import config from 'src/config';
+import paper from 'paper';
 
-import { wrapper, nameTag } from './style.module.scss';
-
-const { b2Vec2, b2World } = liquidfun;
+import { wrapper } from './style.module.scss';
+import Blobs from './blobs';
 
 export default function BlobField({
   height = window.innerHeight,
-  positionIterations = 2,
-  velocityIterations = 4,
-  gravity = 2,
-  scale = 80,
-  width = window.innerWidth,
-  particleRadius = 0.3
+  width = window.innerWidth
 }) {
     const animationEl = useRef(null);
     const wrapperEl = useRef(null);
-    const bounds = useRef(null);
-    const scaleRef = useRef(scale);
-    scaleRef.current = scale
     const history = useHistory();
-    const [blobs, setBlobs] = useState([]);
-    const [activeBlob, setActiveBlob] = useState(null);
+    const [activeArtist, setActiveArtist] = useState(null);
+
+    const onArtistHovered = (artist) => {
+      console.log(artist);
+      setActiveArtist(artist);
+    }
 
     useEffect(() => {
-        const world = new b2World(new b2Vec2(0, gravity));
-        //this is sad, but unfortunately required by liquidfun
-        window.world = world;
+        const blobs = new Blobs(config.artists, { onArtistHovered, onArtistClicked: null });
+        paper.setup(animationEl.current);
+        blobs.setup();
 
-        bounds.current = createBounds({ world, scale, width, height });
-        moveBounds({ bounds: bounds.current, width, height, scale });
-        const particleSystem = createParticleSystem(world, particleRadius);
-
-        const cursor = createCursor(world, {radius: 0.5});
-        const mouseJoint = createMouseJoint(world, cursor, 150 * cursor.GetMass());
-
-        const renderer = new Renderer(
-          world, animationEl.current, particleSystem, config.artists, {
-            radius: particleRadius
-          }
-          );
-        setBlobs(renderer.getBlobs());
-
-        let shouldRender = true;
-        let iter = 0;
-
-        const render = () => {
-          if (!shouldRender) { return; }
-          //wait for bounds to move into position first
-          if (iter === 2) {
-            createBlobs({
-              artists: config.artists,
-              height,
-              particleSystem,
-              scale,
-              width
-            });
-          }
-          iter = iter <= 2 ? iter + 1 : iter;
-          world.Step(1.0 / 30.0, velocityIterations, positionIterations);
-          requestAnimationFrame(() => {
-            renderer.draw(scaleRef.current);
-            render();
-          });
-        };
-        render();
+        paper.view.onFrame = (evt) => blobs.onFrame(evt);
+        paper.view.onResize = (evt) => blobs.onResize(evt);
 
         const handleMouseDown = (evt) => {
-          const activeBlob = renderer.hitTest(evt.offsetX, evt.offsetY);
-          if(activeBlob) {
-            history.push(`/${activeBlob.slug}`);
+          if (activeArtist) {
+            history.push(`/${activeArtist.slug}`);
           }
         };
         const handleMouseMove = (evt) => {
-          const coords = new b2Vec2(evt.offsetX / scale, evt.offsetY / scale);
-          if (mouseJoint) {
-            mouseJoint.SetTarget(coords);
-          }
-          const activeBlob = renderer.hitTest(evt.offsetX, evt.offsetY);
-          if (activeBlob) {
-            wrapperEl.current.style.cursor = 'pointer';
-            setActiveBlob({...activeBlob});
-          } else {
-            wrapperEl.current.style.cursor = 'default';
-            setActiveBlob(null);
-          }
+          blobs.onMouseMove(evt.mouseX, evt.mouseY);
         };
         
         wrapperEl.current.addEventListener('mousedown', handleMouseDown);
         wrapperEl.current.addEventListener('mousemove', handleMouseMove);
         
         return () => {
-          shouldRender = false; 
           wrapperEl.current.removeEventListener('mousedown', handleMouseDown);
           wrapperEl.current.removeEventListener('mousemove', handleMouseMove);
         }
     }, []);
 
-    useEffect(() => {
-      bounds.current && moveBounds({ bounds: bounds.current, width, height, scale: scale });
-    }, [width, height, scale]);
-
     return (
         <div className={wrapper} ref={wrapperEl} style={{ width, height }}>
-          <canvas ref={animationEl} width={width} height={height} hidpi="off" resize="true" />
+          {/*resize="true" breaks things for some reason*/}
+          <canvas ref={animationEl} width={width} height={height}  />
+          <div class='title'>
+            {activeArtist ? activeArtist.name.toUpperCase() : 'NEARREST NEIGHBOR'}
+          </div>
         </div>
     )
 
