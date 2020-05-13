@@ -30,7 +30,10 @@ export default function BlobField({
         blobs.setup();
 
         paper.view.onFrame = (evt) => blobs.onFrame(evt);
-        paper.view.onResize = (evt) => blobs.onResize(evt);
+
+        const handleResize = (evt) => {
+          blobs.onResize(evt);
+        };
 
         const handleMouseDown = (evt) => {
           if (activeArtist) {
@@ -43,10 +46,12 @@ export default function BlobField({
         
         wrapperEl.current.addEventListener('mousedown', handleMouseDown);
         wrapperEl.current.addEventListener('mousemove', handleMouseMove);
-        
+        window.addEventListener('resize', handleResize);
         return () => {
           wrapperEl.current.removeEventListener('mousedown', handleMouseDown);
           wrapperEl.current.removeEventListener('mousemove', handleMouseMove);
+          window.removeEventListener('resize', handleResize);
+
         }
     }, []);
 

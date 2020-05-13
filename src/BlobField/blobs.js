@@ -115,7 +115,9 @@ export default class Blobs {
 		}
 	}
 
-	onResize() {
+	onResize(evt) {
+		paper.view.viewSize.width = window.innerWidth;
+		paper.view.viewSize.height = window.innerHeight;
 		for (let i = 0; i < this.balls.length; i++) {
 			this.balls[i].radius = this.calcRadius(i);
 			let tempIsVert = paper.view.size.width > paper.view.size.height;
