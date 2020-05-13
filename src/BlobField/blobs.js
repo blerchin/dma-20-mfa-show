@@ -1,12 +1,9 @@
-import paper from 'paper';
+import paper from "paper";
 
-import Ball from './ball';
+import Ball from "./ball";
 
 export default class Blobs {
-	constructor(artists, {
-		onArtistHovered,
-		onArtistClicked
-	}) {
+	constructor(artists, { onArtistHovered, onArtistClicked }) {
 		this.artists = artists;
 		this.balls = [];
 		this.numBalls = artists.length;
@@ -40,7 +37,9 @@ export default class Blobs {
 		let radius;
 		if (this.collapsed && idx != 0) {
 			let orentation = paper.view.size.width > paper.view.size.height;
-			let totalLength = orentation ? paper.view.size.height : paper.view.size.width;
+			let totalLength = orentation
+				? paper.view.size.height
+				: paper.view.size.width;
 			radius = totalLength / (this.numBalls * 2);
 		} else {
 			radius = Math.sqrt(viewArea / this.numBalls / Math.PI);
@@ -116,8 +115,11 @@ export default class Blobs {
 	}
 
 	onResize(evt) {
-		paper.view.viewSize.width = window.innerWidth;
-		paper.view.viewSize.height = window.innerHeight;
+		console.log("resizie")
+		// These lines work for now, but they are probably unnecessary when we do proper styling
+		// paper.view.viewSize.width = window.innerWidth;
+		// paper.view.viewSize.height = window.innerHeight;
+		//
 		for (let i = 0; i < this.balls.length; i++) {
 			this.balls[i].radius = this.calcRadius(i);
 			let tempIsVert = paper.view.size.width > paper.view.size.height;
@@ -139,20 +141,24 @@ export default class Blobs {
 
 		for (let i = 1; i < this.balls.length; i++) {
 			if (this.balls[i].path !== event.target) {
-				this.balls[i].path.tween({
+				this.balls[i].path.tween(
+					{
 						opacity: this.balls[i].path.opacity,
 						shadowColor: this.balls[i].path.shadowColor,
-					}, {
+					},
+					{
 						opacity: this.hoverFadedOpacity,
 						shadowColor: this.balls[i].shadowInactiveColor,
 					},
 					this.animationDuration
 				);
 			} else {
-				this.balls[i].path.tween({
+				this.balls[i].path.tween(
+					{
 						opacity: this.balls[i].path.opacity,
 						// shadowColor: this.balls[i].path.shadowColor,
-					}, {
+					},
+					{
 						opacity: this.hoverActiveOpacity,
 						// shadowColor: this.balls[i].shadowColor,
 					},
@@ -173,12 +179,14 @@ export default class Blobs {
 		// this.repulseBall(idx);
 
 		for (let i = 1; i < this.balls.length; i++) {
-			this.balls[i].path.tween({
+			this.balls[i].path.tween(
+				{
 					opacity: this.balls[i].path.opacity,
 					shadowColor: this.balls[i].path.shadowColor,
-				}, {
+				},
+				{
 					opacity: this.opacity,
-					shadowColor: this.balls[i].shadowInactiveColor
+					shadowColor: this.balls[i].shadowInactiveColor,
 				},
 				this.animationDuration
 			);
@@ -192,8 +200,12 @@ export default class Blobs {
 			const repulsionV = this.balls[idx].mouseEnterPt.subtract(
 				this.balls[idx].mouseLeavePt
 			);
-			this.balls[idx].vector = this.balls[idx].vector.add(repulsionV.normalize());
-			this.balls[idx].vector = this.balls[idx].vector.subtract(this.balls[idx].radius);
+			this.balls[idx].vector = this.balls[idx].vector.add(
+				repulsionV.normalize()
+			);
+			this.balls[idx].vector = this.balls[idx].vector.subtract(
+				this.balls[idx].radius
+			);
 		}
 	}
 
@@ -208,7 +220,8 @@ export default class Blobs {
 	onKeyDown(event) {
 		for (let i = 1; i < this.balls.length; i++) {
 			let curr = this.balls[i].path.blendMode;
-			this.balls[i].path.blendMode = curr === 'normal' ? 'color-burn' : 'normal';
+			this.balls[i].path.blendMode =
+				curr === "normal" ? "color-burn" : "normal";
 		}
 	}
 }
