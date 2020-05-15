@@ -17,7 +17,10 @@ export default function BlobField({ collapsed = false }) {
 
   useEffect(() => {
     const onArtistHovered = (event) => {
-      setActiveArtist(event.target.artist);
+      if (event.type === "mouseenter")
+        setActiveArtist(event.target.artist);
+      else
+        setActiveArtist(null);
     };
     const onArtistClicked = (event) => {
       history.push(`/${event.target.artist.slug}`);
