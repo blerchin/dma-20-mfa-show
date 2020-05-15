@@ -8,7 +8,7 @@ export default class Ball {
 		this.radius = r;
 		this.point = p;
 		this.force = v;
-		this.gravity = 9.8; 
+		this.gravity = 9.8;
 		this.dampen = 0.4; // Amount of force dampening
 		this.maxForce = 15;
 		this.numSegment = 16; // Curve segmentation
@@ -34,8 +34,8 @@ export default class Ball {
 					stops: [this.centerCol, this.outerCol],
 					radial: true,
 				},
-				origin: this.point,
-				destination: this.point + [this.radius, 0],
+				// origin: this.point,
+				// destination: this.point + [this.radius, 0],
 			},
 			blendMode: 'normal',
 			closed: true,

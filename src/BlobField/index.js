@@ -27,16 +27,16 @@ export default function BlobField({ collapsed = false }) {
       onArtistClicked,
     });
     blobs.collapsed = collapsed;
-    
+
     const wrapper = wrapperEl.current;
     paper.setup(animationEl.current);
     blobs.setup();
 
     paper.view.onFrame = (evt) => blobs.onFrame(evt);
-    
+
     const handleResize = (evt) => {
-      setWidth(document.body.clientWidth);
-      setHeight(window.innerHeight);
+      // setWidth(document.body.clientWidth);
+      // setHeight(window.innerHeight);
       blobs.onResize(evt);
     }
 
