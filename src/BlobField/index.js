@@ -13,7 +13,7 @@ export default function BlobField({ collapsed = false }) {
   const history = useHistory();
   const [activeArtist, setActiveArtist] = useState(null);
   const [height, setHeight] = useState(window.innerHeight);
-  const [width, setWidth] = useState(window.innerWidth);
+  const [width, setWidth] = useState(document.body.clientWidth);
 
   useEffect(() => {
     const onArtistHovered = (event) => {
@@ -35,7 +35,7 @@ export default function BlobField({ collapsed = false }) {
     paper.view.onFrame = (evt) => blobs.onFrame(evt);
     
     const handleResize = (evt) => {
-      setWidth(window.innerWidth);
+      setWidth(document.body.clientWidth);
       setHeight(window.innerHeight);
       blobs.onResize(evt);
     }
@@ -54,11 +54,11 @@ export default function BlobField({ collapsed = false }) {
 
   useEffect(() => {
     blobsRef.current && blobsRef.current.setIsCollapsed(collapsed);
-  }, [blobsRef, collapsed])
+  }, [blobsRef, collapsed]);
 
   return (
     <div className={style.wrapper} ref={wrapperEl}>
-      <canvas ref={animationEl} width={width} height={height} resize="true" />
+      <canvas ref={animationEl} width={width} height={height} />
       {collapsed ? '' : (
         <div className="title">
           {activeArtist ? activeArtist.name.toUpperCase() : "NEARREST NEIGHBOR"}

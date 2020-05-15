@@ -40,7 +40,8 @@ export default class Blobs {
   recalcRadii() {
 		for (let i = 0; i < this.balls.length; i++) {
 			this.balls[i].radius = this.calcRadius(i);
-    }
+	}
+	this.balls[0].radius = this.calcRadius(0) * this.mouseRadiusMultiplier;
   }
 
 	calcRadius(idx) {
@@ -127,6 +128,9 @@ export default class Blobs {
 	}
 
 	onResize(evt) {
+		let currWidth = document.body.clientWidth;
+		let currHeight = evt.target.innerHeight;
+		paper.view.viewSize = new paper.Size(currWidth, currHeight);
 		for (let i = 0; i < this.balls.length; i++) {
 			this.balls[i].radius = this.calcRadius(i);
 			let tempIsVert = paper.view.size.width > paper.view.size.height;
