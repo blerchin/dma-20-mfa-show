@@ -4,6 +4,7 @@ import Ball from "./ball";
 
 export default class Blobs {
 	constructor(artists, { onArtistHovered, onArtistClicked }) {
+    console.log("Blobs#constructor");
 		this.artists = artists;
 		this.balls = [];
 		this.numBalls = artists.length;
@@ -29,13 +30,24 @@ export default class Blobs {
 
 	B(idx) {
 		return this.balls[idx];
-	}
+  }
+  
+  setIsCollapsed(val) {
+    this.collapsed = val;
+    this.recalcRadii();
+  }
+  
+  recalcRadii() {
+		for (let i = 0; i < this.balls.length; i++) {
+			this.balls[i].radius = this.calcRadius(i);
+    }
+  }
 
 	calcRadius(idx) {
 		const viewArea =
 			paper.view.size.width * paper.view.size.height * this.viewRatio;
 		let radius;
-		if (this.collapsed && idx != 0) {
+		if (this.collapsed && idx !== 0) {
 			let orentation = paper.view.size.width > paper.view.size.height;
 			let totalLength = orentation
 				? paper.view.size.height
@@ -115,11 +127,6 @@ export default class Blobs {
 	}
 
 	onResize(evt) {
-		console.log("resizie")
-		// These lines work for now, but they are probably unnecessary when we do proper styling
-		// paper.view.viewSize.width = window.innerWidth;
-		// paper.view.viewSize.height = window.innerHeight;
-		//
 		for (let i = 0; i < this.balls.length; i++) {
 			this.balls[i].radius = this.calcRadius(i);
 			let tempIsVert = paper.view.size.width > paper.view.size.height;
@@ -210,10 +217,7 @@ export default class Blobs {
 	}
 
 	pathOnClick(event) {
-		this.collapsed = !this.collapsed;
-		for (let i = 1; i < this.balls.length; i++) {
-			this.balls[i].radius = this.calcRadius(i);
-		}
+		//this.collapsed = !this.collapsed; this now happens in react -BL
 		this.onArtistClicked && this.onArtistClicked(event);
 	}
 

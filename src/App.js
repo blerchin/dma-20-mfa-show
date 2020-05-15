@@ -1,5 +1,5 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { BrowserRouter as Router, Switch, Route, matchPath } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route, useRouteMatch } from 'react-router-dom';
 import './App.css';
 import BlobField from 'src/BlobField';
 import config from './config';
@@ -54,15 +54,17 @@ function App() {
           <Route path='/zeynep-abes'>
             <ZeynepAbes />
           </Route>
-          <Route path="/">
-            <div className="blobs">
-              <BlobField />
-            </div>
-          </Route>
+          <Route path='/'>{/* no-op */}</Route>
           <Route path="*">
             Page not Found ✧・ﾟ:*
           </Route>
         </Switch>
+        <Route path="/" render={({ match }) => (
+          <div className="blobs">
+            <BlobField collapsed={!match.isExact} />
+          </div>
+        )}>
+        </Route>
       </div>
     </Router>
   );
