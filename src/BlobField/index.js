@@ -41,13 +41,19 @@ export default function BlobField({ collapsed = false }) {
     }
 
     const handleMouseMove = (evt) => {
-      blobs.onMouseMove(evt.offsetX, evt.offsetY);
+      blobs.onMouseMove(evt.clientX, evt.clientY);
+    };
+
+    const handleTouchMove = (evt) => {
+      blobs.onMouseMove(evt.touches[0].clientX, evt.touches[0].clientY);
     };
 
     wrapper.addEventListener("mousemove", handleMouseMove);
+    wrapper.addEventListener("touchmove", handleTouchMove);
     window.addEventListener('resize', handleResize);
     return () => {
       wrapper.removeEventListener("mousemove", handleMouseMove);
+      wrapper.removeEventListener("touchmove", handleTouchMove);
       window.removeEventListener('resize', handleResize);
     };
   }, [blobsRef]);

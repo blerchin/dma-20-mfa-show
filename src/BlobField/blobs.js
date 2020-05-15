@@ -41,9 +41,7 @@ export default class Blobs {
 	calcCollapsedRadius() {
 		let radius;
 		let orentation = window.innerWidth > window.innerHeight;
-		let totalLength = orentation
-			? window.innerHeight
-			: window.innerWidth;
+		let totalLength = orentation ? window.innerHeight : window.innerWidth;
 		radius = totalLength / (this.numBalls * 2);
 		return radius;
 	}
