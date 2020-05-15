@@ -21,6 +21,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+  position: relative;
   color: white;
 }
 
@@ -31,10 +32,10 @@
   font-weight: 700;
 }
 .blobs {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
 }
 
 .App-link {
