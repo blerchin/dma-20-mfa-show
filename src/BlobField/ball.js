@@ -84,7 +84,6 @@ export default class Ball {
 
 	checkBorders() {
     const size = this.size;
-    console.log(size);
 		const pre = this.point.add(this.force);
 
 		const max = paper.Point.max(this.radius, this.point.add(this.force));

@@ -20,7 +20,7 @@ export default function({ collapsed, ...props }) {
       setWidth(COLLAPSED_WIDTH);
       setHeight(window.innerHeight);
     } else if (width < window.innerWidth) {
-      setWidth(width + WIDTH_ITER);
+      setWidth(window.innerWidth);
       setHeight(window.innerHeight);
     }  
   }, 1);
