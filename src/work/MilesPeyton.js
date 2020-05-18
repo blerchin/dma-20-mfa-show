@@ -24,7 +24,7 @@ export default function() {
             <ProjectColumns
                 columns={[
                     <Vimeo
-                        url="https://player.vimeo.com/419788716/03bd6bb475?color=ffffff&amp;title=0&amp;byline=0&amp;portrait=0"
+                        url="https://player.vimeo.com/video/419788716?color=ffffff&amp;title=0&amp;byline=0&amp;portrait=0"
                     />
                    
                 ]}
