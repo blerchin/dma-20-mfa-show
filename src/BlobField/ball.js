@@ -4,10 +4,11 @@
 import paper from 'paper';
 
 export default class Ball {
-	constructor(r, p, v) {
+	constructor(r, p, v, size) {
 		this.radius = r;
 		this.point = p;
-		this.force = v;
+    this.force = v;
+    this.size = size;
 		this.gravity = 9.8;
 		this.dampen = 0.4; // Amount of force dampening
 		this.maxForce = 15;
@@ -82,7 +83,8 @@ export default class Ball {
 	}
 
 	checkBorders() {
-		const size = paper.view.size;
+    const size = this.size;
+    console.log(size);
 		const pre = this.point.add(this.force);
 
 		const max = paper.Point.max(this.radius, this.point.add(this.force));

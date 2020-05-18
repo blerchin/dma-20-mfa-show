@@ -3,7 +3,7 @@ import paper from "paper";
 import Ball from "./ball";
 
 export default class Blobs {
-	constructor(artists, { onArtistHovered, onArtistClicked }) {
+	constructor(artists, { onArtistHovered, onArtistClicked, width, height, collapsed }) {
 		console.log("Blobs#constructor");
 		this.artists = artists;
 		this.balls = [];
@@ -23,37 +23,38 @@ export default class Blobs {
 		this.hoverFadedOpacity = 0.2;
 		this.hoverActiveOpacity = 1;
 		this.isSlowSim = false;
-		this.collapsed = false;
+		this.collapsed = collapsed;
 		this.onArtistHovered = onArtistHovered;
-		this.onArtistClicked = onArtistClicked;
+    this.onArtistClicked = onArtistClicked;
+    this.size = new paper.Size(width, height);
 	}
 
 	B(idx) {
 		return this.balls[idx];
-	}
-
-	setIsCollapsed(val) {
-		this.collapsed = val;
-		this.recalcCanvasSize();
-		this.recalcRadii();
-	}
+  }
+  
+  setSize(width, height, collapsed) {
+    this.size.width = width;
+    this.size.height = height;
+		this.collapsed = collapsed;
+    for (let i = 0; i < this.balls.length; i++) {
+      this.balls[i].radius = this.calcRadius(i);
+      this.balls[i].isVertical = this.getIsVerticalLayout();
+    }
+  }
+  
+  getIsVerticalLayout() {
+    const { height, width } = this.size;
+    return height > width;
+  }
 
 	calcCollapsedRadius() {
-		let radius;
-		let orentation = window.innerWidth > window.innerHeight;
-		let totalLength = orentation ? window.innerHeight : window.innerWidth;
-		radius = totalLength / (this.numBalls * 2);
-		return radius;
-	}
-
-	recalcRadii() {
-		for (let i = 0; i < this.balls.length; i++) {
-			this.balls[i].radius = this.calcRadius(i);
-		}
+		const totalLength = this.getIsVerticalLayout() ? this.size.height : this.size.width;
+		return totalLength / (this.numBalls * 2);
 	}
 
 	calcRadius(idx) {
-		const viewArea = window.innerWidth * window.innerHeight * this.viewRatio;
+		const viewArea = this.size.width * this.size.height * this.viewRatio;
 		let radius;
 		if (this.collapsed && idx !== 0) {
 			radius = this.calcCollapsedRadius();
@@ -71,34 +72,32 @@ export default class Blobs {
 			this.calcRadius(0),
 			new paper.Point(0, 0),
 			new paper.Point(0, 0)
-		);
+    );
+    const isVertical = this.getIsVerticalLayout();
 		mouseBall.radius = this.calcRadius(0);
 		mouseBall.path.opacity = 0;
 		mouseBall.path.isMouse = true;
-		mouseBall.isVertical = window.innerWidth > window.innerHeight;
+		mouseBall.isVertical = isVertical;
 		mouseBall.setIdx(0);
 		this.balls.push(mouseBall);
 
 		for (let i = 0; i < this.numBalls; i++) {
-			const position = paper.Point.random().multiply(paper.view.size);
+			const position = paper.Point.random().multiply(this.size);
 			const force = new paper.Point({
 				angle: 1 * Math.random(),
 				length: Math.random() * 10,
 			});
-			const currBall = new Ball(this.calcRadius(i), position, force);
+			const currBall = new Ball(this.calcRadius(i), position, force, this.size);
 			currBall.path.opacity = this.opacity;
 			currBall.shadowColor.alpha = this.opacity / 2;
 			currBall.path.artist = this.artists[i];
 			currBall.setIdx(this.balls.length);
-			currBall.isVertical = window.innerWidth > window.innerHeight;
+			currBall.isVertical = isVertical; 
 			currBall.path.onMouseEnter = this.pathOnMouseEnter.bind(this);
 			currBall.path.onMouseLeave = this.pathOnMouseLeave.bind(this);
 			currBall.path.onClick = this.pathOnClick.bind(this);
 			this.balls.push(currBall);
 		}
-
-		if (this.collapsed)
-			this.recalcCanvasSize()
 	}
 
 	onFrame() {
@@ -133,29 +132,6 @@ export default class Blobs {
 		} else {
 			this.balls[0].point = new paper.Point(this.mouseCurrX, this.mouseCurrY);
 		}
-	}
-
-	onResize(evt) {
-		this.recalcCanvasSize();
-		for (let i = 0; i < this.balls.length; i++) {
-			this.balls[i].radius = this.calcRadius(i);
-			let tempIsVert = window.innerWidth > window.innerHeight;
-			this.balls[i].isVertical = tempIsVert;
-		}
-	}
-
-	recalcCanvasSize() {
-		let currWidth = document.body.clientWidth;
-		let currHeight = window.innerHeight;
-		if (this.collapsed) {
-			// let tempBall = this.balls[1];
-			let rad = Math.ceil(this.calcCollapsedRadius());
-			if (currWidth > currHeight)
-				currWidth = rad * 2;
-			else
-				currHeight = rad * 2;
-		}
-		paper.view.viewSize = new paper.Size(currWidth, currHeight);
 	}
 
 	onMouseMove(x, y) {
