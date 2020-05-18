@@ -37,7 +37,7 @@ export default {
         
     ],
     style: {
-        background: '#574DC8',
+        background: '#000000',
         activeFill: '#e3f994',
         blobFill: 'rgb(185,205,210)',
         blobStroke: 'rgb(255,255,255)',

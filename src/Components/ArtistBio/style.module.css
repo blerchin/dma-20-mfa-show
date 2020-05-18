@@ -1,3 +1,11 @@
 .container {
   text-align: left;
+  font-family: "Letter Gothic";
+  font-size: 21pt;
+}
+
+h4 {
+  font-family: "Poppins Bold";
+  font-size: 36pt;
+  margin: 0;
 }
