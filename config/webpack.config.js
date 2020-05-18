@@ -345,6 +345,17 @@ module.exports = function(webpackEnv) {
           include: paths.appSrc,
         },
         {
+          test: /\.(jpe?g|png)$/i,
+          loader: 'responsive-loader',
+          options: {
+            // If you want to enable sharp support:
+            adapter: require('responsive-loader/sharp'),
+              sizes: [300, 600, 1200, 2000],
+              placeholder: true,
+              placeholderSize: 50
+          }
+        },
+        {
           // "oneOf" will traverse all following loaders until one will
           // match the requirements. When no loader matches it will fall
           // back to the "file" loader at the end of the loader list.

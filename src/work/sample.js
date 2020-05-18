@@ -27,11 +27,11 @@ export default function() {
             <ProjectColumns
                 columns={[
                     <Image
-                        src="http://via.placeholder.com/1200x1200"
+                        img="http://via.placeholder.com/1200x1200"
                         alt="A grey field with the text 1200x1200"
                     />,
                     <Image
-                        src="http://via.placeholder.com/1200x1200"
+                        img="http://via.placeholder.com/1200x1200"
                         alt="A grey field with the text 1200x1200"
                         caption="This image has a caption."
                     />
@@ -41,7 +41,7 @@ export default function() {
                 columns={[
                     <Image
                         fullHeight
-                        src="http://via.placeholder.com/1200x1200"
+                        img="http://via.placeholder.com/1200x1200"
                         alt="A grey field with the text 1200x1200"
                         caption="This image has a caption."
                     />
@@ -64,7 +64,7 @@ export default function() {
                 columns={[
                     <Image
                         maxHeight="500px"
-                        src="http://via.placeholder.com/1200x1200"
+                        img="http://via.placeholder.com/1200x1200"
                         alt="A grey field with the text 1200x1200"
                         caption="This image has a caption."
                     />

@@ -33,7 +33,7 @@ export default function() {
                     columns={[
                         <Image
                             fullHeight
-                            src={BenImage}
+                            img={BenImage}
                             alt='Still from video. A gray industrial concrete and metal box is in the foreground, with the text
                             "MILE 103" obliquely visible. Low brush growth is seen in the near background, behind which a number
                             of wind turbines are visible.'

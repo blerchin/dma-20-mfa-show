@@ -47,7 +47,7 @@ export default function() {
                 <ProjectColumns
                     columns={[
                         <Image
-                            src={MilesImage1}
+                            img={MilesImage1}
                             alt="Analog projection of water on square, gray board. The light source for the projection is sunlight. The water projection looks shiny, with areas of blue, white, and orange. An etched design can be seen through the water. The board is on the floor, and leans against a white wall."
                         />
                     ]}
@@ -55,7 +55,7 @@ export default function() {
                 <ProjectColumns
                     columns={[
                         <Image
-                            src={MilesImage2}
+                            img={MilesImage2}
                             alt="View of a room with a window, projection apparatus, and gray board leaning against a wall. Sunlight comes through the window, and is focused by a rectangular lens that points at the projection apparatus."
                         />
                     ]}
@@ -63,7 +63,7 @@ export default function() {
                 <ProjectColumns
                     columns={[
                         <Image
-                            src={MilesImage3}
+                            img={MilesImage3}
                             alt="View of projection on board with apparatus visible in the frame but slightly out of focus."
                         />
                     ]}
@@ -71,7 +71,7 @@ export default function() {
                 <ProjectColumns
                     columns={[
                         <Image
-                            src={MilesImage4}
+                            img={MilesImage4}
                             alt="Closeup of apparatus. A circular lens, mirror, and glass plate with liquid can be seen."
                         />
                     ]}
@@ -79,7 +79,7 @@ export default function() {
                 <ProjectColumns
                     columns={[
                         <Image
-                            src={MilesImage5}
+                            img={MilesImage5}
                             alt="Closeup of 8 wires coming out of apparatus. The wires are braided together."
                         />
                     ]}
