@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Menu from '../Components/Menu';
+import Nav from '../Components/Nav';
 import ProjectHeader from '../Components/ProjectHeader';
 import ArtistBio from '../Components/ArtistBio';
 import ProjectColumns from '../Components/ProjectColumns';
@@ -13,7 +13,7 @@ import BenVideo from './assets/BenLerchin-yimby2_mobile.mp4'
 export default function() {
     return (
         <div className="artist">
-            <Menu />
+            <Nav />
             <ProjectHeader
                 artistName="Ben Lerchin"
                 title="Yes, in my Backyard"

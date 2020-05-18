@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Menu from '../Components/Menu';
+import Nav from '../Components/Nav';
 import ProjectHeader from '../Components/ProjectHeader';
 import ArtistBio from '../Components/ArtistBio';
 import ProjectColumns from '../Components/ProjectColumns';
@@ -16,7 +16,7 @@ import MilesImage5 from './assets/MilesPeyton-5.jpg';
 export default function() {
     return (
         <div className="artist">
-            <Menu />
+            <Nav />
             <ProjectHeader
                 artistName="Miles Peyton"
                 title="Solar Bathybi"
