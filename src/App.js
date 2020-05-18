@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, useRouteMatch } from 'react-router-dom';
 import './App.css';
 import BlobField from 'src/BlobField';
+import Info from 'src/Info';
 import config from './config';
 import BenLerchin from 'src/work/BenLerchin';
 import BerfinAtaman from 'src/work/BerfinAtaman';
@@ -75,6 +76,9 @@ export default class App extends Component {
             </Route>
             <Route path='/zeynep-abes'>
               <ZeynepAbes />
+            </Route>
+            <Route path='/info'>
+              <Info />
             </Route>
             <Route path='/'>{/* no-op */}</Route>
             <Route path="*">

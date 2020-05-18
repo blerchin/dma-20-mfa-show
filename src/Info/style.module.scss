@@ -1,0 +1,16 @@
+.container {
+  margin: 100px;
+}
+
+.overlay {
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+}
+
+.circle {
+  fill: rgba(0, 0, 0, .8);
+  cursor: none;
+}
