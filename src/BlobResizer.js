@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useRouteMatch } from 'react-router-dom';
 import BlobField from 'src/BlobField';
 import { debounce } from 'src/utils';
 
@@ -9,14 +8,11 @@ const WIDTH_ITER = 10
 export default function({ collapsed, ...props }) {
   const [width, setWidth] = useState(window.innerWidth);
   const [height, setHeight] = useState(window.innerHeight);
-  const match = useRouteMatch();
   const resize = debounce(() => {
-    //TODO make this work along the bottom on mobile
-    const isCollapsed = !Boolean(match.isExact);
-    if (isCollapsed && width > COLLAPSED_WIDTH) {
+    if (collapsed && width > COLLAPSED_WIDTH) {
       setWidth(width - WIDTH_ITER);
       setHeight(window.innerHeight);
-    } else if (isCollapsed) {
+    } else if (collapsed) {
       setWidth(COLLAPSED_WIDTH);
       setHeight(window.innerHeight);
     } else if (width < window.innerWidth) {
@@ -26,7 +22,7 @@ export default function({ collapsed, ...props }) {
   }, 1);
   useEffect(() => {
     resize();
-  }, [width, height, match])
+  }, [width, height, collapsed])
   
   useEffect(() => {
     window.addEventListener('resize', resize);
@@ -35,7 +31,7 @@ export default function({ collapsed, ...props }) {
     };
   },[]);
   return (
-  <div style={{ height, width: window.innerWidth, backgroundColor: 'red'}}>
+  <div style={{ height, width: window.innerWidth }}>
       <BlobField width={width} height={height} collapsed={collapsed} {...props} />
     </div>
   );
