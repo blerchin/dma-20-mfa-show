@@ -25,28 +25,28 @@ export default class Blobs {
 		this.isSlowSim = false;
 		this.collapsed = collapsed;
 		this.onArtistHovered = onArtistHovered;
-    this.onArtistClicked = onArtistClicked;
-    this.size = new paper.Size(width, height);
+		this.onArtistClicked = onArtistClicked;
+		this.size = new paper.Size(width, height);
 	}
 
 	B(idx) {
 		return this.balls[idx];
-  }
-  
-  setSize(width, height, collapsed) {
-    this.size.width = width;
-    this.size.height = height;
-    this.collapsed = collapsed;
-    for (let i = 0; i < this.balls.length; i++) {
-      this.balls[i].radius = this.calcRadius(i);
-      this.balls[i].isVertical = this.getIsVerticalLayout();
-    }
-  }
-  
-  getIsVerticalLayout() {
-    const { height, width } = this.size;
-    return height > width;
-  }
+	}
+
+	setSize(width, height, collapsed) {
+		this.size.width = width;
+		this.size.height = height;
+		this.collapsed = collapsed;
+		for (let i = 0; i < this.balls.length; i++) {
+			this.balls[i].radius = this.calcRadius(i);
+			this.balls[i].isVertical = this.getIsVerticalLayout();
+		}
+	}
+
+	getIsVerticalLayout() {
+		const { height, width } = this.size;
+		return height > width;
+	}
 
 	calcCollapsedRadius() {
 		const totalLength = this.getIsVerticalLayout() ? this.size.height : this.size.width;
@@ -72,8 +72,8 @@ export default class Blobs {
 			this.calcRadius(0),
 			new paper.Point(0, 0),
 			new paper.Point(0, 0)
-    );
-    const isVertical = this.getIsVerticalLayout();
+		);
+		const isVertical = this.getIsVerticalLayout();
 		mouseBall.radius = this.calcRadius(0);
 		mouseBall.path.opacity = 0;
 		mouseBall.path.isMouse = true;
@@ -92,7 +92,7 @@ export default class Blobs {
 			currBall.shadowColor.alpha = this.opacity / 2;
 			currBall.path.artist = this.artists[i];
 			currBall.setIdx(this.balls.length);
-			currBall.isVertical = isVertical; 
+			currBall.isVertical = isVertical;
 			currBall.path.onMouseEnter = this.pathOnMouseEnter.bind(this);
 			currBall.path.onMouseLeave = this.pathOnMouseLeave.bind(this);
 			currBall.path.onClick = this.pathOnClick.bind(this);
