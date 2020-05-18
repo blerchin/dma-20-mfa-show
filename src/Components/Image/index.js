@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -7,36 +7,33 @@ import {
   fullHeight,
 } from './style.module.css';
 
-class Image extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { showBG: true };
-    this.handleImageLoaded = this.handleImageLoaded.bind(this);
+const Image = ({
+  img,
+  alt,
+  caption = false,
+  fullHeight: isFullHeight = false,
+  maxHeight = 'auto'
+}) => {
+  const style = {
+    maxHeight,
+  };
+
+  const [showBG, setShowBG] = useState(true);
+
+  if (maxHeight !== 'auto' && isFullHeight === false) {
+    style.width = 'auto';
   }
 
-  handleImageLoaded() {   
-    this.setState({showBG: false});
-  }
-
-  render() {
-    let {maxHeight,isFullHeight, img, fullHeight,caption,alt} = this.props;
-    const style = {
-      maxHeight,
-    };
-  
-    if (maxHeight !== 'auto' && isFullHeight === false) {
-      style.width = 'auto';
-    };
-    return (
+  return (
       <div className={`${container} ${isFullHeight ? fullHeight : ''}`} style={{
         backgroundSize: 'cover',
-        backgroundImage: this.state.showBG ? 'url("' + img.placeholder + '")' : 'none'
+        backgroundImage: showBG ? 'url("' + img.placeholder + '")' : 'none'
       }}>
         <img
           style={style}
           src={img.src}
           srcSet={img.srcSet}
-          onLoad={this.handleImageLoaded}
+          onLoad={() => setShowBG(false)}
           alt={alt}
         />
         {
@@ -48,20 +45,16 @@ class Image extends React.Component {
         }
       </div>
     );
-  }
 }
 
 Image.defaultProps = {
-  img: null,
-  alt: null,
   caption: '',
-  fullHeight: false,
-  isFullHeight: false,
+  fillViewport: false,
   maxHeight: 'auto',
-}
+};
 
 Image.propTypes = {
-  img: PropTypes.PropTypes.object.isRequired,
+  img: PropTypes.object.isRequired,
   alt: PropTypes.string.isRequired,
   caption: PropTypes.string,
   fillViewport: PropTypes.bool,
