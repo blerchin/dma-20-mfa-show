@@ -6,13 +6,13 @@ import Image from '../Components/Image';
 import ProjectColumns from '../Components/ProjectColumns';
 import Vimeo from '../Components/Video-Vimeo';
 
-import GrahamImage1 from './assets/Graham Akins web template image 1.png'
-import GrahamImage2 from './assets/Graham Akins web template image 2.png'
-import GrahamImage3 from './assets/Graham Akins web template image 3.png'
-import GrahamImage4 from './assets/Graham Akins web template image 4.png'
-import GrahamImage5 from './assets/Graham Akins web template image 5.png'
-import GrahamImage6 from './assets/Graham Akins web template image 6.png'
-import GrahamImage7 from './assets/Graham Akins web template image 7.png'
+import GrahamImage1 from './assets/Graham Akins web template image 1.png';
+import GrahamImage2 from './assets/Graham Akins web template image 2.png';
+import GrahamImage3 from './assets/Graham Akins web template image 3.png';
+import GrahamImage4 from './assets/Graham Akins web template image 4.png';
+import GrahamImage5 from './assets/Graham Akins web template image 5.png';
+import GrahamImage6 from './assets/Graham Akins web template image 6.png';
+import GrahamImage7 from './assets/Graham Akins web template image 7.png';
 
 export default function() {
     return (
@@ -35,7 +35,7 @@ export default function() {
                 <ProjectColumns
                     columns={[
                         <Image
-                            src={GrahamImage1}
+                            img={GrahamImage1}
                             alt="A grey field with the text 1200x1200"
                         />
                     ]}
@@ -43,7 +43,7 @@ export default function() {
                 <ProjectColumns
                     columns={[
                         <Image
-                            src={GrahamImage2}
+                            img={GrahamImage2}
                             alt="A grey field with the text 1200x1200"
                         />
                     ]}
@@ -51,7 +51,7 @@ export default function() {
                 <ProjectColumns
                     columns={[
                         <Image
-                            src={GrahamImage3}
+                            img={GrahamImage3}
                             alt="A grey field with the text 1200x1200"
                         />
                     ]}
@@ -59,7 +59,7 @@ export default function() {
                 <ProjectColumns
                     columns={[
                         <Image
-                            src={GrahamImage4}
+                            img={GrahamImage4}
                             alt="A grey field with the text 1200x1200"
                         />
                     ]}
@@ -67,7 +67,7 @@ export default function() {
                 <ProjectColumns
                     columns={[
                         <Image
-                            src={GrahamImage5}
+                            img={GrahamImage5}
                             alt="A grey field with the text 1200x1200"
                         />
                     ]}
@@ -75,7 +75,7 @@ export default function() {
                 <ProjectColumns
                     columns={[
                         <Image
-                            src={GrahamImage6}
+                            img={GrahamImage6}
                             alt="A grey field with the text 1200x1200"
                         />
                     ]}
@@ -83,7 +83,7 @@ export default function() {
                 <ProjectColumns
                     columns={[
                         <Image
-                            src={GrahamImage7}
+                            img={GrahamImage7}
                             alt="A grey field with the text 1200x1200"
                         />
                     ]}

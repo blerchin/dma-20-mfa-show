@@ -36,23 +36,23 @@ export default function() {
                     columns={[
                         <div>
                             <Image
-                                src={ErinImage1}
+                                img={ErinImage1}
                                 alt="A drawing of the labyrinth set into the floor at Chartres Cathedral in France, as seen from above."
                             />
                             <Image
-                                src={ErinImage2}
+                                img={ErinImage2}
                                 alt="A drawing of the labyrinth the artist has created to cover every mountable surface in her apartment, as seen from above."
                             />
                             <Image
-                                src={ErinImage3}
+                                img={ErinImage3}
                                 alt="A photograph of a section of floor in the artist's apartment, covered in lines of blue tape used to form the labyrinth."
                             />
                             <Image
-                                src={ErinImage4}
+                                img={ErinImage4}
                                 alt="A photograph of a section of carpeted floor in the artist's bedroom, covered in lines of blue tape used to form the labyrinth."
                             />
                             <Image
-                                src={ErinImage5}
+                                img={ErinImage5}
                                 alt="A photograph of the bathroom in the artist's apartment, covered in lines of blue tape used to form the labyrinth."
                             />
                         </div>,

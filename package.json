@@ -148,5 +148,9 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "responsive-loader": "^1.2.0",
+    "sharp": "^0.25.3"
   }
 }
