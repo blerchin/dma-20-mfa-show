@@ -59,7 +59,7 @@ export default function BlobField({ collapsed = false, width, height }) {
 
   return (
     <div className={style.wrapper} ref={wrapperEl}>
-      <canvas ref={animationEl} width={width} height={height} />
+      <canvas ref={animationEl} width={width} height={height} resize/>
       {collapsed ? '' : (
         <div className="title">
           {activeArtist ? activeArtist.name.toUpperCase() : "NEARREST NEIGHBOR"}

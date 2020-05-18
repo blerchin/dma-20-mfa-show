@@ -36,7 +36,7 @@ export default class Blobs {
   setSize(width, height, collapsed) {
     this.size.width = width;
     this.size.height = height;
-		this.collapsed = collapsed;
+    this.collapsed = collapsed;
     for (let i = 0; i < this.balls.length; i++) {
       this.balls[i].radius = this.calcRadius(i);
       this.balls[i].isVertical = this.getIsVerticalLayout();
@@ -218,13 +218,5 @@ export default class Blobs {
 	pathOnClick(event) {
 		//this.collapsed = !this.collapsed; this now happens in react -BL
 		this.onArtistClicked && this.onArtistClicked(event);
-	}
-
-	onKeyDown(event) {
-		for (let i = 1; i < this.balls.length; i++) {
-			let curr = this.balls[i].path.blendMode;
-			this.balls[i].path.blendMode =
-				curr === "normal" ? "color-burn" : "normal";
-		}
 	}
 }

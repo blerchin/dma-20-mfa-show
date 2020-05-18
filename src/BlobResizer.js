@@ -2,25 +2,29 @@ import React, { useEffect, useState } from 'react';
 import BlobField from 'src/BlobField';
 import { debounce } from 'src/utils';
 
-const COLLAPSED_WIDTH = 100;
-const WIDTH_ITER = 10
+const COLLAPSED_SIZE = 100;
+const SIZE_ITER = 5
 
 export default function({ collapsed, ...props }) {
   const [width, setWidth] = useState(window.innerWidth);
   const [height, setHeight] = useState(window.innerHeight);
-  const resize = debounce(() => {
-    if (collapsed && width > COLLAPSED_WIDTH) {
-      setWidth(width - WIDTH_ITER);
-      setHeight(window.innerHeight);
-    } else if (collapsed) {
-      setWidth(COLLAPSED_WIDTH);
-      setHeight(window.innerHeight);
-    } else if (width < window.innerWidth) {
-      setWidth(window.innerWidth);
-      setHeight(window.innerHeight);
-    }  
-  }, 1);
   useEffect(() => {
+    const resize = debounce(() => {
+      const isVerticalLayout = window.innerWidth > window.innerHeight;
+      if (collapsed && isVerticalLayout && width > COLLAPSED_SIZE) { 
+        setWidth(width - SIZE_ITER);
+        setHeight(window.innerHeight);
+      } else if (collapsed && !isVerticalLayout && height > COLLAPSED_SIZE) {
+        setWidth(window.innerWidth);
+        setHeight(height - SIZE_ITER);
+      } else if (collapsed) {
+        setWidth(isVerticalLayout ? COLLAPSED_SIZE : window.innerWidth);
+        setHeight(isVerticalLayout ? window.innerHeight : COLLAPSED_SIZE);
+      } else if (width < window.innerWidth || height < window.innerHeight) {
+        setWidth(window.innerWidth);
+        setHeight(window.innerHeight);
+      }  
+    }, 1);
     resize();
     window.addEventListener('resize', resize);
     return () => {
