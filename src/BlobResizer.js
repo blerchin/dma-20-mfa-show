@@ -22,17 +22,15 @@ export default function({ collapsed, ...props }) {
   }, 1);
   useEffect(() => {
     resize();
-  }, [width, height, collapsed])
-  
-  useEffect(() => {
     window.addEventListener('resize', resize);
     return () => {
       window.removeEventListener('resize', resize);
     };
-  },[]);
+  }, [width, height, collapsed])
+  
   return (
   <div style={{ height, width: window.innerWidth }}>
-      <BlobField width={width} height={height} collapsed={collapsed} {...props} />
-    </div>
+    <BlobField width={width} height={height} collapsed={collapsed} {...props} />
+  </div>
   );
 }
