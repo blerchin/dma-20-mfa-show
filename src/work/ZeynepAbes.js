@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Menu from '../Components/Menu';
+import Nav from '../Components/Nav';
 import ProjectHeader from '../Components/ProjectHeader';
 import ArtistBio from '../Components/ArtistBio';
 import ProjectColumns from '../Components/ProjectColumns';
@@ -9,7 +9,7 @@ import Video from '../Components/Video';
 export default function() {
     return (
         <div className="artist">
-            <Menu />
+            <Nav />
             <ProjectHeader
                 artistName="Zeynep Abes"
                 title="Memory Place"

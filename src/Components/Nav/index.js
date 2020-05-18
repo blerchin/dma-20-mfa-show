@@ -4,10 +4,10 @@ import {
   container,
 } from './style.module.css';
 
-const ArtistBio = ({children}) => (
+const Nav = ({children}) => (
   <nav className={container}>
-    <h2 className='sr-only' id='menuLabel'>Menu</h2>
-    <ul aria-labelledby='menuLabel'>
+    <h2 className='sr-only' id='navLabel'>Navigation</h2>
+    <ul aria-labelledby='navLabel'>
       <li>Home</li>
       <li>Info</li>
       <li>Chat</li>
@@ -15,4 +15,4 @@ const ArtistBio = ({children}) => (
   </nav>
 );
 
-export default ArtistBio;
+export default Nav;

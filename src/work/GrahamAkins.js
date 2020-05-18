@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Menu from '../Components/Menu';
+import Nav from '../Components/Nav';
 import ProjectHeader from '../Components/ProjectHeader';
 import Image from '../Components/Image';
 import ProjectColumns from '../Components/ProjectColumns';
@@ -17,7 +17,7 @@ import GrahamImage7 from './assets/Graham Akins web template image 7.png'
 export default function() {
     return (
         <div className="artist">
-            <Menu />
+            <Nav />
             <ProjectHeader
                 artistName="Graham Akins"
                 title="Approximate Other"
