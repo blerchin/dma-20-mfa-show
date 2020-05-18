@@ -61,6 +61,18 @@ h4 {
   margin-bottom: 0;
 }
 
+h5 {
+  font-family: "Letter Gothic";
+  font-size: 21pt;
+  font-weight: normal;
+  padding: 0;
+  margin: 0;
+}
+
+ol {
+  padding-left: 1.8em;
+}
+
 .artistContent {
   max-width: 70%;
   margin: 200px auto;
