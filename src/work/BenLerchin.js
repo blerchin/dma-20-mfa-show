@@ -5,10 +5,9 @@ import ProjectHeader from '../Components/ProjectHeader';
 import ArtistBio from '../Components/ArtistBio';
 import ProjectColumns from '../Components/ProjectColumns';
 import Image from '../Components/Image';
-import Video from '../Components/Video';
+import Vimeo from '../Components/Video-Vimeo'
 
 import BenImage from './assets/BenLerchin-yimby-cover.jpg';
-import BenVideo from './assets/BenLerchin-yimby2_mobile.mp4'
 
 export default function() {
     return (
@@ -21,18 +20,17 @@ export default function() {
                 link="http://benlerchin.com"
             />
             <div className="artistContent">
-                <ProjectColumns
+            <ProjectColumns
                     columns={[
-                        <Video
-                            maxHeight="80vh"
-                            src={BenVideo}
+                        <Vimeo
+                            url="https://player.vimeo.com/video/TK?color=ffffff&amp;title=0&amp;byline=0&amp;portrait=0"
                         />
+                    
                     ]}
                 />
                 <ProjectColumns
                     columns={[
                         <Image
-                            fullHeight
                             src={BenImage}
                             alt='Still from video. A gray industrial concrete and metal box is in the foreground, with the text
                             "MILE 103" obliquely visible. Low brush growth is seen in the near background, behind which a number
