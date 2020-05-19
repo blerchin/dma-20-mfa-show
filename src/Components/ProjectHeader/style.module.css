@@ -2,7 +2,7 @@
   text-align: left;
   position: fixed;
   top: 75px;
-  left: 75px;
+  left: var(--page-gutter);
   z-index: 1;
 }
 

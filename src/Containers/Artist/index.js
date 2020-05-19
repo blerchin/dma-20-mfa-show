@@ -1,27 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import Nav from '../../Components/Nav';
 import ProjectHeader from '../../Components/ProjectHeader';
 
+import {
+  container,
+  artistContent,
+} from './style.module.css'
+
 const Artist = ({
-  children,
-  name,
-  title,
-  materials,
-  link
-}) => {
+  children,}) => {
   return (
-    <div className="artist">
+    <div className={container}>
       <Nav />
-      <ProjectHeader
-          artistName={name}
-          title={title}
-          materials={materials}
-          link={link}
-      />
-      <div className="artistContent">
-        {children}
-      </div>
+      {children}
     </div>
   );
 }
