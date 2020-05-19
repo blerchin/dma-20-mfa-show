@@ -13,22 +13,23 @@ export default function BlobField({ collapsed = false }) {
   const history = useHistory();
   const [activeArtist, setActiveArtist] = useState(null);
   const [height, setHeight] = useState(window.innerHeight);
-  const [width, setWidth] = useState(document.body.clientWidth);
+  const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     const onArtistHovered = (event) => {
-      if (event.type === "mouseenter")
-        setActiveArtist(event.target.artist);
-      else
-        setActiveArtist(null);
+      if (event.type === "mouseenter") setActiveArtist(event.target.artist);
+      else setActiveArtist(null);
     };
+
     const onArtistClicked = (event) => {
       history.push(`/${event.target.artist.slug}`);
     };
-    const blobs = blobsRef.current = new Blobs(config.artists, {
+
+    const blobs = (blobsRef.current = new Blobs(config.artists, {
       onArtistHovered,
       onArtistClicked,
-    });
+    }));
+
     blobs.collapsed = collapsed;
 
     const wrapper = wrapperEl.current;
@@ -41,7 +42,7 @@ export default function BlobField({ collapsed = false }) {
       // setWidth(document.body.clientWidth);
       // setHeight(window.innerHeight);
       blobs.onResize(evt);
-    }
+    };
 
     const handleMouseMove = (evt) => {
       blobs.onMouseMove(evt.clientX, evt.clientY);
@@ -53,11 +54,11 @@ export default function BlobField({ collapsed = false }) {
 
     wrapper.addEventListener("mousemove", handleMouseMove);
     wrapper.addEventListener("touchmove", handleTouchMove);
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
     return () => {
       wrapper.removeEventListener("mousemove", handleMouseMove);
       wrapper.removeEventListener("touchmove", handleTouchMove);
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, [blobsRef]);
 
@@ -65,10 +66,17 @@ export default function BlobField({ collapsed = false }) {
     blobsRef.current && blobsRef.current.setIsCollapsed(collapsed);
   }, [blobsRef, collapsed]);
 
+
   return (
     <div className={style.wrapper} ref={wrapperEl}>
-      <canvas ref={animationEl} width={width} height={height} />
-      {collapsed ? '' : (
+      <canvas
+        ref={animationEl}
+        width={width}
+        height={height}
+      />
+      {collapsed ? (
+        ""
+      ) : (
         <div className="title">
           {activeArtist ? activeArtist.name.toUpperCase() : "NEARREST NEIGHBOR"}
         </div>
