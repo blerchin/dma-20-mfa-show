@@ -162,7 +162,7 @@ export default class Blobs {
 	}
 
 	recalcCanvasSize() {
-		let currWidth = document.body.scrollWidth;
+		let currWidth = document.body.clientWidth;
 		let currHeight = window.innerHeight;
 		if (this.collapsed) {
 			let rad = Math.ceil(this.calcCollapsedRadius());
