@@ -121,7 +121,7 @@ export default function BlobField({ collapsed = false }) {
         <div className="title">
           {activeArtist
             ? activeArtist.name.split(" ").map((item, i) => {
-                return <p key={i}>{item.toUpperCase()}</p>;
+                return <p key={item}>{item.toUpperCase()}</p>;
               })
             : "NEARREST NEIGHBOR"}
         </div>
