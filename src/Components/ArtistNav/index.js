@@ -10,9 +10,9 @@ const ArtistNav = ({children}) => (
     <h2 id="navLabel">Artists</h2>
     <ul aria-labelledby="navLabel">
       {
-        config.artists.map(({slug, name}) => {
+        config.artists.map(({slug, name}, i) => {
           return (
-            <li><Link to={`/${slug}`}>{name}</Link></li>
+            <li key={i}><Link to={`/${slug}`}>{name}</Link></li>
           )
         })
       }
