@@ -29,8 +29,6 @@ export default class Blobs {
 		this.collapsed = false;
 		this.targetWidth = null;
 		this.targetHeight = null;
-		this.scrollbarWidth = null;
-		this.scrollbarHeight = null;
 		this.onArtistHovered = onArtistHovered;
 		this.onArtistClicked = onArtistClicked;
 	}
@@ -46,8 +44,8 @@ export default class Blobs {
 
 	calcCollapsedRadius() {
 		let radius;
-		let orentation = document.body.scrollWidth > window.innerHeight;
-		let totalLength = orentation ? window.innerHeight : document.body.scrollWidth;
+		let orentation = document.body.clientWidth > window.innerHeight;
+		let totalLength = orentation ? window.innerHeight : document.body.clientWidth;
 		radius = totalLength / (this.numBalls * 2);
 		return radius;
 	}
@@ -88,11 +86,11 @@ export default class Blobs {
 		mouseBall.radius = this.calcRadius(0);
 		mouseBall.path.opacity = 0;
 		mouseBall.path.isMouse = true;
-		mouseBall.isVertical = document.body.scrollWidth > window.innerHeight;
+		mouseBall.isVertical = document.body.clientWidth > window.innerHeight;
 		mouseBall.setIdx(0);
 		this.balls.push(mouseBall);
 
-		this.targetWidth = document.body.scrollWidth;
+		this.targetWidth = document.body.clientWidth;
 		this.targetHeight = window.innerHeight;
 
 
@@ -107,7 +105,7 @@ export default class Blobs {
 			currBall.shadowColor.alpha = this.opacity / 2;
 			currBall.path.artist = this.artists[i];
 			currBall.setIdx(this.balls.length);
-			currBall.isVertical = document.body.scrollWidth > window.innerHeight;
+			currBall.isVertical = document.body.clientWidth > window.innerHeight;
 			currBall.path.onMouseEnter = this.pathOnMouseEnter.bind(this);
 			currBall.path.onMouseLeave = this.pathOnMouseLeave.bind(this);
 			currBall.path.onClick = this.pathOnClick.bind(this);
@@ -156,7 +154,7 @@ export default class Blobs {
 		this.recalcCanvasSize();
 		for (let i = 0; i < this.balls.length; i++) {
 			this.balls[i].radius = this.calcRadius(i);
-			let tempIsVert = document.body.scrollWidth > window.innerHeight;
+			let tempIsVert = document.body.clientWidth > window.innerHeight;
 			this.balls[i].isVertical = tempIsVert;
 		}
 	}
