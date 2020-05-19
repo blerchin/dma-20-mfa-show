@@ -1,5 +1,10 @@
 .container {
   text-align: left;
-  font-family: "Letter Gothic";
   font-size: 21pt;
+}
+
+.header {
+  margin: 0;
+  font-size: 48px;
+  font-family: var(--header-font);
 }

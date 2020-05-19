@@ -9,20 +9,18 @@
 .headerArtist {
   margin: 0;
   font-size: 24pt;
-  font-family: "Letter Gothic";
 }
 
 .headerTitle {
   margin: 0;
-  font-size: 48pt;
-  line-height: 57.6pt;
-  font-family: "Poppins Bold"
+  font-size: 64px;
+  line-height: 76px;
+  font-family: var(--header-font);
 }
 
 .headerMaterials {
   font-style: italic;
   font-size: 18pt;
-  font-family: "Letter Gothic";
 }
 
 .headerLink {
@@ -33,7 +31,6 @@
   font-weight: bold;
   display: inline-block;
   padding: 6px 6px 4px 6px;
-  font-family: "Letter Gothic";
 }
 
 a {

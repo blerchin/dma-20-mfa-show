@@ -1,5 +1,5 @@
 .container {
-  font-family: "Poppins Bold";
+  font-family: var(--header-font);
   font-size: 36pt;
   line-height: 43.2pt;
   text-align: left;

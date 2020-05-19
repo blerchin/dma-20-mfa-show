@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Nav from '../Components/Nav';
+import Artist, { ArtistContent } from '../Containers/Artist';
 import ProjectHeader from '../Components/ProjectHeader';
 import ArtistBio from '../Components/ArtistBio';
 import ProjectColumns from '../Components/ProjectColumns';
@@ -11,21 +11,18 @@ import BenImage from './assets/BenLerchin-yimby-cover.jpg';
 
 export default function() {
     return (
-        <div className="artist">
-            <Nav />
-            <ProjectHeader
-                artistName="Ben Lerchin"
-                title="Yes, in my Backyard"
-                materials="10 minute video"
-                link="http://benlerchin.com"
-            />
-            <div className="artistContent">
+        <Artist
+            name="Ben Lerchin"
+            title="Yes, in my Backyard"
+            materials="10 minute video"
+            link="http://benlerchin.com"
+        >
             <ProjectColumns
                     columns={[
                         <Vimeo
                             url="https://player.vimeo.com/video/TK?color=ffffff&amp;title=0&amp;byline=0&amp;portrait=0"
                         />
-                    
+
                     ]}
                 />
                 <ProjectColumns
@@ -50,7 +47,6 @@ export default function() {
                         Ben Lerchin is an artist and technologist who works with software, photography, and digital fabrication. Their practice deals extensively with the relationship between the photographic image and the American West. Reflecting on the uneasy experience of living between the city and the wilderness, my work attempts to reconcile a networked, industrialized lifestyle with the unstable ground under our feet. It is an attempt to erase boundaries with the natural world, and to see it not as victim nor antagonist, but as co-conspirator and friend. Using digital photographic processes, Ben embeds a polyphony of viewpoints into three dimensional forms reminiscent of the landscape from which they emerge, showing sites of resource management in relation to the people that depend on them.
                     </p>
                 </ArtistBio>
-            </div>
-        </div>
+        </Artist>
     );
 }

@@ -40,19 +40,8 @@ body {
   width: 100%;
 }
 
-
-
-/* PEND LM: Not sure where this goes */
-
-
-h4 {
-  font-family: var(--header-font);
-  font-size: 36pt;
-  margin-bottom: 0;
-}
-
 h5 {
-  font-size: 21pt;
+  font-size: 28px;
   font-weight: normal;
   padding: 0;
   margin: 0;
@@ -60,20 +49,4 @@ h5 {
 
 ol {
   padding-left: 1.8em;
-}
-
-.artistContent {
-  max-width: 70%;
-  margin: 200px auto;
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  border: 0;
 }
