@@ -1,7 +1,7 @@
 .container {
   font-family: var(--header-font);
-  font-size: 36pt;
-  line-height: 43.2pt;
+  font-size: 36px;
+  line-height: 43.2px;
   text-align: left;
   position: fixed;
   bottom: 75px;

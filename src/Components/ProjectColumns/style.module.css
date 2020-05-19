@@ -3,7 +3,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 20px;
-  font-size: 21pt;
-  line-height: 25.2pt;
+  font-size: 21px;
+  line-height: 25.2px;
 }
 

@@ -8,26 +8,26 @@
 
 .headerArtist {
   margin: 0;
-  font-size: 24pt;
+  font-size: 24px;
 }
 
 .headerTitle {
   margin: 0;
-  font-size: 64px;
-  line-height: 76px;
+  font-size: 48px;
+  line-height: 57px;
   font-family: var(--header-font);
 }
 
 .headerMaterials {
   font-style: italic;
-  font-size: 18pt;
+  font-size: 18px;
 }
 
 .headerLink {
   background-color: white;
   color: black;
-  font-size: 12pt;
-  line-height: 12pt;
+  font-size: 12px;
+  line-height: 12px;
   font-weight: bold;
   display: inline-block;
   padding: 6px 6px 4px 6px;
