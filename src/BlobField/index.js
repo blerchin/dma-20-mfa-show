@@ -14,16 +14,52 @@ export default function BlobField({ collapsed = false }) {
   const blobsRef = useRef(null);
   const history = useHistory();
   const [activeArtist, setActiveArtist] = useState(null);
+  const [blobEvent, setBlobEvent] = useState(null);
   const [height, setHeight] = useState(window.innerHeight);
   const [width, setWidth] = useState(window.innerWidth);
   const [parentWidth, setParentWidth] = useState(window.innerWidth);
   const [parentHeight, setParentHeight] = useState(window.innerHeight);
+  const popoverStyle = usePopooverStyle(blobEvent);
+
+  function usePopooverStyle(event) {
+    let style = {
+      display: 'none'
+    };
+    
+    if (collapsed && event && event.type === "mouseenter") {
+      const isVertical = window.innerWidth > window.innerHeight
+      const count = config.artists.length;
+      const totalLength = isVertical ? window.innerHeight : document.body.clientWidth;
+      const canvasLength = totalLength / count;
+
+      let pos = event.target.position;
+      if (isVertical && pos.x < canvasLength){
+        style = {
+          top: pos.y,
+          right: canvasLength + 5,
+          transform: 'translate(0, -50%)'
+        };
+      }
+      else if (!isVertical && pos.y < canvasLength){
+        style = {
+          bottom: canvasLength + 5,
+          left: '50%',
+          transform: 'translate(-50%, 0)'
+        };
+      }
+    }
+    return style;
+  }
 
   useEffect(() => {
     const onArtistHovered = (event) => {
-      if (event.type === "mouseenter") setActiveArtist(event.target.artist);
-      else setActiveArtist(null);
-      console.log(event.target.position);
+      if (event.type === "mouseenter") {
+        setActiveArtist(event.target.artist);
+        setBlobEvent(event);
+      } else {
+        setActiveArtist(null);
+        setBlobEvent(event);
+      }
     };
 
     const onArtistClicked = (event) => {
@@ -90,6 +126,9 @@ export default function BlobField({ collapsed = false }) {
             : "NEARREST NEIGHBOR"}
         </div>
       )}
+      <div className={style.popover} style={popoverStyle}>
+        {collapsed && activeArtist ? activeArtist.name.toUpperCase() : ""}
+      </div>
     </div>
   );
 }
