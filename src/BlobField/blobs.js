@@ -188,7 +188,7 @@ export default class Blobs {
 		if (!vertShrink)
 			vertShrink = this.targetHeight < currH;
 
-		let steps = 25;
+		let steps = window.innerWidth/100;
 		let offsetX = horizShrink ? steps * -1 : steps;
 		let offsetY = vertShrink ? steps * -1 : steps;
 
@@ -198,7 +198,6 @@ export default class Blobs {
 
 		if ((horizShrink && setW < this.targetWidth) || (!horizShrink && setW > this.targetWidth)) {
 			setW = this.targetWidth;
-
 		}
 
 		if (vertShrink && setH < this.targetHeight || (!vertShrink && setH > this.targetHeight)) {
