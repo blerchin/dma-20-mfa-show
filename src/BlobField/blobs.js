@@ -29,6 +29,8 @@ export default class Blobs {
 		this.collapsed = false;
 		this.targetWidth = null;
 		this.targetHeight = null;
+		this.scrollbarWidth = null;
+		this.scrollbarHeight = null;
 		this.onArtistHovered = onArtistHovered;
 		this.onArtistClicked = onArtistClicked;
 	}
@@ -50,30 +52,29 @@ export default class Blobs {
 		return radius;
 	}
 
-	recalcRadii() {
+	recalcRadii(randomize = true) {
 		for (let i = 0; i < this.balls.length; i++) {
-			this.balls[i].radius = this.calcRadius(i);
+			this.balls[i].radius = this.calcRadius(i, randomize);
 		}
 	}
 
-	calcRadius(idx) {
-		// console.log(document.body.scrollWidth,window.innerHeight);
-		// console.log(paper.view.size.width,  paper.view.size.height);
-
+	calcRadius(idx, randomize = true) {
 		let viewArea = paper.view.size.width * paper.view.size.height;
 		let radius;
 		if (this.collapsed && idx !== 0) {
-			radius = Math.sqrt(viewArea / this.numBalls)/2;
+			radius = Math.sqrt(viewArea / this.numBalls) / 2;
 			if (idx === 0)
 				radius *= this.mouseRadiusMultiplier;
 		} else {
 			viewArea *= this.viewRatio;
 			radius = Math.sqrt(viewArea / this.numBalls / Math.PI);
-			radius += Math.random() * (this.squeezeFactor * radius);
+			if (randomize)
+				radius += Math.random() * (this.squeezeFactor * radius);
+			else
+				radius += (this.squeezeFactor * radius);
 			if (idx === 0)
 				radius *= this.mouseRadiusMultiplier;
 		}
-		// console.log(radius, paper.view.size.width,paper.view.size.height)
 
 		return radius;
 	}
@@ -163,7 +164,6 @@ export default class Blobs {
 	recalcCanvasSize() {
 		let currWidth = document.body.scrollWidth;
 		let currHeight = window.innerHeight;
-		console.log(document.body.scrollWidth);
 		if (this.collapsed) {
 
 			// let tempBall = this.balls[1];
@@ -176,12 +176,10 @@ export default class Blobs {
 
 		this.targetWidth = currWidth;
 		this.targetHeight = currHeight;
-
 		this.animateCanvasSize();
 	}
 
-	animateCanvasSize(horizShrink = null, vertShrink = null) {
-		// debugger
+	animateCanvasSize(horizShrink = null, vertShrink = null, step = 0) {
 		let currW = paper.view.size.width;
 		let currH = paper.view.size.height;
 
@@ -190,17 +188,18 @@ export default class Blobs {
 		if (!vertShrink)
 			vertShrink = this.targetHeight < currH;
 
-		let steps = 10;
+		let steps = ((currW*currH) / 16000) ^ 4 + 1
 		let offsetX = horizShrink ? steps * -1 : steps;
 		let offsetY = vertShrink ? steps * -1 : steps;
-
-		this.recalcRadii();
 
 		let setW = currW + offsetX;
 		let setH = currH + offsetY;
 
-		if ((horizShrink && setW < this.targetWidth) || (!horizShrink && setW > this.targetWidth))
+
+		if ((horizShrink && setW < this.targetWidth) || (!horizShrink && setW > this.targetWidth)) {
 			setW = this.targetWidth;
+
+		}
 
 		if (vertShrink && setH < this.targetHeight || (!vertShrink && setH > this.targetHeight)) {
 			setH = this.targetHeight;
@@ -208,40 +207,16 @@ export default class Blobs {
 
 		paper.view.viewSize = new paper.Size(setW, setH);
 
-		if (setW !== this.targetWidth || setH !== this.targetHeight){
-			console.log( this.targetWidth, this.targetHeight);
+		this.recalcRadii(false);
 
+		if (setW !== this.targetWidth || setH !== this.targetHeight) {
 			requestAnimationFrame(() => {
-				this.animateCanvasSize(horizShrink, vertShrink)
-			})
+				this.animateCanvasSize(horizShrink, vertShrink, step + 1);
+			});
+
+		} else {
+			this.recalcRadii();
 		}
-	
-
-		// if ((horizShrink && currW < this.targetWidth) || (!horizShrink && currW > this.targetWidth)) {
-		// 	paper.view.viewSize = new paper.Size(this.targetWidth, currH);
-		// 	currW = this.targetWidth;
-		// 	return;
-		// }
-
-		// if (vertShrink && currH < this.targetHeight || (!vertShrink && currH > this.targetHeight)) {
-		// 	paper.view.viewSize = new paper.Size(currW, this.targetHeight);
-		// 	currH = this.targetHeight;
-		// 	return;
-		// }
-
-		// if (currW !== this.targetWidth) {
-		// 	paper.view.viewSize = new paper.Size(currW + offsetX, currH);
-		// 	requestAnimationFrame(() => {
-		// 		this.animateCanvasSize(horizShrink, vertShrink)
-		// 	})
-		// }
-
-		// if (currH !== this.targetHeight) {
-		// 	paper.view.viewSize = new paper.Size(currW, currH + offsetY);
-		// 	requestAnimationFrame(() => {
-		// 		this.animateCanvasSize(horizShrink, vertShrink)
-		// 	})
-		// }
 	}
 
 	onMouseMove(x, y) {
