@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, useRouteMatch } from 'react-router-dom';
-import './App.css';
+import './style.css';
 import BlobField from 'src/BlobField';
-import config from './config';
+import config from '../../config';
 import BenLerchin from 'src/work/BenLerchin';
 import BerfinAtaman from 'src/work/BerfinAtaman';
 import BlaineOneill from 'src/work/BlaineOneill';
@@ -21,27 +21,25 @@ export default class App extends Component {
     super(props);
     this.state = { width: 0, height: 0 };
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
-    document.body.style.backgroundColor = config.style.background;
-
   }
-  
+
   componentDidMount() {
     this.updateWindowDimensions();
     window.addEventListener('resize', this.updateWindowDimensions);
   }
-  
+
   componentWillUnmount() {
     window.removeEventListener('resize', this.updateWindowDimensions);
   }
-  
+
   updateWindowDimensions() {
     this.setState({ width: window.innerWidth, height: window.innerHeight });
   }
-  
+
   render() {
     return (
       <Router>
-        <div className="App" style={{ backgroundColor: config.style.background, height: window.innerHeight}}>
+        <div className="app">
           <Switch>
             <Route path='/berfin-ataman'>
               <BerfinAtaman />

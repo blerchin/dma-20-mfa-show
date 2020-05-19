@@ -1,21 +1,21 @@
+@import '../../common/reset.css';
+@import '../../common/variables.css';
+
 body {
+  margin: 0;
+  font-family: var(--body-font);
+  color: white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  background-color: var(--background-color);
+
   /* Disables pull-to-refresh but allows overscroll glow effects. */
   overscroll-behavior-y: none;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App {
-  /* min-height: 100%; */
+.app {
+  min-height: 100vh;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -29,9 +29,10 @@ body {
 .title {
   color: #e3f994;
   font-size: 17vw;
-  font-family: sans-serif; 
+  font-family: sans-serif;
   font-weight: 700;
 }
+
 .blobs {
   display: flex;
   justify-content: center;
@@ -39,30 +40,18 @@ body {
   width: 100%;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
 /* PEND LM: Not sure where this goes */
 
 
 h4 {
-  font-family: "Poppins Bold";
+  font-family: var(--header-font);
   font-size: 36pt;
   margin-bottom: 0;
 }
 
 h5 {
-  font-family: "Letter Gothic";
   font-size: 21pt;
   font-weight: normal;
   padding: 0;
@@ -87,14 +76,4 @@ ol {
   overflow: hidden;
   clip: rect(0,0,0,0);
   border: 0;
-}
-
-@font-face {
-  font-family: "Poppins Bold";
-  src: url("fonts/Poppins-Bold.ttf");
-}
-
-@font-face {
-  font-family: "Letter Gothic";
-  src: url("fonts/LetterGothicStd.otf");
 }
