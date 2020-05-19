@@ -4,7 +4,7 @@ import Nav from '../Components/Nav';
 import ProjectHeader from '../Components/ProjectHeader';
 import Image from '../Components/Image';
 import ProjectColumns from '../Components/ProjectColumns';
-import Vimeo from '../Components/Video-Vimeo';
+import Vimeo from '../Components/VideoVimeo';
 
 import GrahamImage1 from './assets/Graham Akins web template image 1.png';
 import GrahamImage2 from './assets/Graham Akins web template image 2.png';
@@ -29,7 +29,7 @@ export default function() {
                         <Vimeo
                             url="https://player.vimeo.com/video/?color=ffffff&amp;title=0&amp;byline=0&amp;portrait=0"
                         />
-                    
+
                     ]}
                 />
                 <ProjectColumns

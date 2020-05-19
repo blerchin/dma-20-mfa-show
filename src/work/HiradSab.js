@@ -4,7 +4,7 @@ import Nav from '../Components/Nav';
 import ProjectHeader from '../Components/ProjectHeader';
 import ArtistBio from '../Components/ArtistBio';
 import ProjectColumns from '../Components/ProjectColumns';
-import Vimeo from '../Components/Video-Vimeo';
+import Vimeo from '../Components/VideoVimeo';
 
 export default function() {
     return (
@@ -22,10 +22,10 @@ export default function() {
                         <Vimeo
                             url="https://player.vimeo.com/video/397740847?color=ffffff&amp;title=0&amp;byline=0&amp;portrait=0"
                         />
-                    
+
                     ]}
                 />
-                
+
                 <ProjectColumns
                     columns={[
                         <p>

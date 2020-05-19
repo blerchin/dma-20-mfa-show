@@ -5,7 +5,7 @@ import ProjectHeader from '../Components/ProjectHeader';
 import ArtistBio from '../Components/ArtistBio';
 import ProjectColumns from '../Components/ProjectColumns';
 import Image from '../Components/Image';
-import Vimeo from '../Components/Video-Vimeo';
+import Vimeo from '../Components/VideoVimeo';
 
 import MilesImage1 from './assets/MilesPeyton-1.png';
 import MilesImage2 from './assets/MilesPeyton-2.jpg';
@@ -29,7 +29,7 @@ export default function() {
                         <Vimeo
                             url="https://player.vimeo.com/video/419788716?color=ffffff&amp;title=0&amp;byline=0&amp;portrait=0"
                         />
-                    
+
                     ]}
                 />
                 <ProjectColumns
@@ -39,7 +39,7 @@ export default function() {
                                 Solar projection of a physical water animation. A droplet of water animates on a square of etched, conductive glass. The animation is driven by electricity and influenced by the pattern etched on the glass, which functions as a visual score and electrical circuit. The animation is displayed as an analog projection that uses sunlight as a light source.
                             </p>
                             <p>
-                                From 6/1 to 6/12, ten live streams, each using a different etched glass, will take place at 3PM PST, when the sunlight is strongest in the space. 
+                                From 6/1 to 6/12, ten live streams, each using a different etched glass, will take place at 3PM PST, when the sunlight is strongest in the space.
                             </p>
                         </div>
                     ]}
@@ -101,7 +101,7 @@ export default function() {
                                 In a paper, Huxley named me <i>Bathybius Haeckelii</i>. Bathybius means “deep life,” and Haeckelii was in honor of his friend, the zoologist and artist Ernst Haeckel, who was a proponent of the primordial slime theory. I provided a link between nonliving and living matter, and as such became an object of intense study. Huxley declared in speeches that my body, in the form of a continuous mat, spanned the ocean floor, and possibly covered the entire earth.
                             </p>
                             <p>
-                                My time as a living being was limited. For several years, the scientific community classified me as a living organism. When Huxley's rival Lynn Margulis demonstrated that my movements were caused by an inorganic reaction between mud and alcohol, added to the mud sample as a preservative, I was reclassified as non-life, a found automaton. Life is the transmutation of sunlight, she wrote in the paper that disproved my aliveness. 
+                                My time as a living being was limited. For several years, the scientific community classified me as a living organism. When Huxley's rival Lynn Margulis demonstrated that my movements were caused by an inorganic reaction between mud and alcohol, added to the mud sample as a preservative, I was reclassified as non-life, a found automaton. Life is the transmutation of sunlight, she wrote in the paper that disproved my aliveness.
                             </p>
                         </div>
                     ]}

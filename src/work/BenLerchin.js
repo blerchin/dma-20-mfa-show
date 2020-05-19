@@ -5,7 +5,7 @@ import ProjectHeader from '../Components/ProjectHeader';
 import ArtistBio from '../Components/ArtistBio';
 import ProjectColumns from '../Components/ProjectColumns';
 import Image from '../Components/Image';
-import Vimeo from '../Components/Video-Vimeo'
+import Vimeo from '../Components/VideoVimeo'
 
 import BenImage from './assets/BenLerchin-yimby-cover.jpg';
 
