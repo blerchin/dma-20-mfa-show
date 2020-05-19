@@ -6,6 +6,8 @@ import paper from "paper";
 import style from "./style.module.scss";
 import Blobs from "./blobs";
 
+import ArtistNav from '../Components/ArtistNav/';
+
 export default function BlobField({ collapsed = false }) {
   const animationEl = useRef(null);
   const wrapperEl = useRef(null);
@@ -71,6 +73,7 @@ export default function BlobField({ collapsed = false }) {
 
   return (
     <div className={style.wrapper} ref={wrapperEl} style={{width: parentWidth, height: parentHeight}}>
+      <ArtistNav />
       <canvas
         ref={animationEl}
         width={width}
