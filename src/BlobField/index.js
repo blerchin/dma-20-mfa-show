@@ -23,6 +23,7 @@ export default function BlobField({ collapsed = false }) {
     const onArtistHovered = (event) => {
       if (event.type === "mouseenter") setActiveArtist(event.target.artist);
       else setActiveArtist(null);
+      console.log(event.target.position);
     };
 
     const onArtistClicked = (event) => {
@@ -82,7 +83,11 @@ export default function BlobField({ collapsed = false }) {
         ""
       ) : (
         <div className="title">
-          {activeArtist ? activeArtist.name.toUpperCase() : "NEARREST NEIGHBOR"}
+          {activeArtist
+            ? activeArtist.name.split(" ").map((item, i) => {
+                return <p key={i}>{item.toUpperCase()}</p>;
+              })
+            : "NEARREST NEIGHBOR"}
         </div>
       )}
     </div>
