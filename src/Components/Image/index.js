@@ -17,7 +17,7 @@ const Image = ({
   };
 
   const parentStyles = {
-    "line-height": "0",
+    lineHeight: "0",
   };
 
   const [showBG, setShowBG] = useState(true);
