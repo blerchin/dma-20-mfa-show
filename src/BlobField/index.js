@@ -6,7 +6,7 @@ import paper from "paper";
 import style from "./style.module.scss";
 import Blobs from "./blobs";
 
-import ArtistNav from '../Components/ArtistNav/';
+import ArtistNav from "../Components/ArtistNav/";
 
 export default function BlobField({ collapsed = false }) {
   const animationEl = useRef(null);
@@ -70,15 +70,14 @@ export default function BlobField({ collapsed = false }) {
     blobsRef.current && blobsRef.current.setIsCollapsed(collapsed);
   }, [blobsRef, collapsed]);
 
-
   return (
-    <div className={style.wrapper} ref={wrapperEl} style={{width: parentWidth, height: parentHeight}}>
+    <div
+      className={style.wrapper}
+      ref={wrapperEl}
+      style={collapsed ? {} : { width: parentWidth, height: parentHeight }}
+    >
       <ArtistNav />
-      <canvas
-        ref={animationEl}
-        width={width}
-        height={height}
-      />
+      <canvas ref={animationEl} width={width} height={height} />
       {collapsed ? (
         ""
       ) : (
