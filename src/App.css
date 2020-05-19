@@ -51,3 +51,50 @@ body {
     transform: rotate(360deg);
   }
 }
+
+/* PEND LM: Not sure where this goes */
+
+
+h4 {
+  font-family: "Poppins Bold";
+  font-size: 36pt;
+  margin-bottom: 0;
+}
+
+h5 {
+  font-family: "Letter Gothic";
+  font-size: 21pt;
+  font-weight: normal;
+  padding: 0;
+  margin: 0;
+}
+
+ol {
+  padding-left: 1.8em;
+}
+
+.artistContent {
+  max-width: 70%;
+  margin: 200px auto;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+@font-face {
+  font-family: "Poppins Bold";
+  src: url("fonts/Poppins-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Letter Gothic";
+  src: url("fonts/LetterGothicStd.otf");
+}

@@ -1,21 +1,43 @@
 .container {
   text-align: left;
-  margin-bottom: 20px;
+  position: fixed;
+  top: 75px;
+  left: 75px;
+  z-index: 1;
 }
 
 .headerArtist {
   margin: 0;
+  font-size: 24pt;
+  font-family: "Letter Gothic";
 }
 
 .headerTitle {
   margin: 0;
+  font-size: 48pt;
+  line-height: 57.6pt;
+  font-family: "Poppins Bold"
 }
 
 .headerMaterials {
-  text-decoration: italic;
+  font-style: italic;
+  font-size: 18pt;
+  font-family: "Letter Gothic";
 }
 
 .headerLink {
   background-color: white;
   color: black;
+  font-size: 12pt;
+  line-height: 12pt;
+  font-weight: bold;
+  display: inline-block;
+  padding: 6px 6px 4px 6px;
+  font-family: "Letter Gothic";
 }
+
+a {
+  color: black;
+  text-decoration: none;
+}
+

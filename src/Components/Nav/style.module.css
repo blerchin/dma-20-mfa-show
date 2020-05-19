@@ -1,0 +1,16 @@
+.container {
+  font-family: "Poppins Bold";
+  font-size: 36pt;
+  line-height: 43.2pt;
+  text-align: left;
+  position: fixed;
+  bottom: 75px;
+  left: 75px;
+  z-index: 1;
+}
+
+.container ul, .container li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
