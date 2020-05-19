@@ -165,18 +165,28 @@ export default class Blobs {
 		let currWidth = document.body.scrollWidth;
 		let currHeight = window.innerHeight;
 		if (this.collapsed) {
-
-			// let tempBall = this.balls[1];
 			let rad = Math.ceil(this.calcCollapsedRadius());
 			if (currWidth > currHeight)
 				currWidth = rad * 2;
 			else
 				currHeight = rad * 2;
 		}
-
 		this.targetWidth = currWidth;
 		this.targetHeight = currHeight;
-		this.animateCanvasSize();
+
+		// toggle true/false to see animated and immediate resizing on homepage
+		this.resizeCanvas(true); 
+	}
+
+	resizeCanvas(resizeOnHompage = false) {
+		if (resizeOnHompage || this.collapsed) {
+			// Animated resizing
+			this.animateCanvasSize();
+		} else {
+			// Immediate resizing
+			paper.view.viewSize = new paper.Size(this.targetWidth, this.targetHeight);
+			this.recalcRadii();
+		}
 	}
 
 	animateCanvasSize(horizShrink = null, vertShrink = null, step = 0) {
@@ -188,7 +198,7 @@ export default class Blobs {
 		if (!vertShrink)
 			vertShrink = this.targetHeight < currH;
 
-		let steps = window.innerWidth/100;
+		let steps = window.innerWidth / 100;
 		let offsetX = horizShrink ? steps * -1 : steps;
 		let offsetY = vertShrink ? steps * -1 : steps;
 
