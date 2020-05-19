@@ -3,7 +3,10 @@ import paper from "paper";
 import Ball from "./ball";
 
 export default class Blobs {
-	constructor(artists, { onArtistHovered, onArtistClicked }) {
+	constructor(artists, {
+		onArtistHovered,
+		onArtistClicked
+	}) {
 		console.log("Blobs#constructor");
 		this.artists = artists;
 		this.balls = [];
@@ -24,6 +27,8 @@ export default class Blobs {
 		this.hoverActiveOpacity = 1;
 		this.isSlowSim = false;
 		this.collapsed = false;
+		this.targetWidth = null;
+		this.targetHeight = null;
 		this.onArtistHovered = onArtistHovered;
 		this.onArtistClicked = onArtistClicked;
 	}
@@ -35,13 +40,12 @@ export default class Blobs {
 	setIsCollapsed(val) {
 		this.collapsed = val;
 		this.recalcCanvasSize();
-		this.recalcRadii();
 	}
 
 	calcCollapsedRadius() {
 		let radius;
-		let orentation = window.innerWidth > window.innerHeight;
-		let totalLength = orentation ? window.innerHeight : window.innerWidth;
+		let orentation = document.body.scrollWidth > window.innerHeight;
+		let totalLength = orentation ? window.innerHeight : document.body.scrollWidth;
 		radius = totalLength / (this.numBalls * 2);
 		return radius;
 	}
@@ -53,16 +57,24 @@ export default class Blobs {
 	}
 
 	calcRadius(idx) {
-		const viewArea = window.innerWidth * window.innerHeight * this.viewRatio;
+		// console.log(document.body.scrollWidth,window.innerHeight);
+		// console.log(paper.view.size.width,  paper.view.size.height);
+
+		let viewArea = paper.view.size.width * paper.view.size.height;
 		let radius;
 		if (this.collapsed && idx !== 0) {
-			radius = this.calcCollapsedRadius();
+			radius = Math.sqrt(viewArea / this.numBalls)/2;
+			if (idx === 0)
+				radius *= this.mouseRadiusMultiplier;
 		} else {
+			viewArea *= this.viewRatio;
 			radius = Math.sqrt(viewArea / this.numBalls / Math.PI);
 			radius += Math.random() * (this.squeezeFactor * radius);
 			if (idx === 0)
 				radius *= this.mouseRadiusMultiplier;
 		}
+		// console.log(radius, paper.view.size.width,paper.view.size.height)
+
 		return radius;
 	}
 
@@ -75,9 +87,13 @@ export default class Blobs {
 		mouseBall.radius = this.calcRadius(0);
 		mouseBall.path.opacity = 0;
 		mouseBall.path.isMouse = true;
-		mouseBall.isVertical = window.innerWidth > window.innerHeight;
+		mouseBall.isVertical = document.body.scrollWidth > window.innerHeight;
 		mouseBall.setIdx(0);
 		this.balls.push(mouseBall);
+
+		this.targetWidth = document.body.scrollWidth;
+		this.targetHeight = window.innerHeight;
+
 
 		for (let i = 0; i < this.numBalls; i++) {
 			const position = paper.Point.random().multiply(paper.view.size);
@@ -90,7 +106,7 @@ export default class Blobs {
 			currBall.shadowColor.alpha = this.opacity / 2;
 			currBall.path.artist = this.artists[i];
 			currBall.setIdx(this.balls.length);
-			currBall.isVertical = window.innerWidth > window.innerHeight;
+			currBall.isVertical = document.body.scrollWidth > window.innerHeight;
 			currBall.path.onMouseEnter = this.pathOnMouseEnter.bind(this);
 			currBall.path.onMouseLeave = this.pathOnMouseLeave.bind(this);
 			currBall.path.onClick = this.pathOnClick.bind(this);
@@ -139,15 +155,17 @@ export default class Blobs {
 		this.recalcCanvasSize();
 		for (let i = 0; i < this.balls.length; i++) {
 			this.balls[i].radius = this.calcRadius(i);
-			let tempIsVert = window.innerWidth > window.innerHeight;
+			let tempIsVert = document.body.scrollWidth > window.innerHeight;
 			this.balls[i].isVertical = tempIsVert;
 		}
 	}
 
 	recalcCanvasSize() {
-		let currWidth = document.body.clientWidth;
+		let currWidth = document.body.scrollWidth;
 		let currHeight = window.innerHeight;
+		console.log(document.body.scrollWidth);
 		if (this.collapsed) {
+
 			// let tempBall = this.balls[1];
 			let rad = Math.ceil(this.calcCollapsedRadius());
 			if (currWidth > currHeight)
@@ -155,7 +173,75 @@ export default class Blobs {
 			else
 				currHeight = rad * 2;
 		}
-		paper.view.viewSize = new paper.Size(currWidth, currHeight);
+
+		this.targetWidth = currWidth;
+		this.targetHeight = currHeight;
+
+		this.animateCanvasSize();
+	}
+
+	animateCanvasSize(horizShrink = null, vertShrink = null) {
+		// debugger
+		let currW = paper.view.size.width;
+		let currH = paper.view.size.height;
+
+		if (!horizShrink)
+			horizShrink = this.targetWidth < currW;
+		if (!vertShrink)
+			vertShrink = this.targetHeight < currH;
+
+		let steps = 10;
+		let offsetX = horizShrink ? steps * -1 : steps;
+		let offsetY = vertShrink ? steps * -1 : steps;
+
+		this.recalcRadii();
+
+		let setW = currW + offsetX;
+		let setH = currH + offsetY;
+
+		if ((horizShrink && setW < this.targetWidth) || (!horizShrink && setW > this.targetWidth))
+			setW = this.targetWidth;
+
+		if (vertShrink && setH < this.targetHeight || (!vertShrink && setH > this.targetHeight)) {
+			setH = this.targetHeight;
+		}
+
+		paper.view.viewSize = new paper.Size(setW, setH);
+
+		if (setW !== this.targetWidth || setH !== this.targetHeight){
+			console.log( this.targetWidth, this.targetHeight);
+
+			requestAnimationFrame(() => {
+				this.animateCanvasSize(horizShrink, vertShrink)
+			})
+		}
+	
+
+		// if ((horizShrink && currW < this.targetWidth) || (!horizShrink && currW > this.targetWidth)) {
+		// 	paper.view.viewSize = new paper.Size(this.targetWidth, currH);
+		// 	currW = this.targetWidth;
+		// 	return;
+		// }
+
+		// if (vertShrink && currH < this.targetHeight || (!vertShrink && currH > this.targetHeight)) {
+		// 	paper.view.viewSize = new paper.Size(currW, this.targetHeight);
+		// 	currH = this.targetHeight;
+		// 	return;
+		// }
+
+		// if (currW !== this.targetWidth) {
+		// 	paper.view.viewSize = new paper.Size(currW + offsetX, currH);
+		// 	requestAnimationFrame(() => {
+		// 		this.animateCanvasSize(horizShrink, vertShrink)
+		// 	})
+		// }
+
+		// if (currH !== this.targetHeight) {
+		// 	paper.view.viewSize = new paper.Size(currW, currH + offsetY);
+		// 	requestAnimationFrame(() => {
+		// 		this.animateCanvasSize(horizShrink, vertShrink)
+		// 	})
+		// }
 	}
 
 	onMouseMove(x, y) {
@@ -171,24 +257,20 @@ export default class Blobs {
 
 		for (let i = 1; i < this.balls.length; i++) {
 			if (this.balls[i].path !== event.target) {
-				this.balls[i].path.tween(
-					{
+				this.balls[i].path.tween({
 						opacity: this.balls[i].path.opacity,
 						shadowColor: this.balls[i].path.shadowColor,
-					},
-					{
+					}, {
 						opacity: this.hoverFadedOpacity,
 						shadowColor: this.balls[i].shadowInactiveColor,
 					},
 					this.animationDuration
 				);
 			} else {
-				this.balls[i].path.tween(
-					{
+				this.balls[i].path.tween({
 						opacity: this.balls[i].path.opacity,
 						// shadowColor: this.balls[i].path.shadowColor,
-					},
-					{
+					}, {
 						opacity: this.hoverActiveOpacity,
 						// shadowColor: this.balls[i].shadowColor,
 					},
@@ -209,12 +291,10 @@ export default class Blobs {
 		// this.repulseBall(idx);
 
 		for (let i = 1; i < this.balls.length; i++) {
-			this.balls[i].path.tween(
-				{
+			this.balls[i].path.tween({
 					opacity: this.balls[i].path.opacity,
 					shadowColor: this.balls[i].path.shadowColor,
-				},
-				{
+				}, {
 					opacity: this.opacity,
 					shadowColor: this.balls[i].shadowInactiveColor,
 				},
