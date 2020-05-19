@@ -16,6 +16,8 @@ export default function BlobField({ collapsed = false }) {
   const [activeArtist, setActiveArtist] = useState(null);
   const [height, setHeight] = useState(window.innerHeight);
   const [width, setWidth] = useState(window.innerWidth);
+  const [parentWidth, setParentWidth] = useState(window.innerWidth);
+  const [parentHeight, setParentHeight] = useState(window.innerHeight);
 
   useEffect(() => {
     const onArtistHovered = (event) => {
@@ -41,8 +43,8 @@ export default function BlobField({ collapsed = false }) {
     paper.view.onFrame = (evt) => blobs.onFrame(evt);
 
     const handleResize = (evt) => {
-      setWidth(document.body.clientWidth);
-      setHeight(window.innerHeight);
+      setParentWidth(document.body.clientWidth);
+      setParentHeight(window.innerHeight);
       blobs.onResize(evt);
     };
 
@@ -70,7 +72,7 @@ export default function BlobField({ collapsed = false }) {
 
 
   return (
-    <div className={style.wrapper} ref={wrapperEl} style={{width: width, height: height}}>
+    <div className={style.wrapper} ref={wrapperEl} style={{width: parentWidth, height: parentHeight}}>
       <ArtistNav />
       <canvas
         ref={animationEl}
