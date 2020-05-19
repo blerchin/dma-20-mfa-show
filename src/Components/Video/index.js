@@ -22,7 +22,7 @@ const Video = ({
 
   return (
     <div className={`${container} ${isFullHeight ? fullHeight : ''}`}>
-      <video crossorigin="anonymous" controls style={style}>
+      <video crossOrigin="anonymous" controls style={style}>
         <source src={src} />
       </video>
       {

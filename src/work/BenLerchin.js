@@ -1,92 +1,56 @@
 import React from 'react';
 
+import Nav from '../Components/Nav';
 import ProjectHeader from '../Components/ProjectHeader';
 import ArtistBio from '../Components/ArtistBio';
-import ProjectLink from '../Components/ProjectLink';
 import ProjectColumns from '../Components/ProjectColumns';
 import Image from '../Components/Image';
-import Video from '../Components/Video';
+import Vimeo from '../Components/Video-Vimeo'
+
+import BenImage from './assets/BenLerchin-yimby-cover.jpg';
 
 export default function() {
     return (
         <div className="artist">
+            <Nav />
             <ProjectHeader
                 artistName="Ben Lerchin"
-                title="The Resource Observatory"
-                materials="Interactive Web Installation"
-                link="http://benlerchin.com/"
+                title="Yes, in my Backyard"
+                materials="10 minute video"
+                link="http://benlerchin.com"
             />
+            <div className="artistContent">
             <ProjectColumns
-                columns={[
-                    <Video
-                        maxHeight="80vh"
-                        src="http://repetitionrepetition.com/launch2.mp4"
-                    />
-                ]}
-            />
-            <ProjectColumns
-                columns={[
-                    <Image
-                        src="http://via.placeholder.com/1200x1200"
-                        alt="A grey field with the text 1200x1200"
-                    />,
-                    <Image
-                        src="http://via.placeholder.com/1200x1200"
-                        alt="A grey field with the text 1200x1200"
-                        caption="This image has a caption."
-                    />
-                ]}
-            />
-            <ProjectColumns
-                columns={[
-                    <Image
-                        fullHeight
-                        src="http://via.placeholder.com/1200x1200"
-                        alt="A grey field with the text 1200x1200"
-                        caption="This image has a caption."
-                    />
-                ]}
-            />
-            <ProjectColumns
-                columns={[
+                    columns={[
+                        <Vimeo
+                            url="https://player.vimeo.com/video/TK?color=ffffff&amp;title=0&amp;byline=0&amp;portrait=0"
+                        />
+                    
+                    ]}
+                />
+                <ProjectColumns
+                    columns={[
+                        <Image
+                            img={BenImage}
+                            alt='Still from video. A gray industrial concrete and metal box is in the foreground, with the text
+                            "MILE 103" obliquely visible. Low brush growth is seen in the near background, behind which a number
+                            of wind turbines are visible.'
+                        />
+                    ]}
+                />
+                <ProjectColumns
+                    columns={[
+                        <p>
+                            Semi-satirical mockumentary reframing Los Angeles' infrastructure as a tourist destination for nature-lovers.
+                        </p>
+                    ]}
+                />
+                <ArtistBio>
                     <p>
-                        Es irrt der Mensch, wenn er sie beim Kragen hätte. So schreitet in dem engen Bretterhaus (Theater, Bühne)
-                        Den ganzen Kreis der Schöpfung aus, Und wandelt mit bedächt'ger Schnelle Vom Himmel durch die Welt zur Hölle!
-                    </p>,
-                    <p>
-                        Hier ist des Volkes wahrer Himmel, Zufrieden jauchzet groß und klein, Hier bin ich nicht; doch viel
-                        ist mir bewusst. Gewöhnlich glaubt der Mensch, wenn er sie beim Kragen hätte. Vernunft fängt wieder
-                        an zu sprechen Und Hoffnung wieder an zu blühn; Man sehnt sich nach des Lebens Quelle hin.
+                        Ben Lerchin is an artist and technologist who works with software, photography, and digital fabrication. Their practice deals extensively with the relationship between the photographic image and the American West. Reflecting on the uneasy experience of living between the city and the wilderness, my work attempts to reconcile a networked, industrialized lifestyle with the unstable ground under our feet. It is an attempt to erase boundaries with the natural world, and to see it not as victim nor antagonist, but as co-conspirator and friend. Using digital photographic processes, Ben embeds a polyphony of viewpoints into three dimensional forms reminiscent of the landscape from which they emerge, showing sites of resource management in relation to the people that depend on them.
                     </p>
-                ]}
-            />
-            <ProjectColumns
-                columns={[
-                    <Image
-                        maxHeight="500px"
-                        src="http://via.placeholder.com/1200x1200"
-                        alt="A grey field with the text 1200x1200"
-                        caption="This image has a caption."
-                    />
-                ]}
-            />
-            <ProjectLink
-                href="http://www.ubu.com/"
-                text="VIEW THIS PROJECT"
-            />
-            <ArtistBio>
-                <p>
-                    So schreitet in dem engen Bretterhaus (Theater, Bühne) Den ganzen Kreis der Schöpfung aus, Und wandelt
-                    mit bedächtger Schnelle Vom Himmel durch die Welt zur Hölle! Vernunft fängt wieder an zu sprechen
-                    Und Hoffnung wieder an zu blühn; Man sehnt sich nach des Lebens Quelle hin. Vernunft fängt wieder
-                    an zu sprechen Und Hoffnung wieder an zu blühn; Man sehnt sich nach des Lebens Quelle hin.
-                </p>
-                <p>
-                    Gewöhnlich glaubt der Mensch, wenn er sie beim Kragen hätte. Ich bin von je der Ordnung Freund gewesen.
-                    Vernunft fängt wieder an zu sprechen Und Hoffnung wieder an zu sprechen Und Hoffnung wieder an zu sprechen
-                    Und Hoffnung wieder an zu sprechen Und Hoffnung wieder an zu blühn; Man sehnt sich nach des Lebens goldner Baum.
-                </p>
-            </ArtistBio>
+                </ArtistBio>
+            </div>
         </div>
     );
 }

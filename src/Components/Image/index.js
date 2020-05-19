@@ -7,47 +7,61 @@ import {
   fullHeight,
 } from './style.module.css';
 
-const Image = ({
-  src,
-  alt,
-  caption = false,
-  fullHeight: isFullHeight = false,
-  maxHeight = 'auto'
-}) => {
-  const style = {
-    maxHeight,
-  };
-
-  if (maxHeight !== 'auto' && isFullHeight === false) {
-    style.width = 'auto';
+class Image extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { showBG: true };
+    this.handleImageLoaded = this.handleImageLoaded.bind(this);
   }
 
-  return (
-    <div className={`${container} ${isFullHeight ? fullHeight : ''}`}>
-      <img
-        style={style}
-        src={src}
-        alt={alt}
-      />
-      {
-        caption && (
-          <div className={cap}>
-            {caption}
-          </div>
-        )
-      }
-    </div>
-  );
+  handleImageLoaded() {   
+    this.setState({showBG: false});
+  }
+
+  render() {
+    let {maxHeight,isFullHeight, img, fullHeight,caption,alt} = this.props;
+    const style = {
+      maxHeight,
+    };
+  
+    if (maxHeight !== 'auto' && isFullHeight === false) {
+      style.width = 'auto';
+    };
+    return (
+      <div className={`${container} ${isFullHeight ? fullHeight : ''}`} style={{
+        backgroundSize: 'cover',
+        backgroundImage: this.state.showBG ? 'url("' + img.placeholder + '")' : 'none'
+      }}>
+        <img
+          style={style}
+          src={img.src}
+          srcSet={img.srcSet}
+          onLoad={this.handleImageLoaded}
+          alt={alt}
+        />
+        {
+          caption && (
+            <div className={cap}>
+              {caption}
+            </div>
+          )
+        }
+      </div>
+    );
+  }
 }
 
 Image.defaultProps = {
+  img: null,
+  alt: null,
   caption: '',
-  fillViewport: false,
+  fullHeight: false,
+  isFullHeight: false,
   maxHeight: 'auto',
-};
+}
 
 Image.propTypes = {
-  src: PropTypes.string.isRequired,
+  img: PropTypes.PropTypes.object.isRequired,
   alt: PropTypes.string.isRequired,
   caption: PropTypes.string,
   fillViewport: PropTypes.bool,
