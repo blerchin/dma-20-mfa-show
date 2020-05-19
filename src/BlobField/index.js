@@ -39,8 +39,8 @@ export default function BlobField({ collapsed = false }) {
     paper.view.onFrame = (evt) => blobs.onFrame(evt);
 
     const handleResize = (evt) => {
-      // setWidth(document.body.clientWidth);
-      // setHeight(window.innerHeight);
+      setWidth(document.body.clientWidth);
+      setHeight(window.innerHeight);
       blobs.onResize(evt);
     };
 
@@ -68,7 +68,7 @@ export default function BlobField({ collapsed = false }) {
 
 
   return (
-    <div className={style.wrapper} ref={wrapperEl}>
+    <div className={style.wrapper} ref={wrapperEl} style={{width: width, height: height}}>
       <canvas
         ref={animationEl}
         width={width}

@@ -14,16 +14,16 @@ class Image extends React.Component {
     this.handleImageLoaded = this.handleImageLoaded.bind(this);
   }
 
-  handleImageLoaded() {   
+  handleImageLoaded() {
     this.setState({showBG: false});
   }
 
   render() {
-    let {maxHeight,isFullHeight, img, fullHeight,caption,alt} = this.props;
+    let {maxHeight, img, fullHeight: isFullHeight, caption,alt} = this.props;
     const style = {
       maxHeight,
     };
-  
+
     if (maxHeight !== 'auto' && isFullHeight === false) {
       style.width = 'auto';
     };
@@ -56,7 +56,6 @@ Image.defaultProps = {
   alt: null,
   caption: '',
   fullHeight: false,
-  isFullHeight: false,
   maxHeight: 'auto',
 }
 

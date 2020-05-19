@@ -1,5 +1,15 @@
 .container {
+  border-top: 1px solid white;
+  padding-top: 95px;
   text-align: left;
-  font-family: "Letter Gothic";
-  font-size: 21pt;
+  font-size: 21px;
+  margin: 95px auto 0;
+  max-width: var(--insetMaxWidth);
 }
+
+.header {
+  margin: 0 0 37px;
+  font-size: 36px;
+  font-family: var(--header-font);
+}
+
