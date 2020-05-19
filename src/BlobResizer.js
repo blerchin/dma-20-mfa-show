@@ -20,7 +20,7 @@ export default function({ collapsed, ...props }) {
       } else if (collapsed) {
         setWidth(isVerticalLayout ? COLLAPSED_SIZE : window.innerWidth);
         setHeight(isVerticalLayout ? window.innerHeight : COLLAPSED_SIZE);
-      } else if (width < window.innerWidth || height < window.innerHeight) {
+      } else if (width !== window.innerWidth || height !== window.innerHeight) {
         setWidth(window.innerWidth);
         setHeight(window.innerHeight);
       }  

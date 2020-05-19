@@ -4,7 +4,6 @@ import Ball from "./ball";
 
 export default class Blobs {
 	constructor(artists, { onArtistHovered, onArtistClicked, width, height, collapsed }) {
-		console.log("Blobs#constructor");
 		this.artists = artists;
 		this.balls = [];
 		this.numBalls = artists.length;
@@ -36,6 +35,7 @@ export default class Blobs {
 	setSize(width, height, collapsed) {
 		this.size.width = width;
 		this.size.height = height;
+		paper.view.setViewSize(new paper.Point(width, height));
 		this.collapsed = collapsed;
 		for (let i = 0; i < this.balls.length; i++) {
 			this.balls[i].radius = this.calcRadius(i);
