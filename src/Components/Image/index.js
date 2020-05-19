@@ -48,10 +48,19 @@ const Image = ({
 };
 
 Image.defaultProps = {
+<<<<<<< HEAD
   caption: "",
   fillViewport: false,
   maxHeight: "auto",
 };
+=======
+  img: null,
+  alt: null,
+  caption: '',
+  fullHeight: false,
+  maxHeight: 'auto',
+}
+>>>>>>> origin/master
 
 Image.propTypes = {
   img: PropTypes.object.isRequired,

@@ -1,7 +1,7 @@
 .container {
-  font-family: "Poppins Bold";
-  font-size: 36pt;
-  line-height: 43.2pt;
+  font-family: var(--header-font);
+  font-size: 36px;
+  line-height: 43.2px;
   text-align: left;
   position: fixed;
   bottom: 75px;
@@ -13,4 +13,12 @@
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+.container li a {
+  color: white;
+}
+
+.container li a:hover {
+  text-decoration: underline;
 }
