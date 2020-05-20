@@ -349,10 +349,12 @@ module.exports = function(webpackEnv) {
           loader: 'responsive-loader',
           options: {
             // If you want to enable sharp support:
-            adapter: require('responsive-loader/sharp'),
+            adapter: require('./sharp-adapter'),
               sizes: [300, 600, 1200, 2000],
               placeholder: true,
-              placeholderSize: 50
+              placeholderSize: 50,
+              quality: 90,
+              // format: 'jpg'
           }
         },
         {
@@ -609,9 +611,6 @@ module.exports = function(webpackEnv) {
             entrypoints: entrypointFiles,
           };
         },
-      }),
-      new webpack.DefinePlugin({
-        liquidfun: 'liquidfun'
       }),
       // Moment.js is an extremely popular library that bundles large locale files
       // by default due to how webpack interprets its code. This is a practical

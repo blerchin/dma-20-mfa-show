@@ -3,8 +3,13 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 20px;
-  font-family: "Letter Gothic";
-  font-size: 21pt;
-  line-height: 25.2pt;
+  font-size: 21px;
+  line-height: 25.2px;
+  grid-column: 1 / span var(--columns);
+  max-width: var(--insetMaxWidth);
+  margin: 0 auto 100px auto;
 }
 
+.fullBleede {
+  max-width: 100vw;
+}

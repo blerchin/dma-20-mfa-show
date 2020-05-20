@@ -1,0 +1,13 @@
+:root {
+  --background-color: #000;
+  --body-font:  letter-gothic-std, monospace;
+  --header-font: poppins, sans-serif;
+  --columns: 4;
+  --insetMaxWidth: 60%;
+  --page-gutter: 100px;
+}
+
+@custom-media --mobile (max-width: 1080px);
+@custom-media --tablet (min-width: 600px);
+@custom-media --desktop (min-width: 768px);
+@custom-media --huge (min-width: 1500px);

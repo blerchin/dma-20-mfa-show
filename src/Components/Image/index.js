@@ -1,67 +1,62 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
-import {
-  container,
-  cap,
-  fullHeight,
-} from './style.module.css';
+import { container, cap, fullHeight } from "./style.module.css";
 
-class Image extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { showBG: true };
-    this.handleImageLoaded = this.handleImageLoaded.bind(this);
+const Image = ({
+  img,
+  alt,
+  caption = false,
+  fullHeight: isFullHeight = false,
+  maxHeight = "auto",
+}) => {
+  const style = {
+    maxHeight,
+  };
+
+  const parentStyles = {
+    lineHeight: "0",
+  };
+
+  const [showBG, setShowBG] = useState(true);
+
+  if (maxHeight !== "auto" && isFullHeight === false) {
+    style.width = "auto";
   }
 
-  handleImageLoaded() {   
-    this.setState({showBG: false});
-  }
-
-  render() {
-    let {maxHeight,isFullHeight, img, fullHeight,caption,alt} = this.props;
-    const style = {
-      maxHeight,
-    };
-  
-    if (maxHeight !== 'auto' && isFullHeight === false) {
-      style.width = 'auto';
-    };
-    return (
-      <div className={`${container} ${isFullHeight ? fullHeight : ''}`} style={{
-        backgroundSize: 'cover',
-        backgroundImage: this.state.showBG ? 'url("' + img.placeholder + '")' : 'none'
-      }}>
-        <img
-          style={style}
-          src={img.src}
-          srcSet={img.srcSet}
-          onLoad={this.handleImageLoaded}
-          alt={alt}
-        />
-        {
-          caption && (
-            <div className={cap}>
-              {caption}
-            </div>
-          )
-        }
-      </div>
-    );
-  }
-}
+  return (
+    <div className={`${container} ${isFullHeight ? fullHeight : ""}`}>
+      {
+        <div style={{ ...parentStyles }}>
+          <LazyLoadImage
+            src={img.src}
+            srcSet={img.srcSet}
+            alt={alt}
+            placeholderSrc={img.placeholder}
+            threshold={10}
+            effect="blur"
+            useIntersectionObserver={true}
+            style={style}
+          />
+        </div>
+      }
+      {caption && <div className={cap}>{caption}</div>}
+    </div>
+  );
+};
 
 Image.defaultProps = {
   img: null,
   alt: null,
   caption: '',
   fullHeight: false,
-  isFullHeight: false,
   maxHeight: 'auto',
 }
 
 Image.propTypes = {
-  img: PropTypes.PropTypes.object.isRequired,
+  img: PropTypes.object.isRequired,
   alt: PropTypes.string.isRequired,
   caption: PropTypes.string,
   fillViewport: PropTypes.bool,

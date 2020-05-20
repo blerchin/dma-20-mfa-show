@@ -9,9 +9,8 @@
   color: black;
   padding: 15px 10px 5px 10px;
   text-decoration: none;
-  font-family: "Letter Gothic";
   font-weight: bold;
-  font-size: 32pt;
+  font-size: 32px;
 }
 
 .container a:hover {

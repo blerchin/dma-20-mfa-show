@@ -2,38 +2,35 @@
   text-align: left;
   position: fixed;
   top: 75px;
-  left: 75px;
+  left: var(--page-gutter);
   z-index: 1;
 }
 
 .headerArtist {
   margin: 0;
-  font-size: 24pt;
-  font-family: "Letter Gothic";
+  font-size: 24px;
 }
 
 .headerTitle {
   margin: 0;
-  font-size: 48pt;
-  line-height: 57.6pt;
-  font-family: "Poppins Bold"
+  font-size: 48px;
+  line-height: 57px;
+  font-family: var(--header-font);
 }
 
 .headerMaterials {
   font-style: italic;
-  font-size: 18pt;
-  font-family: "Letter Gothic";
+  font-size: 18px;
 }
 
 .headerLink {
   background-color: white;
   color: black;
-  font-size: 12pt;
-  line-height: 12pt;
+  font-size: 12px;
+  line-height: 12px;
   font-weight: bold;
   display: inline-block;
   padding: 6px 6px 4px 6px;
-  font-family: "Letter Gothic";
 }
 
 a {

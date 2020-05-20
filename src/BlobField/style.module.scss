@@ -1,20 +1,3 @@
-.nameTag {
-    font-family: sans-serif;
-    text-transform: uppercase;
-    font-size: 14px;
-    fill: #000;
-    pointer-events: none;
-}
-.blob {
-    fill: transparent;
-    stroke: #000;
-    &:hover {
-        fill: #00ff3399;
-    }
-}
-.cursor {
-    fill: url(#cursorGradient)
-}
 .wrapper {
     display: flex;
     height: 100%;

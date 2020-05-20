@@ -2,19 +2,20 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <meta name="theme-color" content="#574DC8" />
-    <meta
-      name="description"
-      content="Online MFA show for 2020 DMA grads."
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/manifest-assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/manifest-assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="%PUBLIC_URL%/manifest-assets/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/manifest-assets/favicon-16x16.png">
+    <link rel="mask-icon" href="%PUBLIC_URL%/manifest-assets/safari-pinned-tab.svg" color="#574dc8">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="%PUBLIC_URL%/manifest-assets/mstile-144x144.png">
+    <meta name="theme-color" content="#000000">
+    <link rel="manifest" href="%PUBLIC_URL%/manifest-assets/site.webmanifest">
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -24,24 +25,16 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>Soft Bodies</title>
+    <meta
+      name="description"
+      content="Online MFA show for 2020 DMA grads."
+    />
+    <link rel="stylesheet" href="https://use.typekit.net/qmg6jpo.css">
+    <title>NEARREST NEIGHBOR</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root">
     </div>
-    <script type="application/javascript" src="%PUBLIC_URL%/liquidfun.js"></script>
-    <script type="application/javascript">
-      if(location.host.indexOf('localhost') === -1 && location.host.indexOf(location.host.indexOf('netlify') === -1)) {
-        var root = document.getElementById('root');
-        var p = document.createElement('p');
-        p.textContent = "This site has moved due to limitations of Github Pages."
-        root.appendChild(p);
-        var a = document.createElement('a');
-        a.textContent = "https://kind-tesla-a088c1.netlify.app/";
-        a.setAttribute('href', "https://kind-tesla-a088c1.netlify.app/");
-        root.appendChild(a);
-      }
-    </script>
   </body>
 </html>

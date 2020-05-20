@@ -3,17 +3,21 @@ import React from 'react';
 import {
   container,
   column,
+  fullBleede,
 } from './style.module.css';
 
+export const Column = ({ children, ...props }) => (
+  <div className={column} {...props}>{children}</div>
+);
+
 const ProjectColumns = ({
-  columns,
+  children,
+  fullBleede: isFullBleede = false,
 }) => (
-  <section className={container} style={{
-    gridTemplateColumns: `repeat(${columns.length}, 1fr)`
+  <section className={`${container} ${isFullBleede ? fullBleede : ''}`} style={{
+    gridTemplateColumns: `repeat(${React.Children.count(children)}, 1fr)`
   }}>
-    {
-      columns.map((col, idx) => <div key={idx} className={column}>{col}</div>)
-    }
+    { children }
   </section>
 );
 
