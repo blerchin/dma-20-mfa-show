@@ -32,7 +32,10 @@ body {
   font-size: 17vw;
   font-family: sans-serif;
   font-weight: 700;
-  line-height: initial;
+  line-height: normal;
+  /* Had to modify because the static build was behaving strangely when setting the proper values */
+  margin-top: 50vh;
+  transform: translateY(-50%);
 }
 
 .blobs {

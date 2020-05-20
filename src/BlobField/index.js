@@ -104,10 +104,10 @@ export default function BlobField({ collapsed = false }) {
   }, [blobsRef, collapsed]);
 
   return (
+    // Had to remove parentW/H because the static build was behaving strangely when setting the proper values 
     <div
       className={style.wrapper}
       ref={wrapperEl}
-      style={collapsed ? {} : { width: parentWidth, height: parentHeight }}
     >
       <ArtistNav />
       <canvas ref={animationEl}/>
