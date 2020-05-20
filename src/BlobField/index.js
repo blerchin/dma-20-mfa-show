@@ -3,8 +3,11 @@ import { useHistory } from "react-router-dom";
 import config from "src/config";
 import paper from "paper";
 
-import style from "./style.module.scss";
+// import test from "./style.module.scss";
+import './blobs.css';
+
 import Blobs from "./blobs";
+
 
 import ArtistNav from "../Components/ArtistNav/";
 
@@ -106,7 +109,7 @@ export default function BlobField({ collapsed = false }) {
   return (
     // Had to remove parentW/H because the static build was behaving strangely when setting the proper values 
     <div
-      className={style.wrapper}
+      className='blobs-wrapper'
       ref={wrapperEl}
     >
       <ArtistNav />
@@ -122,7 +125,7 @@ export default function BlobField({ collapsed = false }) {
             : "NEARREST NEIGHBOR"}
         </div>
       )}
-      <div className={style.popover} style={popoverStyle}>
+      <div className='popover' style={popoverStyle}>
         {collapsed && activeArtist ? activeArtist.name.toUpperCase() : ""}
       </div>
     </div>
