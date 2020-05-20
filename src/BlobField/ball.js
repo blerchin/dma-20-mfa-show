@@ -83,7 +83,7 @@ export default class Ball {
 
 	checkBorders() {
 		const size = paper.view.size;
-		const pre = this.point.add(this.force);
+		// const pre = this.point.add(this.force);
 
 		const max = paper.Point.max(this.radius, this.point.add(this.force));
 		this.point = paper.Point.min(max, size.subtract(this.radius));
@@ -111,7 +111,7 @@ export default class Ball {
 
 	react(b) {
 		const dist = this.point.getDistance(b.point);
-		if (dist < this.radius + b.radius && dist != 0) {
+		if (dist < this.radius + b.radius && dist !== 0) {
 			const overlap = this.radius + b.radius - dist;
 			// overlap /= 10;
 			const direc = this.point.subtract(b.point).normalize(overlap * this.innerForceFactor);

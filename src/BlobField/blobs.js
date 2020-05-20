@@ -209,7 +209,7 @@ export default class Blobs {
 			setW = this.targetWidth;
 		}
 
-		if (vertShrink && setH < this.targetHeight || (!vertShrink && setH > this.targetHeight)) {
+		if ((vertShrink && setH < this.targetHeight) || (!vertShrink && setH > this.targetHeight)) {
 			setH = this.targetHeight;
 		}
 

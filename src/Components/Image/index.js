@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
@@ -19,8 +19,6 @@ const Image = ({
   const parentStyles = {
     lineHeight: "0",
   };
-
-  const [showBG, setShowBG] = useState(true);
 
   if (maxHeight !== "auto" && isFullHeight === false) {
     style.width = "auto";
