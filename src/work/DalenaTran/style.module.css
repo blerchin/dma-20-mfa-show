@@ -1,0 +1,38 @@
+.p0 {
+  text-align: left;
+  width: 25%;
+  position: absolute;
+  top: 10%;
+  right: 15%;
+}
+
+.p1 {
+  text-align: right;
+  width: 25%;
+  position: absolute;
+  top: 60%;
+  left: 10%;
+}
+
+.p2 {
+  text-align: left;
+  width: 25%;
+  position: absolute;
+  top: 70%;
+  right: 10%;
+}
+
+.p3 {
+  text-align: center;
+  margin-top: 4em;
+}
+
+
+.audioHeading {
+  margin-bottom: 1em;
+  font-family: "poppins";
+}
+
+.modifiedColumn {
+  margin-top: 2em;
+}
