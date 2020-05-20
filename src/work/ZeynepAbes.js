@@ -50,19 +50,19 @@ export default function (config) {
         <Column>
           <Video
             maxHeight="80vh"
-            src="http://repetitionrepetition.com/launch2.mp4"
+            src="https://repetitionrepetition.com/launch2.mp4"
           />
         </Column>
         <Column>
           <Video
             maxHeight="80vh"
-            src="http://repetitionrepetition.com/launch2.mp4"
+            src="https://repetitionrepetition.com/launch2.mp4"
           />
         </Column>
         <Column>
           <Video
             maxHeight="80vh"
-            src="http://repetitionrepetition.com/launch2.mp4"
+            src="https://repetitionrepetition.com/launch2.mp4"
           />
         </Column>
       </ProjectColumns>

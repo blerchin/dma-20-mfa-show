@@ -20,7 +20,7 @@ export default function() {
                 columns={[
                     <Video
                         maxHeight="80vh"
-                        src="http://repetitionrepetition.com/launch2.mp4"
+                        src="https://repetitionrepetition.com/launch2.mp4"
                     />
                 ]}
             />

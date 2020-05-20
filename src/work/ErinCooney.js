@@ -30,14 +30,14 @@ export default function (config) {
         artistName="Erin Cooney"
         title="Now a Landscape, Now a Room"
         materials="2-Channel Video Performance"
-        link="http://erincooney.com/"
+        link="https://erincooney.com/"
       />
       <ProjectCover>
         <Image img={Placeholder} alt="" />
       </ProjectCover>
       <ProjectColumns>
         <Column>
-          <Video src="http://repetitionrepetition.com/launch2.mp4" />
+          <Video src="https://repetitionrepetition.com/launch2.mp4" />
         </Column>
       </ProjectColumns>
 
