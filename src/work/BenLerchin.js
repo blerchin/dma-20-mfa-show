@@ -19,6 +19,7 @@ export default function (config) {
         title={config.config.name}
         description="Scelerisque venenatis nibh fames ad quam feugiat leo commodo vitae sed lacus."
         path={config.config.slug}
+        image = {BenImage}
       />
       <ProjectHeader
         artistName="Ben Lerchin"
