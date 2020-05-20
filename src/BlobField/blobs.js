@@ -114,8 +114,7 @@ export default class Blobs {
 			this.balls.push(currBall);
 		}
 
-		if (this.collapsed)
-			this.recalcCanvasSize()
+		this.recalcCanvasSize();
 	}
 
 	onFrame() {
@@ -161,7 +160,7 @@ export default class Blobs {
 		}
 	}
 
-	recalcCanvasSize() {
+	recalcCanvasSize() {		
 		let currWidth = document.body.clientWidth;
 		let currHeight = window.innerHeight;
 		if (this.collapsed) {

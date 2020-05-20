@@ -13,8 +13,6 @@ export default function BlobField({ collapsed = false }) {
   const wrapperEl = useRef(null);
   const blobsRef = useRef(null);
   const history = useHistory();
-  const [height, setHeight] = useState(window.innerHeight);
-  const [width, setWidth] = useState(window.innerWidth);
   const [activeArtist, setActiveArtist] = useState(null);
   const [parentWidth, setParentWidth] = useState(window.innerWidth);
   const [parentHeight, setParentHeight] = useState(window.innerHeight);
@@ -112,7 +110,7 @@ export default function BlobField({ collapsed = false }) {
       style={collapsed ? {} : { width: parentWidth, height: parentHeight }}
     >
       <ArtistNav />
-      <canvas ref={animationEl} width={width} height={height} />
+      <canvas ref={animationEl}/>
       {collapsed ? (
         ""
       ) : (
