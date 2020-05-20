@@ -6,15 +6,13 @@ import ProjectHeader from '../Components/ProjectHeader';
 import ArtistBio from '../Components/ArtistBio';
 import ProjectColumns, { Column } from '../Components/ProjectColumns';
 import Image from '../Components/Image';
-import Video from '../Components/Video';
+import Vimeo from '../Components/VideoVimeo';
 
 import ErinImage1 from './assets/ErinCooney-image_01.png';
 import ErinImage2 from './assets/ErinCooney-image_02.png';
 import ErinImage3 from './assets/ErinCooney-image_03.png';
 import ErinImage4 from './assets/ErinCooney-image_04.png';
 import ErinImage5 from './assets/ErinCooney-image_05.png';
-
-import Placeholder from './assets/placeholder.png';
 
 export default function() {
     return (
@@ -26,18 +24,12 @@ export default function() {
                 link="http://erincooney.com/"
             />
             <ProjectCover>
-                <Image
-                    img={Placeholder}
-                    alt=''
-                />
-            </ProjectCover>
-            <ProjectColumns>
                 <Column>
-                    <Video
-                        src="http://repetitionrepetition.com/launch2.mp4"
+                    <Vimeo
+                        url="https://player.vimeo.com/video/397740847?color=ffffff&amp;title=0&amp;byline=0&amp;portrait=0"
                     />
                 </Column>
-            </ProjectColumns>
+            </ProjectCover>
 
             <ProjectColumns>
                 <Column>

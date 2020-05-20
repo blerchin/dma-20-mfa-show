@@ -21,14 +21,6 @@ export default function() {
             />
             <ProjectCover>
                 <Column>
-                    <Image
-                        img={Placeholder}
-                        alt=''
-                    />
-                </Column>
-            </ProjectCover>
-            <ProjectColumns>
-                <Column>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non justo non elit fringilla imperdiet ut nec purus. Quisque egestas consequat sem, quis volutpat felis vestibulum eu. Integer elementum eros non nulla consequat blandit. Donec elit erat, ullamcorper et varius vitae, volutpat sed tellus. In tempus lorem vitae ex pulvinar, at molestie orci sodales. Donec eget nisl tincidunt, fringilla purus a, accumsan diam. Sed non ipsum a est lobortis varius.
                     </p>
@@ -39,7 +31,7 @@ export default function() {
                         Sed faucibus accumsan orci, et auctor felis porta non. Aenean sit amet mauris venenatis, maximus dolor ac, vulputate mi. Nulla facilisis justo sit amet ex blandit, vel volutpat purus auctor. Nunc tincidunt nulla sed ullamcorper cursus. Mauris pretium ultrices libero, eget venenatis lacus feugiat ut. Vestibulum quis tortor in sapien tincidunt dictum non quis ante. Mauris urna justo, cursus et felis a, placerat dictum lectus. Sed egestas nunc eu sapien sollicitudin molestie.
                     </p>
                 </Column>
-            </ProjectColumns>
+            </ProjectCover>
             <ProjectColumns>
                 <Column>
                     <Vimeo

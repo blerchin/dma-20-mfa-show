@@ -16,3 +16,11 @@
   max-width: 70vw;
   object-fit: contain;
 }
+
+.container div {
+  flex: 1;
+  max-height: 70vh;
+  max-width: 70vw;
+  object-fit: contain;
+  margin: 0 auto;
+}
