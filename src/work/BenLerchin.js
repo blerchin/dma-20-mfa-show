@@ -22,24 +22,16 @@ export default function() {
             />
             <ProjectCover>
                 <Image
-                    img={Placeholder}
-                    alt=''
+                    img={BenImage}
+                    alt='Still from video. A gray industrial concrete and metal box is in the foreground, with the text
+                    "MILE 103" obliquely visible. Low brush growth is seen in the near background, behind which a number
+                    of wind turbines are visible.'
                 />
             </ProjectCover>
             <ProjectColumns>
                 <Column>
                     <Vimeo
                         url="https://player.vimeo.com/video/TK?color=ffffff&amp;title=0&amp;byline=0&amp;portrait=0"
-                    />
-                </Column>
-            </ProjectColumns>
-            <ProjectColumns>
-                <Column>
-                    <Image
-                        img={BenImage}
-                        alt='Still from video. A gray industrial concrete and metal box is in the foreground, with the text
-                        "MILE 103" obliquely visible. Low brush growth is seen in the near background, behind which a number
-                        of wind turbines are visible.'
                     />
                 </Column>
             </ProjectColumns>
