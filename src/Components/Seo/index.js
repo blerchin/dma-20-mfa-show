@@ -4,8 +4,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Helmet} from "react-helmet";
 
-const absoluteUrl = path => `https://deploy-preview-45--kind-tesla-a088c1.netlify.app/${path}`;
-const seoImageURL = file => `https://deploy-preview-45--kind-tesla-a088c1.netlify.app${file}`;
+const absoluteUrl = path => `https://deploy-preview-46--kind-tesla-a088c1.netlify.app/${path}`;
+const seoImageURL = file => `https://deploy-preview-46--kind-tesla-a088c1.netlify.app${file}`;
 
 const getMetaTags = ({
   title, description, url, contentType, published, updated, category, tags, twitter, image,
@@ -84,7 +84,7 @@ const Seo = ({
       category,
       tags,
       twitter,
-      image: image ? image.images[image.images.length - 1].path : 'fallbackimage'
+      image: image ? image.images[image.images.length - 1].path : 'FALLBACKIMAGE'
     })}
   />
 );
