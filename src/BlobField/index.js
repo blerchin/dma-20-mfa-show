@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import config from "src/config";
 import paper from "paper";
 
-import style from "./style.module.scss";
+import './style-blobs.css';
 import Blobs from "./blobs";
 
 import ArtistNav from "../Components/ArtistNav/";
@@ -105,9 +105,9 @@ export default function BlobField({ collapsed = false }) {
 
   return (
     <div
-      className={style.wrapper}
+      className='blobs-wrapper'
       ref={wrapperEl}
-      style={collapsed ? {} : { width: parentWidth, height: parentHeight }}
+      // style={collapsed ? {} : { width: parentWidth, height: parentHeight }}
     >
       <ArtistNav />
       <canvas ref={animationEl}/>
@@ -122,7 +122,7 @@ export default function BlobField({ collapsed = false }) {
             : "NEARREST NEIGHBOR"}
         </div>
       )}
-      <div className={style.popover} style={popoverStyle}>
+      <div className='blobs-popover' style={popoverStyle}>
         {collapsed && activeArtist ? activeArtist.name.toUpperCase() : ""}
       </div>
     </div>

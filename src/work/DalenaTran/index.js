@@ -18,9 +18,16 @@ import Image from '../../Components/Image';
 import DalenaImage1 from './assets/DalenaTran-1.png';
 import DalenaImage2 from './assets/DalenaTran-2.png';
 
-export default function() {
-    return (
-        <Artist>
+import Seo from "../../Components/Seo";
+export default function (config) {
+  return (
+    <Artist>
+            <Seo
+                title={config.config.name}
+                description="Scelerisque venenatis nibh fames ad quam feugiat leo commodo vitae sed lacus."
+                path={config.config.slug}
+                image = {DalenaImage1}
+            />
             <ProjectHeader
                 artistName="Dalena Tran"
                 title="Acts in Translation"
