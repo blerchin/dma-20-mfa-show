@@ -14,18 +14,16 @@ export default function BlobField({ collapsed = false }) {
   const blobsRef = useRef(null);
   const history = useHistory();
   const [activeArtist, setActiveArtist] = useState(null);
-  const [height, setHeight] = useState(window.innerHeight);
-  const [width, setWidth] = useState(window.innerWidth);
   const [parentWidth, setParentWidth] = useState(window.innerWidth);
   const [parentHeight, setParentHeight] = useState(window.innerHeight);
   const [popoverStyle, setPopooverStyle] = useState(null);
 
-  function calculateStyle(event) {
+  function calculateStyle(event, isCollapsed) {
     let style = {
       display: "none",
     };
 
-    if (collapsed && event && event.type === "mouseenter") {
+    if (isCollapsed && event && event.type === "mouseenter") {
       const isVertical = window.innerWidth > window.innerHeight;
       const count = config.artists.length;
       const totalLength = isVertical
@@ -52,24 +50,12 @@ export default function BlobField({ collapsed = false }) {
   }
 
   useEffect(() => {
-    const onArtistHovered = (event) => {
-      if (event.type === "mouseenter") {
-        setActiveArtist(event.target.artist);
-      } else {
-        setActiveArtist(null);
-      }
-      setPopooverStyle(calculateStyle(event));
-    };
-
     const onArtistClicked = (event) => {
       history.push(`/${event.target.artist.slug}`);
     };
 
-    const blobs = (blobsRef.current = new Blobs(config.artists, {
-      onArtistHovered,
-      onArtistClicked,
-    }));
-
+    const blobs = blobsRef.current = new Blobs(config.artists);
+    blobs.setOnArtistClicked(onArtistClicked);
     blobs.collapsed = collapsed;
 
     const wrapper = wrapperEl.current;
@@ -103,7 +89,18 @@ export default function BlobField({ collapsed = false }) {
   }, [blobsRef]);
 
   useEffect(() => {
-    blobsRef.current && blobsRef.current.setIsCollapsed(collapsed);
+    if (blobsRef.current) {
+      const blobs = blobsRef.current;
+      blobs.setIsCollapsed(collapsed);
+      blobs.setOnArtistHovered((event) => {
+        if (event.type === "mouseenter") {
+          setActiveArtist(event.target.artist);
+        } else {
+          setActiveArtist(null);
+        }
+        setPopooverStyle(calculateStyle(event, collapsed));
+      });
+    }
   }, [blobsRef, collapsed]);
 
   return (
@@ -113,7 +110,7 @@ export default function BlobField({ collapsed = false }) {
       style={collapsed ? {} : { width: parentWidth, height: parentHeight }}
     >
       <ArtistNav />
-      <canvas ref={animationEl} width={width} height={height} />
+      <canvas ref={animationEl} width={window.innerWidth} height={window.innerHeight} />
       {collapsed ? (
         ""
       ) : (

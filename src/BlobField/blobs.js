@@ -3,11 +3,7 @@ import paper from "paper";
 import Ball from "./ball";
 
 export default class Blobs {
-	constructor(artists, {
-		onArtistHovered,
-		onArtistClicked
-	}) {
-		console.log("Blobs#constructor");
+	constructor(artists) {
 		this.artists = artists;
 		this.balls = [];
 		this.numBalls = artists.length;
@@ -29,8 +25,6 @@ export default class Blobs {
 		this.collapsed = false;
 		this.targetWidth = null;
 		this.targetHeight = null;
-		this.onArtistHovered = onArtistHovered;
-		this.onArtistClicked = onArtistClicked;
 	}
 
 	B(idx) {
@@ -40,6 +34,14 @@ export default class Blobs {
 	setIsCollapsed(val) {
 		this.collapsed = val;
 		this.recalcCanvasSize();
+	}
+
+	setOnArtistHovered(cb) {
+		this.onArtistHovered = cb;
+	}
+
+	setOnArtistClicked(cb) {
+		this.onArtistClicked = cb;
 	}
 
 	calcCollapsedRadius() {
