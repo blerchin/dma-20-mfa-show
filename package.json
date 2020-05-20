@@ -151,6 +151,7 @@
     ]
   },
   "devDependencies": {
+    "react-helmet": "^6.0.0",
     "react-snap": "^1.23.0",
     "responsive-loader": "^1.2.0",
     "sharp": "^0.25.3"
