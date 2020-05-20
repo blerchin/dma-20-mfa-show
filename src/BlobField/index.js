@@ -20,12 +20,12 @@ export default function BlobField({ collapsed = false }) {
   const [parentHeight, setParentHeight] = useState(window.innerHeight);
   const [popoverStyle, setPopooverStyle] = useState(null);
 
-  function calculateStyle(event) {
+  function calculateStyle(event, isCollaped) {
     let style = {
       display: "none",
     };
 
-    if (collapsed && event && event.type === "mouseenter") {
+    if (isCollaped && event && event.type === "mouseenter") {
       const isVertical = window.innerWidth > window.innerHeight;
       const count = config.artists.length;
       const totalLength = isVertical
@@ -58,7 +58,7 @@ export default function BlobField({ collapsed = false }) {
       } else {
         setActiveArtist(null);
       }
-      setPopooverStyle(calculateStyle(event));
+      setPopooverStyle(calculateStyle(event, collapsed));
     };
 
     const onArtistClicked = (event) => {
