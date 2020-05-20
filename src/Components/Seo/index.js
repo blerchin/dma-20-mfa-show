@@ -18,12 +18,12 @@ const getMetaTags = ({
     { name: 'twitter:title', content: `${title} | NEARREST NEIGHBOR` },
     { name: 'twitter:description', content: description },
     { name: 'twitter:creator', content: twitter},
-    { name: 'og:title', content: `${title} | NEARREST NEIGHBOR` },
-    { name: 'og:type', content: contentType }, //https://ogp.me/#types
-    { name: 'og:url', content: url },
-    { name: 'og:description', content: description },
-    { name: 'og:site_name', content: 'NEARREST NEIGHBOR' },
-    { name: 'og:locale', content: 'en_EN' },
+    { property: 'og:title', content: `${title} | NEARREST NEIGHBOR` },
+    { property: 'og:type', content: contentType }, //https://ogp.me/#types
+    { property: 'og:url', content: url },
+    { property: 'og:description', content: description },
+    { property: 'og:site_name', content: 'NEARREST NEIGHBOR' },
+    { property: 'og:locale', content: 'en_EN' },
     // { name: 'fb:app_id', content: '<FB App ID>' },
   ];
 
@@ -34,7 +34,7 @@ const getMetaTags = ({
   if (image) {
     metaTags.push({ itemprop: 'image', content: seoImageURL(image) });
     metaTags.push({ name: 'twitter:image:src', content: seoImageURL(image) });
-    metaTags.push({ name: 'og:image', content: seoImageURL(image) });
+    metaTags.push({ property: 'og:image', content: seoImageURL(image) });
     metaTags.push({ name: 'twitter:card', content: 'summary_large_image' });
   } else {
     metaTags.push({ name: 'twitter:card', content: 'summary' });
@@ -84,7 +84,7 @@ const Seo = ({
       category,
       tags,
       twitter,
-      image: image ? image.images[image.images.length - 1].path : ''
+      image: image ? image.images[image.images.length - 1].path : 'fallbackimage'
     })}
   />
 );
