@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import Seo from "../Components/Seo";
 
-export default function () {
+export default function (config) {
   const [isProjectOpen, setIsProjectOpen] = useState(false);
   const videoEl = useRef(null);
 
@@ -13,9 +13,9 @@ export default function () {
   return (
     <>
       <Seo
-        title="Dalena"
+        title={config.config.name}
         description="Scelerisque venenatis nibh fames ad quam feugiat leo commodo vitae sed lacus."
-        path="/"
+        path={config.config.slug}
       />
       <h3>
         <button onClick={onClickStart}>Click to experience</button> the

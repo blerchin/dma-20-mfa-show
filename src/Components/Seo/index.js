@@ -4,16 +4,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Helmet} from "react-helmet";
 
-const absoluteUrl = path => `https://near.rest${path}`;
-const seoImageURL = file => `https://near.rest/ogimages/${file}`;
+const absoluteUrl = path => `https://kind-tesla-a088c1.netlify.app/${path}`;
+const seoImageURL = file => `https://kind-tesla-a088c1.netlify.app/ogimages/${file}`;
 
 const getMetaTags = ({
   title, description, url, contentType, published, updated, category, tags, twitter, image,
 }) => {
   const metaTags = [
     { itemprop: 'name', content: title },
-    { itemprop: 'description', content: description },
-    { name: 'description', content: description },
+    { itemprop: 'description', content: description ? description : 'Online MFA show for 2020 DMA grads.'},
+    { name: 'description', content: description ? description : 'Online MFA show for 2020 DMA grads.'},
     { name: 'twitter:site', content: twitter},
     { name: 'twitter:title', content: `${title} | NEARREST NEIGHBOR` },
     { name: 'twitter:description', content: description },
@@ -70,7 +70,7 @@ const Seo = ({
     htmlAttributes={getHtmlAttributes({
       schema,
     })}
-    title={ title }
+    title={ `${title} | NEARREST NEIGHBOR`}
     link={[
       { rel: 'canonical', href: absoluteUrl(path) },
     ]}

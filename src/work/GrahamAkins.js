@@ -18,13 +18,13 @@ import GrahamImage7 from "./assets/Graham Akins web template image 7.png";
 
 import Placeholder from "./assets/placeholder.png";
 
-export default function () {
+export default function (config) {
   return (
     <Artist>
       <Seo
-        title="Graham"
+        title={config.config.name}
         description="Scelerisque venenatis nibh fames ad quam feugiat leo commodo vitae sed lacus."
-        path="/"
+        path={config.config.slug}
       />
       <ProjectHeader
         artistName="Graham Akins"

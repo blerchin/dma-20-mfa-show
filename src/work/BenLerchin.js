@@ -12,13 +12,13 @@ import Seo from "../Components/Seo";
 import BenImage from "./assets/BenLerchin-yimby-cover.jpg";
 import Placeholder from "./assets/placeholder.png";
 
-export default function () {
+export default function (config) {
   return (
     <Artist>
       <Seo
-        title="Ben"
+        title={config.config.name}
         description="Scelerisque venenatis nibh fames ad quam feugiat leo commodo vitae sed lacus."
-        path="/"
+        path={config.config.slug}
       />
       <ProjectHeader
         artistName="Ben Lerchin"

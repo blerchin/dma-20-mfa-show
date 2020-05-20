@@ -11,11 +11,11 @@ export default () => (
       <Suspense fallback={<div />}>
         <Switch>
           {
-            config.artists.map(({slug, component}) => {
+            config.artists.map(({slug, component}, i) => {
               const Comp = lazy(() => import(`../../work/${component}`));
               return (
                 <Route path={`/${slug}`} key={slug}>
-                  <Comp />
+                  <Comp config={config.artists[i]}/>
                 </Route>
               )
             })

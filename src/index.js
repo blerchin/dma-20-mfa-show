@@ -1,5 +1,5 @@
 import React from "react";
-import { hydrate, render } from "react-dom";
+import ReactDOM from 'react-dom';
 import App from "./Containers/App";
 import * as serviceWorker from "./serviceWorker";
 
@@ -12,15 +12,9 @@ import * as serviceWorker from "./serviceWorker";
 
 const rootElement = document.getElementById("root");
 if (rootElement.hasChildNodes()) {
-  hydrate(
-      <App />,
-    rootElement
-  );
+  ReactDOM.hydrate(<App />,rootElement);
 } else {
-  render(
-      <App />,
-    rootElement
-  );
+  ReactDOM.render(<App />,rootElement);
 }
 
 // If you want your app to work offline and load faster, you can change

@@ -17,13 +17,13 @@ import ErinImage5 from "./assets/ErinCooney-image_05.png";
 
 import Placeholder from "./assets/placeholder.png";
 
-export default function () {
+export default function (config) {
   return (
     <Artist>
       <Seo
-        title="Erin"
+        title={config.config.name}
         description="Scelerisque venenatis nibh fames ad quam feugiat leo commodo vitae sed lacus."
-        path="/"
+        path={config.config.slug}
       />
       <ProjectHeader
         artistName="Erin Cooney"
