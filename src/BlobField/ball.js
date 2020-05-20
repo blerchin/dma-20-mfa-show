@@ -41,7 +41,7 @@ export default class Ball {
 			closed: true,
 			shadowColor: this.shadowInactiveColor,
 			shadowBlur: 5,
-			shadowOffset: new paper.Point(-5, -5),
+			shadowOffset: new paper.Point(5, 5),
 		});
 
 		for (let i = 0; i < this.numSegment; i++) {

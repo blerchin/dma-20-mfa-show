@@ -12,7 +12,7 @@ const ArtistNav = ({children}) => (
       {
         config.artists.map(({slug, name}) => {
           return (
-            <li><Link to={`/${slug}`}>{name}</Link></li>
+            <li key={slug}><Link to={`/${slug}`}>{name}</Link></li>
           )
         })
       }
