@@ -86,7 +86,7 @@ export default function BlobField({ collapsed = false }) {
       wrapper.removeEventListener("touchmove", handleTouchMove);
       window.removeEventListener("resize", handleResize);
     };
-  }, [blobsRef, collapsed, history]);
+  }, [blobsRef]);
 
   useEffect(() => {
     if (blobsRef.current) {
