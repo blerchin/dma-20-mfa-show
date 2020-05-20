@@ -84,7 +84,7 @@ const Seo = ({
       category,
       tags,
       twitter,
-      image: image.images[image.images.length - 1].path
+      image: image ? image.images[image.images.length - 1].path : ''
     })}
   />
 );
