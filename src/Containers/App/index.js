@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './style.css';
 import BlobField from 'src/BlobField';
 import config from '../../config';
-
+import Seo from 'src/Components/Seo'
 
 import BenLerchin from '../../work/BenLerchin';
 import BerfinAtaman from '../../work/BerfinAtaman';
@@ -47,7 +47,10 @@ export default () => (
             )
           })
         }
-        <Route path='/'>{/* no-op */}</Route>
+        <Route path='/'>
+        <Seo/>
+          {/* no-op */}
+          </Route>
         <Route path="*">
           Page not Found ✧・ﾟ:*
         </Route>
