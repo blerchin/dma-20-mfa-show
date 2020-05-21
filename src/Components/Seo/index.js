@@ -96,7 +96,7 @@ const Seo = ({
       title: title ? `${title} | NEARREST NEIGHBOR` : "NEARREST NEIGHBOR",
       description: description
         ? description
-        : "Online MFA show for 2020 DMA grads.",
+        : "Online exhibition featuring thesis work from the 2020 graduating MFA class of the UCLA Design Media Arts department. Works span the genres of interactive installation, performance, sculpture, software, sound, print and video.",
       contentType,
       url: path ? absoluteUrl(path) : rootURL,
       published,
