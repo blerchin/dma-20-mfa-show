@@ -3,6 +3,7 @@ import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './style.css';
 import BlobField from 'src/BlobField';
+import Info from 'src/Containers/Info';
 import config from '../../config';
 
 export default () => (
@@ -32,6 +33,9 @@ export default () => (
         </div>
       )}>
       </Route>
+
+      <Route path="/info" component={Info}/>
+
     </div>
   </Router>
 );

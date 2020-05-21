@@ -9,7 +9,6 @@ import Image from '../Components/Image';
 import Vimeo from '../Components/VideoVimeo'
 
 import BenImage from './assets/BenLerchin-yimby-cover.jpg';
-import Placeholder from './assets/placeholder.png';
 
 export default function() {
     return (
