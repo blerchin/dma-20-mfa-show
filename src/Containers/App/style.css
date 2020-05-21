@@ -33,8 +33,6 @@ body {
   font-family: sans-serif;
   font-weight: 700;
   line-height: initial;
-  margin-top: 50vh;
-  transform: translateY(-50%);
 }
 
 .blobs {
