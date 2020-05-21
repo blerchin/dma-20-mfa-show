@@ -1,4 +1,4 @@
-.blobs-wrapper {
+.wrapper {
     display: flex;
     height: 100%;
     justify-content: center;
@@ -7,7 +7,7 @@
     width: 100%;
 }
 
-.blobs-wrapper > svg, canvas {
+.wrapper > svg, canvas {
     position: fixed;
     bottom: 0;
     /* left: 0; */
@@ -16,7 +16,7 @@
     z-index: 999;
 }
 
-.blobs-popover{
+.popover{
     position: fixed;
     z-index: 9999;
     transform: translate(0, -50%);

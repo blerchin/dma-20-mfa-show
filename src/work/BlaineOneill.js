@@ -11,16 +11,17 @@ import Image from "../Components/Image";
 import Placeholder from "./assets/placeholder.png";
 
 import Seo from "../Components/Seo";
-export default function (config) {
+
+export default function ({slug, name}) {
   return (
     <Artist>
       <Seo
-        title={config.config.name}
+        title={name}
         description="Scelerisque venenatis nibh fames ad quam feugiat leo commodo vitae sed lacus."
-        path={config.config.slug}
+        path={slug}
       />
       <ProjectHeader
-        artistName="Blaine O'Neill"
+        artistName={name}
         title="Isolog"
         materials="ever-looping 36 minute spoken log, for screens"
         link="http://dolphin.limited"

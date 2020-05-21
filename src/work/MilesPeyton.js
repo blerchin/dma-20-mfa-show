@@ -17,17 +17,18 @@ import MilesImage5 from "./assets/MilesPeyton-5.jpg";
 import Placeholder from "./assets/placeholder.png";
 
 import Seo from "../Components/Seo";
-export default function (config) {
+
+export default function ({slug, name}) {
   return (
     <Artist>
       <Seo
-        title={config.config.name}
+        title={name}
         description="Scelerisque venenatis nibh fames ad quam feugiat leo commodo vitae sed lacus."
-        path={config.config.slug}
+        path={slug}
         image={MilesImage1}
       />
       <ProjectHeader
-        artistName="Miles Peyton"
+        artistName={name}
         title="Solar Bathybi"
         materials="water, sunlight, laser etched conductive glass, 3d printed plastic, electronics, hardware"
         link="http://www.milespeyton.info"

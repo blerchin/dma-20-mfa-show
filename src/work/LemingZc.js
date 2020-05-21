@@ -11,16 +11,16 @@ import Image from "../Components/Image";
 import LemingImage1 from "./assets/LemingZhong-1.jpg";
 
 import Seo from "../Components/Seo";
-export default function (config) {
+export default function ({slug, name}) {
   return (
     <Artist>
       <Seo
-        title={config.config.name}
+        title={name}
         description="Scelerisque venenatis nibh fames ad quam feugiat leo commodo vitae sed lacus."
-        path={config.config.slug}
+        path={slug}
       />
       <ProjectHeader
-        artistName="Leming Zhong"
+        artistName={name}
         title="(TBA) Report a Hypersensitive Ensemble"
         materials="7 minute video"
         link="https://vimeo.com/llleming"

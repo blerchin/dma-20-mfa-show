@@ -11,16 +11,17 @@ import Image from "../Components/Image";
 import Placeholder from "./assets/placeholder.png";
 
 import Seo from "../Components/Seo";
-export default function (config) {
+
+export default function ({slug, name}) {
   return (
     <Artist>
       <Seo
-        title={config.config.name}
+        title={name}
         description="Scelerisque venenatis nibh fames ad quam feugiat leo commodo vitae sed lacus."
-        path={config.config.slug}
+        path={slug}
       />
       <ProjectHeader
-        artistName="Zeynep Abes"
+        artistName={name}
         title="Memory Place"
         materials="Video 1: Photogrammetry of Istiklal Street,<br>
                 Video 2: Photogrammetry of my mother's dinner table,<br>

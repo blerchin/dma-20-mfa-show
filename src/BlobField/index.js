@@ -1,14 +1,18 @@
 import React, { useRef, useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import config from "src/config";
 import paper from "paper";
 
-import './style-blobs.css';
+import {
+  wrapper,
+  popover,
+} from './style.module.css';
+
 import Blobs from "./blobs";
 
 import ArtistNav from "../Components/ArtistNav/";
 
-export default function BlobField({ collapsed = false }) {
+export default function BlobField() {
   const animationEl = useRef(null);
   const wrapperEl = useRef(null);
   const blobsRef = useRef(null);
@@ -17,6 +21,9 @@ export default function BlobField({ collapsed = false }) {
   const [parentWidth, setParentWidth] = useState(window.innerWidth);
   const [parentHeight, setParentHeight] = useState(window.innerHeight);
   const [popoverStyle, setPopooverStyle] = useState(null);
+
+  let location = useLocation();
+  const collapsed = location.pathname !== '/';
 
   function calculateStyle(event, isCollapsed) {
     let style = {
@@ -104,26 +111,28 @@ export default function BlobField({ collapsed = false }) {
   }, [blobsRef, collapsed]);
 
   return (
-    <div
-      className='blobs-wrapper'
-      ref={wrapperEl}
-      // style={collapsed ? {} : { width: parentWidth, height: parentHeight }}
-    >
-      <ArtistNav />
-      <canvas ref={animationEl}/>
-      {collapsed ? (
-        ""
-      ) : (
-        <div className="title">
-          {activeArtist
-            ? activeArtist.name.split(" ").map((item, i) => {
-                return <p key={item}>{item.toUpperCase()}</p>;
-              })
-            : "NEARREST NEIGHBOR"}
+    <div className="blobs">
+      <div
+        className={wrapper}
+        ref={wrapperEl}
+        style={collapsed ? {} : { width: parentWidth, height: parentHeight }}
+      >
+        <ArtistNav />
+        <canvas ref={animationEl}/>
+        {collapsed ? (
+          ""
+        ) : (
+          <div className="title">
+            {activeArtist
+              ? activeArtist.name.split(" ").map((item, i) => {
+                  return <p key={item}>{item.toUpperCase()}</p>;
+                })
+              : "NEARREST NEIGHBOR"}
+          </div>
+        )}
+        <div className={popover} style={popoverStyle}>
+          {collapsed && activeArtist ? activeArtist.name.toUpperCase() : ""}
         </div>
-      )}
-      <div className='blobs-popover' style={popoverStyle}>
-        {collapsed && activeArtist ? activeArtist.name.toUpperCase() : ""}
       </div>
     </div>
   );

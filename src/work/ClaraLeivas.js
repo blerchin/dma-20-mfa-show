@@ -11,16 +11,16 @@ import Image from "../Components/Image";
 import Placeholder from "./assets/placeholder.png";
 
 import Seo from "../Components/Seo";
-export default function (config) {
+export default function ({slug, name}) {
   return (
     <Artist>
       <Seo
-        title={config.config.name}
+        title={name}
         description="Scelerisque venenatis nibh fames ad quam feugiat leo commodo vitae sed lacus."
-        path={config.config.slug}
+        path={slug}
       />
       <ProjectHeader
-        artistName="Clara Leivas"
+        artistName={name}
         title="Clara's Work"
         materials="Live streamed video"
         link="http://leivas.se/"

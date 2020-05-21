@@ -18,17 +18,17 @@ import GrahamImage7 from "./assets/Graham Akins web template image 7.png";
 import Placeholder from "./assets/placeholder.png";
 
 import Seo from "../Components/Seo";
-export default function (config) {
+export default function ({slug, name}) {
   return (
     <Artist>
       <Seo
-        title={config.config.name}
+        title={name}
         description="Scelerisque venenatis nibh fames ad quam feugiat leo commodo vitae sed lacus."
-        path={config.config.slug}
+        path={slug}
         image={GrahamImage1}
       />
       <ProjectHeader
-        artistName="Graham Akins"
+        artistName={name}
         title="Approximate Other"
         link="https://www.instagram.com/grahamycakes_/"
       />

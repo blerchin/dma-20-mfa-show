@@ -15,17 +15,18 @@ import BerfinImage3 from "./assets/BerfinAtaman-3.jpg";
 import BerfinImage4 from "./assets/BerfinAtaman-4.jpg";
 
 import Seo from "../Components/Seo";
-export default function (config) {
+
+export default function ({slug, name}) {
   return (
     <Artist>
       <Seo
-        title={config.config.name}
+        title={name}
         description="Scelerisque venenatis nibh fames ad quam feugiat leo commodo vitae sed lacus."
-        path={config.config.slug}
+        path={slug}
         image={BerfinImage0}
       />
       <ProjectHeader
-        artistName="Berfin Ataman"
+        artistName={name}
         title="horripilation"
         materials="Fabric, wood, Pla, electronics"
         link="http://www.berfinataman.com/"

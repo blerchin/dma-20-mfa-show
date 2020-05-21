@@ -15,17 +15,17 @@ import ErinImage4 from "./assets/ErinCooney-image_04.png";
 import ErinImage5 from "./assets/ErinCooney-image_05.png";
 
 import Seo from "../Components/Seo";
-export default function (config) {
+export default function ({slug, name}) {
   return (
     <Artist>
       <Seo
-        title={config.config.name}
+        title={name}
         description="Scelerisque venenatis nibh fames ad quam feugiat leo commodo vitae sed lacus."
-        path={config.config.slug}
+        path={slug}
         image={ErinImage1}
       />
       <ProjectHeader
-        artistName="Erin Cooney"
+        artistName={name}
         title="Now a Landscape, Now a Room"
         materials="2-Channel Video Performance"
         link="http://erincooney.com/"
