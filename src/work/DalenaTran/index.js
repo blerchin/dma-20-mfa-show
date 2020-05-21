@@ -127,7 +127,7 @@ export default function() {
             </ProjectColumns>
             <ArtistBio>
                 <p>
-                    Dalena Tran is a media artist & writer living in Los Angeles, CA. Her stories and situations respond to notions of voyeurism, hegemony, memory, and the phenomenon of media. She engages across mediums and disciplines as they relate to the rhythms of everyday life, often concerned with moments hidden in plain sight. 
+                    Dalena Tran is a media artist & writer living in Los Angeles, CA. Her stories and situations respond to notions of voyeurism, hegemony, memory, and the phenomenon of media. She engages across mediums and disciplines as they relate to the rhythms of everyday life, often concerned with moments hidden in plain sight.
                 </p>
             </ArtistBio>
         </Artist>

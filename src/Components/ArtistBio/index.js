@@ -5,8 +5,8 @@ import {
   header,
 } from './style.module.css';
 
-const ArtistBio = ({children}) => (
-  <section className={container}>
+const ArtistBio = ({children, className = ''}) => (
+  <section className={`${container} ${className}`}>
     <h4 className={header}>Artist Bio</h4>
     <div>
       {children}

@@ -11,6 +11,7 @@ const Image = ({
   caption = false,
   fullHeight: isFullHeight = false,
   maxHeight = "auto",
+  className = '',
 }) => {
   const style = {
     maxHeight,
@@ -25,7 +26,7 @@ const Image = ({
   }
 
   return (
-    <div className={`${container} ${isFullHeight ? fullHeight : ""}`}>
+    <div className={`${container} ${isFullHeight ? fullHeight : ""} ${className}`}>
       {
         <div style={{ ...parentStyles }}>
           <LazyLoadImage
@@ -51,6 +52,7 @@ Image.defaultProps = {
   caption: '',
   fullHeight: false,
   maxHeight: 'auto',
+  className: '',
 }
 
 Image.propTypes = {
@@ -59,6 +61,7 @@ Image.propTypes = {
   caption: PropTypes.string,
   fillViewport: PropTypes.bool,
   maxHeight: PropTypes.string,
+  className: PropTypes.string,
 };
 
 export default Image;

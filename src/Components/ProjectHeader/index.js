@@ -8,8 +8,8 @@ import {
   headerLink,
 } from './style.module.css';
 
-const ProjectHeader = ({artistName, title, materials, link, children}) => (
-  <div className={container}>
+const ProjectHeader = ({artistName, title, materials, link, className = ''}) => (
+  <div className={`${container} ${className}`}>
     <h3 className={headerArtist}>{artistName}</h3>
     <h2 className={headerTitle}>{title}</h2>
     <div className={headerMaterials} dangerouslySetInnerHTML={{__html: materials}} />
