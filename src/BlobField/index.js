@@ -115,7 +115,7 @@ export default function BlobField() {
       <div
         className={wrapper}
         ref={wrapperEl}
-        style={collapsed ? {} : { width: parentWidth, height: parentHeight }}
+        // style={collapsed ? {} : { width: parentWidth, height: parentHeight }}
       >
         <ArtistNav />
         <canvas ref={animationEl}/>
