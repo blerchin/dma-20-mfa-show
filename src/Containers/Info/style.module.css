@@ -37,37 +37,37 @@ p {
   mix-blend-mode: difference;
 }
 .blendScreen {
-	mix-blend-mode : screen;
-	height : 100%; 
-	width : 100%; 
-	position: absolute; 
-	top : 0; 
-	left : 0;
-	background-color: white;
+  mix-blend-mode : screen;
+  height : 100%; 
+  width : 100%; 
+  position: absolute; 
+  top : 0; 
+  left : 0;
+  background-color: white;
 }
 
 .maskBg {
-	background-color: white;
-	height : 100%; 
-	width : 100%; 
-	position: absolute; 
-	top : 0; 
-	left : 0;
+  background-color: white;
+  height : 100%; 
+  width : 100%; 
+  position: absolute; 
+  top : 0; 
+  left : 0;
 }
 .content {
   background: white;
-	height : 100%; 
-	width : 100%; 
-	position: absolute;
-	top : 0; 
-	left : 0;
+  height : 100%; 
+  width : 100%; 
+  position: absolute;
+  top : 0; 
+  left : 0;
 }
 
 .circleFollow, .circleFollowOutline {
-	position :absolute;
-	overflow : hidden;
-	width :40em; 
-	height: 40em;
+  position :absolute;
+  overflow : hidden;
+  width :40em; 
+  height: 40em;
   top:calc( 50% - 20em); 
   left:calc( 50% - 20em); 
   -webkit-border-radius: 20em; 
@@ -75,7 +75,7 @@ p {
 }
 
 .circleFollow {
-	background-color: var(--background-color);
+  background-color: var(--background-color);
 }
 
 .circleFollowOutline {

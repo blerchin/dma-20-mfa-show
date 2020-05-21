@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import Nav from '../../Components/Nav';
+import React, { useEffect } from "react";
+import Nav from "../../Components/Nav";
 
 import {
   container,
@@ -10,25 +10,25 @@ import {
   content,
   circleFollow,
   circleFollowOutline
-} from './style.module.css'
+} from "./style.module.css"
 
 export default function Info() {
 
   function handleMouseMove(e) {
-    let circle = document.getElementById('circle');
-    let circleOutline = document.getElementById('circleOutline');
+    let circle = document.getElementById("circle");
+    let circleOutline = document.getElementById("circleOutline");
     let mouseX = e.pageX - 160;
     let mouseY = e.pageY - 160; 
     
-    circle.style.left = mouseX +'px';
-    circle.style.top = mouseY +'px';
-    circleOutline.style.left = mouseX +'px';
-    circleOutline.style.top = mouseY +'px';
+    circle.style.left = mouseX +"px";
+    circle.style.top = mouseY +"px";
+    circleOutline.style.left = mouseX +"px";
+    circleOutline.style.top = mouseY +"px";
   }
   useEffect(() => {
-    document.addEventListener('mousemove', handleMouseMove)
+    document.addEventListener("mousemove", handleMouseMove)
     return function cleanup() {
-      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener("mousemove", handleMouseMove);
     };
 
   }, []);
@@ -37,7 +37,7 @@ export default function Info() {
     <div className={container}>
       <div id="maskDetect">
         <div className={maskBg}></div>
-        <div className={blendMultiply}>	
+        <div className={blendMultiply}> 
           <div className={content}>
             <h2>The New Dematerialization of Art under “Covid-19 Rule”</h2>
             <p>
