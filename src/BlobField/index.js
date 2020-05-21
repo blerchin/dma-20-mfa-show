@@ -18,8 +18,8 @@ export default function BlobField() {
   const blobsRef = useRef(null);
   const history = useHistory();
   const [activeArtist, setActiveArtist] = useState(null);
-  const [parentWidth, setParentWidth] = useState(window.innerWidth);
-  const [parentHeight, setParentHeight] = useState(window.innerHeight);
+  const [parentWidth, setParentWidth] = useState('100vw');
+  const [parentHeight, setParentHeight] = useState('100vh');
   const [popoverStyle, setPopooverStyle] = useState(null);
 
   let location = useLocation();
@@ -96,6 +96,9 @@ export default function BlobField() {
   }, [blobsRef]);
 
   useEffect(() => {
+    setParentWidth(document.body.clientWidth);
+    setParentHeight(window.innerHeight);
+
     if (blobsRef.current) {
       const blobs = blobsRef.current;
       blobs.setIsCollapsed(collapsed);
@@ -115,7 +118,7 @@ export default function BlobField() {
       <div
         className={wrapper}
         ref={wrapperEl}
-        // style={collapsed ? {} : { width: parentWidth, height: parentHeight }}
+        style={collapsed ? {} : { width: parentWidth, height: parentHeight }}
       >
         <ArtistNav />
         <canvas ref={animationEl}/>
