@@ -14,14 +14,14 @@ const rootElement = document.getElementById("root");
 if (rootElement.hasChildNodes()) {
   ReactDOM.hydrate(
     <React.StrictMode>
-      <App />,
+      <App />
     </React.StrictMode>,
     rootElement
   );
 } else {
   ReactDOM.render(
     <React.StrictMode>
-      <App />,
+      <App />
     </React.StrictMode>,
     rootElement
   );
