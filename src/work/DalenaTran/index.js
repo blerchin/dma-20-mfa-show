@@ -18,11 +18,19 @@ import Image from '../../Components/Image';
 import DalenaImage1 from './assets/DalenaTran-1.png';
 import DalenaImage2 from './assets/DalenaTran-2.png';
 
-export default function() {
-    return (
-        <Artist>
+import Seo from "../../Components/Seo";
+
+export default function ({slug, name}) {
+  return (
+    <Artist>
+            <Seo
+                title={name}
+                description="Scelerisque venenatis nibh fames ad quam feugiat leo commodo vitae sed lacus."
+                path={slug}
+                image = {DalenaImage1}
+            />
             <ProjectHeader
-                artistName="Dalena Tran"
+                artistName={name}
                 title="Acts in Translation"
                 materials="Web Installation, Infinite Duration"
                 link="https://dalena.me"
@@ -127,7 +135,7 @@ export default function() {
             </ProjectColumns>
             <ArtistBio>
                 <p>
-                    Dalena Tran is a media artist & writer living in Los Angeles, CA. Her stories and situations respond to notions of voyeurism, hegemony, memory, and the phenomenon of media. She engages across mediums and disciplines as they relate to the rhythms of everyday life, often concerned with moments hidden in plain sight. 
+                    Dalena Tran is a media artist & writer living in Los Angeles, CA. Her stories and situations respond to notions of voyeurism, hegemony, memory, and the phenomenon of media. She engages across mediums and disciplines as they relate to the rhythms of everyday life, often concerned with moments hidden in plain sight.
                 </p>
             </ArtistBio>
         </Artist>
