@@ -14,7 +14,7 @@ import {
   dtCurtainCol,
   dtContribCol,
   dtContribWrapper,
-  dtContribColRight
+  dtInfobox
 } from "./style.module.css";
 
 import Artist from "../../Containers/Artist";
@@ -78,7 +78,7 @@ export default function () {
         />
       </Column>
       <ProjectColumns>
-        <Column>
+        <Column className={dtInfobox}>
           <p>
             In the beginning, there was the window. Now there are plenty of
             other things than windows. There is heat, ice, sweat, and Mickey Mouse. Not to forget blood: The dark and runny that pumps through veins carrying a tempo that make possible the highest highs and lowest lows.

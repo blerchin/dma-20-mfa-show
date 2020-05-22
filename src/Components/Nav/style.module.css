@@ -1,11 +1,11 @@
 .container {
   font-family: var(--header-font);
   font-size: 36px;
-  line-height: 43.2px;
+  line-height: 42px;
   text-align: left;
   position: fixed;
-  bottom: 75px;
-  left: 75px;
+  bottom: 7vh;
+  left: var(--page-gutter);
   z-index: 1;
 }
 
@@ -21,4 +21,5 @@
 
 .container li a:hover {
   text-decoration: underline;
+  /* border-bottom: 1px solid #fff; */
 }

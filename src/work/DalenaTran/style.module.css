@@ -106,7 +106,8 @@
   text-align: center;
 }
 
-section:first-of-type {
+.section:first-of-type {
+  background: red !important;
   margin-top: 0 !important;
 }
 

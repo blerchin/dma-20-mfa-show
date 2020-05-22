@@ -1,10 +1,12 @@
 :root {
   --background-color: #000;
-  --body-font:  letter-gothic-std, monospace;
-  --header-font: poppins, sans-serif;
+  --body-font:  Karla, sans-serif;
+  --header-font: Liberation Sans, sans-serif;
+  --text-accent: #ceffd6;
+  --bg-accent: #9cbaf9;
   --columns: 4;
   --insetMaxWidth: 60%;
-  --page-gutter: 100px;
+  --page-gutter: 5vw;
 }
 
 @custom-media --mobile (max-width: 1080px);
