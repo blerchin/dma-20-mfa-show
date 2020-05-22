@@ -2,15 +2,33 @@
   margin: 100px;
 }
 
-.overlay {
-  height: 100vh;
-  left: 0;
-  position: fixed;
-  top: 0;
-  width: 100vw;
+.largeText{
+  position: absolute;
+  font-size: 200px;
 }
 
-.circle {
+.overlay {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  left: 0;
+  top: 0;
+}
+
+.rect{
+  height: 100vh;
+  width: 100vw;
   fill: rgba(0, 0, 0, .8);
+}
+
+.circle{
+  stroke: white;
+  stroke-width: 2;
+  fill: rgba(0, 0, 0, 0);
   cursor: none;
+}
+
+
+.toclip{
+  clip-path: url(#circleClip)
 }
