@@ -14,7 +14,8 @@ import {
   dtCurtainCol,
   dtContribCol,
   dtContribWrapper,
-  dtContribColRight
+  dtInfobox,
+  dtInfoCol
 } from "./style.module.css";
 
 import Artist from "../../Containers/Artist";
@@ -77,7 +78,7 @@ export default function () {
           alt="A close-up of the lower portion of a 3D rendered blue curtain with pink and orange flowers surrounded by faded green leaves."
         />
       </Column>
-      <ProjectColumns>
+      <ProjectColumns className={dtInfoCol}>
         <Column>
           <p>
             In the beginning, there was the window. Now there are plenty of
