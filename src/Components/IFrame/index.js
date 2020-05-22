@@ -9,6 +9,7 @@ const IFrame = ({
   url,
   title = 'iframeContent',
   frameBorder = 0,
+  ...props
 }) => {
   return (
     <div className={container}>
@@ -17,6 +18,7 @@ const IFrame = ({
         className={frame}
         title={title}
         frameBorder={frameBorder}
+        {...props}
       ></iframe>
     </div>
   );
