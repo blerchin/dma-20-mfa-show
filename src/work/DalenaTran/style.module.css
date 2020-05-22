@@ -106,7 +106,7 @@
   text-align: center;
 }
 
-section:first-of-type {
+.dtInfoCol {
   margin-top: 0 !important;
 }
 
