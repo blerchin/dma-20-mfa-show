@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import style from './style.module.scss';
 
-export default ({ title, year, materials }) => (
+const ImageCaption = ({ title, year, materials }) => (
   <div className={style.caption}>
     <h4 className={style.title}>
       {title}
@@ -14,3 +15,11 @@ export default ({ title, year, materials }) => (
     <p className={style.materials}>{materials}</p>
   </div>
 )
+
+ImageCaption.propTypes = {
+  title: PropTypes.string.isRequired,
+  year: PropTypes.string,
+  materials: PropTypes.string
+}
+
+export default ImageCaption
