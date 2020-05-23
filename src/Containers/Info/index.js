@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import Nav from "../../Components/Nav";
 
 import {
@@ -13,18 +13,16 @@ import {
 } from "./style.module.css"
 
 export default function Info() {
+  const circleEl = useRef();
+  const circleOutlineEl = useRef();
 
   function handleMouseMove(e) {
-    let circle = document.getElementById("circle");
-    let circleOutline = document.getElementById("circleOutline");
     let mouseX = e.pageX - 160;
     let mouseY = e.pageY - 160; 
-    
-    circle.style.left = mouseX +"px";
-    circle.style.top = mouseY +"px";
-    circleOutline.style.left = mouseX +"px";
-    circleOutline.style.top = mouseY +"px";
+    circleEl.current.style.left = circleOutlineEl.current.style.left = mouseX +"px";
+    circleEl.current.style.top = circleOutlineEl.current.style.top = mouseY +"px";
   }
+  
   useEffect(() => {
     document.addEventListener("mousemove", handleMouseMove)
     return function cleanup() {
@@ -106,10 +104,10 @@ export default function Info() {
           </p>
         </div>
         <div className={blendScreen}>
-          <span id="circle" className={circleFollow}></span>
+          <span ref={circleEl} className={circleFollow}></span>
         </div>
       </div>
-      <span id="circleOutline" className={circleFollowOutline}></span>
+      <span ref={circleOutlineEl} className={circleFollowOutline}></span>
 
       <Nav />
       <h1 className={title}>NEARREST<br/>NEIGHBOR</h1>
