@@ -11,6 +11,8 @@ const Image = ({
   caption = false,
   fullHeight: isFullHeight = false,
   maxHeight = "auto",
+  className = "",
+  useLazy = true,
 }) => {
   const style = {
     maxHeight,
@@ -25,21 +27,24 @@ const Image = ({
   }
 
   return (
-    <div className={`${container} ${isFullHeight ? fullHeight : ""}`}>
+    <div
+      className={`${container} ${isFullHeight ? fullHeight : ""} ${className}`}
+    >
       {
         <div style={{ ...parentStyles }}>
+          {useLazy ?
           <LazyLoadImage
             src={img.src}
             srcSet={img.srcSet}
             alt={alt}
             placeholderSrc={img.placeholder}
-            threshold={10}
             effect="blur"
             useIntersectionObserver={true}
             style={style}
           />
-        </div>
-      }
+          :
+          <img src={img.src} srcSet={img.srcSet} alt={alt} style={style}/>}
+        </div>}
       {caption && <div className={cap}>{caption}</div>}
     </div>
   );
@@ -48,10 +53,11 @@ const Image = ({
 Image.defaultProps = {
   img: null,
   alt: null,
-  caption: '',
+  caption: "",
   fullHeight: false,
-  maxHeight: 'auto',
-}
+  maxHeight: "auto",
+  className: "",
+};
 
 Image.propTypes = {
   img: PropTypes.object.isRequired,
@@ -59,6 +65,7 @@ Image.propTypes = {
   caption: PropTypes.string,
   fillViewport: PropTypes.bool,
   maxHeight: PropTypes.string,
+  className: PropTypes.string,
 };
 
 export default Image;

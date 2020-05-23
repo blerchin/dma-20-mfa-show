@@ -4,7 +4,7 @@ import {
   container,
 } from './style.module.css';
 
-const ProjectCover = ({fadeOut = false, children}) => {
+const ProjectCover = ({fadeOut = false, children, className = ''}) => {
   let fadeLevel = 0;
   let animationId = null;
   const node = useRef(null);
@@ -31,7 +31,7 @@ const ProjectCover = ({fadeOut = false, children}) => {
   });
 
   return (
-    <div className={container} ref={node}>
+    <div className={`${container} ${className}`} ref={node}>
       {children}
     </div>
   );

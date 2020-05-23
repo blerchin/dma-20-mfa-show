@@ -13,8 +13,9 @@ export const Column = ({ children, ...props }) => (
 const ProjectColumns = ({
   children,
   fullBleede: isFullBleede = false,
+  className = '',
 }) => (
-  <section className={`${container} ${isFullBleede ? fullBleede : ''}`} style={{
+  <section className={`${container} ${isFullBleede ? fullBleede : ''} ${className}`} style={{
     gridTemplateColumns: `repeat(${React.Children.count(children)}, 1fr)`
   }}>
     { children }
