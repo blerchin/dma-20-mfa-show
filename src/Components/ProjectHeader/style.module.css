@@ -1,7 +1,7 @@
 .container {
   text-align: left;
   position: fixed;
-  top: 75px;
+  top: var(--page-gutter);
   left: var(--page-gutter);
   z-index: 1;
 }
@@ -9,28 +9,46 @@
 .headerArtist {
   margin: 0;
   font-size: 24px;
+  line-height: 30px;
 }
 
 .headerTitle {
   margin: 0;
-  font-size: 48px;
-  line-height: 57px;
+  font-size: 42px;
+  line-height: 50px;
   font-family: var(--header-font);
+
 }
 
 .headerMaterials {
   font-style: italic;
   font-size: 18px;
+  line-height: 32px;
 }
 
 .headerLink {
   background-color: white;
   color: black;
-  font-size: 12px;
-  line-height: 12px;
+  font-size: 16px;
+  line-height: 16px;
   font-weight: bold;
   display: inline-block;
-  padding: 6px 6px 4px 6px;
+  /* border: 2px solid #000; */
+  padding: 2px;
+}
+
+
+.headerLink:hover {
+  background-color: #000;
+  color: white;
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.headerLink a:hover {
+  color: white;
 }
 
 a {

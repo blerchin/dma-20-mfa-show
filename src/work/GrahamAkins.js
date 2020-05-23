@@ -30,7 +30,7 @@ export default function ({slug, name}) {
       <ProjectHeader
         artistName={name}
         title="Approximate Other"
-        link="https://www.instagram.com/grahamycakes_/"
+        link="https://instagram.com/grahamycakes_"
       />
       <ProjectCover>
         <Image img={Placeholder} alt="" />

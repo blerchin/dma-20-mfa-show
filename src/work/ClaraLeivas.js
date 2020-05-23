@@ -23,7 +23,7 @@ export default function ({slug, name}) {
         artistName={name}
         title="Clara's Work"
         materials="Live streamed video"
-        link="http://leivas.se/"
+        link="http://leivas.se"
       />
       <ProjectCover>
         <Column>
