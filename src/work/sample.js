@@ -20,18 +20,18 @@ export default function() {
                 columns={[
                     <Video
                         maxHeight="80vh"
-                        src="http://repetitionrepetition.com/launch2.mp4"
+                        src="https://repetitionrepetition.com/launch2.mp4"
                     />
                 ]}
             />
             <ProjectColumns
                 columns={[
                     <Image
-                        img="http://via.placeholder.com/1200x1200"
+                        img="https://via.placeholder.com/1200x1200"
                         alt="A grey field with the text 1200x1200"
                     />,
                     <Image
-                        img="http://via.placeholder.com/1200x1200"
+                        img="https://via.placeholder.com/1200x1200"
                         alt="A grey field with the text 1200x1200"
                         caption="This image has a caption."
                     />
@@ -41,7 +41,7 @@ export default function() {
                 columns={[
                     <Image
                         fullHeight
-                        img="http://via.placeholder.com/1200x1200"
+                        img="https://via.placeholder.com/1200x1200"
                         alt="A grey field with the text 1200x1200"
                         caption="This image has a caption."
                     />
