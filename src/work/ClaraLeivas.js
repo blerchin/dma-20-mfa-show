@@ -17,7 +17,7 @@ export default function() {
                 artistName="Clara Leivas"
                 title="Clara's Work"
                 materials="Live streamed video"
-                link="http://leivas.se/"
+                link="http://leivas.se"
             />
             <ProjectCover>
                 <Column>

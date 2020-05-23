@@ -14,7 +14,7 @@ export default function() {
                 artistName="Ben Lerchin"
                 title="The Resource Observatory"
                 materials="Interactive Web Installation"
-                link="http://benlerchin.com/"
+                link="http://benlerchin.com"
             />
             <ProjectColumns
                 columns={[

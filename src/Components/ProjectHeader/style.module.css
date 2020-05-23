@@ -10,7 +10,6 @@
   margin: 0;
   font-size: 24px;
   line-height: 30px;
-  color: var(--text-accent);
 }
 
 .headerTitle {
@@ -25,23 +24,23 @@
   font-style: italic;
   font-size: 18px;
   line-height: 32px;
-  color: var(--bg-accent);
 }
 
 .headerLink {
-  background-color: var(--text-accent);
+  background-color: white;
   color: black;
   font-size: 16px;
   line-height: 16px;
   font-weight: bold;
   display: inline-block;
-  border: 2px solid #000;
+  /* border: 2px solid #000; */
+  padding: 2px;
 }
 
 
-.headerLink a:hover {
+.headerLink:hover {
   background-color: #000;
-  color: var(--text-accent);
+  color: white;
   font-size: 16px;
   line-height: 16px;
   font-weight: bold;
@@ -49,7 +48,7 @@
 }
 
 a {
-  color: black;
+  /* color: black; */
   text-decoration: none;
 }
 

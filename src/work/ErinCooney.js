@@ -21,7 +21,7 @@ export default function() {
                 artistName="Erin Cooney"
                 title="Now a Landscape, Now a Room"
                 materials="2-Channel Video Performance"
-                link="http://erincooney.com/"
+                link="http://erincooney.com"
             />
             <ProjectCover>
                 <Column>

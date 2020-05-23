@@ -23,7 +23,7 @@ export default function() {
             <ProjectHeader
                 artistName="Graham Akins"
                 title="Approximate Other"
-                link="https://www.instagram.com/grahamycakes_/"
+                link="https://www.instagram.com/grahamycakes_"
             />
             <ProjectCover>
                 <Image

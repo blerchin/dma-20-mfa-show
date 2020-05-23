@@ -21,7 +21,7 @@ export default function() {
                 artistName="Berfin Ataman"
                 title="horripilation"
                 materials="Fabric, wood, Pla, electronics"
-                link="http://www.berfinataman.com/"
+                link="http://www.berfinataman.com"
             />
             <ProjectCover>
                 <Column>
