@@ -8,8 +8,9 @@ import ProjectColumns, { Column } from "src/Components/ProjectColumns";
 import ProjectLink from "src/Components/ProjectLink";
 import IFrame from "src/Components/IFrame";
 import Image from "src/Components/Image";
+import ImageCaption from "src/Components/ImageCaption";
 
-import CoverImage from "./BenLerchin-yimby-cover.jpg";
+import WaterWork from "./water-work.jpg";
 import WindmillSculpture from "./windmill-ring.png";
 
 import Seo from "src/Components/Seo";
@@ -19,22 +20,23 @@ export default function ({slug, name}) {
     <Artist>
       <Seo
         title={name}
-        description="Scelerisque venenatis nibh fames ad quam feugiat leo commodo vitae sed lacus."
+        description="Ben Lerchin is an artist and technologist who works with software,
+          photography, and digital fabrication."
         path={slug}
-        image={CoverImage}
+        image={WindmillSculpture}
       />
       <ProjectHeader
         artistName={name}
         title="Yes, in my Backyard"
-        materials="10 minute video"
+        materials="Attraction"
         link="http://benlerchin.com"
       />
       <ProjectCover>
         <Image
-          img={CoverImage}
-          alt='Still from video. A gray industrial concrete and metal box is in the foreground, with the text
-                    "MILE 103" obliquely visible. Low brush growth is seen in the near background, behind which a number
-                    of wind turbines are visible.'
+          img={WindmillSculpture}
+          alt="Digital Rendering. In the foreground a reflective sheet is stretched in a circle around 12 supporting posts.
+          The structure sits in a desert landscape with low shrubs and joshua trees. In the background wind turbines, 
+          transmission lines and snowcapped mountains can be seen."
         />
       </ProjectCover>
       <ProjectColumns>
@@ -45,9 +47,9 @@ export default function ({slug, name}) {
       <ProjectColumns>
         <Column>
           <p>
-            <i>Yes, in my Backyard</i> presents this instructional video about the many exciting opportunities for resource
-            exploration at our inaugural campus in the Antelope Valley. On this page you can peruse our growing catalog of
-            Los Angeles' Uncomfortable Protuberances, and see examples of the interpretive exhibits we are constructing to
+            <i>Yes, in my Backyard</i> is pleased to present this informational video about the many exciting opportunities 
+            for resource exploration at our inaugural campus in the Antelope Valley. On this page you can peruse our growing catalog of
+            Los Angeles' Uncomfortable Protuberances, and see prototypes of the interpretive exhibits we are constructing to
             give you the best possible resource experience. We hope you can visit us soon!
           </p>
         </Column>
@@ -61,14 +63,25 @@ export default function ({slug, name}) {
       </ProjectColumns>
       <ProjectColumns>
         <Column>
-          <IFrame url="https://www.google.com/maps/d/embed?mid=1BzGrvqOlQaw8eO2w5P0fSAF4QF1W2rmV" />
+          <Image img={WaterWork} />
+          <ImageCaption
+            title="Water Work"
+            materials="Cinder blocks, monofilament, acrylic, polycarbonate, pillow blocks, DC motor, Epson Ultrachrome HD on Crystal Clear Film"
+          />
         </Column>
       </ProjectColumns>
       <ProjectColumns>
         <Column>
           <Image img={WindmillSculpture} />
-          <h3>The Chapel of Perpetual Rotation</h3>
-          <p>Acrylic, Steel, Thermoplastic, Epson Ultrachrome HD on Crystal Clear Film</p>
+          <ImageCaption
+            title="The Chapel of Perpetual Rotation"
+            materials="Acrylic, Steel, PETG, Epson Ultrachrome HD on Crystal Clear Film"
+            />
+        </Column>
+      </ProjectColumns>
+      <ProjectColumns>
+        <Column>
+          <IFrame url="https://www.google.com/maps/d/embed?mid=1BzGrvqOlQaw8eO2w5P0fSAF4QF1W2rmV" />
         </Column>
       </ProjectColumns>
       <ArtistBio>
