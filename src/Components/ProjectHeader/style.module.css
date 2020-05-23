@@ -47,8 +47,12 @@
   display: inline-block;
 }
 
+.headerLink a:hover {
+  color: white;
+}
+
 a {
-  /* color: black; */
+  color: black;
   text-decoration: none;
 }
 

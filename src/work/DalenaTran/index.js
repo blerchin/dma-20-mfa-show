@@ -14,7 +14,8 @@ import {
   dtCurtainCol,
   dtContribCol,
   dtContribWrapper,
-  dtInfobox
+  dtInfobox,
+  dtInfoCol
 } from "./style.module.css";
 
 import Artist from "../../Containers/Artist";
@@ -77,8 +78,8 @@ export default function () {
           alt="A close-up of the lower portion of a 3D rendered blue curtain with pink and orange flowers surrounded by faded green leaves."
         />
       </Column>
-      <ProjectColumns>
-        <Column className={dtInfobox}>
+      <ProjectColumns className={dtInfoCol}>
+        <Column>
           <p>
             In the beginning, there was the window. Now there are plenty of
             other things than windows. There is heat, ice, sweat, and Mickey Mouse. Not to forget blood: The dark and runny that pumps through veins carrying a tempo that make possible the highest highs and lowest lows.
