@@ -87,9 +87,9 @@ export default function () {
         </Column>
       </ProjectColumns>
       <Column>
-        <h4 id="audio-contributions" className={audioHeading}>
+        <h3 id="audio-contribution" className={audioHeading}>
           Audio Contributions
-        </h4>
+        </h3>
       </Column>
       <ProjectColumns className={dtContribWrapper}>
         <Column>
