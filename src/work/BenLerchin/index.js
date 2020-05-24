@@ -10,7 +10,8 @@ import IFrame from "src/Components/IFrame";
 import Image from "src/Components/Image";
 import ImageCaption from "src/Components/ImageCaption";
 
-import WaterWork from "./water-work.jpg";
+import WaterWorkMp4 from "./water-work.mp4"
+import WaterWorkOgg from "./water-work.ogg"
 import WindmillSculpture from "./enclosure.png";
 import EnclosureLoopMp4 from "./enclosure-loop.mp4";
 import EnclosureLoopOgg from "./enclosure-loop.ogg";
@@ -18,10 +19,14 @@ import EnclosureLoopOgg from "./enclosure-loop.ogg";
 import Seo from "src/Components/Seo";
 
 export default function ({slug, name}) {
-  const videoEl = useRef(null);
+  const windmillEl = useRef(null);
+  const waterEl = useRef(null);
   useEffect(() => {
-    if (videoEl.current) {
-      videoEl.current.play();
+    if (windmillEl.current) {
+      windmillEl.current.play();
+    }
+    if (waterEl.current) {
+      waterEl.current.play();
     }
   }, [])
   return (
@@ -71,7 +76,10 @@ export default function ({slug, name}) {
       </ProjectColumns>
       <ProjectColumns>
         <Column>
-          <Image img={WaterWork} />
+          <video muted autoplay loop style={{ width: '100%', height: 'auto'}} ref={waterEl}>
+            <source src={WaterWorkMp4} type="video/mp4" />
+            <source src={WaterWorkOgg} type="video/ogg" />
+          </video>
           <ImageCaption
             title="Water Work"
             materials="Cinder blocks, monofilament, acrylic, polycarbonate, pillow blocks, DC motor, Epson Ultrachrome HD on Crystal Clear Film"
@@ -80,9 +88,9 @@ export default function ({slug, name}) {
       </ProjectColumns>
       <ProjectColumns>
         <Column>
-          <video muted autoplay loop style={{ width: '100%', height: 'auto'}} ref={videoEl}>
+          <video muted autoplay loop style={{ width: '100%', height: 'auto'}} ref={windmillEl}>
             <source src={EnclosureLoopMp4} type="video/mp4" />
-            <source src={EnclosureLoopOgg} type="video/mp4" />
+            <source src={EnclosureLoopOgg} type="video/ogg" />
           </video>
           <ImageCaption
             title="The Chapel of Perpetual Enclosure"
