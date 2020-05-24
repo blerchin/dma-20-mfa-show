@@ -73,6 +73,7 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "postbuild": "react-snap",
+    "prebuild": "git lfs fetch origin --all",
     "test": "node scripts/test.js",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
