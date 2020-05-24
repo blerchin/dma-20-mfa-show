@@ -143,6 +143,9 @@
       "jest-watch-typeahead/testname"
     ]
   },
+  "reactSnap": {
+    "skipThirdPartyRequests": true
+  },
   "babel": {
     "presets": [
       "react-app"
