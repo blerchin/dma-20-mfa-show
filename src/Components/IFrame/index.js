@@ -10,6 +10,7 @@ const IFrame = ({
   title = 'iframeContent',
   frameBorder = 0,
   className = '',
+  ...props
 }) => {
   return (
     <div className={`${container} ${className}`}>
@@ -18,6 +19,7 @@ const IFrame = ({
         className={frame}
         title={title}
         frameBorder={frameBorder}
+        {...props}
       ></iframe>
     </div>
   );
