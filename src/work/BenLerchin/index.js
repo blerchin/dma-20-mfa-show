@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 
 import Artist from "src/Containers/Artist";
 import ProjectCover from "src/Components/ProjectCover";
@@ -11,11 +11,19 @@ import Image from "src/Components/Image";
 import ImageCaption from "src/Components/ImageCaption";
 
 import WaterWork from "./water-work.jpg";
-import WindmillSculpture from "./windmill-ring.png";
+import WindmillSculpture from "./enclosure.png";
+import EnclosureLoopMp4 from "./enclosure-loop.mp4";
+import EnclosureLoopOgg from "./enclosure-loop.ogg";
 
 import Seo from "src/Components/Seo";
 
 export default function ({slug, name}) {
+  const videoEl = useRef(null);
+  useEffect(() => {
+    if (videoEl.current) {
+      videoEl.current.play();
+    }
+  }, [])
   return (
     <Artist>
       <Seo
@@ -72,10 +80,13 @@ export default function ({slug, name}) {
       </ProjectColumns>
       <ProjectColumns>
         <Column>
-          <Image img={WindmillSculpture} />
+          <video muted autoplay loop style={{ width: '100%', height: 'auto'}} ref={videoEl}>
+            <source src={EnclosureLoopMp4} type="video/mp4" />
+            <source src={EnclosureLoopOgg} type="video/mp4" />
+          </video>
           <ImageCaption
-            title="The Chapel of Perpetual Rotation"
-            materials="Acrylic, Steel, PETG, Epson Ultrachrome HD on Crystal Clear Film"
+            title="The Chapel of Perpetual Enclosure"
+            materials="Composite Rendering"
             />
         </Column>
       </ProjectColumns>
