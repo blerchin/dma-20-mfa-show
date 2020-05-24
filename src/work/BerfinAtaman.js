@@ -29,7 +29,7 @@ export default function ({slug, name}) {
         artistName={name}
         title="horripilation"
         materials="Fabric, wood, Pla, electronics"
-        link="http://www.berfinataman.com/"
+        link="http://www.berfinataman.com"
       />
       <ProjectCover>
         <Column>

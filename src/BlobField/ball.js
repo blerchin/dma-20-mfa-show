@@ -22,16 +22,18 @@ export default class Ball {
 		this.mouseLeavePt = null;
 		this.idx = null;
 		this.isVertical = true;
-		this.centerCol = '#e3f994'; // Radial gradient center color
-		this.outerCol = '#574DC8'; // Radial gradient outer color
-		this.shadowCol = '#edebee'; // Color of shadows
-		this.shadowColor = new paper.Color(this.centerCol);
-		this.shadowInactiveColor = new paper.Color(this.outerCol);
+		this.col1 = '#ceffd6'; // Radial gradient center color
+		// this.col2 = '#a4ffed'; // Radial gradient outer color
+		this.col3 = '#c0e8f1'; // Radial gradient center color
+		this.col4 = '#9cbaf9'; // Radial gradient outer color
+		this.shadowCol = '#e66c27'; // Color of shadows
+		this.shadowColor = new paper.Color(this.col1);
+		this.shadowInactiveColor = new paper.Color(this.col2);
 		this.shadowInactiveColor.alpha = 1; // When hovered, make inactive ball's shadow fully transparent
 		this.path = new paper.Path({
 			fillColor: {
 				gradient: {
-					stops: [this.centerCol, this.outerCol],
+					stops: [this.col1,  this.col3, this.col4],
 					radial: true,
 				},
 				// origin: this.point,

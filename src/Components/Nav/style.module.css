@@ -2,12 +2,13 @@
   font-family: var(--header-font);
   font-weight: bold;
   font-size: 36px;
-  line-height: 43.2px;
+  line-height: 42px;
   text-align: left;
   position: fixed;
-  bottom: 75px;
-  left: 75px;
+  bottom: 7vh;
+  left: var(--page-gutter);
   z-index: 1;
+  font-weight: 700;
 }
 
 .container ul, .container li {
@@ -22,4 +23,5 @@
 
 .container li a:hover {
   text-decoration: underline;
+  /* border-bottom: 1px solid #fff; */
 }

@@ -49,6 +49,9 @@ export default () => (
           })
         }
         <Route path='/'>
+        <Route path='/info'>
+          <Info />
+        </Route>
         <Seo/>
           {/* no-op */}
           </Route>
