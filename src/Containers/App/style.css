@@ -55,12 +55,25 @@ ol {
 }
 
 .sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  border: 0;
+  left:-999px;
+  position:absolute;
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+  z-index:-999;
+}
+
+.sr-only:focus, .sr-only:active {
+  color: #fff;
+  background-color:#000;
+  left: auto;
+  top: auto;
+  width: auto;
+  height: auto;
+  overflow:auto;
+  padding:5px;
+  border:4px solid yellow;
+  text-align:center;
+  z-index:999;
 }

@@ -80,6 +80,7 @@ export default function () {
       </Column>
       <ProjectColumns className={dtInfoCol}>
         <Column>
+          <h3 class="sr-only">Project Description</h3>
           <p>
             In the beginning, there was the window. Now there are plenty of
             other things than windows. There is heat, ice, sweat, and Mickey Mouse. Not to forget blood: The dark and runny that pumps through veins carrying a tempo that make possible the highest highs and lowest lows.

@@ -49,6 +49,7 @@ export default function ({slug, name}) {
             img={BerfinImage0}
             alt="A kinetic sculpture that is made out of soft materials. It extends from floor to the ceiling. It is orange at the base with pink m red and white stripes and orange polka dots. It has a tear drop shape on the lower part where it is orange and a hole in the middle of the tear drop. The hole has little bubble shapes details around it.They look like beads. Midway through the sculpture oranges fades to light green and the shape changes. The tear drop shape is attached on top onto a tubular structure with green  dangling tentacle like pieces. As these pieces move, some orange colors appears in between them where they are attached to the tubular shape. The green pieces move up and down they are light and see through with orange lines and polka dots on them."
           />
+          <h3 class="sr-only">Project Description</h3>
           <p>
             I am interested in experimenting with movement that is relative to
             the form of sculpture but that can also be randomized by mechanics

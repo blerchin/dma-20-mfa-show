@@ -44,6 +44,7 @@ export default function ({slug, name}) {
           />
         </Column>
         <Column>
+          <h3 class="sr-only">Project Description</h3>
           <p>
             This piece was made during California’s “Stay at Home” orders, which
             were imposed in response to the outbreak of COVID-19. The work is

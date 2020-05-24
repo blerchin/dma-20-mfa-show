@@ -33,6 +33,7 @@ export default function ({slug, name}) {
       </ProjectCover>
       <ProjectColumns>
         <Column>
+          <h3 class="sr-only">Project Description</h3>
           <p>
             Written in collaboration with three GPT-2 text generators trained
             using Runway ML, featuring the voices of Jesse Hoffman (SUDO),

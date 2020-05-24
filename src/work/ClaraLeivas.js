@@ -27,6 +27,7 @@ export default function ({slug, name}) {
       />
       <ProjectCover>
         <Column>
+          <h3 class="sr-only">Project Description</h3>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non
             justo non elit fringilla imperdiet ut nec purus. Quisque egestas

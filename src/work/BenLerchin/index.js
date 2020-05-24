@@ -54,6 +54,7 @@ export default function ({slug, name}) {
       </ProjectColumns>
       <ProjectColumns>
         <Column>
+          <h3 class="sr-only">Project Description</h3>
           <p>
             <i>Yes, in my Backyard</i> is pleased to present this informational video about the many exciting opportunities 
             for resource exploration at our inaugural campus in the Antelope Valley. On this page you can peruse our growing catalog of

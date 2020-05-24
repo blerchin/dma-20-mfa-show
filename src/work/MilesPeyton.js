@@ -100,7 +100,7 @@ export default function ({slug, name}) {
       </ProjectColumns>
       <ProjectColumns>
         <Column>
-          <h4>Message from Mud</h4>
+          <h3>Message from Mud</h3>
           <p>
             I was born from mud, unearthed from the ocean floor and sealed in a
             jar. The men who found me were crewmembers of the Cyclops, a ship

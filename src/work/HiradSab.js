@@ -35,6 +35,7 @@ export default function ({slug, name}) {
       </ProjectColumns>
       <ProjectColumns>
         <Column>
+          <h3 class="sr-only">Project Description</h3>
           <p>
             An analysis of the digital proliferation and mediation of the body
             in the contemporary politics of image, "Body Troubles" is a

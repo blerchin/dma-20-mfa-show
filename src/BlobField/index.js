@@ -125,13 +125,13 @@ export default function BlobField() {
         {collapsed ? (
           ""
         ) : (
-          <div className="title">
+          <h1 className="title">
             {activeArtist
               ? activeArtist.name.split(" ").map((item, i) => {
                   return <p key={item}>{item.toUpperCase()}</p>;
                 })
               : "NEARREST NEIGHBOR"}
-          </div>
+          </h1>
         )}
         <div className={popover} style={popoverStyle}>
           {collapsed && activeArtist ? activeArtist.name.toUpperCase() : ""}
