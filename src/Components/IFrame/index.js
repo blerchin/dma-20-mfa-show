@@ -9,10 +9,11 @@ const IFrame = ({
   url,
   title = 'iframeContent',
   frameBorder = 0,
+  className = '',
   ...props
 }) => {
   return (
-    <div className={container}>
+    <div className={`${container} ${className}`}>
       <iframe
         src={url}
         className={frame}

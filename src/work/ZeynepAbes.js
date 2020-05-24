@@ -26,7 +26,7 @@ export default function ({slug, name}) {
         materials="Video 1: Photogrammetry of Istiklal Street,<br>
                 Video 2: Photogrammetry of my mother's dinner table,<br>
                 Video 3: Photogrammetry of Turkish airlines flight (credit: Adam Cigler)"
-        link="https://www.zeynepmadethis.com/"
+        link="https://www.zeynepmadethis.com"
       />
       <ProjectCover fadeOut>
         <Column>

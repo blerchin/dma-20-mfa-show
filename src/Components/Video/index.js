@@ -11,7 +11,8 @@ const Video = ({
   alt,
   caption = false,
   fullHeight: isFullHeight = false,
-  maxHeight = 'auto'
+  maxHeight = 'auto',
+  className = '',
 }) => {
   const style = {
     maxHeight,
@@ -21,7 +22,7 @@ const Video = ({
   }
 
   return (
-    <div className={`${container} ${isFullHeight ? fullHeight : ''}`}>
+    <div className={`${container} ${isFullHeight ? fullHeight : ''} ${className}`}>
       <video crossOrigin="anonymous" controls style={style}>
         <source src={src} />
       </video>

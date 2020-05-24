@@ -1,38 +1,134 @@
 .p0 {
+  /* background-color: thistle; */
+  grid-row: 2/4;
+  grid-column: 5/10;
   text-align: left;
-  width: 25%;
-  position: absolute;
-  top: 10%;
-  right: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
 }
 
 .p1 {
-  text-align: right;
-  width: 25%;
-  position: absolute;
-  top: 60%;
-  left: 10%;
+  /* background-color: wheat; */
+  grid-row: 5/7;
+  grid-column: 2/4;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
 }
 
 .p2 {
+  /* background-color: purple; */
+  grid-row: 4/7;
+  grid-column: 8/10;
   text-align: left;
-  width: 25%;
-  position: absolute;
-  top: 70%;
-  right: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
 }
 
 .p3 {
+  /* background-color: seagreen; */
+  grid-row: 8/9;
+  grid-column: 5/7;
   text-align: center;
-  margin-top: 4em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: -2;
 }
 
+.dtButWrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+}
 
 .audioHeading {
-  margin-bottom: 1em;
+  margin-top: 2em;
+  margin-bottom: 2em;
   font-family: "poppins";
+  font-size: 1.5em;
+  text-align: center;
 }
 
-.modifiedColumn {
-  margin-top: 2em;
+.dtPCover {
+  height: 90vh;
+  object-fit: contain;
+
+}
+
+.dtPCover div {
+  min-height: 100vh;
+  max-width: 70vw;
+  
+}
+
+.dtPCover img {
+  min-height: 90vh;
+  max-height: unset;
+
+}
+
+.dtText {
+  max-width: 100vw;
+  height: 100vh;
+  display: grid;
+  overflow-x: hidden;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+
+}
+
+.dtCurtainCol {
+  top: -5vh;
+  max-width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: -1;
+  display: grid;
+  grid-template-columns: 2fr 6fr 2fr;
+
+}
+
+.dtCurtImg {
+  grid-column: 1/4;
+}
+
+.dtContribCol {
+  text-align: center;
+}
+
+.dtInfoCol {
+  margin-top: 0 !important;
+}
+
+@media (min-width: 320px) {
+}
+
+@media (min-width: 768px) {
+
+
+}
+
+@media (min-width: 1280px) {
+  .dtCurtImg {
+    grid-column: 2/3;
+  }
+
+}
+
+@media (min-width: 1700px) {
+
+}
+
+@media (min-width: 2000px) {
+
 }

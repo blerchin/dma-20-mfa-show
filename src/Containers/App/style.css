@@ -1,10 +1,11 @@
 @import '../../common/reset.css';
 @import '../../common/variables.css';
+@import '../../common/type.css';
 
 body {
   margin: 0;
   font-family: var(--body-font);
-  color: white;
+  color: #ffffff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
@@ -28,11 +29,11 @@ body {
 }
 
 .title {
-  color: #e3f994;
-  font-size: 17vw;
-  font-family: sans-serif;
-  font-weight: 700;
-  line-height: initial;
+  color: var(--text-accent);
+  font-size: 13vw;
+  font-family: 'Days One', sans-serif;;
+  font-weight: 500;
+  line-height: 14vw; 
 }
 
 .blobs {
