@@ -14,7 +14,6 @@ import {
   dtCurtainCol,
   dtContribCol,
   dtContribWrapper,
-  dtInfobox,
   dtInfoCol
 } from "./style.module.css";
 

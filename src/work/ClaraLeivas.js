@@ -6,9 +6,6 @@ import ProjectHeader from "../Components/ProjectHeader";
 import ArtistBio from "../Components/ArtistBio";
 import ProjectColumns, { Column } from "../Components/ProjectColumns";
 import Vimeo from "../Components/VideoVimeo";
-import Image from "../Components/Image";
-
-import Placeholder from "./assets/placeholder.png";
 
 import Seo from "../Components/Seo";
 export default function ({slug, name}) {

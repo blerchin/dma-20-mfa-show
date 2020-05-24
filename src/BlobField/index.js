@@ -93,6 +93,7 @@ export default function BlobField() {
       wrapper.removeEventListener("touchmove", handleTouchMove);
       window.removeEventListener("resize", handleResize);
     };
+  //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [blobsRef]);
 
   useEffect(() => {
