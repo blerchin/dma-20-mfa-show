@@ -11,6 +11,7 @@ import Image from "../Components/Image";
 import Placeholder from "./assets/placeholder.png";
 
 import Seo from "../Components/Seo";
+import ProjectDescription from "../Components/ProjectDescription";
 
 export default function ({slug, name}) {
   return (
@@ -33,12 +34,13 @@ export default function ({slug, name}) {
       </ProjectCover>
       <ProjectColumns>
         <Column>
-          <h3 class="sr-only">Project Description</h3>
-          <p>
-            Written in collaboration with three GPT-2 text generators trained
-            using Runway ML, featuring the voices of Jesse Hoffman (SUDO),
-            Cecile Believe (MAUDE), and Kate Berlant (PSEUDO).
-          </p>
+          <ProjectDescription>
+            <p>
+              Written in collaboration with three GPT-2 text generators trained
+              using Runway ML, featuring the voices of Jesse Hoffman (SUDO),
+              Cecile Believe (MAUDE), and Kate Berlant (PSEUDO).
+            </p>
+          </ProjectDescription>
           <p>Affective loop: Interest ↝ Enjoyment ↝ Surprise ↝ Shame ↺</p>
           <h5 id="eventsLabel">Events:</h5>
           <ol aria-labelledby="eventsLabel">

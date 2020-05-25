@@ -17,6 +17,7 @@ import MilesImage5 from "./assets/MilesPeyton-5.jpg";
 import Placeholder from "./assets/placeholder.png";
 
 import Seo from "../Components/Seo";
+import ProjectDescription from "../Components/ProjectDescription";
 
 export default function ({slug, name}) {
   return (
@@ -43,19 +44,21 @@ export default function ({slug, name}) {
       </ProjectColumns>
       <ProjectColumns>
         <Column>
-          <p>
-            Solar projection of a physical water animation. A droplet of water
-            animates on a square of etched, conductive glass. The animation is
-            driven by electricity and influenced by the pattern etched on the
-            glass, which functions as a visual score and electrical circuit. The
-            animation is displayed as an analog projection that uses sunlight as
-            a light source.
-          </p>
-          <p>
-            From 6/1 to 6/12, ten live streams, each using a different etched
-            glass, will take place at 3PM PST, when the sunlight is strongest in
-            the space.
-          </p>
+          <ProjectDescription>
+            <p>
+              Solar projection of a physical water animation. A droplet of water
+              animates on a square of etched, conductive glass. The animation is
+              driven by electricity and influenced by the pattern etched on the
+              glass, which functions as a visual score and electrical circuit. The
+              animation is displayed as an analog projection that uses sunlight as
+              a light source.
+            </p>
+            <p>
+              From 6/1 to 6/12, ten live streams, each using a different etched
+              glass, will take place at 3PM PST, when the sunlight is strongest in
+              the space.
+            </p>
+          </ProjectDescription>
         </Column>
       </ProjectColumns>
       <ProjectColumns>

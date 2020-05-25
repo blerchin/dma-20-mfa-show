@@ -15,6 +15,7 @@ import ErinImage4 from "./assets/ErinCooney-image_04.png";
 import ErinImage5 from "./assets/ErinCooney-image_05.png";
 
 import Seo from "../Components/Seo";
+import ProjectDescription from "../Components/ProjectDescription";
 export default function ({slug, name}) {
   return (
     <Artist>
@@ -44,29 +45,30 @@ export default function ({slug, name}) {
           />
         </Column>
         <Column>
-          <h3 class="sr-only">Project Description</h3>
-          <p>
-            This piece was made during California’s “Stay at Home” orders, which
-            were imposed in response to the outbreak of COVID-19. The work is
-            about walking, embodiment, point of view, and landscape. Before
-            COVID-19, my intention was to record in outdoor landscapes, but I
-            adapted the piece to take a walking journey in the confines of my
-            apartment instead. This space, a temporary living situation that has
-            been prolonged due to COVID-19, is not my home. The furniture and
-            objects in it do not belong to me, and yet, like others who are
-            fortunate enough to be quarantining safely at home at this time, my
-            experience of the physical world has been largely reduced to this
-            domestic space. As a result, I have developed a peculiar intimacy
-            with these rooms, as they have become my near total landscape. In
-            them, I have used tape to create a single pathway that covers every
-            scalable surface, including furniture, in a wall-to-wall labyrinth
-            in which floor becomes ground, and couch, tables, and countertops
-            become mountains to climb. The labyrinth is a means of taking a
-            journey through a confined space, while simultaneously
-            defamiliarizing an otherwise known environment. It is my way to
-            engage with ground, path-making, infrastructure, and how the built
-            environment determines experience.
-          </p>
+          <ProjectDescription>
+            <p>
+              This piece was made during California’s “Stay at Home” orders, which
+              were imposed in response to the outbreak of COVID-19. The work is
+              about walking, embodiment, point of view, and landscape. Before
+              COVID-19, my intention was to record in outdoor landscapes, but I
+              adapted the piece to take a walking journey in the confines of my
+              apartment instead. This space, a temporary living situation that has
+              been prolonged due to COVID-19, is not my home. The furniture and
+              objects in it do not belong to me, and yet, like others who are
+              fortunate enough to be quarantining safely at home at this time, my
+              experience of the physical world has been largely reduced to this
+              domestic space. As a result, I have developed a peculiar intimacy
+              with these rooms, as they have become my near total landscape. In
+              them, I have used tape to create a single pathway that covers every
+              scalable surface, including furniture, in a wall-to-wall labyrinth
+              in which floor becomes ground, and couch, tables, and countertops
+              become mountains to climb. The labyrinth is a means of taking a
+              journey through a confined space, while simultaneously
+              defamiliarizing an otherwise known environment. It is my way to
+              engage with ground, path-making, infrastructure, and how the built
+              environment determines experience.
+            </p>
+          </ProjectDescription>
         </Column>
       </ProjectColumns>
 

@@ -12,6 +12,7 @@ import Image from "../Components/Image";
 import Placeholder from "./assets/placeholder.png";
 
 import Seo from "../Components/Seo";
+import ProjectDescription from "../Components/ProjectDescription";
 
 const CAPTION_HEIGHT = "4em";
 
@@ -35,17 +36,18 @@ export default function ({slug, name}) {
       </ProjectCover>
       <ProjectColumns>
         <Column>
-          <h3 class="sr-only">Project Description</h3>
-          <p>
-            Memory place navigates through three moments I keep coming back to
-            whenever I visit my home. These emotional spaces attempt to explore
-            the relationship between personal and public memories and how
-            specific moments from our past remain as a constant reminder of what
-            home can be. In a time where many of our interactions are mediated,
-            Memory Place investigates the specific kind of alienation that
-            arises from experiencing significant events at home in mediated
-            ways.
-          </p>
+          <ProjectDescription>
+            <p>
+              Memory place navigates through three moments I keep coming back to
+              whenever I visit my home. These emotional spaces attempt to explore
+              the relationship between personal and public memories and how
+              specific moments from our past remain as a constant reminder of what
+              home can be. In a time where many of our interactions are mediated,
+              Memory Place investigates the specific kind of alienation that
+              arises from experiencing significant events at home in mediated
+              ways.
+            </p>
+          </ProjectDescription>
         </Column>
       </ProjectColumns>
       <ProjectColumns>
