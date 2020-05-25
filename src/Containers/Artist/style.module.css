@@ -1,5 +1,5 @@
 .container {
-  margin-bottom: var(--page-gutter);
+  margin-bottom: 95px;
 }
 
 .container section:first-of-type {
