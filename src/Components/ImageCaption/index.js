@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 import style from './style.module.scss';
 
-const ImageCaption = ({ title, year, materials }) => (
-  <div className={style.caption}>
+const ImageCaption = ({ title, year, materials, ...props }) => (
+  <div className={style.caption} {...props}>
     <h4 className={style.title}>
       {title}
       {year ? 

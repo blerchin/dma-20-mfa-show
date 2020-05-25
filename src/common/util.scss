@@ -5,7 +5,7 @@ $spacing: (
   s: 10px,
   m: 20px,
   l: 40px,
-  xl: 80px,
+  xl: 100px,
   a: auto
 );
 
@@ -111,11 +111,12 @@ $spacing: (
 @mixin container {
   margin-left: auto;
   margin-right: auto;
-  max-width: 1200px;
+  max-width: var(--insetMaxWidth);
   width: 100%;
 
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 1024px) {
     @include ph;
+    max-width: none;
   }
 }
 
