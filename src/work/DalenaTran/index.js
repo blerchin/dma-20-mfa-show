@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import "./css/style.css";
 
 import {
   p0,
@@ -14,9 +15,10 @@ import {
   dtCurtainCol,
   dtContribCol,
   dtContribWrapper,
-  dtInfobox,
-  dtInfoCol
+  dtInfoCol,
 } from "./style.module.css";
+
+import ProjectLinkStyle from "../../Components/ProjectLink/style.module.css";
 
 import Artist from "../../Containers/Artist";
 import ProjectCover from "../../Components/ProjectCover";
@@ -28,8 +30,42 @@ import Image from "../../Components/Image";
 
 import DalenaImage1 from "./assets/DalenaTran-1.png";
 import DalenaImage2 from "./assets/DalenaTran-2.png";
+import PosterImage from "./img/aitPoster.png";
+
+import audioJson from "./data/data";
+import voiceoversJson from "./data/voiceovers";
+import Engines from "./js/engines-utils";
+
+import $ from "jquery";
+import { Link } from "react-router-dom";
+// window.$ = $;
 
 export default function () {
+  const engines = new Engines();
+
+  function beginProject() {
+    engines.audioEngine.beginAudio();
+    engines.prepareVoiceover();
+    $("#AITContainer").removeClass("AITHide");
+    $("#AITContainer").fadeOut(0);
+    $("#AITContainer").fadeIn(1500);
+  }
+
+  function stopProject() {
+    // engines = null;
+    engines.stopEngine();;
+    $("#AITContainer").fadeOut(1500, () => {
+      $("#AITContainer").addClass("AITHide");
+    });
+  }
+
+  useEffect(() => {
+    engines.setup(audioJson, voiceoversJson);
+    engines.setHTMLElement("#AITSub");
+    $("#AITLocA").fadeOut(0);
+    $("#AITLocB").fadeOut(0);
+  });
+
   return (
     <Artist>
       <ProjectHeader
@@ -63,11 +99,11 @@ export default function () {
           are never quite the same.
         </p>
         <div className={dtButWrapper}>
-          <ProjectLink
-            className={dtBut}
-            href="https://dalena.github.io/acts-in-translation/"
-            text="VIEW ACTS IN TRANSLATION"
-          />
+          <div className={ProjectLinkStyle.container}>
+            <Link to="#" onClick={beginProject}>
+              VIEW ACTS IN TRANSLATION
+            </Link>
+          </div>
         </div>
       </Column>
       <Column className={dtCurtainCol}>
@@ -82,7 +118,10 @@ export default function () {
         <Column>
           <p>
             In the beginning, there was the window. Now there are plenty of
-            other things than windows. There is heat, ice, sweat, and Mickey Mouse. Not to forget blood: The dark and runny that pumps through veins carrying a tempo that make possible the highest highs and lowest lows.
+            other things than windows. There is heat, ice, sweat, and Mickey
+            Mouse. Not to forget blood: The dark and runny that pumps through
+            veins carrying a tempo that make possible the highest highs and
+            lowest lows.
           </p>
         </Column>
       </ProjectColumns>
@@ -156,19 +195,83 @@ export default function () {
       <ProjectColumns>
         <Column>
           <p>
-            A special thanks to جیگر من Hirad Sab for his love &amp; technical contributions to the project
+            A special thanks to جیگر من Hirad Sab for his love &amp; technical
+            contributions to the project
           </p>
-          <br/>
+          <br />
           <p>
-            &amp; Chandler McWilliams, Danny Snelson, Lauren McCarthy, Casey Reas, Erkki Huhtamo, Cayetano Ferrer, Jennifer Steinkamp &amp; Noa Kaplan for their support and mentorship
+            &amp; Chandler McWilliams, Danny Snelson, Lauren McCarthy, Casey
+            Reas, Erkki Huhtamo, Cayetano Ferrer, Jennifer Steinkamp &amp; Noa
+            Kaplan for their support and mentorship
           </p>
         </Column>
       </ProjectColumns>
       <ArtistBio>
         <p>
-          Dalena Tran is a media artist & writer living in Los Angeles, CA. Her stories and situations respond to notions of voyeurism, hegemony, memory, and the phenomenon of media. She engages across mediums and disciplines as they relate to the rhythms of everyday life, often concerned with moments hidden in plain sight.
+          Dalena Tran is a media artist & writer living in Los Angeles, CA. Her
+          stories and situations respond to notions of voyeurism, hegemony,
+          memory, and the phenomenon of media. She engages across mediums and
+          disciplines as they relate to the rhythms of everyday life, often
+          concerned with moments hidden in plain sight.
         </p>
       </ArtistBio>
+      <div id="AITContainer" className="AITHide">
+        <div id="AITWrapper">
+          <div id="AITGridBox">
+          <div id="AITEnd" onClick={stopProject}>
+                RETURN TO PROJECT PAGE
+              </div>
+            <div id="AITVidBox">
+              <div id="AITVidWrapper">
+                <video
+                  id="AITVidElem"
+                  autoPlay
+                  loop
+                  muted
+                  poster={
+                    PosterImage.images[PosterImage.images.length - 1].path
+                  }
+                >
+                  {/* <source type='video/webm;codecs="vp9,vorbis' src=""/> */}
+                  <source
+                    type='video/webm;codecs="vp9,vorbis'
+                    src="https://dalena.github.io/acts-in-translation/vid/aitvp9recomm.webm"
+                  />
+                  <source
+                    type='video/webm;codecs="vp8,vorbis'
+                    src="https://dalena.github.io/acts-in-translation/vid/aitvp8.webm"
+                  />
+                  <source
+                    type='video/ogg;codecs="theora,vorbis'
+                    src="https://dalena.github.io/acts-in-translation/vid/ait-4web.ogv"
+                  />
+                  <source
+                    type="video/mp4"
+                    src="https://dalena.github.io/acts-in-translation/vid/aith264.mp4"
+                  />
+                </video>
+                <div id="AITTitleBox">
+                  <p id="AITSub"></p>
+                </div>
+              </div>
+            </div>
+            <div id="AITCityLabA">
+              <h3 id="AITLocA"> </h3>
+              <br />
+            </div>
+            <div id="AITCityLabB">
+              <h3 id="AITLocB"> </h3>
+              <br />
+            </div>
+            <div id="AITCountDown">
+              <p id="AITCountTxt">
+                00:<span id="AITCountMins">00</span>:
+                <span id="AITCountSecs">00</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </Artist>
   );
 }
