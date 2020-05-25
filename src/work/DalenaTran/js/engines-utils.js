@@ -21,6 +21,9 @@ export default function Engines() {
   this.baseURL = "https://dalena.github.io/acts-in-translation/data";
   this.voiceOverBase = "audio-voiceover";
   this.bgSoundBase = "audio-bg";
+  this.releasesURL = "https://github.com/dalena/acts-in-translation-data/releases/download";
+  this.voiceOverRelease = "voiceovers-5-24";
+  this.bgSoundRelease = "bgsounds-5-24";
 }
 
 Engines.prototype = {
@@ -33,14 +36,16 @@ Engines.prototype = {
   },
 
   setupAll(audioData, voiceoverDataFile) {
-    let voURL = `${this.baseURL}/${this.voiceOverBase}/`;
-    let bgSoundURL = `${this.baseURL}/${this.bgSoundBase}/`;
+    let voBaseURL = `${this.baseURL}/${this.voiceOverBase}/`;
+    let bgSoundBaseURL = `${this.baseURL}/${this.bgSoundBase}/`;
+    let voReleaseURL = `${this.releasesURL}/${this.voiceOverRelease}/`;
+    let bgSoundReleaseURL = `${this.releasesURL}/${this.bgSoundRelease}/`;
     this.audioEngine = new AudioEngine(
       this.voiceovers,
       this.audioSetupComplete.bind(this)
     );
-    this.audioEngine.bgURL = bgSoundURL;
-    this.audioEngine.voiceOverURL = voURL;
+    this.audioEngine.bgURL = bgSoundReleaseURL;
+    this.audioEngine.voiceOverURL = voReleaseURL;
     this.audioEngine.setup(audioData);
 
     this.timeEngine = new TimeEngine(this.timeSetupComplete.bind(this));
@@ -51,7 +56,7 @@ Engines.prototype = {
       this.subsSetupComplete.bind(this),
       this.showNextSub.bind(this)
     );
-    this.subEngine.voiceOverURL = voURL;
+    this.subEngine.voiceOverURL = voBaseURL;
     this.subEngine.setup();
   },
 
