@@ -16,6 +16,9 @@
     margin-left: var(--page-gutter);
     margin-bottom: 7vh;
   }
+  @include portrait {
+    margin-bottom: calc(100vw/11);
+  }
 }
 
 .container ul, .container li {
