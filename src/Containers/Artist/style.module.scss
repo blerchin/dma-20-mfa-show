@@ -5,7 +5,7 @@
   margin-bottom: 7vh;
   @include portrait {
     margin-left: var(--page-gutter);
-    margin-bottom: calc(100vh/11);
+    margin-bottom: calc(100vw/11);
   }
 }
 
