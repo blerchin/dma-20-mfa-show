@@ -64,9 +64,7 @@ export default function ({slug, name}) {
       </ProjectColumns>
       <ProjectColumns>
         <Column>
-          <p>
-            <ProjectLink href="https://yimby.space" text="Sign up for updates" />
-          </p>
+          <ProjectLink href="https://yimby.space" text="Sign up for updates" />
         </Column>
       </ProjectColumns>
       <ProjectColumns>
@@ -80,7 +78,7 @@ export default function ({slug, name}) {
       </ProjectColumns>
       <ProjectColumns>
         <Column>
-          <video muted autoplay loop style={{ width: '100%', height: 'auto'}} ref={videoEl}>
+          <video muted autoPlay loop style={{ width: '100%', height: 'auto'}} ref={videoEl}>
             <source src={EnclosureLoopMp4} type="video/mp4" />
             <source src={EnclosureLoopOgg} type="video/mp4" />
           </video>

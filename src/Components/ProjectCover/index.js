@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 
 import {
   container,
-} from './style.module.css';
+} from './style.module.scss';
 
 const ProjectCover = ({fadeOut = false, children, className = ''}) => {
   let fadeLevel = 0;
