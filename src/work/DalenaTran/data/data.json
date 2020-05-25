@@ -1,0 +1,405 @@
+{
+    "audios": {
+        "0": {
+            "idx": 0,
+            "loc": "Jo\u00e3o Pessoa, Brazil",
+            "name": "a_alves_joao_pessoa"
+        },
+        "1": {
+            "idx": 1,
+            "loc": "Fort Lauderdale, USA",
+            "name": "a_erblat_fort_lauderdale"
+        },
+        "10": {
+            "idx": 10,
+            "loc": "Pozna\u0144, Poland",
+            "name": "b_biernacki_poznan_3"
+        },
+        "11": {
+            "idx": 11,
+            "loc": "Graz, Austria",
+            "name": "b_gilma_graz"
+        },
+        "12": {
+            "idx": 12,
+            "loc": "Baincthun, France",
+            "name": "c_fortin_baincthun_1"
+        },
+        "13": {
+            "idx": 13,
+            "loc": "Baincthun, France",
+            "name": "c_fortin_baincthun_2"
+        },
+        "14": {
+            "idx": 14,
+            "loc": "Baincthun, France",
+            "name": "c_fortin_baincthun_3"
+        },
+        "15": {
+            "idx": 15,
+            "loc": "Baincthun, France",
+            "name": "c_fortin_baincthun_4"
+        },
+        "16": {
+            "idx": 16,
+            "loc": "Baincthun, France",
+            "name": "c_fortin_baincthun_5"
+        },
+        "17": {
+            "idx": 17,
+            "loc": "Baincthun, France",
+            "name": "c_fortin_baincthun_6"
+        },
+        "18": {
+            "idx": 18,
+            "loc": "Fortaleza, Brazil",
+            "name": "c_ribeiro_fortaleza"
+        },
+        "19": {
+            "idx": 19,
+            "loc": "Saigon, Vietnam",
+            "name": "d_doan_ho_chi_minh_1"
+        },
+        "2": {
+            "idx": 2,
+            "loc": "Amsterdam, Netherlands",
+            "name": "a_eslami_amsterdam"
+        },
+        "20": {
+            "idx": 20,
+            "loc": "Saigon, Vietnam",
+            "name": "d_doan_ho_chi_minh_2"
+        },
+        "21": {
+            "idx": 21,
+            "loc": "Aliso Viejo, USA",
+            "name": "d_ghassemi_aliso_viejo"
+        },
+        "22": {
+            "idx": 22,
+            "loc": "Seoul, South Korea",
+            "name": "d_kim_seoul_1"
+        },
+        "23": {
+            "idx": 23,
+            "loc": "Seoul, South Korea",
+            "name": "d_kim_seoul_2"
+        },
+        "24": {
+            "idx": 24,
+            "loc": "Seoul, South Korea",
+            "name": "d_kim_seoul_3"
+        },
+        "25": {
+            "idx": 25,
+            "loc": "Riga, Latvia",
+            "name": "e_kuns_riga"
+        },
+        "26": {
+            "idx": 26,
+            "loc": "Tehran, Iran",
+            "name": "f_dirin_tehran_1"
+        },
+        "27": {
+            "idx": 27,
+            "loc": "Tehran, Iran",
+            "name": "f_dirin_tehran_2"
+        },
+        "28": {
+            "idx": 28,
+            "loc": "Tehran, Iran",
+            "name": "f_dirin_tehran_3"
+        },
+        "29": {
+            "idx": 29,
+            "loc": "Tehran, Iran",
+            "name": "f_dirin_tehran_4"
+        },
+        "3": {
+            "idx": 3,
+            "loc": "Philadelphia, USA",
+            "name": "a_khalilullah_philadelphia_1"
+        },
+        "30": {
+            "idx": 30,
+            "loc": "Tehran, Iran",
+            "name": "f_dirin_tehran_5"
+        },
+        "31": {
+            "idx": 31,
+            "loc": "Tehran, Iran",
+            "name": "f_dirin_tehran_6"
+        },
+        "32": {
+            "idx": 32,
+            "loc": "Tehran, Iran",
+            "name": "f_dirin_tehran_7"
+        },
+        "33": {
+            "idx": 33,
+            "loc": "Guangzhou, China",
+            "name": "h_rui_guangzhou_1"
+        },
+        "34": {
+            "idx": 34,
+            "loc": "Guangzhou, China",
+            "name": "h_rui_guangzhou_2"
+        },
+        "35": {
+            "idx": 35,
+            "loc": "Vladivostok, Russia",
+            "name": "i_bespalov_vladivostok"
+        },
+        "36": {
+            "idx": 36,
+            "loc": "Singapore",
+            "name": "j_cheung_singapore"
+        },
+        "37": {
+            "idx": 37,
+            "loc": "Milan, Italy",
+            "name": "j_goolvart_milan_1"
+        },
+        "38": {
+            "idx": 38,
+            "loc": "Milan, Italy",
+            "name": "j_goolvart_milan_2"
+        },
+        "39": {
+            "idx": 39,
+            "loc": "Los Angeles, USA",
+            "name": "j_steinkamp_los_angeles"
+        },
+        "4": {
+            "idx": 4,
+            "loc": "Philadelphia, USA",
+            "name": "a_khalilullah_philadelphia_2"
+        },
+        "40": {
+            "idx": 40,
+            "loc": "Salt Lake City, USA",
+            "name": "j_xanthos_salt_lake_city_1"
+        },
+        "41": {
+            "idx": 41,
+            "loc": "Salt Lake City, USA",
+            "name": "j_xanthos_salt_lake_city_2"
+        },
+        "42": {
+            "idx": 42,
+            "loc": "Shenzhen, China",
+            "name": "j_zhi_shenzhen"
+        },
+        "43": {
+            "idx": 43,
+            "loc": "Vancouver, Canada",
+            "name": "k_dichosa_vancouver"
+        },
+        "44": {
+            "idx": 44,
+            "loc": "Ensenada, M\u00e9xico",
+            "name": "k_lopez_ensenada_1"
+        },
+        "45": {
+            "idx": 45,
+            "loc": "Los Angeles, USA",
+            "name": "l_galbraith_los_angeles"
+        },
+        "46": {
+            "idx": 46,
+            "loc": "Los Angeles, USA",
+            "name": "l_mccarthy_los_angeles_1"
+        },
+        "47": {
+            "idx": 47,
+            "loc": "Los Angeles, USA",
+            "name": "l_mccarthy_los_angeles_2"
+        },
+        "48": {
+            "idx": 48,
+            "loc": "Portsmouth, Dominica",
+            "name": "m_allahyari_portsmouth"
+        },
+        "49": {
+            "idx": 49,
+            "loc": "Cairo, Egypt",
+            "name": "m_allam_cairo"
+        },
+        "5": {
+            "idx": 5,
+            "loc": "Amsterdam, Netherlands",
+            "name": "a_mahmoudian_amsterdam_1"
+        },
+        "50": {
+            "idx": 50,
+            "loc": "Golden, Colorado",
+            "name": "m_anderson_golden"
+        },
+        "51": {
+            "idx": 51,
+            "loc": "Stockport, England",
+            "name": "m_baker_stockport"
+        },
+        "52": {
+            "idx": 52,
+            "loc": "Sofia, Bulgaria",
+            "name": "m_dervenkov_sofia_1"
+        },
+        "53": {
+            "idx": 53,
+            "loc": "Sofia, Bulgaria",
+            "name": "m_dervenkov_sofia_2"
+        },
+        "54": {
+            "idx": 54,
+            "loc": "Sofia, Bulgaria",
+            "name": "m_dervenkov_sofia_3"
+        },
+        "55": {
+            "idx": 55,
+            "loc": "Salt Lake City, USA",
+            "name": "m_dotson_los_angeles"
+        },
+        "56": {
+            "idx": 56,
+            "loc": "Salt Lake City, USA",
+            "name": "m_lemesany_salt_lake_city"
+        },
+        "57": {
+            "idx": 57,
+            "loc": "Mafra, Portugal",
+            "name": "m_oliveira_mafra"
+        },
+        "58": {
+            "idx": 58,
+            "loc": "Calgary, Canada",
+            "name": "m_tahmouresie_calgary"
+        },
+        "59": {
+            "idx": 59,
+            "loc": "Hopkinton, USA",
+            "name": "m_wang_hopkinton"
+        },
+        "6": {
+            "idx": 6,
+            "loc": "Amsterdam, Netherlands",
+            "name": "a_mahmoudian_amsterdam_2"
+        },
+        "60": {
+            "idx": 60,
+            "loc": "London, England",
+            "name": "m_zamagni_london"
+        },
+        "61": {
+            "idx": 61,
+            "loc": "Portland, USA",
+            "name": "n_seymour_portland"
+        },
+        "62": {
+            "idx": 62,
+            "loc": "Salt Lake City, USA",
+            "name": "o_castanon_salt_lake_city_1"
+        },
+        "63": {
+            "idx": 63,
+            "loc": "Salt Lake City, USA",
+            "name": "o_castanon_salt_lake_city_2"
+        },
+        "64": {
+            "idx": 64,
+            "loc": "Buenos Aires, Argentina",
+            "name": "p_blood_buenos_aires_1"
+        },
+        "65": {
+            "idx": 65,
+            "loc": "Buenos Aires, Argentina",
+            "name": "p_blood_buenos_aires_2"
+        },
+        "66": {
+            "idx": 66,
+            "loc": "Chiang Mai, Thailand",
+            "name": "p_jossa_chaing_mai"
+        },
+        "67": {
+            "idx": 67,
+            "loc": "Guangzhou, China",
+            "name": "r_heppell_guangzhou_1"
+        },
+        "68": {
+            "idx": 68,
+            "loc": "Guangzhou, China",
+            "name": "r_heppell_guangzhou_2"
+        },
+        "69": {
+            "idx": 69,
+            "loc": "Mayfield, England",
+            "name": "r_heppell_mayfield_1"
+        },
+        "7": {
+            "idx": 7,
+            "loc": "New Haven, USA",
+            "name": "a_sab_new_haven"
+        },
+        "70": {
+            "idx": 70,
+            "loc": "Mayfield, England",
+            "name": "r_heppell_mayfield_2"
+        },
+        "71": {
+            "idx": 71,
+            "loc": "Mayfield, England",
+            "name": "r_heppell_mayfield_3"
+        },
+        "72": {
+            "idx": 72,
+            "loc": "Los Angeles, USA",
+            "name": "s_gransjean_los_angeles"
+        },
+        "73": {
+            "idx": 73,
+            "loc": "Miami, USA",
+            "name": "s_kurts_miami_1"
+        },
+        "74": {
+            "idx": 74,
+            "loc": "Miami, USA",
+            "name": "s_kurts_miami_2"
+        },
+        "75": {
+            "idx": 75,
+            "loc": "Philadelphia, USA",
+            "name": "s_ravishankar_philadelphia"
+        },
+        "76": {
+            "idx": 76,
+            "loc": "Salt Lake City, USA",
+            "name": "s_safiullah_salt_lake_city_1"
+        },
+        "77": {
+            "idx": 77,
+            "loc": "Salt Lake City, USA",
+            "name": "s_safiullah_salt_lake_city_2"
+        },
+        "78": {
+            "idx": 78,
+            "loc": "Salt Lake City, USA",
+            "name": "s_safiullah_salt_lake_city_3"
+        },
+        "79": {
+            "idx": 79,
+            "loc": "Salt Lake City, USA",
+            "name": "s_safiullah_salt_lake_city_4"
+        },
+        "8": {
+            "idx": 8,
+            "loc": "Pozna\u0144, Poland",
+            "name": "b_biernacki_poznan_1"
+        },
+        "9": {
+            "idx": 9,
+            "loc": "Pozna\u0144, Poland",
+            "name": "b_biernacki_poznan_2"
+        }
+    },
+    "len": 80
+}
