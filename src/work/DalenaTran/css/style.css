@@ -1,266 +1,297 @@
-/* @font-face {
-    font-family: "Kyiv";
-    src: url("../fonts/KyivTypeTitling-VarGX.ttf") format("truetype");
-} */
-
-
-#AITLocA, #AITLocB  {
-    font-size: 26px;
-    font-family: Kyiv;
-    font-variation-settings: "wght"100;
+@font-face {
+  font-family: "Kyiv";
+  src: url("../fonts/KyivTypeTitling-VarGX.ttf") format("truetype");
 }
 
+#AITLocA,
+#AITLocB {
+  font-size: 26px;
+  font-family: Kyiv;
+  font-variation-settings: "wght" 100;
+}
 
 #AITTitle {
-    background: red;
-    align-self: flex-end;
+  align-self: flex-end;
 }
 
 #AITBack {
-    background: yellow;
-    align-self: flex-start;
+  align-self: flex-start;
 }
 
 #AITNavs {
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    display: flex;
-    /* align-items: center; */
-    /* justify-content:left; */
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  display: flex;
+  /* align-items: center; */
+  /* justify-content:left; */
 }
 
 #AITContainer {
-    background: #000000;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9999;
+  background: rgb(0, 0, 0);
+  background-size: contain;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
 }
 
-.AITHide{
-    display: none !important;
-    opacity: 0;
+.AITHide {
+  display: none !important;
+  opacity: 0;
 }
 
-.AITFadedIn{
-    opacity: 1 !important;
+.AITFadedIn {
+  opacity: 1 !important;
 }
 
 #AITWrapper {
-    width: 90vw;
-    height: 90vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
+  width: 90vw;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
 }
 
 #AITGridBox {
-    display: grid;
-    grid-template-columns: 1fr 1fr 2fr 2fr 2fr 2fr 2fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 3fr 1fr 1fr;
-    width: 100%;
-    height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr 2fr 2fr 2fr 2fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 3fr 1fr 1fr;
+  width: 100%;
+  height: 100%;
 }
 
 #AITVidBox {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* padding: 20px 0px 20px 0px; */
-    grid-column: 1/10;
-    grid-row: 1/6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* padding: 20px 0px 20px 0px; */
+  grid-column: 1/10;
+  grid-row: 1/6;
 }
 
 #AITVidWrapper {
-    display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
-    grid-template-rows: 1fr 3fr 1fr;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: 1fr 3fr 1fr;
 }
 
-
 #AITCityLabA {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    grid-column: 1/10;
-    grid-row: 2/3;
-    z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-column: 1/10;
+  grid-row: 2/3;
+  z-index: 100;
 }
 
 #AITCityLabB {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    grid-column: 1/10;
-    grid-row: 4/5;
-    z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-column: 1/10;
+  grid-row: 4/5;
+  z-index: 100;
 }
 
 #AITVidElem {
-    grid-row: 1/4;
-    grid-column: 1/4;
-    max-width: 100%;
-    height: auto;
+  grid-row: 1/4;
+  grid-column: 1/4;
+  max-width: 100%;
+  height: auto;
 }
-
 
 #AITTitleBox {
-    grid-row:3/4;
-    grid-column: 1/4;
-    display: flex;
-    z-index: 1000;
-    align-self: center;
-    justify-self: center;
-    max-width: 100%;
-    overflow: hidden;
-    margin: 0;
+  grid-row: 3/4;
+  grid-column: 1/4;
+  display: flex;
+  z-index: 1000;
+  align-self: center;
+  justify-self: center;
+  max-width: 100%;
+  overflow: hidden;
+  margin: 0;
 }
 
-#AITTitleBox p{
-    color: #ffffff;
-    font-size: 16px;
+#AITTitleBox p {
+  color: #ffffff;
+  font-size: 16px;
 
-    font-family:'Arial', sans-serif;
-    line-height: 22px;
-    -webkit-font-smoothing: antialiased;
-    text-shadow: 1px 5px 0 #000000, 3px 3px 0 #000000;
+  font-family: "Arial", sans-serif;
+  line-height: 22px;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: 1px 5px 0 #000000, 3px 3px 0 #000000;
 }
 
-#AITCountDown{
-    grid-row: 5/6;
-    grid-column: 1/10;
-    display: flex;
-    flex-direction: column;
-    /* align-items: center; */
-    justify-content: center;
-    font-size: 32px;
+#AITCountDown {
+  grid-row: 5/6;
+  grid-column: 1/10;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+  font-size: 32px;
 }
 
-#AITSvgBox{
-    width: 100vw;
-    height:100vh;
-    position: absolute;
-    /* background: url(../img/diagram.svg)center center/cover no-repeat; */
-    opacity: 45%;
+#AITSvgBox {
+  min-width: 100vw;
+  min-height: 150vh;
+  position: absolute;
+  background: url("../img/diagram.svg") no-repeat center center;
+  background-size: cover;
+  opacity: 0.15;
 }
 
 #AITEnd {
-    grid-row: 1/2;
-    grid-column: 1/10;
-    z-index: 200;
-    font-size: 0.5em;
-    color: gray;
+  margin-top: 40px;
+  position: absolute;
+  top: 0;
+  z-index: 200;
+  font-size: .8em;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.5;
+  transition: .5s ease;
 }
 
+#AITEnd:hover {
+    opacity: 1;
+    background: var(--bg-accent);
+    color: #000000;
+    cursor: pointer;
+}
+
+#AITEnd span {
+  padding: 10px 15px 10px 15px;
+  border: 1px solid #fff;
+}
+#AITEnd span:hover {
+    border: 1px solid #000;
+  }
 @media (min-width: 320px) and (orientation: landscape) {
-#AITWrapper{
-    width:100%;
+  #AITWrapper {
+    width: 100%;
     height: 100%;
-}
-#AITVidAIT {
+  }
+  #AITVidAIT {
     max-height: 90vh;
-}
-#AITCityLabA {
+  }
+  #AITCityLabA {
     grid-column: 1/5;
     grid-row: 1/2;
-}
-#AITCityLabB {
+  }
+  #AITCityLabB {
     grid-column: 6/10;
     grid-row: 5/6;
-}
-#AITLocA, #AITLocB {
+  }
+  #AITLocA,
+  #AITLocB {
     font-size: 1.05rem;
-    color: rgba(255, 255, 255, .5);
-}
-
+    color: rgba(255, 255, 255, 0.5);
+  }
 }
 
 @media (min-width: 320px) {
-    #AITTitleBox p{
-        font-size: 14px;
-        color: #fff;
-    }
+  #AITTitleBox p {
+    font-size: 14px;
+    color: #fff;
+  }
 }
 
 @media (min-width: 768px) {
-    #AITLocA, #AITLocB {
-        font-size: 1.5rem;
-        color: #fff;
-    }
-    #AITVidBox {
-        grid-column: 1/10;
-        grid-row: 1/6;
-    }
-    #AITTitleBox p{
-        font-size: 20px;
-    }
-    #AITCityLabA {
-        grid-row: 1/3;
-    }
-    #AITCityLabB {
-        grid-row: 4/6;
-    }
-
-
+  #AITLocA,
+  #AITLocB {
+    font-size: 1.5rem;
+    color: #fff;
+  }
+  #AITVidBox {
+    grid-column: 1/10;
+    grid-row: 1/6;
+  }
+  #AITTitleBox p {
+    font-size: 20px;
+  }
+  #AITCityLabA {
+    grid-row: 1/3;
+  }
+  #AITCityLabB {
+    grid-row: 4/6;
+  }
+  #AITEnd {
+    margin: 40px 0px 0px 40px;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 }
 
 @media (min-width: 1280px) {
-    #AITCityLabA {
-        grid-column: 1/4;
-        grid-row: 2/5;
-    }
-    #AITTitleBox p{
-        font-size: 24px;
-        /* -webkit-text-stroke: 2px black;
+  #AITCityLabA {
+    grid-column: 1/4;
+    grid-row: 2/5;
+  }
+  #AITTitleBox p {
+    font-size: 24px;
+    /* -webkit-text-stroke: 2px black;
         paint-order: stroke fill;
         font-weight: bold; */
-    }
-    #AITCityLabB {
-        grid-column: 7/10;
-        grid-row: 2/5;
-    }
-    #AITBackDiv {
-        grid-column: 1/3;
-    }
+  }
+  #AITCityLabB {
+    grid-column: 7/10;
+    grid-row: 2/5;
+  }
+  #AITBackDiv {
+    grid-column: 1/3;
+  }
+  #AITSvgBox {
+    min-height: 200vh;
+  }
 
+  #AITEnd span {
+    /* padding: 20px; */
+    font-size: 1.2em;
+  }
 }
 
 @media (min-width: 1700px) {
-    #AITCityLabA {
-        grid-column: 3/4;
-        grid-row: 2/5;
-    }
+  #AITCityLabA {
+    grid-column: 3/4;
+    grid-row: 2/5;
+  }
 
-    #AITCityLabB {
-        grid-column: 7/8;
-        grid-row: 2/5;
-    }
+  #AITCityLabB {
+    grid-column: 7/8;
+    grid-row: 2/5;
+  }
 }
 
 @media (min-width: 2000px) {
-    #AITLocA, #AITLocB {
-        font-size: 1.75rem;
-    }
+  #AITLocA,
+  #AITLocB {
+    font-size: 1.75rem;
+  }
 
-    #AITVidBox {
-        grid-column: 3/8;
-        grid-row: 1/6;
-    }
+  #AITVidBox {
+    grid-column: 3/8;
+    grid-row: 1/6;
+  }
 
-    #AITCityLabA {
-        grid-column: 3/5;
-        grid-row: 2/5;
-    }
+  #AITCityLabA {
+    grid-column: 3/5;
+    grid-row: 2/5;
+  }
 
-    #AITCityLabB {
-        grid-column: 6/8;
-        grid-row: 2/5;
-    }
+  #AITCityLabB {
+    grid-column: 6/8;
+    grid-row: 2/5;
+  }
+
 }

@@ -6,11 +6,12 @@ import {
   p1,
   p2,
   p3,
+  p4,
+  p5,
   audioHeading,
   dtPCover,
   dtText,
   dtButWrapper,
-  dtBut,
   dtCurtImg,
   dtCurtainCol,
   dtContribCol,
@@ -25,7 +26,7 @@ import ProjectCover from "../../Components/ProjectCover";
 import ProjectHeader from "../../Components/ProjectHeader";
 import ArtistBio from "../../Components/ArtistBio";
 import ProjectColumns, { Column } from "../../Components/ProjectColumns";
-import ProjectLink from "../../Components/ProjectLink";
+// import ProjectLink from "../../Components/ProjectLink";
 import Image from "../../Components/Image";
 
 import DalenaImage1 from "./assets/DalenaTran-1.png";
@@ -48,19 +49,27 @@ export default function () {
     engines.prepareVoiceover();
     $("#AITContainer").removeClass("AITHide");
     $("#AITContainer").fadeOut(0);
-    $("#AITContainer").fadeIn(1500);
+    $("#AITContainer").fadeIn(800);
     var video = document.getElementById("AITVidElem");
-    video.muted= true;
+    video.muted = true;
     video.play();
+    $("html, body").css({
+      overflow: "hidden",
+      height: "100%",
+    });
   }
 
   function stopProject() {
     // engines = null;
-    engines.stopEngine();;
-    $("#AITContainer").fadeOut(1500, () => {
+    engines.stopEngine();
+    $("#AITContainer").fadeOut(800, () => {
       $("#AITContainer").addClass("AITHide");
       var video = document.getElementById("AITVidElem");
       video.pause();
+      $("html, body").css({
+        overflow: "auto",
+        height: "auto",
+      });
     });
   }
 
@@ -71,7 +80,7 @@ export default function () {
     $("#AITLocB").fadeOut(0);
     // $("#AITVidElem").prop('muted', true);
     var video = document.getElementById("AITVidElem");
-    video.muted= true;
+    video.muted = true;
   }, []);
 
   return (
@@ -93,8 +102,7 @@ export default function () {
       <Column className={dtText}>
         <p className={p0}>Two windows having a moment together.</p>
         <p className={p1}>
-          A range of stories emerge every hour on the hour. Each marks a passage
-          of time but never keep it.
+          A range of stories emerge every hour on the hour in global synchronicity (GST). Each one marks the passing of time but does not keep it.
         </p>
         <p className={p2}>
           Ambient recordings from different cities at separate times are
@@ -106,6 +114,7 @@ export default function () {
           <br />
           are never quite the same.
         </p>
+        <p className={p4}>🅢🅞🅤🅝🅓 🅞🅝</p>
         <div className={dtButWrapper}>
           <div className={ProjectLinkStyle.container}>
             <Link to="#" onClick={beginProject}>
@@ -224,11 +233,11 @@ export default function () {
         </p>
       </ArtistBio>
       <div id="AITContainer" className="AITHide">
+        <div id="AITEnd" onClick={stopProject}>
+          <span>⇜ Return to Project Info</span>
+        </div>
         <div id="AITWrapper">
           <div id="AITGridBox">
-          <div id="AITEnd" onClick={stopProject}>
-                RETURN TO PROJECT PAGE
-              </div>
             <div id="AITVidBox">
               <div id="AITVidWrapper">
                 <video
@@ -248,7 +257,7 @@ export default function () {
                     type="video/mp4"
                     src="https://github.com/dalena/acts-in-translation-data/releases/download/vid/aith264.mp4"
                   />
-                   {/* <source
+                  {/* <source
                     type='video/webm;codecs="vp9,vorbis'
                     src="https://github.com/dalena/acts-in-translation-data/releases/download/vid/aitvp9recomm.webm"
                   />
@@ -282,6 +291,7 @@ export default function () {
             </div>
           </div>
         </div>
+        <div id="AITSvgBox"></div>
       </div>
     </Artist>
   );

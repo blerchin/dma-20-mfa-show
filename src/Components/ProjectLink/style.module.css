@@ -12,7 +12,7 @@
   font-weight: bold;
   font-size: 32px;
   border: 2px solid #000;
-  /* outline: 0.5rem dotted #000; */
+  transition: .9s ease;
 }
 
 .container a:hover {
