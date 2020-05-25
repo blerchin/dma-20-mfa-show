@@ -1,13 +1,21 @@
+@import "../../common/util.scss";
+
 .container {
+  @include ml(m);
+  @include mb(l);
   font-family: var(--header-font);
   font-size: 36px;
   line-height: 42px;
   text-align: left;
   position: fixed;
-  bottom: 7vh;
-  left: var(--page-gutter);
+  left: 0;
+  bottom: 0;
   z-index: 1;
   font-weight: 700;
+  @include medium {
+    margin-left: var(--page-gutter);
+    margin-bottom: 7vh;
+  }
 }
 
 .container ul, .container li {

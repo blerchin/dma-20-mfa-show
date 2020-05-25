@@ -6,17 +6,19 @@ import {
   headerTitle,
   headerMaterials,
   headerLink,
-} from './style.module.css';
+} from './style.module.scss';
 
 const ProjectHeader = ({artistName, title, materials, link, className = ''}) => (
-  <div className={`${container} ${className}`}>
-    <h3 className={headerArtist}>{artistName}</h3>
-    <h2 className={headerTitle}>{title}</h2>
+  <header className={`${container} ${className}`}>
+    <h2>
+      <span className={headerArtist}>{artistName}</span> 
+      <span className={headerTitle}>{title}</span>
+    </h2>
     <div className={headerMaterials} dangerouslySetInnerHTML={{__html: materials}} />
     <div className={headerLink}>
       <a href={link} target="_blank" rel="noopener noreferrer">{link}</a>
     </div>
-  </div>
+  </header>
 );
 
 export default ProjectHeader;
