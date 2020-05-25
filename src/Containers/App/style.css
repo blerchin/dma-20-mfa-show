@@ -53,7 +53,7 @@ ol {
 }
 
 .sr-only {
-  left:-999px;
+  left:-9999px;
   position:absolute;
   top:auto;
   width:1px;
