@@ -24,6 +24,7 @@ import ProjectHeader from "../../Components/ProjectHeader";
 import ArtistBio from "../../Components/ArtistBio";
 import ProjectColumns, { Column } from "../../Components/ProjectColumns";
 import ProjectLink from "../../Components/ProjectLink";
+import ProjectDescription from "../../Components/ProjectDescription";
 import Image from "../../Components/Image";
 
 import DalenaImage1 from "./assets/DalenaTran-1.png";
@@ -80,10 +81,12 @@ export default function () {
       </Column>
       <ProjectColumns className={dtInfoCol}>
         <Column>
-          <p>
-            In the beginning, there was the window. Now there are plenty of
-            other things than windows. There is heat, ice, sweat, and Mickey Mouse. Not to forget blood: The dark and runny that pumps through veins carrying a tempo that make possible the highest highs and lowest lows.
-          </p>
+          <ProjectDescription>
+            <p>
+              In the beginning, there was the window. Now there are plenty of
+              other things than windows. There is heat, ice, sweat, and Mickey Mouse. Not to forget blood: The dark and runny that pumps through veins carrying a tempo that make possible the highest highs and lowest lows.
+            </p>
+          </ProjectDescription>
         </Column>
       </ProjectColumns>
       <Column>

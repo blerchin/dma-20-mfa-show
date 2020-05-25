@@ -7,7 +7,7 @@ import {
 
 const ArtistBio = ({children, className = ''}) => (
   <section className={`${container} ${className}`}>
-    <h4 className={header}>Artist Bio</h4>
+    <h3 className={header}>Artist Bio</h3>
     <div>
       {children}
     </div>

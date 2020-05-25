@@ -16,6 +16,7 @@ import BerfinImage3 from "./assets/BerfinAtaman-3.jpg";
 import BerfinImage4 from "./assets/BerfinAtaman-4.jpg";
 
 import Seo from "../Components/Seo";
+import ProjectDescription from "../Components/ProjectDescription";
 
 export default function ({slug, name}) {
   return (
@@ -56,23 +57,25 @@ export default function ({slug, name}) {
               alt="A kinetic sculpture that is made out of soft materials. It extends from floor to the ceiling. It is orange at the base with pink m red and white stripes and orange polka dots. It has a tear drop shape on the lower part where it is orange and a hole in the middle of the tear drop. The hole has little bubble shapes details around it.They look like beads. Midway through the sculpture oranges fades to light green and the shape changes. The tear drop shape is attached on top onto a tubular structure with green  dangling tentacle like pieces. As these pieces move, some orange colors appears in between them where they are attached to the tubular shape. The green pieces move up and down they are light and see through with orange lines and polka dots on them."
             />
           </Spacer>
-          <p>
-            I am interested in experimenting with movement that is relative to
-            the form of sculpture but that can also be randomized by mechanics
-            interacting it. I specifically design the sculptures formal elements
-            to interact within a system. The sculptures are reminiscent of
-            something familiar, however, they also have unusual deformations,
-            colors, movements, and scale, lending them a surreal presence. I
-            hope such oscillations between the unfamiliar yet familiar space
-            destabilize the relationship that the viewer has with these existing
-            forms. The idea of movement carries through different series in my
-            work .My first works that were kinetic started experiments on how
-            could I work on movement of a sculpture without a human inside it.
-            It was a challenge that I created for my self at first. The
-            Sympathetic motion series was the first purely sculptural series
-            that I developed.Most of my work after these series continued in the
-            form of soft sculptures.
-          </p>
+          <ProjectDescription>
+            <p>
+              I am interested in experimenting with movement that is relative to
+              the form of sculpture but that can also be randomized by mechanics
+              interacting it. I specifically design the sculptures formal elements
+              to interact within a system. The sculptures are reminiscent of
+              something familiar, however, they also have unusual deformations,
+              colors, movements, and scale, lending them a surreal presence. I
+              hope such oscillations between the unfamiliar yet familiar space
+              destabilize the relationship that the viewer has with these existing
+              forms. The idea of movement carries through different series in my
+              work .My first works that were kinetic started experiments on how
+              could I work on movement of a sculpture without a human inside it.
+              It was a challenge that I created for my self at first. The
+              Sympathetic motion series was the first purely sculptural series
+              that I developed.Most of my work after these series continued in the
+              form of soft sculptures.
+            </p>
+          </ProjectDescription>
         </Column>
         <Column>
           <p>

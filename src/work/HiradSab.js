@@ -11,6 +11,7 @@ import Image from "../Components/Image";
 import Placeholder from "./assets/placeholder.png";
 
 import Seo from "../Components/Seo";
+import ProjectDescription from "../Components/ProjectDescription";
 export default function ({slug, name}) {
   return (
     <Artist>
@@ -35,16 +36,18 @@ export default function ({slug, name}) {
       </ProjectColumns>
       <ProjectColumns>
         <Column>
-          <p>
-            An analysis of the digital proliferation and mediation of the body
-            in the contemporary politics of image, "Body Troubles" is a
-            rhetorical and discursive attempt at locating the virtual body and
-            its implications in a climate of economic disparity and political
-            discontent. Its focus is to identify the roles of the virtual body
-            in discourses, disciplines and socioeconomic milieus, using the
-            state of the art technologies in machine learning, computer vision,
-            and computer graphics.
-          </p>
+          <ProjectDescription>
+            <p>
+              An analysis of the digital proliferation and mediation of the body
+              in the contemporary politics of image, "Body Troubles" is a
+              rhetorical and discursive attempt at locating the virtual body and
+              its implications in a climate of economic disparity and political
+              discontent. Its focus is to identify the roles of the virtual body
+              in discourses, disciplines and socioeconomic milieus, using the
+              state of the art technologies in machine learning, computer vision,
+              and computer graphics.
+            </p>
+          </ProjectDescription>
         </Column>
       </ProjectColumns>
       <ArtistBio>

@@ -74,6 +74,7 @@ export default function ({slug, name}) {
       </ProjectColumns>
       <ProjectColumns>
         <Column>
+          <h3 class="sr-only">Project Description</h3>
           <p>
             Materials: video, photography, photogrammetry, wooden structures,
             zentai suit, &amp; dry cat food
