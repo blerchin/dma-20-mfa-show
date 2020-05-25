@@ -49,6 +49,9 @@ export default function () {
     $("#AITContainer").removeClass("AITHide");
     $("#AITContainer").fadeOut(0);
     $("#AITContainer").fadeIn(1500);
+    var video = document.getElementById("AITVidElem");
+    video.muted= true;
+    video.play();
   }
 
   function stopProject() {
@@ -56,6 +59,8 @@ export default function () {
     engines.stopEngine();;
     $("#AITContainer").fadeOut(1500, () => {
       $("#AITContainer").addClass("AITHide");
+      var video = document.getElementById("AITVidElem");
+      video.pause();
     });
   }
 
@@ -64,7 +69,10 @@ export default function () {
     engines.setHTMLElement("#AITSub");
     $("#AITLocA").fadeOut(0);
     $("#AITLocB").fadeOut(0);
-  });
+    // $("#AITVidElem").prop('muted', true);
+    var video = document.getElementById("AITVidElem");
+    video.muted= true;
+  }, []);
 
   return (
     <Artist>
@@ -227,27 +235,30 @@ export default function () {
                   id="AITVidElem"
                   autoPlay
                   loop
-                  muted
+                  muted={false}
                   poster={
                     PosterImage.images[PosterImage.images.length - 1].path
                   }
                 >
-                  {/* <source type='video/webm;codecs="vp9,vorbis' src=""/> */}
-                  <source
-                    type='video/webm;codecs="vp9,vorbis'
-                    src="https://dalena.github.io/acts-in-translation/vid/aitvp9recomm.webm"
-                  />
-                  <source
-                    type='video/webm;codecs="vp8,vorbis'
-                    src="https://dalena.github.io/acts-in-translation/vid/aitvp8.webm"
-                  />
-                  <source
+                  {/* <source
                     type='video/ogg;codecs="theora,vorbis'
                     src="https://dalena.github.io/acts-in-translation/vid/ait-4web.ogv"
-                  />
+                  /> */}
                   <source
                     type="video/mp4"
-                    src="https://dalena.github.io/acts-in-translation/vid/aith264.mp4"
+                    src="https://github.com/dalena/acts-in-translation-data/releases/download/vid/aith264.mp4"
+                  />
+                   {/* <source
+                    type='video/webm;codecs="vp9,vorbis'
+                    src="https://github.com/dalena/acts-in-translation-data/releases/download/vid/aitvp9recomm.webm"
+                  />
+                  <source
+                    type='video/webm;codecs="vp9,vorbis'
+                    src="https://github.com/dalena/acts-in-translation-data/releases/download/vid/aitvp9.webm"
+                  /> */}
+                  <source
+                    type='video/webm;codecs="vp8,vorbis'
+                    src="https://github.com/dalena/acts-in-translation-data/releases/download/vid/aitvp8.webm"
                   />
                 </video>
                 <div id="AITTitleBox">

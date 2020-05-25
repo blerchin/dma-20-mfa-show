@@ -42,7 +42,6 @@ SubEngine.prototype = {
     this.idx = idx;
     this.voiceovers[idx].sub.playhead = val;
     this.voiceovers[idx].sub.isHeadSet = true;
-    // var sub = this.voiceovers[idx].sub.parsed[val];
   },
 
   seek(idx, time) {
@@ -69,7 +68,6 @@ SubEngine.prototype = {
   play(idx, time) {
     if (this.voiceovers[idx].sub.isHeadSet) {
       let head = this.voiceovers[idx].sub.playhead;
-      // console.log(head);
       this.idx = idx;
 
       let sub = this.voiceovers[idx].sub.parsed;

@@ -129,7 +129,7 @@ AudioEngine.prototype = {
     return Math.floor(Math.random() * len);
   },
 
-  createSound(idx, objIdent) {
+  createSound(idx, objIdent, _autoPlay = false) {
     let audioPath = `${this.bgURL}/${idx}.${this.format}`;
     
     console.log(`[🎵] ⭐ Creating ${audioPath}
@@ -146,7 +146,7 @@ AudioEngine.prototype = {
       // run per animation frame (browser repaint)
       onplay: this.initPerInterval,
       onend: this.reassignSound,
-      autoplay: false,
+      autoplay: _autoPlay,
       // onplayerror: playError,
     });
 
@@ -169,11 +169,11 @@ AudioEngine.prototype = {
     let nextIdx = this._ngin.getidx();
     let objIdent;
     if (this._objident === "A") {
-      this._ngin.g.howlerA = this._ngin.createSound(nextIdx, "A");
+      this._ngin.g.howlerA = this._ngin.createSound(nextIdx, "A", true);
       objIdent = "A";
     } else {
       objIdent = "B";
-      this._ngin.g.howlerB = this._ngin.createSound(nextIdx, "B");
+      this._ngin.g.howlerB = this._ngin.createSound(nextIdx, "B", true);
     }
 
     console.log(`[🎵] ♻️ Reassigning ${objIdent}
@@ -189,25 +189,19 @@ AudioEngine.prototype = {
 
   step() {
     if (this.playing()) {
-      // requestAnimationFrame(step.bind(this));
-
-      // console.log(
-      //   `Playing ${this._objident} with index ${this._idx} and location ${getLoc(
-      //     this
-      //   )}`
-      // );
-
-      // let persPerc = this._ngin.persPerc;
+      // // Duration based fading
       let persSec = this._ngin.persSec;
-      // let currPerc = this.seek() / this._duration;
       let currPerc = this.seek();
-      // let secsToFade = this._duration * (1.0 - persPerc);
       let secsToFade = this._ngin.persSec;
-
-      // let fadeinFlag = currPerc <= 1 - persPerc && this._isfadingin == false;
-      // let fadeoutFlag = currPerc >= persPerc && this._isfadingout == false;
       let fadeinFlag = currPerc <= persSec && this._isfadingin === false;
       let fadeoutFlag = currPerc >= ( this._duration - persSec) && this._isfadingout === false;
+      
+      // // Percentage based fading
+      // let persPerc = this._ngin.persPerc;
+      // let currPerc = this.seek() / this._duration;
+      // let secsToFade = this._duration * (1.0 - persPerc);
+      // let fadeinFlag = currPerc <= 1 - persPerc && this._isfadingin == false;
+      // let fadeoutFlag = currPerc >= persPerc && this._isfadingout == false;
 
       if (fadeinFlag) {
         this._ngin.howlFadein(this, currPerc, secsToFade);
@@ -222,7 +216,6 @@ AudioEngine.prototype = {
 
   howlFadein(ctx, currPerc, secsToFade) {
     ctx._isfadingin = true;
-    // let dur = secsToFade * 1000;
     let dur = secsToFade *200;
     let animDur = dur;
 
@@ -232,12 +225,10 @@ AudioEngine.prototype = {
     if (ctx._objident === "A") {
       $("#AITLocA").text(this.getLoc(ctx));
       $("#AITLocA")
-        // .delay(animDur / 2)
         .fadeIn(animDur);
     } else {
       $("#AITLocB").text(this.getLoc(ctx));
       $("#AITLocB")
-        // .delay(animDur / 2)
         .fadeIn(animDur);
     }
   },
