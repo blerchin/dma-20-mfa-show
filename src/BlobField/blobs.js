@@ -178,6 +178,10 @@ export default class Blobs {
 	}
 
 	resizeCanvas(resizeOnHompage = false) {
+		for (let i = 0; i < this.balls.length; i++) {
+			this.balls[i].isVertical = document.body.clientWidth > window.innerHeight;
+		}
+		
 		if (resizeOnHompage || this.collapsed) {
 			// Animated resizing
 			this.animateCanvasSize();
@@ -197,7 +201,7 @@ export default class Blobs {
 		if (!vertShrink)
 			vertShrink = this.targetHeight < currH;
 
-		let steps = window.innerWidth / 100;
+		let steps = document.body.clientWidth / 100;
 		let offsetX = horizShrink ? steps * -1 : steps;
 		let offsetY = vertShrink ? steps * -1 : steps;
 

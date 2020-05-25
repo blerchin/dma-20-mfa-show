@@ -6,6 +6,7 @@ import BlobField from 'src/BlobField';
 import Info from 'src/Containers/Info';
 import config from '../../config';
 import Seo from 'src/Components/Seo'
+import ScrollToTop from 'src/Components/ScrollToTop';
 
 import BenLerchin from '../../work/BenLerchin';
 import BerfinAtaman from '../../work/BerfinAtaman';
@@ -35,6 +36,7 @@ const comps = {
 
 export default () => (
   <Router>
+    <ScrollToTop />
     <div className="app">
       <BlobField />
       <Switch>
