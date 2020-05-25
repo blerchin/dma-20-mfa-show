@@ -1,4 +1,4 @@
-https://kind-tesla-a088c1.netlify.app/
+https://preview.near.rest
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
