@@ -7,6 +7,7 @@ import ArtistBio from "../Components/ArtistBio";
 import ProjectColumns, { Column } from "../Components/ProjectColumns";
 import Vimeo from "../Components/VideoVimeo";
 import Image from "../Components/Image";
+import Spacer from "../Components/Spacer";
 
 import BerfinImage0 from "./assets/BerfinAtaman-0.jpg";
 import BerfinImage1 from "./assets/BerfinAtaman-1.jpg";
@@ -33,22 +34,28 @@ export default function ({slug, name}) {
       />
       <ProjectCover>
         <Column>
-          <Image
-            img={BerfinImage2}
-            alt="A kinetic sculpture that is made out of soft materials. It extends from floor to the ceiling. It is orange at the base with pink m red and white stripes and orange polka dots. It has a tear drop shape on the lower part where it is orange and a hole in the middle of the tear drop. The hole has little bubble shapes details around it.They look like beads. Midway through the sculpture oranges fades to light green and the shape changes. The tear drop shape is attached on top onto a tubular structure with green  dangling tentacle like pieces. As these pieces move, some orange colors appears in between them where they are attached to the tubular shape. The green pieces move up and down they are light and see through with orange lines and polka dots on them."
-          />
+          <Spacer>
+            <Image
+              img={BerfinImage2}
+              alt="A kinetic sculpture that is made out of soft materials. It extends from floor to the ceiling. It is orange at the base with pink m red and white stripes and orange polka dots. It has a tear drop shape on the lower part where it is orange and a hole in the middle of the tear drop. The hole has little bubble shapes details around it.They look like beads. Midway through the sculpture oranges fades to light green and the shape changes. The tear drop shape is attached on top onto a tubular structure with green  dangling tentacle like pieces. As these pieces move, some orange colors appears in between them where they are attached to the tubular shape. The green pieces move up and down they are light and see through with orange lines and polka dots on them."
+            />
+          </Spacer>
         </Column>
       </ProjectCover>
       <ProjectColumns>
         <Column>
-          <Image
-            img={BerfinImage1}
-            alt="A kinetic sculpture that is made out of soft materials. It extends from floor to the ceiling. It is orange at the base with pink m red and white stripes and orange polka dots. It has a tear drop shape on the lower part where it is orange and a hole in the middle of the tear drop. The hole has little bubble shapes details around it.They look like beads. Midway through the sculpture oranges fades to light green and the shape changes. The tear drop shape is attached on top onto a tubular structure with green  dangling tentacle like pieces. As these pieces move, some orange colors appears in between them where they are attached to the tubular shape. The green pieces move up and down they are light and see through with orange lines and polka dots on them."
-          />
-          <Image
-            img={BerfinImage0}
-            alt="A kinetic sculpture that is made out of soft materials. It extends from floor to the ceiling. It is orange at the base with pink m red and white stripes and orange polka dots. It has a tear drop shape on the lower part where it is orange and a hole in the middle of the tear drop. The hole has little bubble shapes details around it.They look like beads. Midway through the sculpture oranges fades to light green and the shape changes. The tear drop shape is attached on top onto a tubular structure with green  dangling tentacle like pieces. As these pieces move, some orange colors appears in between them where they are attached to the tubular shape. The green pieces move up and down they are light and see through with orange lines and polka dots on them."
-          />
+          <Spacer>
+            <Image
+              img={BerfinImage1}
+              alt="A kinetic sculpture that is made out of soft materials. It extends from floor to the ceiling. It is orange at the base with pink m red and white stripes and orange polka dots. It has a tear drop shape on the lower part where it is orange and a hole in the middle of the tear drop. The hole has little bubble shapes details around it.They look like beads. Midway through the sculpture oranges fades to light green and the shape changes. The tear drop shape is attached on top onto a tubular structure with green  dangling tentacle like pieces. As these pieces move, some orange colors appears in between them where they are attached to the tubular shape. The green pieces move up and down they are light and see through with orange lines and polka dots on them."
+            />
+          </Spacer>
+          <Spacer>
+            <Image
+              img={BerfinImage0}
+              alt="A kinetic sculpture that is made out of soft materials. It extends from floor to the ceiling. It is orange at the base with pink m red and white stripes and orange polka dots. It has a tear drop shape on the lower part where it is orange and a hole in the middle of the tear drop. The hole has little bubble shapes details around it.They look like beads. Midway through the sculpture oranges fades to light green and the shape changes. The tear drop shape is attached on top onto a tubular structure with green  dangling tentacle like pieces. As these pieces move, some orange colors appears in between them where they are attached to the tubular shape. The green pieces move up and down they are light and see through with orange lines and polka dots on them."
+            />
+          </Spacer>
           <h3 class="sr-only">Project Description</h3>
           <p>
             I am interested in experimenting with movement that is relative to
@@ -79,14 +86,18 @@ export default function ({slug, name}) {
             this is the source of the audiences perception combined with colors
             and sounds.
           </p>
-          <Image
-            img={BerfinImage3}
-            alt="A kinetic sculpture that is made out of soft materials. It extends from floor to the ceiling. It is orange at the base with pink m red and white stripes and orange polka dots. It has a tear drop shape on the lower part where it is orange and a hole in the middle of the tear drop. The hole has little bubble shapes details around it.They look like beads. Midway through the sculpture oranges fades to light green and the shape changes. The tear drop shape is attached on top onto a tubular structure with green  dangling tentacle like pieces. As these pieces move, some orange colors appears in between them where they are attached to the tubular shape. The green pieces move up and down they are light and see through with orange lines and polka dots on them."
-          />
-          <Image
-            img={BerfinImage4}
-            alt="A kinetic sculpture that is made out of soft materials. It extends from floor to the ceiling. It is orange at the base with pink m red and white stripes and orange polka dots. It has a tear drop shape on the lower part where it is orange and a hole in the middle of the tear drop. The hole has little bubble shapes details around it.They look like beads. Midway through the sculpture oranges fades to light green and the shape changes. The tear drop shape is attached on top onto a tubular structure with green  dangling tentacle like pieces. As these pieces move, some orange colors appears in between them where they are attached to the tubular shape. The green pieces move up and down they are light and see through with orange lines and polka dots on them."
-          />
+          <Spacer>
+            <Image
+              img={BerfinImage3}
+              alt="A kinetic sculpture that is made out of soft materials. It extends from floor to the ceiling. It is orange at the base with pink m red and white stripes and orange polka dots. It has a tear drop shape on the lower part where it is orange and a hole in the middle of the tear drop. The hole has little bubble shapes details around it.They look like beads. Midway through the sculpture oranges fades to light green and the shape changes. The tear drop shape is attached on top onto a tubular structure with green  dangling tentacle like pieces. As these pieces move, some orange colors appears in between them where they are attached to the tubular shape. The green pieces move up and down they are light and see through with orange lines and polka dots on them."
+            />
+          </Spacer>
+          <Spacer>
+            <Image
+              img={BerfinImage4}
+              alt="A kinetic sculpture that is made out of soft materials. It extends from floor to the ceiling. It is orange at the base with pink m red and white stripes and orange polka dots. It has a tear drop shape on the lower part where it is orange and a hole in the middle of the tear drop. The hole has little bubble shapes details around it.They look like beads. Midway through the sculpture oranges fades to light green and the shape changes. The tear drop shape is attached on top onto a tubular structure with green  dangling tentacle like pieces. As these pieces move, some orange colors appears in between them where they are attached to the tubular shape. The green pieces move up and down they are light and see through with orange lines and polka dots on them."
+            />
+          </Spacer>
         </Column>
       </ProjectColumns>
       <ProjectColumns>

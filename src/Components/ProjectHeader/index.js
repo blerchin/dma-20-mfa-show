@@ -6,7 +6,7 @@ import {
   headerTitle,
   headerMaterials,
   headerLink,
-} from './style.module.css';
+} from './style.module.scss';
 
 const ProjectHeader = ({artistName, title, materials, link, className = ''}) => (
   <header className={`${container} ${className}`}>
