@@ -149,6 +149,9 @@
       "react-app"
     ]
   },
+  "reactSnap": {
+    "puppeteerIgnoreHTTPSErrors": true
+  },
   "devDependencies": {
     "react-helmet": "^6.0.0",
     "react-snap": "1.10.0",
