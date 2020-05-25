@@ -14,15 +14,17 @@
 }
 
 .column {
-  @include m;
+  @include mv;
+  @include mh(0);
   @include large {
+    @include mh;
     flex: 1;
-  }
-  &:first-child {
-    @include ml(0);
-  }
-  &:last-child {
-    @include mr(0);
+    &:first-child {
+      @include ml(0);
+    }
+    &:last-child {
+      @include mr(0);
+    }
   }
 }
 
