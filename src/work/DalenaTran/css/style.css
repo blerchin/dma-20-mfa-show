@@ -8,6 +8,12 @@
   font-size: 26px;
   font-family: Kyiv;
   font-variation-settings: "wght" 100;
+  opacity: 1;
+}
+
+#AITLocA.hidden,
+#AITLocB.hidden {
+  opacity: 0;
 }
 
 #AITTitle {
@@ -39,11 +45,13 @@
   top: 0;
   left: 0;
   z-index: 9999;
+  opacity: 1;
+  transition: opacity 800ms ease-in-out;
 }
 
 .AITHide {
-  display: none !important;
-  opacity: 0;
+  pointer-events: none;
+  opacity: 0 !important;
 }
 
 .AITFadedIn {
@@ -137,6 +145,15 @@
   /* align-items: center; */
   justify-content: center;
   font-size: 32px;
+}
+
+#AITCountTxt {
+  transition: opacity 2s ease-in-out;
+  opacity: 1;
+}
+
+#AITCountTxt.hidden {
+  opacity: 0 !important;
 }
 
 #AITSvgBox {

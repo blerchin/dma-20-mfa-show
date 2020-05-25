@@ -1,5 +1,4 @@
 import * as Subtitle from 'subtitle'
-import $ from 'jquery';
 
 export default function SubEngine(voiceovers, cb, subcb) {
   this.voiceovers = voiceovers;
@@ -19,22 +18,20 @@ SubEngine.prototype = {
         `[📜] 🌐 Grabbing ${this.voiceOverURL}/${this.voiceovers[i].srt}`
       );
 
-      $.ajax({
-        url: `${this.voiceOverURL}/${this.voiceovers[i].srt}`,
-        dataType: "text",
-        subEngine: this,
-        idx: i,
-        success: this.parseSub,
-      });
+      fetch(`${this.voiceOverURL}/${this.voiceovers[i].srt}`)
+        .then((body) => body.text())
+        .then((data) => {
+          this.parseSub(data, i)
+        });
     }
   },
 
-  parseSub(data) {    
-    this.subEngine.voiceovers[this.idx].sub.parsed = Subtitle.parse(data);
-    this.subEngine.voiceovers[this.idx].sub.isHeadSet = false;
-    this.subEngine.completed++;
-    if (this.subEngine.completed === this.subEngine.voiceovers.length) {
-      this.subEngine.setupCallback();
+  parseSub(data, idx) {    
+    this.voiceovers[idx].sub.parsed = Subtitle.parse(data);
+    this.voiceovers[idx].sub.isHeadSet = false;
+    this.completed++;
+    if (this.completed === this.voiceovers.length) {
+      this.setupCallback();
     }
   },
 

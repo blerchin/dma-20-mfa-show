@@ -1,5 +1,4 @@
 import {Howl} from 'howler';
-import $ from 'jquery';
 
 function AudioEngine(voiceovers, cb) {
   this.isDataLoaded = false;
@@ -27,8 +26,8 @@ AudioEngine.prototype = {
     this.g.howlerA = this.createSound(this.getidx(), "A");
     this.g.howlerB = this.createSound(this.getidx(), "B");
 
-    $("#AITLocA").text(this.getLoc(this.g.howlerA));
-    $("#AITLocB").text(this.getLoc(this.g.howlerB));
+    document.getElementById("AITLocA").textContent = this.getLoc(this.g.howlerA);
+    document.getElementById("AITLocB").textContent = this.getLoc(this.g.howlerB);
 
     // this.g.howlerA.play();
     // this.g.howlerB.play();
@@ -222,15 +221,11 @@ AudioEngine.prototype = {
     console.log("[🎵] ⬇️ Fading in:", ctx._objident);
     ctx.fade(0, 1, dur);
 
-    if (ctx._objident === "A") {
-      $("#AITLocA").text(this.getLoc(ctx));
-      $("#AITLocA")
-        .fadeIn(animDur);
-    } else {
-      $("#AITLocB").text(this.getLoc(ctx));
-      $("#AITLocB")
-        .fadeIn(animDur);
-    }
+    const locId = ctx._objident === "A" ? "AITLocA" : "AITLocB";
+    const loc = document.getElementById(locId);
+    loc.textContent = this.getLoc(ctx);
+    loc.style.transition = `opacity ${animDur}ms ease-in-out`;
+    loc.className = "";
   },
 
   howlFadeout(ctx, currPerc, secsToFade) {
@@ -241,11 +236,10 @@ AudioEngine.prototype = {
     console.log("[🎵] ⬆️ Fading out:", ctx._objident);
     ctx.fade(1, 0, dur);
 
-    if (ctx._objident === "A") {
-      $("#AITLocA").fadeOut(animDur);
-    } else {
-      $("#AITLocB").fadeOut(animDur);
-    }
+    const locId = ctx._objident === "A" ? "AITLocA" : "AITLocB";
+    const loc = document.getElementById(locId);
+    loc.style.transition = `opacity ${animDur}ms ease-in-out`;
+    loc.className = "hidden";
   },
 
   playTheOther(ctx) {

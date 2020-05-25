@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./css/style.css";
 
 import {
@@ -37,47 +37,47 @@ import audioJson from "./data/data";
 import voiceoversJson from "./data/voiceovers";
 import Engines from "./js/engines-utils";
 
-import $ from "jquery";
 import { Link } from "react-router-dom";
-// window.$ = $;
 
 export default function () {
   const engines = new Engines();
+  const aitContainer = useRef(null);
+
+  const rootNodes = [document.body, document.documentElement];
 
   function beginProject() {
     engines.audioEngine.beginAudio();
     engines.prepareVoiceover();
-    $("#AITContainer").removeClass("AITHide");
-    $("#AITContainer").fadeOut(0);
-    $("#AITContainer").fadeIn(800);
+    aitContainer.current.className = "";
     var video = document.getElementById("AITVidElem");
     video.muted = true;
     video.play();
-    $("html, body").css({
-      overflow: "hidden",
-      height: "100%",
+    
+    rootNodes.forEach((n) => {
+      n.style.overflow = "hidden";
+      n.style.height = "100%";
     });
   }
 
   function stopProject() {
     // engines = null;
     engines.stopEngine();
-    $("#AITContainer").fadeOut(800, () => {
-      $("#AITContainer").addClass("AITHide");
+    aitContainer.current.className = "AITHide";
+    window.setTimeout(() => {
       var video = document.getElementById("AITVidElem");
       video.pause();
-      $("html, body").css({
-        overflow: "auto",
-        height: "auto",
+      rootNodes.forEach((n) => {
+        n.style.overflow = "auto";
+        n.style.height = "auto";
       });
-    });
+    }, 800);
   }
 
   useEffect(() => {
     engines.setup(audioJson, voiceoversJson);
-    engines.setHTMLElement("#AITSub");
-    $("#AITLocA").fadeOut(0);
-    $("#AITLocB").fadeOut(0);
+    engines.setHTMLElement(document.getElementById("AITSub"));
+    document.getElementById("AITLocA").className = "hidden";
+    document.getElementById("AITLocB").className = "hidden";
     // $("#AITVidElem").prop('muted', true);
     var video = document.getElementById("AITVidElem");
     video.muted = true;
@@ -232,7 +232,7 @@ export default function () {
           concerned with moments hidden in plain sight.
         </p>
       </ArtistBio>
-      <div id="AITContainer" className="AITHide">
+      <div id="AITContainer" className="AITHide" ref={aitContainer}>
         <div id="AITEnd" onClick={stopProject}>
           <span>⇜ Return to Project Info</span>
         </div>

@@ -1,7 +1,6 @@
 import AudioEngine from "./audio-utils";
 import TimeEngine from "./time-utils";
 import SubEngine from "./sub-utils";
-import $ from "jquery";
 
 export default function Engines() {
   this.audioIsSetup = false;
@@ -92,9 +91,9 @@ Engines.prototype = {
 
   showNextSub(show, flag, text) {
     if (show && flag && this.voice && this.voice.playing()) {
-      $(this.element).text(text);
+      this.element.textContent = text;
     } else if (this.voice && this.voice.playing()) {
-      $(this.element).text("");
+      this.element.textContent = "";
     }
   },
 
@@ -149,13 +148,13 @@ Engines.prototype = {
   showCountdown() {
     console.log(`[⚙️] ⏱️ Countdown show`);
     this.displayCountdown = true;
-    $("#AITCountTxt").fadeIn(2000);
+    document.getElementById("AITCountTxt").className = "";
   },
 
   hideCountdown() {
     console.log(`[⚙️] ⏱️ Countdown hide`);
     this.displayCountdown = false;
-    $("#AITCountTxt").fadeOut(2000);
+    document.getElementById("AITCountTxt").className = "hidden";
   },
 
   updateCountdown() {
@@ -168,8 +167,8 @@ Engines.prototype = {
       remSecs = 60 - Math.floor(remSecs % 60);
       remSecs = remSecs.toString().padStart(2, "0");
 
-      $("#AITCountMins").text(remMin);
-      $("#AITCountSecs").text(remSecs);
+      document.getElementById("AITCountMins").textContent = remMin;
+      document.getElementById("AITCountSecs").textContent = remSecs;
     }
     requestAnimationFrame(this.updateCountdown.bind(this));
   },

@@ -1,5 +1,3 @@
-import $ from 'jquery';
-
 export default function TimeEngine(cb) {
   this.globalOffset = null;
   this.globalCurrent = null;
@@ -15,7 +13,9 @@ export default function TimeEngine(cb) {
 TimeEngine.prototype = {
   setup() {
       let fn = this.getGlobalTime.bind(this);
-    $.getJSON("https://worldtimeapi.org/api/timezone/Etc/UTC", fn);
+      fetch("https://worldtimeapi.org/api/timezone/Etc/UTC")
+        .then((body) => body.json())
+        .then(fn);
   },
 
   getGlobalTime(json){
