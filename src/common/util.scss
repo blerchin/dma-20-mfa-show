@@ -1,0 +1,144 @@
+
+$spacing: (
+  0: 0,
+  xs: 5px,
+  s: 10px,
+  m: 20px,
+  l: 40px,
+  xl: 100px,
+  a: auto
+);
+
+@function spacing($size: m) {
+  @return map-get($spacing, $size);
+}
+
+@mixin m($sizename: 'm') {
+  margin: spacing($sizename);
+}
+
+@mixin p($sizename: 'm') {
+  padding: spacing($sizename);
+}
+
+@mixin ml($sizename: 'm') {
+  margin-left: spacing($sizename);
+}
+
+@mixin pl($sizename: 'm') {
+  padding-left: spacing($sizename);
+}
+
+@mixin mr($sizename: 'm') {
+  margin-right: spacing($sizename);
+}
+
+@mixin pr($sizename: 'm') {
+  padding-right: spacing($sizename);
+}
+
+@mixin mt($sizename: 'm') {
+  margin-top: spacing($sizename);
+}
+
+@mixin pt($sizename: 'm') {
+  padding-top: spacing($sizename);
+}
+
+@mixin mb($sizename: 'm') {
+  margin-bottom: spacing($sizename);
+}
+
+@mixin pb($sizename: 'm') {
+  padding-bottom: spacing($sizename);
+}
+
+@mixin mv($sizename: 'm') {
+  margin-top: spacing($sizename);
+  margin-bottom: spacing($sizename);
+}
+
+@mixin pv($sizename: 'm') {
+  padding-top: spacing($sizename);
+  padding-bottom: spacing($sizename);
+}
+
+@mixin mh($sizename: 'm') {
+  margin-left: spacing($sizename);
+  margin-right: spacing($sizename);
+}
+
+@mixin ph($sizename: 'm') {
+  padding-left: spacing($sizename);
+  padding-right: spacing($sizename);
+}
+
+@mixin small-only {
+  @media screen and (max-width: 375px) {
+    @content;
+  }
+}
+
+@mixin medium-only {
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin medium {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin large {
+  @media screen and (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin xlarge {
+  @media screen and (min-width: 1440px) {
+    @content;
+  }
+}
+
+@mixin container--full {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+@mixin container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--insetMaxWidth);
+  width: 100%;
+
+  @media screen and (max-width: 1024px) {
+    @include ph;
+    max-width: none;
+  }
+}
+
+@mixin unstyled-list {
+  list-style: none;
+  margin-left: 0;
+  & > li {
+    margin-left: 0;
+  }
+}
+
+@keyframes bounce {
+  50% {
+    -webkit-transform: scale(.85) translateY(-30%);
+    transform: scale(.85) translateY(-30%)
+  }
+
+  100% {
+    -webkit-transform: scale(1) translateY(0);
+    transform: scale(1) translateY(0)
+  }
+}
+@mixin bouncing() {
+  animation: bounce 2s ease infinite;
+}
