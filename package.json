@@ -1,0 +1,21 @@
+{
+  "name": "dma-20-mfa-show",
+  "version": "0.0.1",
+  "description": "Landing page for DMA '20 show",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blerchin/dma-20-mfa-show.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blerchin/dma-20-mfa-show/issues"
+  },
+  "homepage": "https://github.com/blerchin/dma-20-mfa-show#readme"
+}
