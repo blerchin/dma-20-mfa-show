@@ -3,7 +3,7 @@ import React from 'react';
 import {
   container,
   header,
-} from './style.module.css';
+} from './style.module.scss';
 
 const ArtistBio = ({children, className = ''}) => (
   <section className={`${container} ${className}`}>
