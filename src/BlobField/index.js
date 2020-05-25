@@ -31,7 +31,7 @@ export default function BlobField() {
     };
 
     if (isCollapsed && event && event.type === "mouseenter") {
-      const isVertical = window.innerWidth > window.innerHeight;
+      const isVertical = document.body.clientWidth > window.innerHeight;
       const count = config.artists.length;
       const totalLength = isVertical
         ? window.innerHeight
