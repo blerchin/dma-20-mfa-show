@@ -4,7 +4,7 @@ import Nav from '../../Components/Nav';
 
 import {
   container,
-} from './style.module.css'
+} from './style.module.scss'
 
 const Artist = ({
   children,}) => {
