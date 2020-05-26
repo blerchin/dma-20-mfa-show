@@ -12,7 +12,7 @@ body {
   background-color: var(--background-color);
 
   /* Disables pull-to-refresh but allows overscroll glow effects. */
-  overscroll-behavior-y: none;
+  /*overscroll-behavior-y: none;*/
 }
 
 .app {
@@ -53,7 +53,7 @@ ol {
 }
 
 .sr-only {
-  left:-9999px;
+  left:-999px;
   position:absolute;
   top:auto;
   width:1px;
