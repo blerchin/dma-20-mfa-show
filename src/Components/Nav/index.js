@@ -12,7 +12,6 @@ import {
 const Nav = () => {
   const navEl = useRef(null);
   const current = useLocation().pathname;
-  console.log(current);
 
   useEffect(() => {
     const onScroll = () => {
