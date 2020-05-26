@@ -4,7 +4,7 @@ import {
   container,
 } from './style.module.scss';
 
-const ProjectCover = ({fadeOut = false, children, className = ''}) => {
+const ProjectCover = ({fadeOut = true, children, className = ''}) => {
   let fadeLevel = 0;
   let animationId = null;
   const node = useRef(null);
@@ -22,7 +22,6 @@ const ProjectCover = ({fadeOut = false, children, className = ''}) => {
     animationId = requestAnimationFrame(step);
   }
 
-  /*
   useEffect(() => {
     window.addEventListener('scroll', onScroll);
     step();
@@ -31,7 +30,6 @@ const ProjectCover = ({fadeOut = false, children, className = ''}) => {
       window.removeEventListener('scroll', onScroll);
     }
   }, []);
-  */
 
   return (
     <div className={`${container} ${className}`} ref={node}>
