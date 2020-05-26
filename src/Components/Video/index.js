@@ -29,6 +29,7 @@ const Video = ({
   useEffect(() => {
     if (autoPlay && videoEl.current) {
       videoEl.current.setAttribute('muted', true);
+      videoEl.current.setAttribute('playsinline', true);
       videoEl.current.play();
     }
   }, [autoPlay, videoEl]);
