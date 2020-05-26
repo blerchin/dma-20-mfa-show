@@ -11,6 +11,7 @@ const ProjectCover = ({fadeOut = false, children, className = ''}) => {
 
   const step = () => {
     node.current.style.filter = `blur(${fadeLevel * 100}px)`;
+    node.current.style.zIndex = fadeLevel > 0 ? -1 : 0;
     if (fadeOut) {
       node.current.style.opacity = `${1 - fadeLevel}`;
     }
@@ -28,7 +29,7 @@ const ProjectCover = ({fadeOut = false, children, className = ''}) => {
       cancelAnimationFrame(animationId);
       window.removeEventListener('scroll', onScroll);
     }
-  });
+  }, []);
 
   return (
     <div className={`${container} ${className}`} ref={node}>
