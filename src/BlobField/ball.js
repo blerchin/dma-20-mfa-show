@@ -82,7 +82,7 @@ export default class Ball {
 		}
 		this.force = this.force.multiply(this.dampen);
 		this.point = this.point.add(this.force);
-		this.label.point = this.point;
+		this.label.point = this.path.position;
 		this.updateShape();
 	}
 
