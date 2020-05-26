@@ -62,9 +62,8 @@ export default class Ball {
 		if (a) {
 			this.label = new paper.PointText(p);
 			this.label.justification = "center";
-			this.label.fontFamily = "sans-serif";
-			this.label.fontWeight = 700; 
-			this.label.fontSize = 20;
+			this.label.fontFamily = "Days One, sans-serif";
+			this.label.fontWeight = 500; 
 			this.label.fillColor = '#fff';
 			this.label.content = a.name.toUpperCase().split(' ').join('\n');
 		}
@@ -95,6 +94,11 @@ export default class Ball {
 		this.path.fillColor.origin = this.path.position;
 		this.path.fillColor.destination = this.path.bounds.rightCenter;
 		this.path.fillColor.radial = true;
+	}
+
+	updateFont() {
+		this.label.fontSize = document.body.clientWidth * 0.04;
+		this.label.leading = document.body.clientWidth * 0.045;
 	}
 
 	checkBorders() {

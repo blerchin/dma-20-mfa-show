@@ -125,6 +125,7 @@ export default class Blobs {
 		for (let i = 1; i < this.balls.length; i++) {
 			this.balls[i].iterate();
 			this.balls[i].updateColor();
+			this.balls[i].updateFont();
 			this.balls[i].label.opacity = this.isMobile ? 1 : 0;
 		}
 
