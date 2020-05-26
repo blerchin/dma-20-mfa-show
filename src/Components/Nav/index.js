@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { useLocation } from "react-router-dom";
 import {
   Link,
 } from "react-router-dom";
@@ -10,6 +11,7 @@ import {
 
 const Nav = () => {
   const navEl = useRef(null);
+  const current = useLocation().pathname;
 
   useEffect(() => {
     const onScroll = () => {
@@ -32,7 +34,7 @@ const Nav = () => {
       <h2 className="sr-only" id='navLabel'>Site Navigation</h2>
       <ul aria-labelledby='navLabel'>
       <li><Link to="/info">Info</Link></li>
-      <li><Link to="/">Home</Link></li>
+      <li><Link to="/" style={{ display: current === "/" ? "none" : "inline-block" }}>Home</Link></li>
       </ul>
     </nav>
   );
