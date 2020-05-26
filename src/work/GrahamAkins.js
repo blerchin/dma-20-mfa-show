@@ -38,6 +38,7 @@ export default function ({slug, name}) {
         <Column>
           <Image
             img={GrahamImage1}
+            useLazy={false}
             alt="A grey field with the text 1200x1200"
           />
         </Column>
