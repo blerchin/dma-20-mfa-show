@@ -11,7 +11,7 @@ const Vimeo = ({
 }) => {
   return (
     <div className={`${responsiveVimeo} ${className}`}>
-      <iframe src={url} className={vimeo} title="vimeo" frameBorder="0" allow="autoplay; fullscreen" allowFullScreen=""></iframe>
+      <iframe src={url} className={vimeo} title="vimeo" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowFullScreen=""></iframe>
     </div>
   );
 }
