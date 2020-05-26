@@ -9,7 +9,7 @@ export default class Ball {
 		this.point = p;
 		this.force = v;
 		this.artist = a;
-		this.gravity = 9.8;
+		this.gravity = 7.0;
 		this.dampen = 0.4; // Amount of force dampening
 		this.maxForce = 15;
 		this.numSegment = 16; // Curve segmentation
@@ -66,6 +66,7 @@ export default class Ball {
 			this.label.fontFamily = "Days One, sans-serif";
 			this.label.fontWeight = 500; 
 			this.label.fillColor = '#fff';
+			this.label.opacity = 0.5;
 			this.label.content = a.name.toUpperCase().split(' ').join('\n');
 		}
 	}
@@ -98,8 +99,8 @@ export default class Ball {
 	}
 
 	updateFont() {
-		this.label.fontSize = document.body.clientWidth * 0.04;
-		this.label.leading = document.body.clientWidth * 0.045;
+		this.label.fontSize = document.body.clientWidth * 0.03;
+		this.label.leading = document.body.clientWidth * 0.035;
 	}
 
 	checkBorders() {
