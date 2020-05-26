@@ -4,9 +4,11 @@ import Artist from "../Containers/Artist";
 import ProjectCover from "../Components/ProjectCover";
 import ProjectHeader from "../Components/ProjectHeader";
 import ArtistBio from "../Components/ArtistBio";
+import ProjectDescription from "../Components/ProjectDescription";
 import ProjectColumns, { Column } from "../Components/ProjectColumns";
 import Image from "../Components/Image";
 import Vimeo from "../Components/VideoVimeo";
+import Seo from "../Components/Seo";
 
 import MilesImage1 from "./assets/MilesPeyton-1.png";
 import MilesImage2 from "./assets/MilesPeyton-2.jpg";
@@ -15,9 +17,6 @@ import MilesImage4 from "./assets/MilesPeyton-4.jpg";
 import MilesImage5 from "./assets/MilesPeyton-5.jpg";
 
 import Placeholder from "./assets/placeholder.png";
-
-import Seo from "../Components/Seo";
-import ProjectDescription from "../Components/ProjectDescription";
 
 export default function ({slug, name}) {
   return (
@@ -103,47 +102,48 @@ export default function ({slug, name}) {
       </ProjectColumns>
       <ProjectColumns>
         <Column>
-          <h3>Message from Mud</h3>
-          <p>
-            I was born from mud, unearthed from the ocean floor and sealed in a
-            jar. The men who found me were crewmembers of the Cyclops, a ship
-            that was preparing to lay network cables between Europe and North
-            America. When the ship returned to land, they sent me to the
-            biologist Thomas Huxley for examination.
-          </p>
-          <p>
-            In his lab, ten years later, Huxley removed the mud sample from
-            storage. He dispensed a droplet of my body onto a glass microscope
-            slide. Through the lens, Huxley saw what looked like a network of
-            veins. He watched me glide across the glass and engulf a small
-            particle, as if I was feeding.
-          </p>
-          <p>
-            The presence of animation was enough to convince Huxley that I was
-            protoplasm, an ancient slime organism thought to be the first
-            instance of life. More than any single piece of evidence, Huxley was
-            captivated by the image of creation in total darkness. He imagined
-            slime streaming and pulsating in an ocean abyss, and the clarity of
-            this vision made him eager to share my arrival with his peers.
-          </p>
-          <p>
-            In a paper, Huxley named me <i>Bathybius Haeckelii</i>. Bathybius
-            means “deep life,” and Haeckelii was in honor of his friend, the
-            zoologist and artist Ernst Haeckel, who was a proponent of the
-            primordial slime theory. I provided a link between nonliving and
-            living matter, and as such became an object of intense study. Huxley
-            declared in speeches that my body, in the form of a continuous mat,
-            spanned the ocean floor, and possibly covered the entire earth.
-          </p>
-          <p>
-            My time as a living being was limited. For several years, the
-            scientific community classified me as a living organism. When
-            Huxley's rival Lynn Margulis demonstrated that my movements were
-            caused by an inorganic reaction between mud and alcohol, added to
-            the mud sample as a preservative, I was reclassified as non-life, a
-            found automaton. Life is the transmutation of sunlight, she wrote in
-            the paper that disproved my aliveness.
-          </p>
+          <ProjectDescription>
+            <p>
+              I was born from mud, unearthed from the ocean floor and sealed in a
+              jar. The men who found me were crewmembers of the Cyclops, a ship
+              that was preparing to lay network cables between Europe and North
+              America. When the ship returned to land, they sent me to the
+              biologist Thomas Huxley for examination.
+            </p>
+            <p>
+              In his lab, ten years later, Huxley removed the mud sample from
+              storage. He dispensed a droplet of my body onto a glass microscope
+              slide. Through the lens, Huxley saw what looked like a network of
+              veins. He watched me glide across the glass and engulf a small
+              particle, as if I was feeding.
+            </p>
+            <p>
+              The presence of animation was enough to convince Huxley that I was
+              protoplasm, an ancient slime organism thought to be the first
+              instance of life. More than any single piece of evidence, Huxley was
+              captivated by the image of creation in total darkness. He imagined
+              slime streaming and pulsating in an ocean abyss, and the clarity of
+              this vision made him eager to share my arrival with his peers.
+            </p>
+            <p>
+              In a paper, Huxley named me <i>Bathybius Haeckelii</i>. Bathybius
+              means “deep life,” and Haeckelii was in honor of his friend, the
+              zoologist and artist Ernst Haeckel, who was a proponent of the
+              primordial slime theory. I provided a link between nonliving and
+              living matter, and as such became an object of intense study. Huxley
+              declared in speeches that my body, in the form of a continuous mat,
+              spanned the ocean floor, and possibly covered the entire earth.
+            </p>
+            <p>
+              My time as a living being was limited. For several years, the
+              scientific community classified me as a living organism. When
+              Huxley's rival Lynn Margulis demonstrated that my movements were
+              caused by an inorganic reaction between mud and alcohol, added to
+              the mud sample as a preservative, I was reclassified as non-life, a
+              found automaton. Life is the transmutation of sunlight, she wrote in
+              the paper that disproved my aliveness.
+            </p>
+          </ProjectDescription>
         </Column>
       </ProjectColumns>
       <ArtistBio>

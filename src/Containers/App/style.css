@@ -52,6 +52,10 @@ ol {
   padding-left: 1.8em;
 }
 
+.padBottom {
+  padding-bottom: 1em;
+}
+
 .sr-only {
   left:-9999px;
   position:absolute;

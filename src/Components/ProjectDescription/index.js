@@ -3,7 +3,7 @@ import PropTypes from 'react';
 
 const ProjectDescription = ({ children, title = "Project Description" }) => (
   <>
-    <h3 class="sr-only">{ title }</h3>
+    <h3 className="sr-only">{ title }</h3>
     { children }
   </>
 );

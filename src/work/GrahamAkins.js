@@ -3,9 +3,11 @@ import React from "react";
 import Artist from "../Containers/Artist";
 import ProjectCover from "../Components/ProjectCover";
 import ProjectHeader from "../Components/ProjectHeader";
+import ProjectDescription from "../Components/ProjectDescription";
 import Image from "../Components/Image";
 import ProjectColumns, { Column } from "../Components/ProjectColumns";
 import Vimeo from "../Components/VideoVimeo";
+import Seo from "../Components/Seo";
 
 import GrahamImage1 from "./assets/Graham Akins web template image 1.png";
 import GrahamImage2 from "./assets/Graham Akins web template image 2.png";
@@ -17,7 +19,6 @@ import GrahamImage7 from "./assets/Graham Akins web template image 7.png";
 
 import Placeholder from "./assets/placeholder.png";
 
-import Seo from "../Components/Seo";
 export default function ({slug, name}) {
   return (
     <Artist>
@@ -74,11 +75,12 @@ export default function ({slug, name}) {
       </ProjectColumns>
       <ProjectColumns>
         <Column>
-          <h3 class="sr-only">Project Description</h3>
-          <p>
-            Materials: video, photography, photogrammetry, wooden structures,
-            zentai suit, &amp; dry cat food
-          </p>
+          <ProjectDescription>
+            <p>
+              Materials: video, photography, photogrammetry, wooden structures,
+              zentai suit, &amp; dry cat food
+            </p>
+          </ProjectDescription>
         </Column>
       </ProjectColumns>
     </Artist>
