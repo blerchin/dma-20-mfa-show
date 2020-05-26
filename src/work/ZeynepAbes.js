@@ -17,7 +17,7 @@ export default function ({slug, name}) {
     <Artist noCover="true">
       <Seo
         title={name}
-        description="Scelerisque venenatis nibh fames ad quam feugiat leo commodo vitae sed lacus."
+        description="Memory place navigates through three moments of memory when I visit my home."
         path={slug}
       />
       <ProjectHeader
@@ -31,7 +31,7 @@ export default function ({slug, name}) {
           <>
             <VideoVimeo
               url="https://www.youtube.com/embed/wAXgJQLfgCk"
-              isYT="true"
+              padding="56.25%"
             />
             <ImageCaption
               materials="Photogrammetry of Istiklal Street"
@@ -54,6 +54,7 @@ export default function ({slug, name}) {
           <>
             <VideoVimeo
               url="https://www.youtube.com/embed/ru-YULRe3ZU"
+              padding="56.25%"
             />
             <ImageCaption
               materials="Photogrammetry of my mother's dinner table"
@@ -80,6 +81,7 @@ export default function ({slug, name}) {
           <>
             <VideoVimeo
               url="https://www.youtube.com/embed/zfNPTv3o-54"
+              padding="56.25%"
             />
             <ImageCaption
               materials="Photogrammetry of Turkish airlines flight (credit: Adam Cigler)" 
