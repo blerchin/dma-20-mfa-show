@@ -37,7 +37,7 @@ const Video = ({
     <div className={`${container} ${isFullHeight ? fullHeight : ''} ${className}`}>
       <video 
         crossOrigin="anonymous"
-        autoplay={autoPlay}
+        autoPlay={autoPlay}
         controls={controls}
         style={videoStyle} 
         ref={videoEl}
