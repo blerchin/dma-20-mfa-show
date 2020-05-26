@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React from "react";
 
 import Artist from "src/Containers/Artist";
 import ProjectCover from "src/Components/ProjectCover";
@@ -7,16 +7,14 @@ import ArtistBio from "src/Components/ArtistBio";
 import ProjectColumns, { Column } from "src/Components/ProjectColumns";
 import ProjectLink from "src/Components/ProjectLink";
 import IFrame from "src/Components/IFrame";
-import Image from "src/Components/Image";
 import ImageCaption from "src/Components/ImageCaption";
 import Video from "src/Components/Video";
 
-import WaterWork from "./water-work.jpg";
 import WaterWorkMp4 from "./water-work.mp4";
 import WaterWorkOgg from "./water-work.ogv";
 import WindmillSculpture from "./enclosure.png";
 import EnclosureLoopMp4 from "./enclosure-loop.mp4";
-import EnclosureLoopOgg from "./enclosure-loop.ogg";
+import EnclosureLoopOgg from "./enclosure-loop.ogv";
 
 import Seo from "src/Components/Seo";
 import ProjectDescription from "../../Components/ProjectDescription";
