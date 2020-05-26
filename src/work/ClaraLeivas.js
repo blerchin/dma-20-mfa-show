@@ -49,19 +49,6 @@ export default function ({slug, name}) {
           />
         </Column>
       </ProjectColumns>
-      <ArtistBio>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget
-          eros ullamcorper, ultrices neque at, ultrices ipsum. Vestibulum ut
-          mauris at ex interdum consectetur. Phasellus eget tempus tellus. Morbi
-          id ante eu augue tempus congue. Curabitur risus ex, ornare sed varius
-          et, tristique a ipsum. Mauris non lorem orci. Etiam eu porta nisi.
-          Proin id luctus purus. Sed viverra et tortor ac posuere. Nam rhoncus
-          tristique eleifend. Proin ac augue dui. Proin diam orci, feugiat quis
-          posuere nec, iaculis ac neque. Aliquam suscipit metus nibh, ut
-          tristique odio dapibus vitae.
-        </p>
-      </ArtistBio>
     </Artist>
   );
 }

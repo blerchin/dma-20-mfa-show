@@ -2,7 +2,6 @@ import React from "react";
 
 import Artist from "../Containers/Artist";
 import Gradient from "../Components/Gradient";
-import ProjectCover from "../Components/ProjectCover";
 import ProjectHeader from "../Components/ProjectHeader";
 import ProjectDescription from "../Components/ProjectDescription";
 import Image from "../Components/Image";
@@ -11,7 +10,6 @@ import Vimeo from "../Components/VideoVimeo";
 import Seo from "../Components/Seo";
 
 import GrahamImage1 from "./assets/GrahamAkins-1.png";
-import Placeholder from "./assets/placeholder.png";
 
 export default function ({slug, name}) {
   return (
