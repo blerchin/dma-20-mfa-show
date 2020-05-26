@@ -8,6 +8,7 @@ import ProjectDescription from "../Components/ProjectDescription";
 import ProjectColumns, { Column } from "../Components/ProjectColumns";
 import Image from "../Components/Image";
 import Vimeo from "../Components/VideoVimeo";
+import IFrame from "../Components/IFrame";
 import Seo from "../Components/Seo";
 
 import MilesImage1 from "./assets/MilesPeyton-1.jpg";
@@ -42,6 +43,16 @@ export default function ({slug, name}) {
             <p>
               solar projection of liquid lens
             </p>
+          </ProjectDescription>
+        </Column>
+      </ProjectColumns>
+      <ProjectColumns>
+        <Column>
+          <ProjectDescription>
+          <IFrame
+            src="https://docs.google.com/document/d/e/2PACX-1vQI7cHLHQU6jez3jyzRRB5zJl1dEDs6zHpXz9Ebw7n3MDwANfjfa1Y2s8vAh_eZWOrhNlUPfdKUBoiL/pub?embedded=true"
+            title="signup"
+          />
           </ProjectDescription>
         </Column>
       </ProjectColumns>
