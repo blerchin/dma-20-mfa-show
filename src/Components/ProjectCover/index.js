@@ -22,6 +22,7 @@ const ProjectCover = ({fadeOut = false, children, className = ''}) => {
     animationId = requestAnimationFrame(step);
   }
 
+  /*
   useEffect(() => {
     window.addEventListener('scroll', onScroll);
     step();
@@ -30,6 +31,7 @@ const ProjectCover = ({fadeOut = false, children, className = ''}) => {
       window.removeEventListener('scroll', onScroll);
     }
   }, []);
+  */
 
   return (
     <div className={`${container} ${className}`} ref={node}>
