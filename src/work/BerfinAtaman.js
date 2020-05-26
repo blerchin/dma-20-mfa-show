@@ -29,20 +29,29 @@ export default function ({slug, name}) {
       />
       <ProjectHeader
         artistName={name}
-        title="horripilation"
-        materials="Fabric, wood, Pla, electronics"
-        link="http://www.berfinataman.com"
+        title="Raising Quills"
+        materials="Fabric, electronics, wood,cement,steel"
+        link="http://www.berfinataman.com/bio-contact"
       />
       <ProjectCover>
         <Column>
-          <Spacer>
-            <Image
-              img={BerfinImage2}
-              alt="A kinetic sculpture that is made out of soft materials. It extends from floor to the ceiling. It is orange at the base with pink m red and white stripes and orange polka dots. It has a tear drop shape on the lower part where it is orange and a hole in the middle of the tear drop. The hole has little bubble shapes details around it.They look like beads. Midway through the sculpture oranges fades to light green and the shape changes. The tear drop shape is attached on top onto a tubular structure with green  dangling tentacle like pieces. As these pieces move, some orange colors appears in between them where they are attached to the tubular shape. The green pieces move up and down they are light and see through with orange lines and polka dots on them."
+          <Column>
+            <Vimeo
+              url="https://player.vimeo.com/video/422667288?color=ffffff&amp;title=0&amp;byline=0&amp;portrait=0"
+              padding="0"
+              isFullHeight="true"
             />
-          </Spacer>
+          </Column>
         </Column>
       </ProjectCover>
+      <ProjectColumns>
+        <Column>
+          <Image
+            img={BerfinImage2}
+            alt="A kinetic sculpture that is made out of soft materials. It extends from floor to the ceiling. It is orange at the base with pink m red and white stripes and orange polka dots. It has a tear drop shape on the lower part where it is orange and a hole in the middle of the tear drop. The hole has little bubble shapes details around it.They look like beads. Midway through the sculpture oranges fades to light green and the shape changes. The tear drop shape is attached on top onto a tubular structure with green  dangling tentacle like pieces. As these pieces move, some orange colors appears in between them where they are attached to the tubular shape. The green pieces move up and down they are light and see through with orange lines and polka dots on them."
+          />
+        </Column>
+      </ProjectColumns>
       <ProjectColumns>
         <Column>
           <Spacer>
@@ -58,36 +67,26 @@ export default function ({slug, name}) {
             />
           </Spacer>
           <ProjectDescription>
-            <p>
-              I am interested in experimenting with movement that is relative to
-              the form of sculpture but that can also be randomized by mechanics
-              interacting it. I specifically design the sculptures formal elements
-              to interact within a system. The sculptures are reminiscent of
-              something familiar, however, they also have unusual deformations,
-              colors, movements, and scale, lending them a surreal presence. I
-              hope such oscillations between the unfamiliar yet familiar space
-              destabilize the relationship that the viewer has with these existing
-              forms. The idea of movement carries through different series in my
-              work .My first works that were kinetic started experiments on how
-              could I work on movement of a sculpture without a human inside it.
-              It was a challenge that I created for my self at first. The
-              Sympathetic motion series was the first purely sculptural series
-              that I developed.Most of my work after these series continued in the
-              form of soft sculptures.
-            </p>
+            <Spacer>
+              <p>              
+                While experimenting on different movements relative to the
+                architecture the sculpture is in, form of the sculpture and surface
+                pattern, I have also increasingly become interested in how behaviors
+                and feelings are evoked through observed movement, and why humans
+                instinctively characterize something that is in motion. I have
+                started naming my sculptures by the movements they produce since
+                this is the source of the audiences perception combined with colors
+                and sounds.
+              </p>
+            </Spacer>
           </ProjectDescription>
         </Column>
         <Column>
-          <p>
-            While experimenting on different movements relative to the
-            architecture the sculpture is in, form of the sculpture and surface
-            pattern, I have also increasingly become interested in how behaviors
-            and feelings are evoked through observed movement, and why humans
-            instinctively characterize something that is in motion. I have
-            started naming my sculptures by the movements they produce since
-            this is the source of the audiences perception combined with colors
-            and sounds.
-          </p>
+        <Spacer>
+            <p>
+              “Raising Quills” evokes curiosity by putting the audience into bizzare interactions in a surreal world. The piece connects the ceiling to the floor as a way to draw attention to the structure of the building, and the movement is designed to entice people to interact with the piece as well as the environment, bringing life to an otherwise lifeless space. I am passionate about creating physically interactive installations and sculptures in order to investigate our relations to the non-human objects and systems we interrupt or become part of everyday. We have a tendency to humanize objects, and my work focuses on exploiting this natural instinct by combining movement, color, shape, and location.
+            </p>
+          </Spacer>
           <Spacer>
             <Image
               img={BerfinImage3}
@@ -100,11 +99,6 @@ export default function ({slug, name}) {
               alt="A kinetic sculpture that is made out of soft materials. It extends from floor to the ceiling. It is orange at the base with pink m red and white stripes and orange polka dots. It has a tear drop shape on the lower part where it is orange and a hole in the middle of the tear drop. The hole has little bubble shapes details around it.They look like beads. Midway through the sculpture oranges fades to light green and the shape changes. The tear drop shape is attached on top onto a tubular structure with green  dangling tentacle like pieces. As these pieces move, some orange colors appears in between them where they are attached to the tubular shape. The green pieces move up and down they are light and see through with orange lines and polka dots on them."
             />
           </Spacer>
-        </Column>
-      </ProjectColumns>
-      <ProjectColumns>
-        <Column>
-          <Vimeo url="https://player.vimeo.com/video/418431195?color=ffffff&amp;title=0&amp;byline=0&amp;portrait=0" />
         </Column>
       </ProjectColumns>
       <ArtistBio>
