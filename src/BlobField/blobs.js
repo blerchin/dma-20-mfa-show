@@ -21,6 +21,7 @@ export default class Blobs {
 		this.opacity = 0.8;
 		this.hoverFadedOpacity = 0.2;
 		this.hoverActiveOpacity = 1;
+		this.isMobile = false;
 		this.isSlowSim = false;
 		this.collapsed = false;
 		this.targetWidth = null;
@@ -102,15 +103,15 @@ export default class Blobs {
 				angle: 1 * Math.random(),
 				length: Math.random() * 10,
 			});
-			const currBall = new Ball(this.calcRadius(i), position, force);
+			const currBall = new Ball(this.calcRadius(i), position, force, this.artists[i]);
 			currBall.path.opacity = this.opacity;
 			currBall.shadowColor.alpha = this.opacity / 2;
-			currBall.path.artist = this.artists[i];
 			currBall.setIdx(this.balls.length);
 			currBall.isVertical = document.body.clientWidth > window.innerHeight;
 			currBall.path.onMouseEnter = this.pathOnMouseEnter.bind(this);
 			currBall.path.onMouseLeave = this.pathOnMouseLeave.bind(this);
 			currBall.path.onClick = this.pathOnClick.bind(this);
+			currBall.label.onClick = this.pathOnClick.bind(this);
 			this.balls.push(currBall);
 		}
 
@@ -125,6 +126,8 @@ export default class Blobs {
 		for (let i = 1; i < this.balls.length; i++) {
 			this.balls[i].iterate();
 			this.balls[i].updateColor();
+			this.balls[i].updateFont();
+			this.balls[i].label.visible = this.isMobile && !this.collapsed;
 		}
 
 		this.balls[0].updateShape();
@@ -172,6 +175,7 @@ export default class Blobs {
 		}
 		this.targetWidth = currWidth;
 		this.targetHeight = currHeight;
+		this.isMobile = document.body.clientWidth < 769;
 
 		// toggle true/false to see animated and immediate resizing on homepage
 		this.resizeCanvas(false); 

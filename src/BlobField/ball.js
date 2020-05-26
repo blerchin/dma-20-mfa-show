@@ -4,11 +4,12 @@
 import paper from 'paper';
 
 export default class Ball {
-	constructor(r, p, v) {
+	constructor(r, p, v, a) {
 		this.radius = r;
 		this.point = p;
 		this.force = v;
-		this.gravity = 9.8;
+		this.artist = a;
+		this.gravity = 7.0;
 		this.dampen = 0.4; // Amount of force dampening
 		this.maxForce = 15;
 		this.numSegment = 16; // Curve segmentation
@@ -30,6 +31,7 @@ export default class Ball {
 		this.shadowColor = new paper.Color(this.col1);
 		this.shadowInactiveColor = new paper.Color(this.col2);
 		this.shadowInactiveColor.alpha = 1; // When hovered, make inactive ball's shadow fully transparent
+		
 		this.path = new paper.Path({
 			fillColor: {
 				gradient: {
@@ -45,6 +47,7 @@ export default class Ball {
 			shadowBlur: 5,
 			shadowOffset: new paper.Point(5, 5),
 		});
+		this.path.artist = a;
 
 		for (let i = 0; i < this.numSegment; i++) {
 			this.boundOffset.push(this.radius);
@@ -54,6 +57,17 @@ export default class Ball {
 				angle: (360 / this.numSegment) * i,
 				length: 1,
 			}));
+		}
+		
+		if (a) {
+			this.label = new paper.PointText(p);
+			this.label.artist = a;
+			this.label.justification = "center";
+			this.label.fontFamily = "Days One, sans-serif";
+			this.label.fontWeight = 500; 
+			this.label.fillColor = '#fff';
+			this.label.opacity = 0.5;
+			this.label.content = a.name.toUpperCase().split(' ').join('\n');
 		}
 	}
 
@@ -69,6 +83,7 @@ export default class Ball {
 		}
 		this.force = this.force.multiply(this.dampen);
 		this.point = this.point.add(this.force);
+		this.label.point = this.path.position;
 		this.updateShape();
 	}
 
@@ -81,6 +96,11 @@ export default class Ball {
 		this.path.fillColor.origin = this.path.position;
 		this.path.fillColor.destination = this.path.bounds.rightCenter;
 		this.path.fillColor.radial = true;
+	}
+
+	updateFont() {
+		this.label.fontSize = document.body.clientWidth * 0.03;
+		this.label.leading = document.body.clientWidth * 0.035;
 	}
 
 	checkBorders() {

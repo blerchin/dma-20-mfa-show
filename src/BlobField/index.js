@@ -113,12 +113,20 @@ export default function BlobField() {
     }
   }, [blobsRef, collapsed]);
 
+  const style = {
+    cursor: activeArtist ? 'pointer' : 'default'
+  };
+  if (!collapsed) {
+    style.width = parentWidth;
+    style.height = parentHeight;
+  }
+
   return (
     <div className="blobs">
       <div
         className={wrapper}
         ref={wrapperEl}
-        style={collapsed ? {} : { width: parentWidth, height: parentHeight }}
+        style={style}
       >
         <ArtistNav />
         <canvas ref={animationEl}/>
