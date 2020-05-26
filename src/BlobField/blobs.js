@@ -111,6 +111,7 @@ export default class Blobs {
 			currBall.path.onMouseEnter = this.pathOnMouseEnter.bind(this);
 			currBall.path.onMouseLeave = this.pathOnMouseLeave.bind(this);
 			currBall.path.onClick = this.pathOnClick.bind(this);
+			currBall.label.onClick = this.pathOnClick.bind(this);
 			this.balls.push(currBall);
 		}
 
@@ -126,7 +127,7 @@ export default class Blobs {
 			this.balls[i].iterate();
 			this.balls[i].updateColor();
 			this.balls[i].updateFont();
-			this.balls[i].label.opacity = this.isMobile ? 1 : 0;
+			this.balls[i].label.visible = this.isMobile && !this.collapsed;
 		}
 
 		this.balls[0].updateShape();
