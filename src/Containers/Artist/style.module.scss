@@ -11,3 +11,7 @@
 .container section:first-of-type {
   margin-top: 100vh;
 }
+
+.noCoverContainer section:first-of-type {
+  margin-top: 12em !important;
+}

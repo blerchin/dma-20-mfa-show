@@ -7,9 +7,14 @@
   font-size: 21px;
 }
 
+.columnContainer {
+  padding-top: 0px !important;
+  margin-top: 1em !important;
+  max-width: 100% !important;
+}
+
 .header {
   margin: 0 0 37px;
   font-size: 36px;
   font-family: var(--header-font);
 }
-
