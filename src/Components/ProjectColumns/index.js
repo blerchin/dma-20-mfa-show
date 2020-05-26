@@ -4,7 +4,7 @@ import {
   container,
   column,
   fullBleede,
-} from './style.module.css';
+} from './style.module.scss';
 
 export const Column = ({ children, ...props }) => (
   <div className={column} {...props}>{children}</div>
@@ -15,9 +15,7 @@ const ProjectColumns = ({
   fullBleede: isFullBleede = false,
   className = '',
 }) => (
-  <section className={`${container} ${isFullBleede ? fullBleede : ''} ${className}`} style={{
-    gridTemplateColumns: `repeat(${React.Children.count(children)}, 1fr)`
-  }}>
+  <section className={`${container} ${isFullBleede ? fullBleede : ''} ${className}`}>
     { children }
   </section>
 );

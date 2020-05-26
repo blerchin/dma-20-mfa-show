@@ -1,7 +1,0 @@
-.container {
-  margin-bottom: var(--page-gutter);
-}
-
-.container section:first-of-type {
-  margin-top: 100vh;
-}

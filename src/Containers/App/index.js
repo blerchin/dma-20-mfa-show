@@ -6,6 +6,7 @@ import BlobField from 'src/BlobField';
 import Info from 'src/Containers/Info';
 import config from '../../config';
 import Seo from 'src/Components/Seo'
+import Nav from '../../Components/Nav';
 import ScrollToTop from 'src/Components/ScrollToTop';
 
 import BenLerchin from '../../work/BenLerchin';
@@ -38,7 +39,9 @@ export default () => (
   <Router>
     <ScrollToTop />
     <div className="app">
+      <a className="sr-only" href="#main">Skip to main content</a>
       <BlobField />
+      <Nav />
       <Switch>
         {
           config.artists.map(({slug, name, component}) => {

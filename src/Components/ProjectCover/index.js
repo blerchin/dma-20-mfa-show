@@ -2,15 +2,16 @@ import React, { useEffect, useRef } from 'react';
 
 import {
   container,
-} from './style.module.css';
+} from './style.module.scss';
 
-const ProjectCover = ({fadeOut = false, children, className = ''}) => {
+const ProjectCover = ({fadeOut = true, children, className = ''}) => {
   let fadeLevel = 0;
   let animationId = null;
   const node = useRef(null);
 
   const step = () => {
     node.current.style.filter = `blur(${fadeLevel * 100}px)`;
+    node.current.style.zIndex = fadeLevel > 0 ? -1 : 0;
     if (fadeOut) {
       node.current.style.opacity = `${1 - fadeLevel}`;
     }
@@ -28,7 +29,7 @@ const ProjectCover = ({fadeOut = false, children, className = ''}) => {
       cancelAnimationFrame(animationId);
       window.removeEventListener('scroll', onScroll);
     }
-  });
+  }, []);
 
   return (
     <div className={`${container} ${className}`} ref={node}>

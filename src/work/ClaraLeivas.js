@@ -8,6 +8,7 @@ import ProjectColumns, { Column } from '../Components/ProjectColumns';
 import Vimeo from '../Components/VideoVimeo';
 
 import Seo from "../Components/Seo";
+import ProjectDescription from "../Components/ProjectDescription";
 export default function ({slug, name}) {
   return (
     <Artist>
@@ -24,38 +25,40 @@ export default function ({slug, name}) {
       />
       <ProjectCover>
         <Column>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non
-            justo non elit fringilla imperdiet ut nec purus. Quisque egestas
-            consequat sem, quis volutpat felis vestibulum eu. Integer elementum
-            eros non nulla consequat blandit. Donec elit erat, ullamcorper et
-            varius vitae, volutpat sed tellus. In tempus lorem vitae ex
-            pulvinar, at molestie orci sodales. Donec eget nisl tincidunt,
-            fringilla purus a, accumsan diam. Sed non ipsum a est lobortis
-            varius.
-          </p>
-          <p>
-            In vestibulum eros quis magna maximus blandit. Pellentesque
-            elementum est ac lorem scelerisque facilisis. Quisque sollicitudin
-            velit et ligula tincidunt, vitae imperdiet elit placerat. Maecenas
-            in elementum est, eu pulvinar libero. Quisque vitae ultrices nulla.
-            Pellentesque ex nibh, posuere vitae purus id, mollis blandit urna.
-            Nam eget bibendum sapien, nec tempor turpis. Pellentesque accumsan
-            urna auctor sapien tincidunt luctus. Pellentesque at massa non ex
-            vulputate tempor. Aliquam nibh lectus, egestas eget massa a,
-            tincidunt dignissim sem. Suspendisse mauris orci, elementum quis sem
-            sed, ultricies consectetur enim.
-          </p>
-          <p>
-            Sed faucibus accumsan orci, et auctor felis porta non. Aenean sit
-            amet mauris venenatis, maximus dolor ac, vulputate mi. Nulla
-            facilisis justo sit amet ex blandit, vel volutpat purus auctor. Nunc
-            tincidunt nulla sed ullamcorper cursus. Mauris pretium ultrices
-            libero, eget venenatis lacus feugiat ut. Vestibulum quis tortor in
-            sapien tincidunt dictum non quis ante. Mauris urna justo, cursus et
-            felis a, placerat dictum lectus. Sed egestas nunc eu sapien
-            sollicitudin molestie.
-          </p>
+          <ProjectDescription>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non
+              justo non elit fringilla imperdiet ut nec purus. Quisque egestas
+              consequat sem, quis volutpat felis vestibulum eu. Integer elementum
+              eros non nulla consequat blandit. Donec elit erat, ullamcorper et
+              varius vitae, volutpat sed tellus. In tempus lorem vitae ex
+              pulvinar, at molestie orci sodales. Donec eget nisl tincidunt,
+              fringilla purus a, accumsan diam. Sed non ipsum a est lobortis
+              varius.
+            </p>
+            <p>
+              In vestibulum eros quis magna maximus blandit. Pellentesque
+              elementum est ac lorem scelerisque facilisis. Quisque sollicitudin
+              velit et ligula tincidunt, vitae imperdiet elit placerat. Maecenas
+              in elementum est, eu pulvinar libero. Quisque vitae ultrices nulla.
+              Pellentesque ex nibh, posuere vitae purus id, mollis blandit urna.
+              Nam eget bibendum sapien, nec tempor turpis. Pellentesque accumsan
+              urna auctor sapien tincidunt luctus. Pellentesque at massa non ex
+              vulputate tempor. Aliquam nibh lectus, egestas eget massa a,
+              tincidunt dignissim sem. Suspendisse mauris orci, elementum quis sem
+              sed, ultricies consectetur enim.
+            </p>
+            <p>
+              Sed faucibus accumsan orci, et auctor felis porta non. Aenean sit
+              amet mauris venenatis, maximus dolor ac, vulputate mi. Nulla
+              facilisis justo sit amet ex blandit, vel volutpat purus auctor. Nunc
+              tincidunt nulla sed ullamcorper cursus. Mauris pretium ultrices
+              libero, eget venenatis lacus feugiat ut. Vestibulum quis tortor in
+              sapien tincidunt dictum non quis ante. Mauris urna justo, cursus et
+              felis a, placerat dictum lectus. Sed egestas nunc eu sapien
+              sollicitudin molestie.
+            </p>
+          </ProjectDescription>
         </Column>
       </ProjectCover>
       <ProjectColumns>

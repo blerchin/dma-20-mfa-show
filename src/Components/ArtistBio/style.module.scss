@@ -1,0 +1,15 @@
+@import "../../common/util.scss";
+
+.container {
+  @include container;
+  padding-top: 95px;
+  text-align: left;
+  font-size: 21px;
+}
+
+.header {
+  margin: 0 0 37px;
+  font-size: 36px;
+  font-family: var(--header-font);
+}
+
