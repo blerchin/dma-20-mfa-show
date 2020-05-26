@@ -9,7 +9,6 @@ import {
 const Video = ({
   src,
   srcOgg,
-  alt,
   autoPlay = false,
   caption = false,
   controls = true,
@@ -29,6 +28,8 @@ const Video = ({
   const videoEl = useRef(null);
   useEffect(() => {
     if (autoPlay && videoEl.current) {
+      videoEl.current.setAttribute('muted', true);
+      videoEl.current.setAttribute('playsinline', true);
       videoEl.current.play();
     }
   }, [autoPlay, videoEl]);
@@ -37,7 +38,7 @@ const Video = ({
     <div className={`${container} ${isFullHeight ? fullHeight : ''} ${className}`}>
       <video 
         crossOrigin="anonymous"
-        autoplay={autoPlay}
+        autoPlay={autoPlay}
         controls={controls}
         style={videoStyle} 
         ref={videoEl}
