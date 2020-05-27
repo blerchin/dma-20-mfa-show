@@ -29,8 +29,8 @@ body {
 .title {
   color: var(--text-accent);
   font-size: 13vw;
-  font-family: 'Days One', sans-serif;;
-  font-weight: 500;
+  font-family: 'Arial Black', Gadget, sans-serif;;
+  font-weight: 400;
   line-height: 14vw; 
 }
 
