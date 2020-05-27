@@ -8,6 +8,7 @@ export default function TimeEngine(cb) {
   this.isSetup = false;
   this.callback = cb;
   this.lock = false;
+  this.keepTicking = true;
 }
 
 TimeEngine.prototype = {
@@ -37,6 +38,22 @@ TimeEngine.prototype = {
     this.currentTime = new Date();
     var diff = this.currentTime.getTime() - this.systemTime.getTime();
     this.globalCurrent = diff / 1000;
+    if (this.keepTicking){
+      requestAnimationFrame(this.tick.bind(this));
+    }
+  },
+
+  halt(){
+    console.log(`[⏰] 🌐 Halt timer ticking`);
+    this.keepTicking = false;
+  },
+
+  resume(){
+    if (this.keepTicking === false){
+      console.log(`[⏰] 🌐 Resume timer ticking`);
+      this.keepTicking = true;
+      this.tick();
+    }
   },
 
   getOffsetMins(){

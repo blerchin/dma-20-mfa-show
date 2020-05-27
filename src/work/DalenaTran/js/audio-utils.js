@@ -83,8 +83,8 @@ AudioEngine.prototype = {
     }
   },
 
-  destroy(){
-    console.log(`[🎵] 🛑 Stopping all sounds`);
+  halt(){
+    console.log(`[🎵] 🛑 Halting all sounds`);
     for (let i = 0; i < this.voiceovers.length; i++){
       this.voiceovers[i].howler.stop();
     }

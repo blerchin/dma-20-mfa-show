@@ -157,7 +157,8 @@ Engines.prototype = {
 
   halt() {
     console.log(`[⚙️] 🛑 Engines halting`);
-    this.audioEngine.destroy();
+    this.audioEngine.halt();
+    this.timeEngine.halt();
     this.isHalted = true;
   },
 
@@ -165,9 +166,9 @@ Engines.prototype = {
     console.log(`[⚙️] ▶️ Engines resumed`);
     this.subElement.textContent = "";
     this.isHalted = false;
+    this.timeEngine.resume();
     this.updateCountdown();
     this.voiceoverUpdate();
-
   },
 
   showCountdown() {
