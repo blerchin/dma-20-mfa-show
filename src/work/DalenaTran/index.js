@@ -255,19 +255,19 @@ export default function () {
                   /> */}
                   <source
                     type="video/mp4"
-                    src="https://github.com/dalena/acts-in-translation-data/releases/download/vid/aith264.mp4"
+                    src="http://users.dma.ucla.edu/~dalena/ait/vid/aith264.mp4"
                   />
                   {/* <source
                     type='video/webm;codecs="vp9,vorbis'
-                    src="https://github.com/dalena/acts-in-translation-data/releases/download/vid/aitvp9recomm.webm"
+                    src="http://users.dma.ucla.edu/~dalena/ait/vid/aitvp9recomm.webm"
                   />
                   <source
                     type='video/webm;codecs="vp9,vorbis'
-                    src="https://github.com/dalena/acts-in-translation-data/releases/download/vid/aitvp9.webm"
+                    src="http://users.dma.ucla.edu/~dalena/ait/vid/aitvp9.webm"
                   /> */}
                   <source
                     type='video/webm;codecs="vp8,vorbis'
-                    src="https://github.com/dalena/acts-in-translation-data/releases/download/vid/aitvp8.webm"
+                    src="http://users.dma.ucla.edu/~dalena/ait/vid/aitvp8.webm"
                   />
                 </video>
                 <div id="AITTitleBox">

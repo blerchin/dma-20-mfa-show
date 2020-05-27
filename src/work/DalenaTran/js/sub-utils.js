@@ -1,4 +1,4 @@
-import * as Subtitle from 'subtitle'
+import * as Subtitle from "subtitle";
 
 export default function SubEngine(voiceovers, cb, subcb) {
   this.voiceovers = voiceovers;
@@ -18,15 +18,19 @@ SubEngine.prototype = {
         `[📜] 🌐 Grabbing ${this.voiceOverURL}/${this.voiceovers[i].srt}`
       );
 
-      fetch(`${this.voiceOverURL}/${this.voiceovers[i].srt}`)
+    
+
+      fetch(`/dalena/${this.voiceovers[i].srt}`, {
+        mode: "no-cors",
+      })
         .then((body) => body.text())
         .then((data) => {
-          this.parseSub(data, i)
+          this.parseSub(data, i);
         });
     }
   },
 
-  parseSub(data, idx) {    
+  parseSub(data, idx) {
     this.voiceovers[idx].sub.parsed = Subtitle.parse(data);
     this.voiceovers[idx].sub.isHeadSet = false;
     this.completed++;
@@ -88,8 +92,7 @@ SubEngine.prototype = {
         }
         this.show = false;
       }
-    }
-    else{
+    } else {
       this.seek(idx, time);
     }
   },

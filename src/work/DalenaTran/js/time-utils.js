@@ -37,11 +37,6 @@ TimeEngine.prototype = {
     this.currentTime = new Date();
     var diff = this.currentTime.getTime() - this.systemTime.getTime();
     this.globalCurrent = diff / 1000;
-    // let seconds = diff / 1000;
-    // let minutes = seconds / 60;
-    // this.globalCurrMin = Math.floor(this.globalOffset + minutes);
-    // this.globalCurrSec = Math.floor((this.globalOffset + minutes)*60)%60;
-    // console.log(this.globalCurrMin, this.globalCurrSec);
   },
 
   getOffsetMins(){
@@ -49,8 +44,8 @@ TimeEngine.prototype = {
       return minutes % 60;
   },
 
-  getCurrentMins(){
-      return this.getOffsetMins() + (this.globalCurrent / 60);
+  getCurrentMins(){    
+      return this.getOffsetMins() + ((this.globalCurrent / 60) % 60);
   },
 
   getCurrentMilli(){
@@ -62,7 +57,7 @@ TimeEngine.prototype = {
   },
 
   getAudioIndexFromTime(count){
-      var time  = this.globalCurrent + this.globalOffset;
+      var time  = this.globalCurrent + this.globalOffset; //seconds
       var hours = (time / (60 * 60))% 24;
       return Math.floor(hours % (count));
   }

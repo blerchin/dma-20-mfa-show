@@ -16,13 +16,10 @@ export default function Engines() {
   this.dataDir = "data";
   this.displayCountdown = true;
   this.alreadyTriggered = false;
-  this.voVolume = 0.1;
-  this.baseURL = "https://dalena.github.io/acts-in-translation/data";
+  this.voVolume = 1;
+  this.baseURL = "http://users.dma.ucla.edu/~dalena/ait";
   this.voiceOverBase = "audio-voiceover";
   this.bgSoundBase = "audio-bg";
-  this.releasesURL = "https://github.com/dalena/acts-in-translation-data/releases/download";
-  this.voiceOverRelease = "voiceovers-5-24";
-  this.bgSoundRelease = "bgsounds-5-24";
 }
 
 Engines.prototype = {
@@ -37,14 +34,12 @@ Engines.prototype = {
   setupAll(audioData, voiceoverDataFile) {
     let voBaseURL = `${this.baseURL}/${this.voiceOverBase}/`;
     let bgSoundBaseURL = `${this.baseURL}/${this.bgSoundBase}/`;
-    let voReleaseURL = `${this.releasesURL}/${this.voiceOverRelease}/`;
-    let bgSoundReleaseURL = `${this.releasesURL}/${this.bgSoundRelease}/`;
     this.audioEngine = new AudioEngine(
       this.voiceovers,
       this.audioSetupComplete.bind(this)
     );
-    this.audioEngine.bgURL = bgSoundReleaseURL;
-    this.audioEngine.voiceOverURL = voReleaseURL;
+    this.audioEngine.bgURL = bgSoundBaseURL;
+    this.audioEngine.voiceOverURL = voBaseURL;
     this.audioEngine.setup(audioData);
 
     this.timeEngine = new TimeEngine(this.timeSetupComplete.bind(this));

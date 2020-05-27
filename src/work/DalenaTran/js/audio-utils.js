@@ -138,7 +138,7 @@ AudioEngine.prototype = {
 
     let aud = new Howl({
       src: audioPath,
-      volume: 1,
+      volume: 0.6,
       html5: true,
       preload: true,
       // Change below from initPerInterval to step if want to
