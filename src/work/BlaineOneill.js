@@ -47,9 +47,7 @@ export default function ({slug, name}) {
       </ProjectColumns>
       <ArtistBio>
         <p>
-          Affiliate of multiple groups. Working as an artist, designer, web
-          developer and disc jockey. Currently: affect, bubbles, feature
-          extraction, improvisation, intersubjectivity. Always: failure.
+          Blaine O'Neill, born 9/15/1989 in Santa Monica. Lives and works in Los Angeles. Research and work are defined by affect, bubbles, improvisation, intersubjectivity, failure.
         </p>
       </ArtistBio>
     </Artist>
