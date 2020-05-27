@@ -251,19 +251,19 @@ export default function () {
                   /> */}
                   <source
                     type="video/mp4"
-                    src="http://users.dma.ucla.edu/~dalena/ait/vid/aith264.mp4"
+                    src="https://users.dma.ucla.edu/~dalena/ait/vid/aith264.mp4"
                   />
                   {/* <source
                     type='video/webm;codecs="vp9,vorbis'
-                    src="http://users.dma.ucla.edu/~dalena/ait/vid/aitvp9recomm.webm"
+                    src="https://users.dma.ucla.edu/~dalena/ait/vid/aitvp9recomm.webm"
                   />
                   <source
                     type='video/webm;codecs="vp9,vorbis'
-                    src="http://users.dma.ucla.edu/~dalena/ait/vid/aitvp9.webm"
+                    src="https://users.dma.ucla.edu/~dalena/ait/vid/aitvp9.webm"
                   /> */}
                   <source
                     type='video/webm;codecs="vp8,vorbis'
-                    src="http://users.dma.ucla.edu/~dalena/ait/vid/aitvp8.webm"
+                    src="https://users.dma.ucla.edu/~dalena/ait/vid/aitvp8.webm"
                   />
                 </video>
                 <div id="AITTitleBox">

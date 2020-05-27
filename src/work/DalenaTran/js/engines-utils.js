@@ -17,7 +17,7 @@ export default function Engines() {
   this.displayCountdown = true;
   this.alreadyTriggered = false;
   this.voVolume = 1;
-  this.baseURL = "http://users.dma.ucla.edu/~dalena/ait";
+  this.baseURL = "https://users.dma.ucla.edu/~dalena/ait";
   this.voiceOverBase = "audio-voiceover";
   this.bgSoundBase = "audio-bg";
   this.startOn = 0;
