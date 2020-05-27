@@ -102,11 +102,10 @@ Engines.prototype = {
     var currTimeSecs = this.timeEngine.getCurrentMinsMod60() * 60;
 
     let beginAt = 0;
-    if (this.startOnTheHour){
+    if (this.startOnTheHour) {
       beginAt = currTimeSecs;
-    }
-    else{
-      beginAt = currTimeSecs % (this.startEveryXMins * 60)
+    } else {
+      beginAt = currTimeSecs % (this.startEveryXMins * 60);
     }
 
     if (beginAt < voiceDur) {
@@ -114,7 +113,7 @@ Engines.prototype = {
       \tAudio: ${this.voiceovers[this.idx].audio}
       \tStarting at ${currTimeSecs}`);
 
-      this.voice.on("end", this.showCountdown.bind(this))
+      this.voice.on("end", this.showCountdown.bind(this));
 
       this.subEngine.resetPlayHead();
       this.subEngine.seek(this.idx, beginAt * 1000);
@@ -153,9 +152,12 @@ Engines.prototype = {
     this.destroyed = true;
   },
 
-  resume(){
+  resume() {
     console.log(`[⚙️] ▶️ Engines resumed`);
     this.destroyed = false;
+    this.updateCountdown();
+    this.voiceoverUpdate();
+
   },
 
   showCountdown() {
@@ -171,52 +173,55 @@ Engines.prototype = {
   },
 
   updateCountdown() {
-     if (!this.destroyed && this.displayCountdown && this.timeEngine.isSetup) {
-      let base = this.startOnTheHour ? 60 : this.startEveryXMins
-      let remMin = base - (this.timeEngine.getCurrentMinsMod60() % base);
-      remMin = Math.floor(remMin % base);
-      remMin = remMin.toString().padStart(2, "0");
+    if (!this.destroyed) {
+      if (this.displayCountdown && this.timeEngine.isSetup) {
+        let base = this.startOnTheHour ? 60 : this.startEveryXMins;
+        let remMin = base - (this.timeEngine.getCurrentMinsMod60() % base);
+        remMin = Math.floor(remMin % base);
+        remMin = remMin.toString().padStart(2, "0");
 
-      let remSecs = this.timeEngine.getCurrentSecs();
-      remSecs = 60 - Math.floor(remSecs % 60);
-      remSecs = remSecs.toString().padStart(2, "0");
+        let remSecs = this.timeEngine.getCurrentSecs();
+        remSecs = 60 - Math.floor(remSecs % 60);
+        remSecs = remSecs.toString().padStart(2, "0");
 
-      let AITCountMins = document.getElementById("AITCountMins")
-      let AITCountSecs = document.getElementById("AITCountSecs")
-      if (AITCountSecs && AITCountMins){
-        AITCountMins.textContent = remMin;
-        AITCountSecs.textContent = remSecs;
+        let AITCountMins = document.getElementById("AITCountMins");
+        let AITCountSecs = document.getElementById("AITCountSecs");
+        if (AITCountSecs && AITCountMins) {
+          AITCountMins.textContent = remMin;
+          AITCountSecs.textContent = remSecs;
+        }
       }
+      requestAnimationFrame(this.updateCountdown.bind(this));
     }
-    requestAnimationFrame(this.updateCountdown.bind(this));
   },
 
   voiceoverUpdate() {
-    requestAnimationFrame(this.voiceoverUpdate.bind(this));
+    if (!this.destroyed) {
+      requestAnimationFrame(this.voiceoverUpdate.bind(this));
 
-    if (!this.destroyed && this.timeEngine.isSetup) {
-      this.timeEngine.tick();
-      var minsPassed = Math.floor(this.timeEngine.getCurrentMinsMod60());
+      if (this.timeEngine.isSetup) {
+        this.timeEngine.tick();
+        var minsPassed = Math.floor(this.timeEngine.getCurrentMinsMod60());
 
-      let flag = false;
+        let flag = false;
 
-      if (this.startOnTheHour){
-        flag = (minsPassed === this.startOn)
-      }
-      else{
-        flag = !(minsPassed % this.startEveryXMins)
-      }
+        if (this.startOnTheHour) {
+          flag = minsPassed === this.startOn;
+        } else {
+          flag = !(minsPassed % this.startEveryXMins);
+        }
 
-      if (flag && !this.timeEngine.lock) {
-        this.prepareVoiceover();
-      }
+        if (flag && !this.timeEngine.lock) {
+          this.prepareVoiceover();
+        }
 
-      if (!flag && this.timeEngine.lock) {
-        this.timeEngine.lock = false;
-      }
+        if (!flag && this.timeEngine.lock) {
+          this.timeEngine.lock = false;
+        }
 
-      if (this.voice && this.voice.playing()){
-        this.subEngine.play(this.idx, this.voice.seek() * 1000);
+        if (this.voice && this.voice.playing()) {
+          this.subEngine.play(this.idx, this.voice.seek() * 1000);
+        }
       }
     }
   },
