@@ -12,23 +12,25 @@ export default function Engines() {
   this.timeEngine = null;
   this.subEngine = null;
   this.voiceovers = null;
-  this.element = null;
+  this.subElement = null;
   this.dataDir = "data";
   this.displayCountdown = true;
   this.alreadyTriggered = false;
-  this.voVolume = 0.1;
-  this.baseURL = "https://dalena.github.io/acts-in-translation/data";
+  this.voVolume = 1;
+  this.baseURL = "https://users.dma.ucla.edu/~dalena/ait";
   this.voiceOverBase = "audio-voiceover";
   this.bgSoundBase = "audio-bg";
-  this.releasesURL = "https://github.com/dalena/acts-in-translation-data/releases/download";
-  this.voiceOverRelease = "voiceovers-5-24";
-  this.bgSoundRelease = "bgsounds-5-24";
+  this.startOn = 0;
+  this.startEveryXMins = 6;
+  this.startOnTheHour = false;
+  this.isHalted = false;
 }
 
 Engines.prototype = {
-  setup(audioData, voiceoverData) {
+  setup(audioData, voiceoverData,elemID) {
     this.voiceovers = voiceoverData;
     this.setupAll(audioData, voiceoverData);
+    this.setSubHTMLElement(document.getElementById(elemID));
 
     console.log(`[⚙️] 🌐 Loaded Voiceover Data
     ${voiceoverData}`);
@@ -37,14 +39,12 @@ Engines.prototype = {
   setupAll(audioData, voiceoverDataFile) {
     let voBaseURL = `${this.baseURL}/${this.voiceOverBase}/`;
     let bgSoundBaseURL = `${this.baseURL}/${this.bgSoundBase}/`;
-    let voReleaseURL = `${this.releasesURL}/${this.voiceOverRelease}/`;
-    let bgSoundReleaseURL = `${this.releasesURL}/${this.bgSoundRelease}/`;
     this.audioEngine = new AudioEngine(
       this.voiceovers,
       this.audioSetupComplete.bind(this)
     );
-    this.audioEngine.bgURL = bgSoundReleaseURL;
-    this.audioEngine.voiceOverURL = voReleaseURL;
+    this.audioEngine.bgURL = bgSoundBaseURL;
+    this.audioEngine.voiceOverURL = voBaseURL;
     this.audioEngine.setup(audioData);
 
     this.timeEngine = new TimeEngine(this.timeSetupComplete.bind(this));
@@ -59,8 +59,8 @@ Engines.prototype = {
     this.subEngine.setup();
   },
 
-  setHTMLElement(val) {
-    this.element = val;
+  setSubHTMLElement(val) {
+    this.subElement = val;
   },
 
   checkIfAllSetupComplete() {
@@ -91,27 +91,34 @@ Engines.prototype = {
 
   showNextSub(show, flag, text) {
     if (show && flag && this.voice && this.voice.playing()) {
-      this.element.textContent = text;
+      this.subElement.textContent = text;
     } else if (this.voice && this.voice.playing()) {
-      this.element.textContent = "";
+      this.subElement.textContent = "";
     }
   },
 
   triggerVoiceover() {
     console.log(`[⚙️] 📥 Voiceover onload triggered`);
     var voiceDur = this.voice._duration;
-    var currTimeSecs = this.timeEngine.getCurrentMins() * 60;
-    var currTimeMilli = this.timeEngine.getCurrentMilli();
+    var currTimeSecs = this.timeEngine.getCurrentMinsMod60() * 60;
 
-    if (currTimeSecs < voiceDur) {
+    let beginAt = 0;
+    if (this.startOnTheHour) {
+      beginAt = currTimeSecs;
+    } else {
+      beginAt = currTimeSecs % (this.startEveryXMins * 60);
+    }
+
+    if (beginAt < voiceDur) {
       console.log(`[⚙️] 🔊 Playing voiceover ${this.idx}
       \tAudio: ${this.voiceovers[this.idx].audio}
       \tStarting at ${currTimeSecs}`);
 
       this.voice.on("end", this.showCountdown.bind(this));
 
-      this.subEngine.seek(this.idx, currTimeMilli);
-      this.voice.seek(currTimeSecs);
+      this.subEngine.resetPlayHead();
+      this.subEngine.seek(this.idx, beginAt * 1000);
+      this.voice.seek(beginAt);
       this.voice.play();
       this.hideCountdown();
     }
@@ -140,9 +147,28 @@ Engines.prototype = {
     this.voice.on("load", this.triggerVoiceover.bind(this));
   },
 
-  stopEngine() {
-    this.audioEngine.pauseAudio();
-    this.voice.stop();
+  init(){
+    if (this.isHalted){
+      this.resume();
+    }
+    this.audioEngine.beginAudio();
+    this.prepareVoiceover();
+  },
+
+  halt() {
+    console.log(`[⚙️] 🛑 Engines halting`);
+    this.audioEngine.halt();
+    this.timeEngine.halt();
+    this.isHalted = true;
+  },
+
+  resume() {
+    console.log(`[⚙️] ▶️ Engines resumed`);
+    this.subElement.textContent = "";
+    this.isHalted = false;
+    this.timeEngine.resume();
+    this.updateCountdown();
+    this.voiceoverUpdate();
   },
 
   showCountdown() {
@@ -158,39 +184,55 @@ Engines.prototype = {
   },
 
   updateCountdown() {
-     if (this.displayCountdown && this.timeEngine.isSetup) {
-      let remMin = 60 - this.timeEngine.getCurrentMins();
-      remMin = Math.floor(remMin);
-      remMin = remMin.toString().padStart(2, "0");
+    if (!this.isHalted) {
+      if (this.displayCountdown && this.timeEngine.isSetup) {
+        let base = this.startOnTheHour ? 60 : this.startEveryXMins;
+        let remMin = base - (this.timeEngine.getCurrentMinsMod60() % base);
+        remMin = Math.floor(remMin % base);
+        remMin = remMin.toString().padStart(2, "0");
 
-      let remSecs = this.timeEngine.getCurrentSecs();
-      remSecs = 60 - Math.floor(remSecs % 60);
-      remSecs = remSecs.toString().padStart(2, "0");
+        let remSecs = this.timeEngine.getCurrentSecs();
+        remSecs = 60 - Math.floor(remSecs % 60);
+        remSecs = remSecs.toString().padStart(2, "0");
 
-      document.getElementById("AITCountMins").textContent = remMin;
-      document.getElementById("AITCountSecs").textContent = remSecs;
+        let AITCountMins = document.getElementById("AITCountMins");
+        let AITCountSecs = document.getElementById("AITCountSecs");
+        if (AITCountSecs && AITCountMins) {
+          AITCountMins.textContent = remMin;
+          AITCountSecs.textContent = remSecs;
+        }
+      }
+      requestAnimationFrame(this.updateCountdown.bind(this));
     }
-    requestAnimationFrame(this.updateCountdown.bind(this));
   },
 
   voiceoverUpdate() {
-    requestAnimationFrame(this.voiceoverUpdate.bind(this));
+    if (!this.isHalted) {
+      requestAnimationFrame(this.voiceoverUpdate.bind(this));
 
-    if (this.timeEngine.isSetup) {
-      this.timeEngine.tick();
-      var minsPassed = Math.floor(this.timeEngine.getCurrentMins() % 60);
-      let startOn = 0;
+      if (this.timeEngine.isSetup) {
+        this.timeEngine.tick();
+        var minsPassed = Math.floor(this.timeEngine.getCurrentMinsMod60());
 
-      if (minsPassed === startOn && !this.timeEngine.lock) {
-        this.prepareVoiceover();
-      }
+        let flag = false;
 
-      if (minsPassed !== startOn && this.timeEngine.lock) {
-        this.timeEngine.lock = false;
-      }
+        if (this.startOnTheHour) {
+          flag = minsPassed === this.startOn;
+        } else {
+          flag = !(minsPassed % this.startEveryXMins);
+        }
 
-      if (this.voice && this.voice.playing()){
-        this.subEngine.play(this.idx, this.voice.seek() * 1000);
+        if (flag && !this.timeEngine.lock) {
+          this.prepareVoiceover();
+        }
+
+        if (!flag && this.timeEngine.lock) {
+          this.timeEngine.lock = false;
+        }
+
+        if (this.voice && this.voice.playing()) {
+          this.subEngine.play(this.idx, this.voice.seek() * 1000);
+        }
       }
     }
   },
