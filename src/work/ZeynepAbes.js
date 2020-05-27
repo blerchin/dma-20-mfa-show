@@ -1,15 +1,11 @@
 import React from "react";
 
 import Artist from "../Containers/Artist";
-import ProjectCover from "../Components/ProjectCover";
 import ProjectHeader from "../Components/ProjectHeader";
 import ArtistBio from "../Components/ArtistBio";
 import ProjectColumns, { Column } from "../Components/ProjectColumns";
 import ImageCaption from "../Components/ImageCaption";
-import Video from "../Components/Video";
-import Image from "../Components/Image";
-
-import Placeholder from "./assets/placeholder.png";
+import VideoVimeo from "../Components/VideoVimeo";
 
 import Seo from "../Components/Seo";
 import ProjectDescription from "../Components/ProjectDescription";
@@ -18,43 +14,24 @@ const CAPTION_HEIGHT = "4em";
 
 export default function ({slug, name}) {
   return (
-    <Artist>
+    <Artist noCover="true">
       <Seo
         title={name}
-        description="Scelerisque venenatis nibh fames ad quam feugiat leo commodo vitae sed lacus."
+        description="Memory place navigates through three moments of memory when I visit my home."
         path={slug}
       />
       <ProjectHeader
         artistName={name}
         title="Memory Place"
+        materials="Point cloud models: Istiklal street, My mother's dinner table, Turkish airlines flight"
         link="https://www.zeynepmadethis.com"
       />
-      <ProjectCover fadeOut>
-        <Column>
-          <Image img={Placeholder} alt="" />
-        </Column>
-      </ProjectCover>
-      <ProjectColumns>
-        <Column>
-          <ProjectDescription>
-            <p>
-              Memory place navigates through three moments I keep coming back to
-              whenever I visit my home. These emotional spaces attempt to explore
-              the relationship between personal and public memories and how
-              specific moments from our past remain as a constant reminder of what
-              home can be. In a time where many of our interactions are mediated,
-              Memory Place investigates the specific kind of alienation that
-              arises from experiencing significant events at home in mediated
-              ways.
-            </p>
-          </ProjectDescription>
-        </Column>
-      </ProjectColumns>
       <ProjectColumns>
         <Column>
           <>
-            <Video
-              src="https://repetitionrepetition.com/launch2.mp4"
+            <VideoVimeo
+              url="https://www.youtube.com/embed/wAXgJQLfgCk"
+              padding="56.25%"
             />
             <ImageCaption
               materials="Photogrammetry of Istiklal Street"
@@ -75,8 +52,9 @@ export default function ({slug, name}) {
         </Column>
         <Column>
           <>
-            <Video
-              src="https://repetitionrepetition.com/launch2.mp4"
+            <VideoVimeo
+              url="https://www.youtube.com/embed/ru-YULRe3ZU"
+              padding="56.25%"
             />
             <ImageCaption
               materials="Photogrammetry of my mother's dinner table"
@@ -101,8 +79,9 @@ export default function ({slug, name}) {
         </Column>
         <Column>
           <>
-            <Video
-              src="https://repetitionrepetition.com/launch2.mp4"
+            <VideoVimeo
+              url="https://www.youtube.com/embed/zfNPTv3o-54"
+              padding="56.25%"
             />
             <ImageCaption
               materials="Photogrammetry of Turkish airlines flight (credit: Adam Cigler)" 
@@ -117,18 +96,24 @@ export default function ({slug, name}) {
           </>
         </Column>
       </ProjectColumns>
+      <ProjectColumns>
+        <Column>
+          <ProjectDescription>
+            <p>
+              Memory place navigates through three moments of memory when I visit my home. These emotional spaces attempt to explore the relationship between personal and public memories and how specific moments from our past remain as a constant reminder of what home can be. In a time where many of our interactions are mediated, Memory Place investigates the specific kind of alienation that arises from experiencing significant events at home in mediated ways.
+            </p>
+            <p>
+              Credits: 
+              <br/>Sounds Designer -  Devin Embil
+              <br/>Point cloud model of Turkish airlines flight - Adam Ciler
+              <br/>Special thanks to Jennifer Steinkamp, Steve Anderson, Eddo Stern, Noa Kaplan, Emine S. Tonguc &amp; Ayse Torfilli. Your support is immensely appreciated.
+            </p>
+          </ProjectDescription>
+        </Column>
+      </ProjectColumns>
       <ArtistBio>
         <p>
-          Zeynep is an artist and curator from Istanbul, Turkey. She studied
-          film and interactive media at Emerson College, later getting her start
-          at LACMA’s Art+Tech lab creating AR installations. She then worked at
-          the Sundance Film Festival's New Frontier Exhibitions and is currently
-          an MFA candidate at UCLA’s Design Media Arts program. She primarily
-          works with archived photography, video, and immersive media. Her
-          subjects revolve around identity, history, and loss of memory. She is
-          deeply influenced by Istanbul’s city culture and in pursuit of
-          exploring the shifting identity of Turkey to navigate the struggle and
-          alienation that arise from changing social environments.
+          Zeynep is an artist and curator from Istanbul, Turkey. She studied film and interactive media at Emerson College, later getting her start at LACMA’s Art+Tech lab creating AR installations. She then worked at the Sundance Film Festival's New Frontier Exhibitions and is currently an MFA candidate at UCLA’s Design Media Arts program. She primarily works with archived photography, video, and immersive media. Her subjects revolve around identity, history, and loss of memory. She is deeply influenced by Istanbul’s city culture and in pursuit of exploring shifting identities to navigate the struggle and alienation that arise from changing social environments. 
         </p>
       </ArtistBio>
     </Artist>

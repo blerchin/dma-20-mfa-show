@@ -17,7 +17,7 @@ const ImageCaption = ({ title, year, materials, ...props }) => (
 )
 
 ImageCaption.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   year: PropTypes.string,
   materials: PropTypes.string
 }

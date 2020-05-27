@@ -31,3 +31,7 @@
 .fullBleede {
   max-width: 100vw;
 }
+
+.container p:not(:last-child) {
+  padding-bottom: 1em;
+}
