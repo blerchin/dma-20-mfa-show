@@ -37,7 +37,7 @@ export default class Blobs {
 			frameCount: 0,
 			lastTimestamp: Date.now()
 		};
-		this.debug = true;
+		this.debug = window.location.search.indexOf('debug') !== -1;
 	}
 
 	B(idx) {
