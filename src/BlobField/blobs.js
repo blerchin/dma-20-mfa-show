@@ -26,6 +26,7 @@ export default class Blobs {
 		this.collapsed = false;
 		this.targetWidth = null;
 		this.targetHeight = null;
+		this.immediateResize = true;
 	}
 
 	B(idx) {
@@ -186,7 +187,7 @@ export default class Blobs {
 			this.balls[i].isVertical = document.body.clientWidth > window.innerHeight;
 		}
 		
-		if (resizeOnHompage || this.collapsed) {
+		if (!this.immediateResize && (resizeOnHompage || this.collapsed)) {
 			// Animated resizing
 			this.animateCanvasSize();
 		} else {
