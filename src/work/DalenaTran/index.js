@@ -108,7 +108,7 @@ export default function () {
       <Column className={dtText}>
         <p className={p0}>Two windows having a moment together.</p>
         <p className={p1}>
-          A story emerges every hour on the hour in universal coordinated time (UTC), marking the passing of time but does not keep it.
+          A story emerges every hour on the hour in universal coordinated time (UTC), marking the passing of time without keeping it.
         </p>
         <p className={p2}>
           Ambient recordings from different cities at separate times are
