@@ -15,7 +15,7 @@ SubEngine.prototype = {
     for (let i = 0; i < this.voiceovers.length; i++) {
       this.voiceovers[i].sub = {};
       console.log(
-        `[📜] 🌐 Grabbing ${this.voiceOverURL}/${this.voiceovers[i].srt}`
+        `[📜] 🌐 Grabbing /dalena/${this.voiceovers[i].srt}`
       );
 
     

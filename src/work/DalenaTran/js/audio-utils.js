@@ -1,4 +1,4 @@
-import {Howl} from 'howler';
+import {Howl, Howler} from 'howler';
 
 function AudioEngine(voiceovers, cb) {
   this.isDataLoaded = false;
@@ -81,6 +81,15 @@ AudioEngine.prototype = {
         preload: true,
       });
     }
+  },
+
+  destroy(){
+    console.log(`[🎵] 🛑 Stopping all sounds`);
+    for (let i = 0; i < this.voiceovers.length; i++){
+      this.voiceovers[i].howler.stop();
+    }
+    this.pauseAudio();
+    // Howler.stop();
   },
 
   getVoiceOverHowler(idx){

@@ -23,6 +23,7 @@ export default function Engines() {
   this.startOn = 0;
   this.startEveryXMins = 6;
   this.startOnTheHour = false;
+  this.destroyed = false;
 }
 
 Engines.prototype = {
@@ -99,7 +100,6 @@ Engines.prototype = {
     console.log(`[⚙️] 📥 Voiceover onload triggered`);
     var voiceDur = this.voice._duration;
     var currTimeSecs = this.timeEngine.getCurrentMinsMod60() * 60;
-    var currTimeMilli = this.timeEngine.getCurrentMilliMod60();
 
     let beginAt = 0;
     if (this.startOnTheHour){
@@ -117,7 +117,7 @@ Engines.prototype = {
       this.voice.on("end", this.showCountdown.bind(this))
 
       this.subEngine.resetPlayHead();
-      this.subEngine.seek(this.idx, currTimeMilli);
+      this.subEngine.seek(this.idx, beginAt * 1000);
       this.voice.seek(beginAt);
       this.voice.play();
       this.hideCountdown();
@@ -147,9 +147,15 @@ Engines.prototype = {
     this.voice.on("load", this.triggerVoiceover.bind(this));
   },
 
-  stopEngine() {
-    this.audioEngine.pauseAudio();
-    this.voice.stop();
+  halt() {
+    console.log(`[⚙️] 🛑 Engines halting`);
+    this.audioEngine.destroy();
+    this.destroyed = true;
+  },
+
+  resume(){
+    console.log(`[⚙️] ▶️ Engines resumed`);
+    this.destroyed = false;
   },
 
   showCountdown() {
@@ -165,7 +171,7 @@ Engines.prototype = {
   },
 
   updateCountdown() {
-     if (this.displayCountdown && this.timeEngine.isSetup) {
+     if (!this.destroyed && this.displayCountdown && this.timeEngine.isSetup) {
       let base = this.startOnTheHour ? 60 : this.startEveryXMins
       let remMin = base - (this.timeEngine.getCurrentMinsMod60() % base);
       remMin = Math.floor(remMin % base);
@@ -188,7 +194,7 @@ Engines.prototype = {
   voiceoverUpdate() {
     requestAnimationFrame(this.voiceoverUpdate.bind(this));
 
-    if (this.timeEngine.isSetup) {
+    if (!this.destroyed && this.timeEngine.isSetup) {
       this.timeEngine.tick();
       var minsPassed = Math.floor(this.timeEngine.getCurrentMinsMod60());
 

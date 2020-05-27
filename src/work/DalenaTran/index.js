@@ -36,15 +36,17 @@ import audioJson from "./data/data";
 import voiceoversJson from "./data/voiceovers";
 import Engines from "./js/engines-utils";
 
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
+
 
 export default function () {
-  const engines = new Engines();
+  let engines = new Engines();
   const aitContainer = useRef(null);
 
   const rootNodes = [document.body, document.documentElement];
 
   function beginProject() {
+    engines.resume();
     engines.audioEngine.beginAudio();
     engines.prepareVoiceover();
     aitContainer.current.className = "";
@@ -59,16 +61,17 @@ export default function () {
   }
 
   function stopProject() {
-    // engines = null;
-    engines.stopEngine();
+    engines.halt();
     aitContainer.current.className = "AITHide";
     window.setTimeout(() => {
       var video = document.getElementById("AITVidElem");
-      video.pause();
-      rootNodes.forEach((n) => {
-        n.style.overflow = "auto";
-        n.style.height = "auto";
-      });
+      if (video){
+        video.pause();
+        rootNodes.forEach((n) => {
+          n.style.overflow = "auto";
+          n.style.height = "auto";
+        });
+      }
     }, 800);
   }
 
@@ -80,7 +83,11 @@ export default function () {
     // $("#AITVidElem").prop('muted', true);
     var video = document.getElementById("AITVidElem");
     video.muted = true;
+    return function cleanup() {
+      stopProject();
+    };
   }, []);
+
 
   return (
     <Artist>
