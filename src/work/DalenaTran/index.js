@@ -46,9 +46,8 @@ export default function () {
   const rootNodes = [document.body, document.documentElement];
 
   function beginProject() {
-    engines.resume();
-    engines.audioEngine.beginAudio();
-    engines.prepareVoiceover();
+    engines.init();
+
     aitContainer.current.className = "";
     var video = document.getElementById("AITVidElem");
     video.muted = true;
@@ -62,6 +61,7 @@ export default function () {
 
   function stopProject() {
     engines.halt();
+
     aitContainer.current.className = "AITHide";
     window.setTimeout(() => {
       var video = document.getElementById("AITVidElem");
@@ -76,8 +76,8 @@ export default function () {
   }
 
   useEffect(() => {
-    engines.setup(audioJson, voiceoversJson);
-    engines.setHTMLElement(document.getElementById("AITSub"));
+    engines.setup(audioJson, voiceoversJson, "AITSub");
+
     document.getElementById("AITLocA").className = "hidden";
     document.getElementById("AITLocB").className = "hidden";
     // $("#AITVidElem").prop('muted', true);
