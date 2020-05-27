@@ -21,8 +21,8 @@ export default function Engines() {
   this.voiceOverBase = "audio-voiceover";
   this.bgSoundBase = "audio-bg";
   this.startOn = 0;
-  this.startEvery = 6;
-  this.useStartOn = false;
+  this.startEveryXMins = 6;
+  this.startOnTheHour = false;
 }
 
 Engines.prototype = {
@@ -98,15 +98,15 @@ Engines.prototype = {
   triggerVoiceover() {
     console.log(`[⚙️] 📥 Voiceover onload triggered`);
     var voiceDur = this.voice._duration;
-    var currTimeSecs = this.timeEngine.getCurrentMins() * 60;
-    var currTimeMilli = this.timeEngine.getCurrentMilli();
+    var currTimeSecs = this.timeEngine.getCurrentMinsMod60() * 60;
+    var currTimeMilli = this.timeEngine.getCurrentMilliMod60();
 
     let beginAt = 0;
-    if (this.useStartOn){
+    if (this.startOnTheHour){
       beginAt = currTimeSecs;
     }
     else{
-      beginAt = currTimeSecs % (this.startEvery * 60)
+      beginAt = currTimeSecs % (this.startEveryXMins * 60)
     }
 
     if (beginAt < voiceDur) {
@@ -166,8 +166,8 @@ Engines.prototype = {
 
   updateCountdown() {
      if (this.displayCountdown && this.timeEngine.isSetup) {
-      let base = this.useStartOn ? 60 : this.startEvery
-      let remMin = base - (this.timeEngine.getCurrentMins() % base);
+      let base = this.startOnTheHour ? 60 : this.startEveryXMins
+      let remMin = base - (this.timeEngine.getCurrentMinsMod60() % base);
       remMin = Math.floor(remMin % base);
       remMin = remMin.toString().padStart(2, "0");
 
@@ -190,15 +190,15 @@ Engines.prototype = {
 
     if (this.timeEngine.isSetup) {
       this.timeEngine.tick();
-      var minsPassed = Math.floor(this.timeEngine.getCurrentMins() % 60);
+      var minsPassed = Math.floor(this.timeEngine.getCurrentMinsMod60());
 
       let flag = false;
 
-      if (this.useStartOn){
+      if (this.startOnTheHour){
         flag = (minsPassed === this.startOn)
       }
       else{
-        flag = !(minsPassed % this.startEvery)
+        flag = !(minsPassed % this.startEveryXMins)
       }
 
       if (flag && !this.timeEngine.lock) {
