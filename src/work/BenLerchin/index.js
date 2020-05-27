@@ -9,6 +9,7 @@ import ProjectLink from "src/Components/ProjectLink";
 import IFrame from "src/Components/IFrame";
 import ImageCaption from "src/Components/ImageCaption";
 import Video from "src/Components/Video";
+import VideoVimeo from "src/Components/VideoVimeo";
 
 import WaterWorkMp4 from "./water-work.mp4";
 import WaterWorkOgg from "./water-work.ogv";
@@ -60,8 +61,8 @@ export default function ({slug, name}) {
       </ProjectColumns>
       <ProjectColumns>
         <Column>
-          <IFrame url={`https://www.youtube.com/embed/QzpEO2TiE10?modestbranding=1&showinfo=0`} width="1698" height="955" allowFullScreen allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" />
-        </Column>
+          <VideoVimeo url="https://player.vimeo.com/video/423014797?title=0&portrait=0&byline=0" />
+        </Column> 
       </ProjectColumns>
       <ProjectColumns>
         <Column>

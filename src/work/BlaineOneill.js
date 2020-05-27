@@ -7,11 +7,10 @@ import ArtistBio from "../Components/ArtistBio";
 import ProjectColumns, { Column } from "../Components/ProjectColumns";
 import ProjectLink from "../Components/ProjectLink";
 import Image from "../Components/Image";
-
-import Placeholder from "./assets/placeholder.png";
-
 import Seo from "../Components/Seo";
 import ProjectDescription from "../Components/ProjectDescription";
+
+import BlaineImage1 from "./assets/BlaineONeill-1.png";
 
 export default function ({slug, name}) {
   return (
@@ -23,35 +22,29 @@ export default function ({slug, name}) {
       />
       <ProjectHeader
         artistName={name}
-        title="Isolog"
-        materials="ever-looping 36 minute spoken log, for screens"
+        title="ISOLOG"
+        materials="text and sound, 36 minutes"
         link="http://dolphin.limited"
       />
       <ProjectCover>
         <Column>
-          <Image img={Placeholder} alt="" />
+          <Image img={BlaineImage1} alt="A screenshot of the login / intro prompt for “ISOLOG” by Blaine O'Neill, with a field for entering a name and a “proceed” button that is enabled when you check the “Sound on?” box." />
         </Column>
       </ProjectCover>
       <ProjectColumns>
         <Column>
-          <ProjectDescription>
-            <p>
-              Written in collaboration with three GPT-2 text generators trained
-              using Runway ML, featuring the voices of Jesse Hoffman (SUDO),
-              Cecile Believe (MAUDE), and Kate Berlant (PSEUDO).
-            </p>
-          </ProjectDescription>
-          <p>Affective loop: Interest ↝ Enjoyment ↝ Surprise ↝ Shame ↺</p>
-          <h5 id="eventsLabel">Events:</h5>
-          <ol aria-labelledby="eventsLabel">
-            <li>Evaluation (identification)</li>
-            <li>Access (trust)</li>
-            <li>Catch (catfish)</li>
-            <li>Refresh (support)</li>
-          </ol>
+          <ProjectLink href="http://isolog.live" text="VIEW THIS PROJECT" />
         </Column>
       </ProjectColumns>
-      <ProjectLink href="#" text="VIEW THIS PROJECT" />
+      <ProjectColumns>
+        <Column>
+          <ProjectDescription>
+            <p>Interest ↝ Enjoyment ↝ Surprise ↝ Shame ↺</p>
+            <p>Featuring Jesse Hoffman (SUDO), Cecile Believe (MAUDE), and Kate Berlant (PSEUDO).</p>
+            <p>Written in collaboration with three GPT-2 text generators trained using Runway ML.</p>
+          </ProjectDescription>
+        </Column>
+      </ProjectColumns>
       <ArtistBio>
         <p>
           Affiliate of multiple groups. Working as an artist, designer, web
