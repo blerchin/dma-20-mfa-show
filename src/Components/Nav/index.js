@@ -33,7 +33,7 @@ const Nav = () => {
     <nav className={container} ref={navEl}>
       <h2 className="sr-only" id='navLabel'>Site Navigation</h2>
       <ul aria-labelledby='navLabel'>
-      <li><Link to="/info">Info</Link></li>
+      <li><Link to="/dalena-tran">Acts in Translation</Link></li>
       <li><Link to="/" style={{ display: current === "/" ? "none" : "inline-block" }}>Home</Link></li>
       </ul>
     </nav>

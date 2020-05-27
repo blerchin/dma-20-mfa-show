@@ -39,7 +39,8 @@ export default () => (
     <ScrollToTop />
     <div className="app">
       <a className="sr-only" href="#main">Skip to main content</a>
-      <BlobField />
+      {/* <BlobField /> */}
+      <DalenaTran />
       <Nav />
       <Switch>
         {
