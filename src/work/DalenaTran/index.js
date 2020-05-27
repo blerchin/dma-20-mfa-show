@@ -82,6 +82,7 @@ export default function () {
     // $("#AITVidElem").prop('muted', true);
     var video = document.getElementById("AITVidElem");
     video.muted = true;
+    return () => stopProject();
   }, []);
 
   return (
