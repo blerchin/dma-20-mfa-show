@@ -45,7 +45,7 @@ TimeEngine.prototype = {
   },
 
   getCurrentMins(){    
-      return this.getOffsetMins() + ((this.globalCurrent / 60) % 60);
+      return this.getOffsetMins() + (this.globalCurrent / 60);
   },
 
   getCurrentMilli(){

@@ -20,6 +20,9 @@ export default function Engines() {
   this.baseURL = "http://users.dma.ucla.edu/~dalena/ait";
   this.voiceOverBase = "audio-voiceover";
   this.bgSoundBase = "audio-bg";
+  this.startOn = 0;
+  this.startEvery = 6;
+  this.useStartOn = false;
 }
 
 Engines.prototype = {
@@ -98,15 +101,24 @@ Engines.prototype = {
     var currTimeSecs = this.timeEngine.getCurrentMins() * 60;
     var currTimeMilli = this.timeEngine.getCurrentMilli();
 
-    if (currTimeSecs < voiceDur) {
+    let beginAt = 0;
+    if (this.useStartOn){
+      beginAt = currTimeSecs;
+    }
+    else{
+      beginAt = currTimeSecs % (this.startEvery * 60)
+    }
+
+    if (beginAt < voiceDur) {
       console.log(`[⚙️] 🔊 Playing voiceover ${this.idx}
       \tAudio: ${this.voiceovers[this.idx].audio}
       \tStarting at ${currTimeSecs}`);
 
-      this.voice.on("end", this.showCountdown.bind(this));
+      this.voice.on("end", this.showCountdown.bind(this))
 
+      this.subEngine.resetPlayHead();
       this.subEngine.seek(this.idx, currTimeMilli);
-      this.voice.seek(currTimeSecs);
+      this.voice.seek(beginAt);
       this.voice.play();
       this.hideCountdown();
     }
@@ -154,8 +166,9 @@ Engines.prototype = {
 
   updateCountdown() {
      if (this.displayCountdown && this.timeEngine.isSetup) {
-      let remMin = 60 - this.timeEngine.getCurrentMins();
-      remMin = Math.floor(remMin);
+      let base = this.useStartOn ? 60 : this.startEvery
+      let remMin = base - (this.timeEngine.getCurrentMins() % base);
+      remMin = Math.floor(remMin % base);
       remMin = remMin.toString().padStart(2, "0");
 
       let remSecs = this.timeEngine.getCurrentSecs();
@@ -178,13 +191,21 @@ Engines.prototype = {
     if (this.timeEngine.isSetup) {
       this.timeEngine.tick();
       var minsPassed = Math.floor(this.timeEngine.getCurrentMins() % 60);
-      let startOn = 0;
 
-      if (minsPassed === startOn && !this.timeEngine.lock) {
+      let flag = false;
+
+      if (this.useStartOn){
+        flag = (minsPassed === this.startOn)
+      }
+      else{
+        flag = !(minsPassed % this.startEvery)
+      }
+
+      if (flag && !this.timeEngine.lock) {
         this.prepareVoiceover();
       }
 
-      if (minsPassed !== startOn && this.timeEngine.lock) {
+      if (!flag && this.timeEngine.lock) {
         this.timeEngine.lock = false;
       }
 

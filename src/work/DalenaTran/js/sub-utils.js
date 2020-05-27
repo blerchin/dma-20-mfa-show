@@ -39,6 +39,13 @@ SubEngine.prototype = {
     }
   },
 
+  resetPlayHead(){
+    console.log("[📜] 🎬 Resetting the playhead for all subtitles");
+    for (let i = 0; i < this.voiceovers.length; i++) {
+      this.voiceovers[i].sub.playhead = 0;
+    }
+  },
+
   setPlayhead(idx, val) {
     this.idx = idx;
     this.voiceovers[idx].sub.playhead = val;
