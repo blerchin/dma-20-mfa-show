@@ -2,6 +2,9 @@ import paper from "paper";
 
 import Ball from "./ball";
 
+const FRAMERATE_MA_LEN = 50;
+const ENHANCED_MIN_FPS = 40;
+
 export default class Blobs {
 	constructor(artists) {
 		this.artists = artists;
@@ -27,6 +30,14 @@ export default class Blobs {
 		this.targetWidth = null;
 		this.targetHeight = null;
 		this.immediateResize = true;
+		this.fpsData = {
+			cur: 0,
+			frames: [],
+			fps: 0,
+			frameCount: 0,
+			lastTimestamp: Date.now()
+		};
+		this.debug = true;
 	}
 
 	B(idx) {
@@ -119,6 +130,21 @@ export default class Blobs {
 		this.recalcCanvasSize();
 	}
 
+	calcFps() {
+		const data = this.fpsData;
+		data.cur = data.cur < FRAMERATE_MA_LEN - 1 ? data.cur + 1 : 0;
+		const now = Date.now();
+		data.frames[data.cur] = now - data.lastTimestamp;
+		data.lastTimestamp = now;
+		const sum = data.frames.reduce((a,b) => a + b, 0);
+		data.fps = 1000 / (sum / data.frames.length);
+		data.frameCount++;
+		if (this.debug && data.frameCount % FRAMERATE_MA_LEN === 0) {
+			console.log(`Framerate: ${data.fps}`);
+		}
+		this.immediateResize = data.fps < ENHANCED_MIN_FPS;
+	}
+
 	onFrame() {
 		for (let i = 0; i < this.balls.length - 1; i++)
 			for (let j = i + 1; j < this.balls.length; j++)
@@ -153,6 +179,7 @@ export default class Blobs {
 		} else {
 			this.balls[0].point = new paper.Point(this.mouseCurrX, this.mouseCurrY);
 		}
+		this.calcFps();
 	}
 
 	onResize(evt) {
