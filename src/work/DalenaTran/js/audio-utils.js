@@ -18,6 +18,7 @@ function AudioEngine(voiceovers, cb) {
     howlerB: "",
     len: "",
   };
+  this.bgInitVolume = 1;
 }
 
 AudioEngine.prototype = {
@@ -138,7 +139,7 @@ AudioEngine.prototype = {
 
     let aud = new Howl({
       src: audioPath,
-      volume: 0.6,
+      volume: this.bgInitVolume,
       html5: true,
       preload: true,
       // Change below from initPerInterval to step if want to

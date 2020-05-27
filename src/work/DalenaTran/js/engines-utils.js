@@ -162,8 +162,12 @@ Engines.prototype = {
       remSecs = 60 - Math.floor(remSecs % 60);
       remSecs = remSecs.toString().padStart(2, "0");
 
-      document.getElementById("AITCountMins").textContent = remMin;
-      document.getElementById("AITCountSecs").textContent = remSecs;
+      let AITCountMins = document.getElementById("AITCountMins")
+      let AITCountSecs = document.getElementById("AITCountSecs")
+      if (AITCountSecs && AITCountMins){
+        AITCountMins.textContent = remMin;
+        AITCountSecs.textContent = remSecs;
+      }
     }
     requestAnimationFrame(this.updateCountdown.bind(this));
   },

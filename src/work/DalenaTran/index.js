@@ -6,8 +6,6 @@ import {
   p1,
   p2,
   p3,
-  p4,
-  p5,
   audioHeading,
   dtPCover,
   dtText,
@@ -103,7 +101,7 @@ export default function () {
       <Column className={dtText}>
         <p className={p0}>Two windows having a moment together.</p>
         <p className={p1}>
-          A range of stories emerge every hour on the hour in global synchronicity (GST). Each one marks the passing of time but does not keep it.
+          A story emerges every hour on the hour in universal coordinated time (UTC), marking the passing of time but does not keep it.
         </p>
         <p className={p2}>
           Ambient recordings from different cities at separate times are
@@ -115,7 +113,6 @@ export default function () {
           <br />
           are never quite the same.
         </p>
-        <p className={p4}>🅢🅞🅤🅝🅓 🅞🅝</p>
         <div className={dtButWrapper}>
           <div className={ProjectLinkStyle.container}>
             <Link to="#" onClick={beginProject}>
@@ -136,8 +133,7 @@ export default function () {
         <Column>
           <ProjectDescription>
             <p>
-              In the beginning, there was the window. Now there are plenty of
-              other things than windows. There is heat, ice, sweat, and Mickey Mouse. Not to forget blood: The dark and runny that pumps through veins carrying a tempo that make possible the highest highs and lowest lows.
+              In the beginning, there was the window. Now there are plenty of other things than windows. There is heat, ice, sweat, and Mickey Mouse. Not to forget blood: The dark and runny that pumps through veins carrying a tempo that make possible the highest highs and lowest lows.
             </p>
           </ProjectDescription>
         </Column>
