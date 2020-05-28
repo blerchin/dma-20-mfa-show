@@ -162,7 +162,8 @@ module.exports = function(webpackEnv) {
       ].filter(Boolean),
       polyfill: [
         require.resolve('core-js/stable'),
-        require.resolve('whatwg-fetch')
+        require.resolve('whatwg-fetch'),
+        require.resolve('css-vars-ponyfill')
       ]
     },
     output: {

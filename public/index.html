@@ -24,6 +24,7 @@
         scriptElement.async = false;
         scriptElement.src = "<%=  compilation.chunks.find(({ name }) => name === 'polyfill').files[0] %>";
         document.head.appendChild(scriptElement);
+        cssVars();
       }
     </script>
     <link rel="stylesheet" href="https://use.typekit.net/qmg6jpo.css">
