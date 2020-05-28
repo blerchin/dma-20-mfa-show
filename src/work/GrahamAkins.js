@@ -5,7 +5,6 @@ import Gradient from "../Components/Gradient";
 import ProjectHeader from "../Components/ProjectHeader";
 import ProjectCover from "../Components/ProjectCover";
 import ProjectDescription from "../Components/ProjectDescription";
-import Image from "../Components/Image";
 import ProjectColumns, { Column } from "../Components/ProjectColumns";
 import Vimeo from "../Components/VideoVimeo";
 import Seo from "../Components/Seo";
@@ -37,18 +36,9 @@ export default function ({slug, name}) {
       </ProjectCover>
       <ProjectColumns>
         <Column>
-          <Image
-            img={GrahamImage1}
-            useLazy={false}
-            alt="A grey field with the text 1200x1200"
-          />
-        </Column>
-      </ProjectColumns>
-      <ProjectColumns>
-        <Column>
           <ProjectDescription>
             <p>
-              A performative investigation of our desire to be close to the animal other in the Anthropocene
+              A performative investigation of our desire to be close to the animal other in the Anthropocene. The wildlife and my performances were filmed on location in Los Angeles at Griffith Park, the Los Angeles River, and my back yard.
             </p>
           </ProjectDescription>
         </Column>
