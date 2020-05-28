@@ -1,7 +1,5 @@
 @import '../../common/reset.css';
 @import '../../common/variables.css';
-@import '../../common/type.css';
-
 body {
   margin: 0;
   font-family: var(--body-font);
@@ -29,9 +27,11 @@ body {
 .title {
   color: var(--text-accent);
   font-size: 13vw;
-  font-family: Arial Black, Gadget, sans-serif;;
+  font-family: var(--title-font);
   font-weight: 400;
-  line-height: 14vw; 
+  line-height: 14vw;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; 
 }
 
 .blobs {

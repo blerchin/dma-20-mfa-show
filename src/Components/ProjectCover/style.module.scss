@@ -24,7 +24,7 @@
 }
 
 .noMobileFadeContainer {
-  @include small {
+  @include portrait {
     height: auto;
     display: block;
     position: inherit;

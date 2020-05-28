@@ -20,7 +20,7 @@
     padding-bottom: 0 !important;
   }
 
-  @include small {
+  @include portrait {
     height: auto;
   }
 }
