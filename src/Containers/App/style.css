@@ -1,7 +1,6 @@
 @import '../../common/reset.css';
 @import '../../common/variables.css';
 @import '../../common/type.css';
-@import '../../common/util.scss';
 
 body {
   margin: 0;
@@ -77,22 +76,10 @@ ol {
   z-index:999;
 }
 
-.mediumOnly {
-  @include small() {
-    display: none !important;
-  }
-  @include medium() {
-    display: flex !important;
-  }
-}
-
-.justify {
-  text-align: justify !important;
-}
 
 html {
   --scrollbarBG: rgb(155, 155, 155);
-  --scrollbarBGHover: rgb(0, 224, 224);
+  --scrollbarBGHover: rgb(224, 224, 224);
   --thumbBG: black;
 }
 
@@ -125,5 +112,29 @@ html {
 	width: 0;
 	height: 0;
 	display: none;
+}
+
+@media screen and (max-width: 767px) {
+  .smallOnly {
+    display: inherit !important;
+  }
+  
+  .mediumOnly {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .smallOnly {
+    display: none !important;
+  }
+  
+  .mediumOnly {
+    display: flex !important;
+  }
+}
+
+.justify {
+  text-align: justify !important;
 }
 
