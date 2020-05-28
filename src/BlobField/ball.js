@@ -32,7 +32,7 @@ export default class Ball {
 		this.shadowInactiveColor = new paper.Color(this.col2);
 		this.shadowInactiveColor.alpha = 1; // When hovered, make inactive ball's shadow fully transparent
 		
-		this.pathStyle = {
+		this.defaultPathStyle = {
 			fillColor: {
 				gradient: {
 					stops: [this.col1,  this.col3, this.col4],
@@ -46,7 +46,7 @@ export default class Ball {
 			shadowOffset: new paper.Point(5, 5),
 		};
 		
-		this.path = new paper.Path({ ...this.pathStyle });
+		this.path = new paper.Path({ ...this.defaultPathStyle });
 		this.path.artist = a;
 
 		for (let i = 0; i < this.numSegment; i++) {
@@ -95,12 +95,14 @@ export default class Ball {
 	}
 
 	updateColor(enhanced = false) {
-		this.path.fillColor.origin = this.path.position;
-		this.path.fillColor.destination = this.path.bounds.rightCenter;
-		this.path.fillColor.radial = true;
 		if (enhanced) {
-			this.path.shadowBlur = this.pathStyle.shadowBlur;
+			this.path.fillColor = this.defaultPathStyle.fillColor;
+			this.path.fillColor.origin = this.path.position;
+			this.path.fillColor.destination = this.path.bounds.rightCenter;
+			this.path.fillColor.radial = true;
+			this.path.shadowBlur = this.defaultPathStyle.shadowBlur;
 		} else {
+			this.path.fillColor = this.col3;
 			this.path.shadowBlur = null;
 		}
 	}

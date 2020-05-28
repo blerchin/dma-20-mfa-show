@@ -3,7 +3,7 @@ import paper from "paper";
 import Ball from "./ball";
 
 const FRAMERATE_MA_LEN = 100;
-const ENHANCED_MIN_FPS = 30;
+const ENHANCED_MIN_FPS = 40;
 
 export default class Blobs {
 	constructor(artists) {
@@ -29,7 +29,7 @@ export default class Blobs {
 		this.collapsed = false;
 		this.targetWidth = null;
 		this.targetHeight = null;
-		this.isEnhanced = false;
+		this.isEnhanced = true;
 		this.fpsData = {
 			cur: 0,
 			frames: [],
@@ -147,7 +147,9 @@ export default class Blobs {
 		if (this.debug && data.frameCount % FRAMERATE_MA_LEN === 0) {
 			console.log(`Framerate: ${data.fps}`);
 		}
-		this.isEnhanced = data.fps > ENHANCED_MIN_FPS;
+		if(data.frameCount > 20 && data.fps < ENHANCED_MIN_FPS) {
+			this.isEnhanced = false;
+		}
 	}
 
 	onFrame() {
