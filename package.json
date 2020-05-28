@@ -51,6 +51,7 @@
     "postcss-normalize": "8.0.1",
     "postcss-preset-env": "6.7.0",
     "postcss-safe-parser": "4.0.1",
+    "promise-polyfill": "8.1.3",
     "react": "^16.13.1",
     "react-app-polyfill": "^1.0.6",
     "react-dev-utils": "^10.2.1",
@@ -96,6 +97,9 @@
       "last 1 safari version"
     ]
   },
+  "sideEffects": [
+    "./src/polyfill.js"
+  ],
   "jest": {
     "roots": [
       "<rootDir>/src"
