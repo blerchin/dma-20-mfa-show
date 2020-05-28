@@ -115,7 +115,8 @@ export default function BlobField() {
   }, [blobsRef, collapsed]);
 
   useEffect(() => {
-    new FontFaceObserver("Arial Black").load().then(
+    var font = new FontFaceObserver('Arial Black'); // Needs to switch to the final font
+    font.load(null, 5000).then(
       () => {
         if (navigator.userAgent === "ReactSnap") {
           // This is to make sure that when pre-rendering we intentionally
@@ -151,7 +152,7 @@ export default function BlobField() {
           <h1
             className="title"
             style={{
-              display: displayTitle && sizeCalculated ? "block" : "none",
+              display: (displayTitle && sizeCalculated) ? "block" : "none",
             }}
           >
             {activeArtist
