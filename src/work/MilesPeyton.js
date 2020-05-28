@@ -72,7 +72,7 @@ export default function ({slug, name}) {
           <Image
             img="https://drive.google.com/uc?export=view&id=1jrvrYr0gSS7GiN8xnpgtUxf_bh2ttzFB"
             a="https://drive.google.com/uc?export=view&id=1jrvrYr0gSS7GiN8xnpgtUxf_bh2ttzFB"
-            alt=""
+            alt="View of projection from further back, showing the room and the projection apparatus. The projection surface is in focus and the apparatus is out of focus. The room has white walls and a carpeted floor. "
           />
         </Column>
       </ProjectColumns>
@@ -100,14 +100,14 @@ export default function ({slug, name}) {
             <Image
               img="https://drive.google.com/uc?export=view&id=1z86giGe9wpW6TIvJAU6tVp8ggKp7cVx5"
               a="https://drive.google.com/uc?export=view&id=1z86giGe9wpW6TIvJAU6tVp8ggKp7cVx5"
-              alt=""
+              alt="Radial pattern with eight curving lines etched on glass"
             />
           </Spacer>
           <Spacer>
             <Image
               img="https://drive.google.com/uc?export=view&id=1trCCPE11jdaUrXvP3qNd7J5Cfawh96nA"
               a="https://drive.google.com/uc?export=view&id=1trCCPE11jdaUrXvP3qNd7J5Cfawh96nA"
-              alt=""
+              alt="Radial pattern with eight curving lines etched on glass"
             />
           </Spacer>
         </Column>
@@ -116,14 +116,14 @@ export default function ({slug, name}) {
             <Image
               img="https://drive.google.com/uc?export=view&id=1W7dEvsC2-jbDiMtiLwVyT10H4hYk1I2I"
               a="https://drive.google.com/uc?export=view&id=1W7dEvsC2-jbDiMtiLwVyT10H4hYk1I2I"
-              alt=""
+              alt="Radial pattern with eight curving lines etched on glass"
             />
           </Spacer>
           <Spacer>
             <Image
               img="https://drive.google.com/uc?export=view&id=1qq_Q_0kRNopCWl4MxpKemKPuaV0RFmQR"
               a="https://drive.google.com/uc?export=view&id=1qq_Q_0kRNopCWl4MxpKemKPuaV0RFmQR"
-              alt=""
+              alt="Radial pattern with eight curving lines etched on glass"
             />
           </Spacer>
         </Column>
@@ -138,7 +138,7 @@ export default function ({slug, name}) {
           <Image
             img="https://drive.google.com/uc?export=view&id=1WbSAaWqVfp2nWl5v5LVKQhCwIW5FMIpG"
             a="https://drive.google.com/uc?export=view&id=1WbSAaWqVfp2nWl5v5LVKQhCwIW5FMIpG"
-            alt=""
+            alt="Ten radial patterns, each with a date listed above it, weekdays from June first to June twelvth"
           />
         </Column>
       </ProjectColumns>
