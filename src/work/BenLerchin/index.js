@@ -11,6 +11,7 @@ import ImageCaption from "src/Components/ImageCaption";
 import Video from "src/Components/Video";
 import VideoVimeo from "src/Components/VideoVimeo";
 
+import MapPoster from "./map-poster.png";
 import WaterWork from "./water-work.jpg";
 import WaterWorkMp4 from "./water-work.mp4";
 import WaterWorkOgg from "./water-work.ogv";
@@ -65,7 +66,7 @@ export default function ({slug, name}) {
         <Column>
           <VideoVimeo alt="YIMBY" url="https://player.vimeo.com/video/423633075?title=0&portrait=0&byline=0" />
           <ImageCaption
-            title="YIMBY"
+            title="YIMBY Intro"
             materials="2 minute video"
           />
         </Column> 
@@ -77,9 +78,22 @@ export default function ({slug, name}) {
       </ProjectColumns>
       <ProjectColumns>
         <Column>
+          <IFrame
+            url="https://www.google.com/maps/d/embed?mid=1BzGrvqOlQaw8eO2w5P0fSAF4QF1W2rmV" 
+            poster={MapPoster}
+            title="Click to explore"
+          />
+          <ImageCaption
+            title="Los Angeles' Uncomfortable Protuberances"
+            materials="Interactive map of wind, solar, and water infrastructure in the Antelope and Owens Valleys"
+          />
+        </Column>
+      </ProjectColumns>
+      <ProjectColumns>
+        <Column>
           <VideoVimeo alt="Air" url="https://player.vimeo.com/video/423637561?title=0&portrait=0&byline=0" />
           <ImageCaption
-            title="Air"
+            title="Air Intro"
             materials="4 minute video"
           />
         </Column> 
@@ -106,7 +120,7 @@ export default function ({slug, name}) {
         <Column>
           <VideoVimeo alt="Water" url="https://player.vimeo.com/video/423640476?title=0&portrait=0&byline=0" />
           <ImageCaption
-            title="Water"
+            title="Water Intro"
             materials="7 minute video"
           />
         </Column> 
