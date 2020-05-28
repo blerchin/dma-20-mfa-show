@@ -34,7 +34,7 @@ const Image = ({
       {
         <div style={{ ...parentStyles }}>
           {a ? 
-            <a href={a} target="_blank"><img src={img} alt={alt} style={style} /></a> :
+            <a href={a} target="_blank" rel="noopener noreferrer"><img src={img} alt={alt} style={style} /></a> :
             useLazy ?
               <LazyLoadImage
                 src={img.src}
