@@ -11,9 +11,11 @@ import ImageCaption from "src/Components/ImageCaption";
 import Video from "src/Components/Video";
 import VideoVimeo from "src/Components/VideoVimeo";
 
+import MapPoster from "./map-poster.png";
+import WaterWork from "./water-work.jpg";
 import WaterWorkMp4 from "./water-work.mp4";
 import WaterWorkOgg from "./water-work.ogv";
-import WindmillSculpture from "./enclosure.png";
+import Enclosure from "./enclosure.jpg";
 import EnclosureLoopMp4 from "./enclosure-loop.mp4";
 import EnclosureLoopOgg from "./enclosure-loop.ogv";
 
@@ -28,7 +30,7 @@ export default function ({slug, name}) {
         description="Ben Lerchin is an artist and technologist who works with software,
           photography, and digital fabrication."
         path={slug}
-        image={WindmillSculpture}
+        image={Enclosure}
       />
       <ProjectHeader
         artistName={name}
@@ -42,6 +44,7 @@ export default function ({slug, name}) {
           muted
           autoPlay
           loop
+          poster={Enclosure}
           style={{ width: '100%', height: 'auto'}}
           src={EnclosureLoopMp4}
           srcOgg={EnclosureLoopOgg}
@@ -51,17 +54,21 @@ export default function ({slug, name}) {
         <Column>
           <ProjectDescription>
             <p>
-              <i>Yes, in my Backyard</i> is pleased to present this informational video about the many exciting opportunities 
-              for resource exploration accessible from our inaugural campus in the Antelope Valley. On this page you can peruse our growing catalog of
-              Los Angeles' Uncomfortable Protuberances, and see prototypes of the interpretive exhibits we are constructing to
-              give you the best possible resource experience. We hope you can visit us soon!
+              <i>Yes, in my Backyard</i> is pleased to present this informational series about the many exciting opportunities 
+              for resource exploration accessible from our campus in the Antelope Valley. On this page you can peruse our growing 
+              catalog of Los Angeles' Uncomfortable Protuberances, and see prototypes of the interpretive exhibits we are 
+              constructing to give you the best possible resource experience. We hope you can visit us soon!
             </p>
           </ProjectDescription>
         </Column>
       </ProjectColumns>
       <ProjectColumns>
         <Column>
-          <VideoVimeo url="https://player.vimeo.com/video/423014797?title=0&portrait=0&byline=0" />
+          <VideoVimeo alt="YIMBY" url="https://player.vimeo.com/video/423633075?title=0&portrait=0&byline=0" />
+          <ImageCaption
+            title="YIMBY Intro"
+            materials="2 minute video"
+          />
         </Column> 
       </ProjectColumns>
       <ProjectColumns>
@@ -71,11 +78,34 @@ export default function ({slug, name}) {
       </ProjectColumns>
       <ProjectColumns>
         <Column>
+          <IFrame
+            url="https://www.google.com/maps/d/embed?mid=1BzGrvqOlQaw8eO2w5P0fSAF4QF1W2rmV" 
+            poster={MapPoster}
+            title="Click to explore"
+          />
+          <ImageCaption
+            title="Los Angeles' Uncomfortable Protuberances"
+            materials="Interactive map of wind, solar, and water infrastructure in the Antelope and Owens Valleys"
+          />
+        </Column>
+      </ProjectColumns>
+      <ProjectColumns>
+        <Column>
+          <VideoVimeo alt="Air" url="https://player.vimeo.com/video/423637561?title=0&portrait=0&byline=0" />
+          <ImageCaption
+            title="Air Intro"
+            materials="4 minute video"
+          />
+        </Column> 
+      </ProjectColumns>
+      <ProjectColumns>
+        <Column>
           <Video
             controls={false}
-            muted
             autoPlay
+            muted
             loop
+            poster={WaterWork}
             style={{ width: '100%', height: 'auto'}}
             src={WaterWorkMp4}
             srcOgg={WaterWorkOgg}
@@ -88,8 +118,12 @@ export default function ({slug, name}) {
       </ProjectColumns>
       <ProjectColumns>
         <Column>
-          <IFrame url="https://www.google.com/maps/d/embed?mid=1BzGrvqOlQaw8eO2w5P0fSAF4QF1W2rmV" />
-        </Column>
+          <VideoVimeo alt="Water" url="https://player.vimeo.com/video/423640476?title=0&portrait=0&byline=0" />
+          <ImageCaption
+            title="Water Intro"
+            materials="7 minute video"
+          />
+        </Column> 
       </ProjectColumns>
       <ArtistBio>
         <p>
