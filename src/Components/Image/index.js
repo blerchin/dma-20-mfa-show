@@ -8,6 +8,7 @@ import { container, cap, fullHeight } from "./style.module.css";
 const Image = ({
   img,
   alt,
+  a,
   caption = false,
   fullHeight: isFullHeight = false,
   maxHeight = "auto",
@@ -32,18 +33,20 @@ const Image = ({
     >
       {
         <div style={{ ...parentStyles }}>
-          {useLazy ?
-          <LazyLoadImage
-            src={img.src}
-            srcSet={img.srcSet}
-            alt={alt}
-            placeholderSrc={img.placeholder}
-            effect="blur"
-            useIntersectionObserver={true}
-            style={style}
-          />
-          :
-          <img src={img.src} srcSet={img.srcSet} alt={alt} style={style}/>}
+          {a ? 
+            <a href={a} target="_blank"><img src={img} alt={alt} style={style} /></a> :
+            useLazy ?
+              <LazyLoadImage
+                src={img.src}
+                srcSet={img.srcSet}
+                alt={alt}
+                placeholderSrc={img.placeholder}
+                effect="blur"
+                useIntersectionObserver={true}
+                style={style}
+              />
+              :
+              <img src={img} srcSet={img.srcSet} alt={alt} style={style}/>}
         </div>}
       {caption && <div className={cap}>{caption}</div>}
     </div>
@@ -60,7 +63,7 @@ Image.defaultProps = {
 };
 
 Image.propTypes = {
-  img: PropTypes.object.isRequired,
+  img: PropTypes.any.isRequired,
   alt: PropTypes.string.isRequired,
   caption: PropTypes.string,
   fillViewport: PropTypes.bool,

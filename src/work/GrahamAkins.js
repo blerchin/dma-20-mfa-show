@@ -9,8 +9,6 @@ import ProjectColumns, { Column } from "../Components/ProjectColumns";
 import Vimeo from "../Components/VideoVimeo";
 import Seo from "../Components/Seo";
 
-import GrahamImage1 from "./assets/GrahamAkins-1.png";
-
 export default function ({slug, name}) {
   return (
     <Artist>
@@ -19,7 +17,6 @@ export default function ({slug, name}) {
         title={name}
         description="A performative investigation of our desire to be close to the animal other in the Anthropocene"
         path={slug}
-        image={GrahamImage1}
       />
       <ProjectHeader
         artistName={name}
