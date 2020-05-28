@@ -161,7 +161,7 @@ module.exports = function(webpackEnv) {
         // changing JS code would still trigger a refresh.
       ].filter(Boolean),
       polyfill: [
-        require.resolve('core-js/stable'),
+        require.resolve('core-js'),
         require.resolve('whatwg-fetch'),
         require.resolve('css-vars-ponyfill')
       ]
