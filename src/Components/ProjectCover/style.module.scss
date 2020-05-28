@@ -35,7 +35,7 @@
 
 .portraitOnly {
   display: none;
-  @include small {
+  @include portrait {
     display: inherit;
   }
 

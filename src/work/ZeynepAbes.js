@@ -31,7 +31,7 @@ export default function ({slug, name}) {
               url="https://player.vimeo.com/video/423320003?title=0&byline=0&portrait=0"
               padding="56.25%"
             />
-            <Spacer isHalfWidth="true">
+            <Spacer isPartialWidth="true">
               <p>
                 My home has felt like a different place every time I visit. I shared
                 a hope like many others who leave their home countries, the hope to
@@ -54,7 +54,7 @@ export default function ({slug, name}) {
               url="https://player.vimeo.com/video/423312591?title=0&byline=0&portrait=0"
               padding="56.25%"
             />
-            <Spacer isHalfWidth="true">
+            <Spacer isPartialWidth="true">
               <p>
                 Some things have remained the same, a memory that repeats itself
                 every time I’ve visited for the past decade. My mom's act of
@@ -81,7 +81,7 @@ export default function ({slug, name}) {
               url="https://player.vimeo.com/video/423315409?title=0&byline=0&portrait=0"
               padding="56.25%"
             />
-            <Spacer isHalfWidth="true">
+            <Spacer isPartialWidth="true">
               <p>
                 But the most painful thing is when you feel stable, and suddenly
                 you're out of your home again. And that feeling of loss comes
