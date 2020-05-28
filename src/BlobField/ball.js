@@ -91,15 +91,14 @@ export default class Ball {
 		this.idx = val;
 		this.path.idx = val;
 		if (this.label)
-		this.label.idx = val;
+			this.label.idx = val;
 	}
 
 	updateColor(enhanced = false) {
+		this.path.fillColor.origin = this.path.position;
+		this.path.fillColor.destination = this.path.bounds.rightCenter;
+		this.path.fillColor.radial = true;
 		if (enhanced) {
-			this.path.fillColor = this.pathStyle.fillColor;
-			this.path.fillColor.origin = this.path.position;
-			this.path.fillColor.destination = this.path.bounds.rightCenter;
-			this.path.fillColor.radial = true;
 			this.path.shadowBlur = this.pathStyle.shadowBlur;
 		} else {
 			this.path.shadowBlur = null;
