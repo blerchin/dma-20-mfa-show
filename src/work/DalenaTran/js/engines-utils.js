@@ -21,7 +21,7 @@ export default function Engines() {
   this.voiceOverBase = "audio-voiceover";
   this.bgSoundBase = "audio-bg";
   this.startOn = 0;
-  this.startEveryXMins = 6;
+  this.startEveryXMins = 60;
   this.startOnTheHour = false;
   this.isHalted = false;
 }
@@ -174,13 +174,13 @@ Engines.prototype = {
   showCountdown() {
     console.log(`[⚙️] ⏱️ Countdown show`);
     this.displayCountdown = true;
-    document.getElementById("AITCountTxt").className = "";
+    document.getElementById("AITCountDown").className = "";
   },
 
   hideCountdown() {
     console.log(`[⚙️] ⏱️ Countdown hide`);
     this.displayCountdown = false;
-    document.getElementById("AITCountTxt").className = "hidden";
+    document.getElementById("AITCountDown").className = "hidden";
   },
 
   updateCountdown() {
