@@ -4,7 +4,7 @@ import Ball from "./ball";
 
 const FRAMERATE_MA_LEN = 100;
 const ENHANCED_MIN_FPS = 40;
-const BOOT_UP_FRAMES = 20;
+const BOOT_UP_FRAMES = 40;
 
 export default class Blobs {
 	constructor(artists) {
