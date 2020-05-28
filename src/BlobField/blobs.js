@@ -29,7 +29,7 @@ export default class Blobs {
 		this.collapsed = false;
 		this.targetWidth = null;
 		this.targetHeight = null;
-		this.immediateResize = true;
+		this.isEnhanced = false;
 		this.fpsData = {
 			cur: 0,
 			frames: [],
@@ -132,6 +132,9 @@ export default class Blobs {
 
 	calcFps() {
 		const data = this.fpsData;
+		if (data.frameCount > 500) {
+			return;
+		}
 		data.cur = data.cur < FRAMERATE_MA_LEN - 1 ? data.cur + 1 : 0;
 		const now = Date.now();
 		data.frames[data.cur] = now - data.lastTimestamp;
@@ -142,7 +145,7 @@ export default class Blobs {
 		if (this.debug && data.frameCount % FRAMERATE_MA_LEN === 0) {
 			console.log(`Framerate: ${data.fps}`);
 		}
-		this.immediateResize = data.fps < ENHANCED_MIN_FPS;
+		this.isEnhanced = data.fps > ENHANCED_MIN_FPS;
 	}
 
 	onFrame() {
@@ -152,7 +155,7 @@ export default class Blobs {
 
 		for (let i = 1; i < this.balls.length; i++) {
 			this.balls[i].iterate();
-			this.balls[i].updateColor();
+			this.balls[i].updateColor(this.isEnhanced);
 			this.balls[i].updateFont();
 			this.balls[i].label.visible = this.isMobile && !this.collapsed;
 		}
@@ -214,7 +217,7 @@ export default class Blobs {
 			this.balls[i].isVertical = document.body.clientWidth > window.innerHeight;
 		}
 		
-		if (!this.immediateResize && (resizeOnHompage || this.collapsed)) {
+		if (this.isEnhanced && (resizeOnHompage || this.collapsed)) {
 			// Animated resizing
 			this.animateCanvasSize();
 		} else {
