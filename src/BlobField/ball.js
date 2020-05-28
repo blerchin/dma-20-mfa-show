@@ -23,7 +23,7 @@ export default class Ball {
 		this.mouseLeavePt = null;
 		this.idx = null;
 		this.isVertical = true;
-		this.col1 = '#ceffd6'; // Radial gradient center color
+		this.col1 = '#ffffe6'; // Radial gradient center color
 		// this.col2 = '#a4ffed'; // Radial gradient outer color
 		this.col3 = '#c0e8f1'; // Radial gradient center color
 		this.col4 = '#9cbaf9'; // Radial gradient outer color

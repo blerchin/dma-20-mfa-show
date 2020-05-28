@@ -116,7 +116,7 @@ export default function BlobField() {
   }, [blobsRef, collapsed]);
 
   useEffect(() => {
-    new FontFaceObserver('Arial Black').load().then(() => {
+    new FontFaceObserver('Arial Blur').load().then(() => {
       setDisplayTitle(true);
     }, err => {
       setDisplayTitle(true); //Displaying the title regardless, but only after timeout
