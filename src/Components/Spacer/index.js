@@ -1,9 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {
+  halfWidth,
+} from './style.module.scss';
 
-const Spacer = ({ margin = 20, children, style }) => {
+const Spacer = ({ isHalfWidth = false, margin = 20, children, style }) => {
   return (
-    <div style={{ paddingBottom: margin, paddingTop: margin, overflow: 'hidden', ...style }}>
+    <div className={`${isHalfWidth ? halfWidth : ""}`} style={{ paddingBottom: margin, paddingTop: margin, overflow: 'hidden', ...style }}>
       { children }
     </div>
   );

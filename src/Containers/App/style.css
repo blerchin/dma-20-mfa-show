@@ -79,7 +79,7 @@ ol {
 
 html {
   --scrollbarBG: rgb(155, 155, 155);
-  --scrollbarBGHover: rgb(224, 224, 224);
+  --scrollbarBGHover: rgb(0, 224, 224);
   --thumbBG: black;
 }
 

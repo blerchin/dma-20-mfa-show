@@ -30,10 +30,10 @@ export default function ({slug, name}) {
         materials="water, sunlight, silicone oil, laser etched conductive glass, lenses, 3d printed plastic, electronics, hardware"
         link="http://www.milespeyton.info"
       />
-      <ProjectCover>
+      <ProjectCover mt="15em" noMobileFade="true">
           <Vimeo
             url="https://player.vimeo.com/video/419788716"
-            padding="0"
+            padding="56.25%"
             isFullHeight="true"
           />
       </ProjectCover>
@@ -48,12 +48,11 @@ export default function ({slug, name}) {
       </ProjectColumns>
       <ProjectColumns>
         <Column>
-          <ProjectDescription>
           <IFrame
             src="https://docs.google.com/document/d/e/2PACX-1vQI7cHLHQU6jez3jyzRRB5zJl1dEDs6zHpXz9Ebw7n3MDwANfjfa1Y2s8vAh_eZWOrhNlUPfdKUBoiL/pub?embedded=true"
             title="signup"
+            className="miles"
           />
-          </ProjectDescription>
         </Column>
       </ProjectColumns>
       <ProjectColumns>

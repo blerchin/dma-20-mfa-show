@@ -2,9 +2,11 @@ import React, { useEffect, useRef } from 'react';
 
 import {
   container,
+  portraitOnly,
+  noMobileFadeContainer
 } from './style.module.scss';
 
-const ProjectCover = ({fadeOut = true, children, className = ''}) => {
+const ProjectCover = ({fadeOut = true, noMobileFade = false, children, className = '', mt=''}) => {
   let fadeLevel = 0;
   let animationId = null;
   const node = useRef(null);
@@ -23,18 +25,24 @@ const ProjectCover = ({fadeOut = true, children, className = ''}) => {
   }
 
   useEffect(() => {
+    if (noMobileFade && document.body.clientWidth < 769) // is there a better way?
+      return;
+
     window.addEventListener('scroll', onScroll);
     step();
     return () => {
       cancelAnimationFrame(animationId);
       window.removeEventListener('scroll', onScroll);
     }
-  }, []);
+  });
 
   return (
-    <div className={`${container} ${className}`} ref={node}>
+    <>
+    <div className={portraitOnly} style={{ height: mt }}></div>
+    <div className={`${container} ${className} ${noMobileFade ? noMobileFadeContainer : ''}`} ref={node}>
       {children}
     </div>
+    </>
   );
 };
 

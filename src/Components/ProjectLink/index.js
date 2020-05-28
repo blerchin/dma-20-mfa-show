@@ -2,7 +2,7 @@ import React from 'react';
 
 import {
   container,
-} from './style.module.css';
+} from './style.module.scss';
 
 const ProjectLink = ({href, text, className = ''}) => (
   <div className={`${container} ${className}`}>

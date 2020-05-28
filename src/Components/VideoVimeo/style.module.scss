@@ -1,3 +1,4 @@
+@import "../../common/util";
 .responsiveVimeo {
   overflow: hidden;
   position:relative;
@@ -13,8 +14,15 @@
 
 
 .fullHeight {
-  height: 100vh;
-  vertical-align: middle;
+  @include medium {
+    height: 100vh;
+    vertical-align: middle;
+    padding-bottom: 0 !important;
+  }
+
+  @include small {
+    height: auto;
+  }
 }
 
 .fullHeight iframe {

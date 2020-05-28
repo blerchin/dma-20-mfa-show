@@ -28,9 +28,10 @@ export default function ({slug, name}) {
         materials="trail cameras, wooden stages, wooden tower, zentai suit, &amp; photogrammetry"
         link="https://grahamakins.cargo.site"
       />
-      <ProjectCover>
+      <ProjectCover mt="15em" noMobileFade="true">
           <Vimeo 
             url="https://player.vimeo.com/video/422619346?color=ffffff&amp;title=0&amp;byline=0&amp;portrait=0"
+            padding="125%"
             isFullHeight="yes"
           />
       </ProjectCover>
