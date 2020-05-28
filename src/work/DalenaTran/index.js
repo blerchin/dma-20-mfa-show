@@ -36,10 +36,11 @@ import audioJson from "./data/data";
 import voiceoversJson from "./data/voiceovers";
 import Engines from "./js/engines-utils";
 
-import { Link} from "react-router-dom";
+import Seo from "../../Components/Seo";
 
+import { Link } from "react-router-dom";
 
-export default function () {
+export default function ({slug, name}) {
   let engines = new Engines();
   const aitContainer = useRef(null);
 
@@ -52,7 +53,7 @@ export default function () {
     var video = document.getElementById("AITVidElem");
     video.muted = true;
     video.play();
-    
+
     rootNodes.forEach((n) => {
       n.style.overflow = "hidden";
       n.style.height = "100%";
@@ -65,7 +66,7 @@ export default function () {
     aitContainer.current.className = "AITHide";
     window.setTimeout(() => {
       var video = document.getElementById("AITVidElem");
-      if (video){
+      if (video) {
         video.pause();
         rootNodes.forEach((n) => {
           n.style.overflow = "auto";
@@ -88,9 +89,13 @@ export default function () {
     };
   }, []);
 
-
   return (
     <Artist>
+      <Seo
+        title={name}
+        description="A dynamic web installation about the void that occurs in the process of translation"
+        path={slug}
+      />
       <ProjectHeader
         artistName="Dalena Tran"
         title="Acts in Translation"
@@ -108,7 +113,8 @@ export default function () {
       <Column className={dtText}>
         <p className={p0}>Two windows having a moment together.</p>
         <p className={p1}>
-          A story emerges every hour on the hour in universal coordinated time (UTC), marking the passing of time without keeping it.
+          A story emerges every hour on the hour in universal coordinated time
+          (UTC), marking the passing of time without keeping it.
         </p>
         <p className={p2}>
           Ambient recordings from different cities at separate times are
@@ -140,7 +146,8 @@ export default function () {
         <Column>
           <ProjectDescription>
             <p>
-              In the beginning, there was the window. Now there are plenty of other things than windows. There is heat, ice, sweat, and Mickey Mouse. Not to forget blood: The dark and runny that pumps through veins carrying a tempo that makes possible the highest highs and lowest lows.
+              In the beginning, there was the window. Now there are plenty of
+              other things than windows. There is heat, ice, sweat, and Mickey Mouse. Not to forget blood: The dark and runny that pumps through veins carrying a tempo that makes possible the highest highs and lowest lows.
             </p>
           </ProjectDescription>
         </Column>
@@ -215,14 +222,8 @@ export default function () {
       <ProjectColumns>
         <Column>
           <p>
-            A special thanks to جیگر من Hirad Sab for his love &amp; technical
-            contributions to the project
-          </p>
-          <br />
-          <p>
-            &amp; Chandler McWilliams, Danny Snelson, Lauren McCarthy, Casey
-            Reas, Erkki Huhtamo, Cayetano Ferrer, Jennifer Steinkamp &amp; Noa
-            Kaplan for their support and mentorship
+            A special thanks to جیگر من Hirad Sab for his love &amp; technical contributions to the project &amp; Chandler McWilliams, Danny Snelson, Lauren McCarthy, Casey
+            Reas, Erkki Huhtamo, Cayetano Ferrer, Jennifer Steinkamp &amp; Noa Kaplan for their support and mentorship
           </p>
         </Column>
       </ProjectColumns>
@@ -248,6 +249,7 @@ export default function () {
                   autoPlay
                   loop
                   muted={false}
+                  width={960}
                   poster={
                     PosterImage.images[PosterImage.images.length - 1].path
                   }
@@ -287,6 +289,8 @@ export default function () {
               <br />
             </div>
             <div id="AITCountDown">
+              <p id="AITCountTitle">Story begins in:</p>
+              <br />
               <p id="AITCountTxt">
                 00:<span id="AITCountMins">00</span>:
                 <span id="AITCountSecs">00</span>
