@@ -1,6 +1,7 @@
 @import '../../common/reset.css';
 @import '../../common/variables.css';
 @import '../../common/type.css';
+@import '../../common/util.scss';
 
 body {
   margin: 0;
@@ -76,6 +77,18 @@ ol {
   z-index:999;
 }
 
+.mediumOnly {
+  @include small() {
+    display: none !important;
+  }
+  @include medium() {
+    display: flex !important;
+  }
+}
+
+.justify {
+  text-align: justify !important;
+}
 
 html {
   --scrollbarBG: rgb(155, 155, 155);
@@ -113,3 +126,4 @@ html {
 	height: 0;
 	display: none;
 }
+

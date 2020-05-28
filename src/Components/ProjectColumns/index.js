@@ -4,6 +4,7 @@ import {
   container,
   column,
   fullBleede,
+  justify
 } from './style.module.scss';
 
 export const Column = ({ children, ...props }) => (

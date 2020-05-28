@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import './style.css';
+import './style.scss';
 import BlobField from 'src/BlobField';
 import config from '../../config';
 import Seo from 'src/Components/Seo'

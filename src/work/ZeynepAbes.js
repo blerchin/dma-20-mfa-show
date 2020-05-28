@@ -24,7 +24,7 @@ export default function ({slug, name}) {
         materials="Point cloud models: Istiklal street, My mother's dinner table, Turkish airlines flight"
         link="https://www.zeynepmadethis.com"
       />
-      <ProjectColumns>
+      <ProjectColumns  className="justify">
         <Column>
           <>
             <VideoVimeo
@@ -47,7 +47,7 @@ export default function ({slug, name}) {
           </>
         </Column>
       </ProjectColumns>
-      <ProjectColumns>
+      <ProjectColumns className="justify">
         <Column>
           <>
             <VideoVimeo
@@ -74,7 +74,7 @@ export default function ({slug, name}) {
           </>
         </Column>
       </ProjectColumns>
-      <ProjectColumns>
+      <ProjectColumns className="justify">
         <Column>
           <>
             <VideoVimeo
@@ -92,9 +92,9 @@ export default function ({slug, name}) {
           </>
         </Column>
       </ProjectColumns>
-      <ProjectColumns>
+      <ProjectColumns doJustify="true">
         <Column>
-          <ProjectDescription>
+          <ProjectDescription className="justify">
             <p>
               Memory place navigates through three moments of memory when I visit my home. These emotional spaces attempt to explore the relationship between personal and public memories and how specific moments from our past remain as a constant reminder of what home can be. In a time where many of our interactions are mediated, Memory Place investigates the specific kind of alienation that arises from experiencing significant events at home in mediated ways.
             </p>
@@ -107,7 +107,7 @@ export default function ({slug, name}) {
           </ProjectDescription>
         </Column>
       </ProjectColumns>
-      <ArtistBio>
+      <ArtistBio className="justify">
         <p>
           Zeynep is an artist and curator from Istanbul, Turkey. She studied film and interactive media at Emerson College, later getting her start at LACMA’s Art+Tech lab creating AR installations. She then worked at the Sundance Film Festival's New Frontier Exhibitions and is currently an MFA candidate at UCLA’s Design Media Arts program. She primarily works with archived photography, video, and immersive media. Her subjects revolve around identity, history, and loss of memory. She is deeply influenced by Istanbul’s city culture and in pursuit of exploring shifting identities to navigate the struggle and alienation that arise from changing social environments. 
         </p>
