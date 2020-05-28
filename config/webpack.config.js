@@ -160,11 +160,7 @@ module.exports = function(webpackEnv) {
         // initialization, it doesn't blow up the WebpackDevServer client, and
         // changing JS code would still trigger a refresh.
       ].filter(Boolean),
-      polyfill: [
-        require.resolve('core-js'),
-        require.resolve('whatwg-fetch'),
-        require.resolve('css-vars-ponyfill')
-      ]
+      polyfill: paths.polyfillJs
     },
     output: {
       // The build folder.
