@@ -3,7 +3,7 @@ import paper from "paper";
 import Ball from "./ball";
 
 const FRAMERATE_MA_LEN = 100;
-const ENHANCED_MIN_FPS = 40;
+const ENHANCED_MIN_FPS = 30;
 const BOOT_UP_FRAMES = 40;
 
 export default class Blobs {
