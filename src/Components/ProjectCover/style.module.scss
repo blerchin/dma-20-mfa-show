@@ -22,3 +22,21 @@
     margin: 0 auto;
   }
 }
+
+.noMobileFadeContainer {
+  @include portrait {
+    height: auto;
+    display: block;
+    position: inherit;
+    margin-bottom: -85vh;
+    margin-top: mt();
+  }
+}
+
+.portraitOnly {
+  display: none;
+  @include portrait {
+    display: inherit;
+  }
+
+}

@@ -1,15 +1,9 @@
 import React from "react";
 
 import Artist from "../Containers/Artist";
-import ProjectCover from "../Components/ProjectCover";
 import ProjectHeader from "../Components/ProjectHeader";
-import ArtistBio from "../Components/ArtistBio";
 import ProjectColumns, { Column } from "../Components/ProjectColumns";
 import Vimeo from "../Components/VideoVimeo";
-import Image from "../Components/Image";
-
-import Placeholder from "./assets/placeholder.png";
-
 import Seo from "../Components/Seo";
 import ProjectDescription from "../Components/ProjectDescription";
 export default function ({slug, name}) {

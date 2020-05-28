@@ -1,9 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {
+  partialWidth,
+} from './style.module.scss';
 
-const Spacer = ({ margin = 20, children, style }) => {
+const Spacer = ({ isPartialWidth = false, margin = 20, children, style }) => {
   return (
-    <div style={{ paddingBottom: margin, paddingTop: margin, overflow: 'hidden', ...style }}>
+    <div className={`${isPartialWidth ? partialWidth : ""}`} style={{ paddingBottom: margin, paddingTop: margin, overflow: 'hidden', ...style }}>
       { children }
     </div>
   );

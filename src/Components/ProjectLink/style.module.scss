@@ -1,0 +1,26 @@
+.container {
+  text-align: center;
+  height: 4rem;
+}
+
+.container a {
+  display: inline-block;
+  text-align: center;
+  background-color: var(--text-accent);
+  color: #000000;
+  padding: .75rem;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 32px;
+  border: 0.13rem solid #000;
+  transition: .9s ease;
+}
+
+.container a:hover {
+  background-color: black;
+  color: var(--bg-accent);
+  border: 0.5rem inset #c0e8f1;
+  outline: 0.5rem dotted #000;
+  margin-top: -0.37rem;
+  box-shadow: 0 0 0 .8rem var(--bg-accent);
+}

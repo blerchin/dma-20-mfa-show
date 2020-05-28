@@ -4,7 +4,7 @@
 .container {
   margin-bottom: 7vh;
   @include portrait {
-    margin-bottom: calc(100vw/11);
+    margin-bottom: mb();
   }
 }
 

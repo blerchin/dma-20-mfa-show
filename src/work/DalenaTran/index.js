@@ -17,7 +17,7 @@ import {
   dtInfoCol,
 } from "./style.module.css";
 
-import ProjectLinkStyle from "../../Components/ProjectLink/style.module.css";
+import ProjectLinkStyle from "../../Components/ProjectLink/style.module.scss";
 
 import Artist from "../../Containers/Artist";
 import ProjectCover from "../../Components/ProjectCover";
