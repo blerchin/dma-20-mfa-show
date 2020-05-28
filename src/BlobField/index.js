@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { useLocation, useHistory } from "react-router-dom";
 import config from "src/config";
 import paper from "paper";
+import FontFaceObserver from 'fontfaceobserver';
 
 import {
   wrapper,
@@ -21,6 +22,7 @@ export default function BlobField() {
   const [parentWidth, setParentWidth] = useState('100vw');
   const [parentHeight, setParentHeight] = useState('100vh');
   const [popoverStyle, setPopooverStyle] = useState(null);
+  const [displayTitle, setDisplayTitle] = useState(false);
 
   let location = useLocation();
   const collapsed = location.pathname !== '/';
@@ -113,6 +115,15 @@ export default function BlobField() {
     }
   }, [blobsRef, collapsed]);
 
+  useEffect(() => {
+    new FontFaceObserver('Arial Black').load().then(() => {
+      setDisplayTitle(true);
+    }, err => {
+      setDisplayTitle(true); //Displaying the title regardless, but only after timeout
+      console.error('Failed to load fonts!', err);
+    });
+  }, []);
+
   const style = {
     cursor: activeArtist ? 'pointer' : 'default'
   };
@@ -133,7 +144,7 @@ export default function BlobField() {
         {collapsed ? (
           ""
         ) : (
-          <h1 className="title">
+          <h1 className="title" style={{display: displayTitle ? "block" : "none"}}>
             {activeArtist
               ? activeArtist.name.split(" ").map((item, i) => {
                   return <p key={item}>{item.toUpperCase()}</p>;
