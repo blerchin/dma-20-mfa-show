@@ -21,7 +21,7 @@ export default function Engines() {
   this.voiceOverBase = "audio-voiceover";
   this.bgSoundBase = "audio-bg";
   this.startOn = 0;
-  this.startEveryXMins = 6;
+  this.startEveryXMins = 60;
   this.startOnTheHour = false;
   this.isHalted = false;
 }

@@ -8,10 +8,20 @@
     url("/fonts/ariblkmin/ariblkmin.svg#Arial Black") format("svg");
 }
 
+@font-face {
+  font-family: "Arial Blur";
+  src: url("/fonts/ArialBlur3/ArialBlur3.woff2") format("woff2"),
+    url("/fonts/ArialBlur3/ArialBlur3.woff") format("woff"),
+    url("/fonts/ArialBlur3/ArialBlur3.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+}
+
 :root {
   --background-color: #000;
   --body-font: Arial, Helvetica, sans-serif;
   --header-font: Arial Black, Gadget, sans-serif;
+  --title-font: "Arial Blur";
   --link-font: "Arial Narrow", sans-serif;
   --text-accent: #ceffd6;
   --bg-accent: #9cbaf9;
