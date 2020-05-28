@@ -23,6 +23,7 @@ export default function BlobField() {
   const [parentHeight, setParentHeight] = useState('100vh');
   const [popoverStyle, setPopooverStyle] = useState(null);
   const [displayTitle, setDisplayTitle] = useState(false);
+  const [sizeCalculated, setSizeCalculated] = useState(false);
 
   let location = useLocation();
   const collapsed = location.pathname !== '/';
@@ -100,6 +101,7 @@ export default function BlobField() {
   useEffect(() => {
     setParentWidth(document.body.clientWidth);
     setParentHeight(window.innerHeight);
+    setSizeCalculated(true);
 
     if (blobsRef.current) {
       const blobs = blobsRef.current;
@@ -144,7 +146,7 @@ export default function BlobField() {
         {collapsed ? (
           ""
         ) : (
-          <h1 className="title" style={{display: displayTitle ? "block" : "none"}}>
+          <h1 className="title" style={{display: displayTitle&&sizeCalculated ? "block" : "none"}}>
             {activeArtist
               ? activeArtist.name.split(" ").map((item, i) => {
                   return <p key={item}>{item.toUpperCase()}</p>;
