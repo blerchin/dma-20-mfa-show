@@ -1,8 +1,12 @@
+@font-face {
+  font-family: Arial Black;
+  src: url(/font/ARIBLK.TTF);
+}
 
 :root {
   --background-color: #000;
   --body-font:  Arial, Helvetica, sans-serif;
-  --header-font: 'Arial Black', Gadget, sans-serif;
+  --header-font: Arial Black, Gadget, sans-serif;
   --link-font: 'Arial Narrow', sans-serif;
   --text-accent: #ceffd6;
   --bg-accent: #9cbaf9;
