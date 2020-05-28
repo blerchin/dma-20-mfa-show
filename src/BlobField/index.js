@@ -115,7 +115,7 @@ export default function BlobField() {
   }, [blobsRef, collapsed]);
 
   useEffect(() => {
-    var font = new FontFaceObserver('Arial Black'); // Needs to switch to the final font
+    var font = new FontFaceObserver('Arial Blur'); // Needs to switch to the final font
     font.load(null, 5000).then(
       () => {
         if (navigator.userAgent === "ReactSnap") {
