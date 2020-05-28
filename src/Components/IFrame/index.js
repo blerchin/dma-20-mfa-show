@@ -31,14 +31,13 @@ const IFrame = ({
         className={`${titleClass} ${isOpen ? open : ''}`}
         onClick={() => setIsOpen(true)}>{title}
       </button>}
-      <iframe
+      {isOpen && <iframe
         src={url}
         className={frame}
         title={title}
         frameBorder={frameBorder}
-        style={{ display: isOpen ? 'block' : 'none'}}
         {...props}
-      ></iframe>
+      ></iframe>}
     </div>
   );
 }
