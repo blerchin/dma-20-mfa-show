@@ -1,6 +1,10 @@
-@font-face {
-  font-family: Arial Black;
-  src: url(/font/ARIBLK.TTF);
+@font-face {font-family: "Arial Black";
+  src: url("/fonts/arial-black/ariblack.eot"); /* IE9*/
+  src: url("/fonts/arial-black/ariblack.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+  url("/fonts/arial-black/ariblack.woff2") format("woff2"), /* chrome、firefox */
+  url("/fonts/arial-black/ariblack.woff") format("woff"), /* chrome、firefox */
+  url("/fonts/arial-black/ariblack.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url("/fonts/arial-black/ariblack.svg#Arial Black") format("svg"); /* iOS 4.1- */
 }
 
 :root {
