@@ -6,8 +6,6 @@ import {
   p1,
   p2,
   p3,
-  p4,
-  p5,
   audioHeading,
   dtPCover,
   dtText,
@@ -38,17 +36,18 @@ import audioJson from "./data/data";
 import voiceoversJson from "./data/voiceovers";
 import Engines from "./js/engines-utils";
 
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
+
 
 export default function () {
-  const engines = new Engines();
+  let engines = new Engines();
   const aitContainer = useRef(null);
 
   const rootNodes = [document.body, document.documentElement];
 
   function beginProject() {
-    engines.audioEngine.beginAudio();
-    engines.prepareVoiceover();
+    engines.init();
+
     aitContainer.current.className = "";
     var video = document.getElementById("AITVidElem");
     video.muted = true;
@@ -61,28 +60,34 @@ export default function () {
   }
 
   function stopProject() {
-    // engines = null;
-    engines.stopEngine();
+    engines.halt();
+
     aitContainer.current.className = "AITHide";
     window.setTimeout(() => {
       var video = document.getElementById("AITVidElem");
-      video.pause();
-      rootNodes.forEach((n) => {
-        n.style.overflow = "auto";
-        n.style.height = "auto";
-      });
+      if (video){
+        video.pause();
+        rootNodes.forEach((n) => {
+          n.style.overflow = "auto";
+          n.style.height = "auto";
+        });
+      }
     }, 800);
   }
 
   useEffect(() => {
-    engines.setup(audioJson, voiceoversJson);
-    engines.setHTMLElement(document.getElementById("AITSub"));
+    engines.setup(audioJson, voiceoversJson, "AITSub");
+
     document.getElementById("AITLocA").className = "hidden";
     document.getElementById("AITLocB").className = "hidden";
     // $("#AITVidElem").prop('muted', true);
     var video = document.getElementById("AITVidElem");
     video.muted = true;
+    return function cleanup() {
+      stopProject();
+    };
   }, []);
+
 
   return (
     <Artist>
@@ -103,7 +108,7 @@ export default function () {
       <Column className={dtText}>
         <p className={p0}>Two windows having a moment together.</p>
         <p className={p1}>
-          A range of stories emerge every hour on the hour in global synchronicity (GST). Each one marks the passing of time but does not keep it.
+          A story emerges every hour on the hour in universal coordinated time (UTC), marking the passing of time without keeping it.
         </p>
         <p className={p2}>
           Ambient recordings from different cities at separate times are
@@ -115,7 +120,6 @@ export default function () {
           <br />
           are never quite the same.
         </p>
-        <p className={p4}>🅢🅞🅤🅝🅓 🅞🅝</p>
         <div className={dtButWrapper}>
           <div className={ProjectLinkStyle.container}>
             <Link to="#" onClick={beginProject}>
@@ -136,8 +140,7 @@ export default function () {
         <Column>
           <ProjectDescription>
             <p>
-              In the beginning, there was the window. Now there are plenty of
-              other things than windows. There is heat, ice, sweat, and Mickey Mouse. Not to forget blood: The dark and runny that pumps through veins carrying a tempo that make possible the highest highs and lowest lows.
+              In the beginning, there was the window. Now there are plenty of other things than windows. There is heat, ice, sweat, and Mickey Mouse. Not to forget blood: The dark and runny that pumps through veins carrying a tempo that makes possible the highest highs and lowest lows.
             </p>
           </ProjectDescription>
         </Column>
@@ -255,19 +258,19 @@ export default function () {
                   /> */}
                   <source
                     type="video/mp4"
-                    src="https://github.com/dalena/acts-in-translation-data/releases/download/vid/aith264.mp4"
+                    src="https://users.dma.ucla.edu/~dalena/ait/vid/aith264.mp4"
                   />
                   {/* <source
                     type='video/webm;codecs="vp9,vorbis'
-                    src="https://github.com/dalena/acts-in-translation-data/releases/download/vid/aitvp9recomm.webm"
+                    src="https://users.dma.ucla.edu/~dalena/ait/vid/aitvp9recomm.webm"
                   />
                   <source
                     type='video/webm;codecs="vp9,vorbis'
-                    src="https://github.com/dalena/acts-in-translation-data/releases/download/vid/aitvp9.webm"
+                    src="https://users.dma.ucla.edu/~dalena/ait/vid/aitvp9.webm"
                   /> */}
                   <source
                     type='video/webm;codecs="vp8,vorbis'
-                    src="https://github.com/dalena/acts-in-translation-data/releases/download/vid/aitvp8.webm"
+                    src="https://users.dma.ucla.edu/~dalena/ait/vid/aitvp8.webm"
                   />
                 </video>
                 <div id="AITTitleBox">
