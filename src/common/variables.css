@@ -1,11 +1,11 @@
 @font-face {
   font-family: "Arial Black";
-  src: url("/fonts/ariblk/ariblk.eot");
-  src: url("/fonts/ariblk/ariblk.eot?#iefix") format("embedded-opentype"),
-    url("/fonts/ariblk/ariblk.woff2") format("woff2"),
-    url("/fonts/ariblk/ariblk.woff") format("woff"),
-    url("/fonts/ariblk/ariblk.ttf") format("truetype"),
-    url("/fonts/ariblk/ariblk.svg#Arial Black") format("svg");
+  src: url("/fonts/ariblkmin/ariblkmin.eot");
+  src: url("/fonts/ariblkmin/ariblkmin.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/ariblkmin/ariblkmin.woff2") format("woff2"),
+    url("/fonts/ariblkmin/ariblkmin.woff") format("woff"),
+    url("/fonts/ariblkmin/ariblkmin.ttf") format("truetype"),
+    url("/fonts/ariblkmin/ariblkmin.svg#Arial Black") format("svg");
 }
 
 :root {
