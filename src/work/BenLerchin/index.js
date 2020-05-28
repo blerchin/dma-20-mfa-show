@@ -77,15 +77,6 @@ export default function ({slug, name}) {
       </ProjectColumns>
       <ProjectColumns>
         <Column>
-          <IFrame url="https://www.google.com/maps/d/embed?mid=1BzGrvqOlQaw8eO2w5P0fSAF4QF1W2rmV" />
-          <ImageCaption
-            title="Los Angeles' Uncomfortable Protuberances"
-            materials="Interactive map of resource use in the Antelope and Owens Valleys"
-          />
-        </Column>
-      </ProjectColumns>
-      <ProjectColumns>
-        <Column>
           <VideoVimeo alt="Air" url="https://player.vimeo.com/video/423637561?title=0&portrait=0&byline=0" />
           <ImageCaption
             title="Air"
