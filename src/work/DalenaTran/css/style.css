@@ -145,18 +145,14 @@
   /* align-items: center; */
   justify-content: center;
   font-size: 24px;
-  opacity: .5;
+  opacity: .2;
+  transition: opacity 2s ease-in-out;
 }
 #AITCountTitle {
   font-size: 18px;
 }
 
-#AITCountTxt {
-  transition: opacity 2s ease-in-out;
-  opacity: 1;
-}
-
-#AITCountTxt.hidden {
+#AITCountDown.hidden {
   opacity: 0 !important;
 }
 

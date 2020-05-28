@@ -174,13 +174,13 @@ Engines.prototype = {
   showCountdown() {
     console.log(`[⚙️] ⏱️ Countdown show`);
     this.displayCountdown = true;
-    document.getElementById("AITCountTxt").className = "";
+    document.getElementById("AITCountDown").className = "";
   },
 
   hideCountdown() {
     console.log(`[⚙️] ⏱️ Countdown hide`);
     this.displayCountdown = false;
-    document.getElementById("AITCountTxt").className = "hidden";
+    document.getElementById("AITCountDown").className = "hidden";
   },
 
   updateCountdown() {

@@ -249,6 +249,7 @@ export default function ({slug, name}) {
                   autoPlay
                   loop
                   muted={false}
+                  width={960}
                   poster={
                     PosterImage.images[PosterImage.images.length - 1].path
                   }
