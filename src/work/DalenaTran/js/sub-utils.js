@@ -1,4 +1,4 @@
-import * as Subtitle from 'subtitle'
+import * as Subtitle from "subtitle";
 
 export default function SubEngine(voiceovers, cb, subcb) {
   this.voiceovers = voiceovers;
@@ -15,23 +15,34 @@ SubEngine.prototype = {
     for (let i = 0; i < this.voiceovers.length; i++) {
       this.voiceovers[i].sub = {};
       console.log(
-        `[📜] 🌐 Grabbing ${this.voiceOverURL}/${this.voiceovers[i].srt}`
+        `[📜] 🌐 Grabbing /dalena/${this.voiceovers[i].srt}`
       );
 
-      fetch(`${this.voiceOverURL}/${this.voiceovers[i].srt}`)
+    
+
+      fetch(`/dalena/${this.voiceovers[i].srt}`, {
+        mode: "no-cors",
+      })
         .then((body) => body.text())
         .then((data) => {
-          this.parseSub(data, i)
+          this.parseSub(data, i);
         });
     }
   },
 
-  parseSub(data, idx) {    
+  parseSub(data, idx) {
     this.voiceovers[idx].sub.parsed = Subtitle.parse(data);
     this.voiceovers[idx].sub.isHeadSet = false;
     this.completed++;
     if (this.completed === this.voiceovers.length) {
       this.setupCallback();
+    }
+  },
+
+  resetPlayHead(){
+    console.log("[📜] 🎬 Resetting the playhead for all subtitles");
+    for (let i = 0; i < this.voiceovers.length; i++) {
+      this.voiceovers[i].sub.playhead = 0;
     }
   },
 
@@ -88,8 +99,7 @@ SubEngine.prototype = {
         }
         this.show = false;
       }
-    }
-    else{
+    } else {
       this.seek(idx, time);
     }
   },
