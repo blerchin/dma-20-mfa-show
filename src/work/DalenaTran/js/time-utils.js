@@ -8,6 +8,7 @@ export default function TimeEngine(cb) {
   this.isSetup = false;
   this.callback = cb;
   this.lock = false;
+  this.keepTicking = true;
 }
 
 TimeEngine.prototype = {
@@ -37,11 +38,22 @@ TimeEngine.prototype = {
     this.currentTime = new Date();
     var diff = this.currentTime.getTime() - this.systemTime.getTime();
     this.globalCurrent = diff / 1000;
-    // let seconds = diff / 1000;
-    // let minutes = seconds / 60;
-    // this.globalCurrMin = Math.floor(this.globalOffset + minutes);
-    // this.globalCurrSec = Math.floor((this.globalOffset + minutes)*60)%60;
-    // console.log(this.globalCurrMin, this.globalCurrSec);
+    if (this.keepTicking){
+      requestAnimationFrame(this.tick.bind(this));
+    }
+  },
+
+  halt(){
+    console.log(`[⏰] 🌐 Halt timer ticking`);
+    this.keepTicking = false;
+  },
+
+  resume(){
+    if (this.keepTicking === false){
+      console.log(`[⏰] 🌐 Resume timer ticking`);
+      this.keepTicking = true;
+      this.tick();
+    }
   },
 
   getOffsetMins(){
@@ -49,12 +61,20 @@ TimeEngine.prototype = {
       return minutes % 60;
   },
 
-  getCurrentMins(){
+  getCurrentMins(){    
       return this.getOffsetMins() + (this.globalCurrent / 60);
+  },
+
+  getCurrentMinsMod60(){
+    return this.getCurrentMins() % 60;
   },
 
   getCurrentMilli(){
     return Math.floor(this.getCurrentMins() * 60 * 1000);
+  },
+
+  getCurrentMilliMod60(){
+    return Math.floor(this.getCurrentMinsMod60() * 60 * 1000);
   },
 
   getCurrentSecs(){
@@ -62,7 +82,7 @@ TimeEngine.prototype = {
   },
 
   getAudioIndexFromTime(count){
-      var time  = this.globalCurrent + this.globalOffset;
+      var time  = this.globalCurrent + this.globalOffset; //seconds
       var hours = (time / (60 * 60))% 24;
       return Math.floor(hours % (count));
   }
