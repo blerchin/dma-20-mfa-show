@@ -4,6 +4,7 @@ import Ball from "./ball";
 
 const FRAMERATE_MA_LEN = 100;
 const ENHANCED_MIN_FPS = 40;
+const BOOT_UP_FRAMES = 15;
 
 export default class Blobs {
 	constructor(artists) {
@@ -147,7 +148,7 @@ export default class Blobs {
 		if (this.debug && data.frameCount % FRAMERATE_MA_LEN === 0) {
 			console.log(`Framerate: ${data.fps}`);
 		}
-		if(data.frameCount > 20 && data.fps < ENHANCED_MIN_FPS) {
+		if(data.frameCount > BOOT_UP_FRAMES && data.fps < ENHANCED_MIN_FPS) {
 			this.isEnhanced = false;
 		}
 	}
