@@ -122,6 +122,8 @@ export default class Blobs {
 			currBall.isVertical = document.body.clientWidth > window.innerHeight;
 			currBall.path.onMouseEnter = this.pathOnMouseEnter.bind(this);
 			currBall.path.onMouseLeave = this.pathOnMouseLeave.bind(this);
+			currBall.label.onMouseEnter = this.pathOnMouseEnter.bind(this);
+			currBall.label.onMouseLeave = this.pathOnMouseLeave.bind(this);
 			currBall.path.onClick = this.pathOnClick.bind(this);
 			currBall.label.onClick = this.pathOnClick.bind(this);
 			this.balls.push(currBall);
@@ -278,7 +280,7 @@ export default class Blobs {
 		this.balls[idx].mouseEnterPt = event.point;
 
 		for (let i = 1; i < this.balls.length; i++) {
-			if (this.balls[i].path !== event.target) {
+			if (this.balls[i].idx !== event.target.idx) {
 				this.balls[i].path.tween({
 						opacity: this.balls[i].path.opacity,
 						shadowColor: this.balls[i].path.shadowColor,

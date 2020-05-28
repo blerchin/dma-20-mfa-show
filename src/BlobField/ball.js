@@ -90,6 +90,8 @@ export default class Ball {
 	setIdx(val) {
 		this.idx = val;
 		this.path.idx = val;
+		if (this.label)
+		this.label.idx = val;
 	}
 
 	updateColor(enhanced = false) {
