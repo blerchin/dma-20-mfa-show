@@ -2,6 +2,10 @@ import paper from "paper";
 
 import Ball from "./ball";
 
+const FRAMERATE_MA_LEN = 100;
+const ENHANCED_MIN_FPS = 30;
+const BOOT_UP_FRAMES = 40;
+
 export default class Blobs {
 	constructor(artists) {
 		this.artists = artists;
@@ -26,6 +30,15 @@ export default class Blobs {
 		this.collapsed = false;
 		this.targetWidth = null;
 		this.targetHeight = null;
+		this.isEnhanced = true;
+		this.fpsData = {
+			cur: 0,
+			frames: [],
+			fps: 0,
+			frameCount: 0,
+			lastTimestamp: Date.now()
+		};
+		this.debug = window.location.search.indexOf('debug') !== -1;
 	}
 
 	B(idx) {
@@ -110,12 +123,34 @@ export default class Blobs {
 			currBall.isVertical = document.body.clientWidth > window.innerHeight;
 			currBall.path.onMouseEnter = this.pathOnMouseEnter.bind(this);
 			currBall.path.onMouseLeave = this.pathOnMouseLeave.bind(this);
+			currBall.label.onMouseEnter = this.pathOnMouseEnter.bind(this);
+			currBall.label.onMouseLeave = this.pathOnMouseLeave.bind(this);
 			currBall.path.onClick = this.pathOnClick.bind(this);
 			currBall.label.onClick = this.pathOnClick.bind(this);
 			this.balls.push(currBall);
 		}
 
 		this.recalcCanvasSize();
+	}
+
+	calcFps() {
+		const data = this.fpsData;
+		if (data.frameCount > 500) {
+			return;
+		}
+		data.cur = data.cur < FRAMERATE_MA_LEN - 1 ? data.cur + 1 : 0;
+		const now = Date.now();
+		data.frames[data.cur] = now - data.lastTimestamp;
+		data.lastTimestamp = now;
+		const sum = data.frames.reduce((a,b) => a + b, 0);
+		data.fps = 1000 / (sum / data.frames.length);
+		data.frameCount++;
+		if (this.debug && data.frameCount % FRAMERATE_MA_LEN === 0) {
+			console.log(`Framerate: ${data.fps}`);
+		}
+		if(data.frameCount > BOOT_UP_FRAMES && data.fps < ENHANCED_MIN_FPS) {
+			this.isEnhanced = false;
+		}
 	}
 
 	onFrame() {
@@ -125,7 +160,7 @@ export default class Blobs {
 
 		for (let i = 1; i < this.balls.length; i++) {
 			this.balls[i].iterate();
-			this.balls[i].updateColor();
+			this.balls[i].updateColor(this.isEnhanced);
 			this.balls[i].updateFont();
 			this.balls[i].label.visible = this.isMobile && !this.collapsed;
 		}
@@ -152,6 +187,7 @@ export default class Blobs {
 		} else {
 			this.balls[0].point = new paper.Point(this.mouseCurrX, this.mouseCurrY);
 		}
+		this.calcFps();
 	}
 
 	onResize(evt) {
@@ -186,7 +222,7 @@ export default class Blobs {
 			this.balls[i].isVertical = document.body.clientWidth > window.innerHeight;
 		}
 		
-		if (resizeOnHompage || this.collapsed) {
+		if (this.isEnhanced && (resizeOnHompage || this.collapsed)) {
 			// Animated resizing
 			this.animateCanvasSize();
 		} else {
@@ -247,7 +283,7 @@ export default class Blobs {
 		this.balls[idx].mouseEnterPt = event.point;
 
 		for (let i = 1; i < this.balls.length; i++) {
-			if (this.balls[i].path !== event.target) {
+			if (this.balls[i].idx !== event.target.idx) {
 				this.balls[i].path.tween({
 						opacity: this.balls[i].path.opacity,
 						shadowColor: this.balls[i].path.shadowColor,
