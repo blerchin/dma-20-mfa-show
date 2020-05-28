@@ -102,7 +102,7 @@ export default class Ball {
 			this.path.fillColor.radial = true;
 			this.path.shadowBlur = this.defaultPathStyle.shadowBlur;
 		} else {
-			this.path.fillColor = this.col4;
+			this.path.fillColor = this.col4
 			this.path.shadowBlur = null;
 		}
 	}
