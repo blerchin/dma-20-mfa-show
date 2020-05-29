@@ -26,7 +26,7 @@ SubEngine.prototype = {
         .then((body) => body.text())
         .then((data) => {
           this.parseSub(data, i);
-        });
+        }).catch((err) => `Oh noes! ${err}`);
     }
   },
 
