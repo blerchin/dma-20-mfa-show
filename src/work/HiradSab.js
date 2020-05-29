@@ -155,7 +155,7 @@ export default function ({ slug, name }) {
           />
           <ImageCaption title="Humans of Noyork" materials="9 hour looping video" />
           <p>
-          ASMR, cult of personality, makeup tutorials, video logs, voyeurism, entertainment, education, lurking, disgust, gratification, identity, culture wars, YouTube! <i>Humans of Noyork</i> is 9 hours of pure content, 20,000 unique personalities, no eyes to stare you back, and no stories to tell. More videos?
+          <i>Humans of Noyork</i> is 9 hours and 24 seconds of pure content, 37.6 gigabytes of occupied storage space, 20,006 unique personalities, no eyes to stare back at you, and no stories to tell. It is a cult of personality, a makeup tutorial, a video log, and a lengthy ASMR video. It is voyeurism, entertainment, education, and gratification, simultaneously repulses and attracts. It lurks, disgusts, cringes, and appeals. It is unopinionated, available, accessible, and reliable. It is content with no higher ambitions. More videos?
           </p>
         </Column>
       </ProjectColumns>
