@@ -1,19 +1,21 @@
 import React from "react";
 
-import Artist from "../Containers/Artist";
-import ProjectCover from "../Components/ProjectCover";
-import ProjectHeader from "../Components/ProjectHeader";
-import ArtistBio from "../Components/ArtistBio";
-import ProjectColumns, { Column } from "../Components/ProjectColumns";
-import Vimeo from "../Components/VideoVimeo";
-import Image from "../Components/Image";
+import Artist from "src/Containers/Artist";
+import ProjectCover from "src/Components/ProjectCover";
+import ProjectHeader from "src/Components/ProjectHeader";
+import ArtistBio from "src/Components/ArtistBio";
+import ProjectColumns, { Column } from "src/Components/ProjectColumns";
+import Vimeo from "src/Components/VideoVimeo";
+import Image from "src/Components/Image";
 
-import BerfinImage1 from "./assets/BerfinAtaman-1.jpg";
-import BerfinImage2 from "./assets/BerfinAtaman-2.jpg";
-import BerfinImage3 from "./assets/BerfinAtaman-3.jpg";
+import BerfinImage1 from "../assets/BerfinAtaman-1.jpg";
+import BerfinImage2 from "../assets/BerfinAtaman-2.jpg";
+import BerfinImage3 from "../assets/BerfinAtaman-3.jpg";
 
-import Seo from "../Components/Seo";
-import ProjectDescription from "../Components/ProjectDescription";
+import Seo from "src/Components/Seo";
+import ProjectDescription from "src/Components/ProjectDescription";
+
+import { video } from "./style.module.scss"
 
 export default function ({slug, name}) {
   return (
@@ -29,17 +31,14 @@ export default function ({slug, name}) {
         title="Raising Quills"
         materials="Fabric, electronics, wood,cement,steel"
         link="http://www.berfinataman.com/bio-contact"
+
       />
-      <ProjectCover mt="10em" noMobileFade="true">
-        <Column>
-          <Column>
-            <Vimeo
-              url="https://player.vimeo.com/video/422667288?color=ffffff&amp;title=0&amp;byline=0&amp;portrait=0"
-              padding="133.33%"
-              isFullHeight="true"
-            />
-          </Column>
-        </Column>
+      <ProjectCover>
+        <Vimeo
+          className={video}
+          url="https://player.vimeo.com/video/422667288?color=ffffff&amp;title=0&amp;byline=0&amp;portrait=0"
+          padding="133.33%"
+        />
       </ProjectCover>
       <ProjectColumns>
         <Column>
