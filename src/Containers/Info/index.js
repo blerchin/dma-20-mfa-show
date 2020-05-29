@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 import {
   container,
   infoWrapper,
-  intoTitle,
+  infoTitle,
+  infoSub,
   infoContainer,
   infoLink,
   citeLink,
@@ -19,8 +20,11 @@ export default function Info() {
       <Seo />
       <ProjectColumns className={infoWrapper}>
         <Column>
-          <h2 className={intoTitle}>Curatorial Statement</h2>
-          <h3>May 20, 2020</h3>
+          <h2 className={infoTitle}>
+            Curatorial Statement
+            <br/>
+            <span className={infoSub}>May 20, 2020</span>
+          </h2>
           <br />
           <div className={infoContainer}>
             <p>
@@ -261,10 +265,10 @@ export default function Info() {
               distant society, an exhibition.n.
             </p>
             <p>
-              <b>-Ana Iwataki</b>
+              <strong>—Ana Iwataki</strong>
             </p>
             <p className={citeText}>
-              <Link className={citeLink}>
+              <Link id="c1" className={citeLink}>
                 <sup>[1]</sup>
               </Link>{" "}
               Neimanis, Astrida. “On Collaboration (for Barbara Godard).” NORA -
@@ -276,10 +280,13 @@ export default function Info() {
       </ProjectColumns>
       <ProjectColumns className={infoWrapper}>
         <Column>
-          <h2 className={intoTitle}>
+          <h2 className={infoTitle}>
             The New Dematerialization of Art under “Covid-19 Rule”
+            <br/>
+            <span className={infoSub}>
+              A Response from UCLA Design Media Arts Department
+            </span>
           </h2>
-          <h3>A Response from UCLA Design Media Arts Department</h3>
           <br />
           <div className={infoContainer}>
             <p>
@@ -368,7 +375,7 @@ export default function Info() {
               providing flashes of better times ahead.
             </p>
             <p>
-              <b>-Erkki Huhtamo</b>
+              <strong>—Erkki Huhtamo</strong>
             </p>
           </div>
         </Column>
