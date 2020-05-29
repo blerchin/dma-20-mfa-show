@@ -35,6 +35,19 @@
   column-width: 350px;
   column-gap: 2.5rem;
   line-height: 1.3em;
+
+  @media screen and (max-width: 375px) {
+    -webkit-column-width: 100vw;
+    -moz-column-width: 100vw;
+    column-width: 100vw;
+  }
+}
+
+.sectionSmall {
+  @media screen and (max-width: 375px) {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .infoLink {
@@ -57,6 +70,10 @@
   font-size: 2.3rem;
   line-height: 1.3em;
   font-family: var(--header-font);
+
+  @media screen and (max-width: 375px) {
+    font-size: 2rem;
+  }
 }
 
 .citeText {

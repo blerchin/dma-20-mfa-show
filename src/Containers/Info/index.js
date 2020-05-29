@@ -12,6 +12,7 @@ import {
   citeLink,
   citeText,
   nnTitle,
+  sectionSmall,
 } from "./style.module.scss";
 
 export default function Info() {
@@ -21,7 +22,7 @@ export default function Info() {
       title="Info"
       path="info"
       />
-      <ProjectColumns className={infoWrapper}>
+      <ProjectColumns className={infoWrapper, sectionSmall}>
         <Column>
           <h2 className={infoTitle}>
             Curatorial Statement
@@ -280,7 +281,7 @@ export default function Info() {
           </div>
         </Column>
       </ProjectColumns>
-      <ProjectColumns className={infoWrapper}>
+      <ProjectColumns className={infoWrapper, sectionSmall}>
         <Column>
           <h2 className={infoTitle}>
             The New Dematerialization of Art under “Covid-19 Rule”
