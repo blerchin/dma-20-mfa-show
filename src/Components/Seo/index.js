@@ -4,7 +4,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
 
-const rootURL = `https://deploy-preview-102--kind-tesla-a088c1.netlify.app`;
+const rootURL = `https://near.rest`;
 const absoluteUrl = (path) => `${rootURL}/${path}/`;
 const seoImageURL = (file) => `${rootURL}${file}`;
 
