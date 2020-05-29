@@ -18,7 +18,7 @@ export default function ({slug, name}) {
     <Artist>
       <Seo
         title={name}
-        description="solar projection of liquid lens"
+        description="I was born from mud, unearthed from the ocean floor and sealed in a jar."
         path={slug}
         image={MilesImage1}
       />

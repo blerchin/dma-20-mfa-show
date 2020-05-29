@@ -20,7 +20,7 @@ export default function ({slug, name}) {
     <Artist>
       <Seo
         title={name}
-        description="“Raising Quills” evokes curiosity by putting the audience into bizzare interactions in a surreal world. "
+        description="I stretch above and below to connect the ends in a new way. They’re a part of me and I of them. I hold out my quills to extend my home."
         path={slug}
         image={BerfinImage1}
       />

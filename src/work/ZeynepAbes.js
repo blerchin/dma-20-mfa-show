@@ -15,7 +15,7 @@ export default function ({slug, name}) {
     <Artist noCover="true">
       <Seo
         title={name}
-        description="Memory place navigates through three moments of memory when I visit my home."
+        description="An exploration of three moments of memory particular to the fraying certainty of my home."
         path={slug}
       />
       <ProjectHeader

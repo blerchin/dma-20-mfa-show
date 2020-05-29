@@ -19,6 +19,7 @@ export default function ({slug, name}) {
         title={name}
         description="This is a three-character monologue about be-ing, bee, and bees."
         path={slug}
+        image={LemingImage1}
       />
       <ProjectHeader
         artistName={name}

@@ -19,6 +19,7 @@ export default function ({slug, name}) {
         title={name}
         description="Interest ↝ Enjoyment ↝ Surprise ↝ Shame ↺"
         path={slug}
+        image={BlaineImage1}
       />
       <ProjectHeader
         artistName={name}
