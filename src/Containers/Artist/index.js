@@ -1,14 +1,12 @@
 import React from 'react';
 
 import {
-  container,
-  noCoverContainer,
+  container
 } from './style.module.scss'
 
-const Artist = ({
-  noCover, children,}) => {
+const Artist = ({ children,}) => {
   return (
-    <div className={`${container} ${noCover ?  noCoverContainer : ""}`}>
+    <div className={container}>
       {children}
     </div>
   );
