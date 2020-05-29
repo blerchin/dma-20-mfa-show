@@ -8,7 +8,10 @@
 
 .columnContainer {
   margin-top: 1em !important;
-  max-width: 100% !important;
+  @include ph(0);
+  @include medium {
+    max-width: 100% !important;
+  }
 }
 
 .header {

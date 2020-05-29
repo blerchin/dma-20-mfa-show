@@ -3,7 +3,7 @@ import React from "react";
 import Artist from "../Containers/Artist";
 import Gradient from "../Components/Gradient";
 import ProjectHeader from "../Components/ProjectHeader";
-import ProjectCover from "../Components/ProjectCover";
+import { CoverItem } from "../Components/ProjectCover";
 import ProjectDescription from "../Components/ProjectDescription";
 import ProjectColumns, { Column } from "../Components/ProjectColumns";
 import Vimeo from "../Components/VideoVimeo";
@@ -23,14 +23,18 @@ export default function ({slug, name}) {
         title="Approximate Other (Tower &amp; Stage)"
         materials="trail cameras, wooden stages, wooden tower, zentai suit, &amp; photogrammetry"
         link="https://grahamakins.cargo.site"
+        fluidLayout
       />
-      <ProjectCover mt="15em" noMobileFade="true">
-          <Vimeo 
-            url="https://player.vimeo.com/video/422619346?color=ffffff&amp;title=0&amp;byline=0&amp;portrait=0"
-            padding="125%"
-            isFullHeight="yes"
-          />
-      </ProjectCover>
+      <CoverItem fluidLayout>
+        <ProjectColumns>
+          <Column>
+            <Vimeo
+              url="https://player.vimeo.com/video/422619346?color=ffffff&amp;title=0&amp;byline=0&amp;portrait=0"
+              padding="125%"
+            />
+          </Column>
+        </ProjectColumns>
+      </CoverItem>
       <ProjectColumns>
         <Column>
           <ProjectDescription>

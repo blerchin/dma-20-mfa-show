@@ -19,6 +19,7 @@ export default function ({slug, name}) {
         title="I am defeat"
         materials="60 minute video"
         link="http://leivas.se"
+        fluidLayout
       />
       <ProjectColumns>
         <Column>

@@ -3,16 +3,16 @@
 .container {
   @include m;
   text-align: left;
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 1;
   @include medium {
     margin-top: var(--page-gutter);
     margin-right: var(--page-gutter);
     margin-left: var(--page-gutter);
-    position: fixed;
   }
+  position: absolute;
+  z-index: 2;
+}
+.fluid {
+  position: static;
 }
 
 .headerArtist {
@@ -63,4 +63,3 @@ a {
   color: #ffffff;
   text-decoration: none;
 }
-

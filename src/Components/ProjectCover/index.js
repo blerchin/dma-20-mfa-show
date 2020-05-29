@@ -2,11 +2,20 @@ import React, { useEffect, useRef } from 'react';
 
 import {
   container,
-  portraitOnly,
-  noMobileFadeContainer
+  shim,
+  item,
+  fluidLayoutContainer,
+  fluidLayoutItem
 } from './style.module.scss';
 
-const ProjectCover = ({fadeOut = true, noMobileFade = false, children, className = '', mt=''}) => {
+export const CoverItem = ({ children, fluidLayout = false }) => {
+  return (
+    <div className={ fluidLayout ? fluidLayoutItem : item }>
+      { children }
+    </div>
+  );
+}
+const ProjectCover = ({fadeOut = true, fluidLayout = false, children, noShim = false, className = ''}) => {
   let fadeLevel = 0;
   let animationId = null;
   const node = useRef(null);
@@ -20,14 +29,15 @@ const ProjectCover = ({fadeOut = true, noMobileFade = false, children, className
   }
 
   const onScroll = (event) => {
-    fadeLevel = Math.min(1, window.scrollY / window.innerHeight);
-    animationId = requestAnimationFrame(step);
+    if (fluidLayout && document.body.clientWidth < 769) {
+      fadeLevel = 1;
+    } else {
+      fadeLevel = Math.min(1, window.scrollY / window.innerHeight);
+      animationId = requestAnimationFrame(step);
+    }
   }
 
   useEffect(() => {
-    if (noMobileFade && document.body.clientWidth < 769) // is there a better way?
-      return;
-
     window.addEventListener('scroll', onScroll);
     step();
     return () => {
@@ -38,8 +48,8 @@ const ProjectCover = ({fadeOut = true, noMobileFade = false, children, className
 
   return (
     <>
-    <div className={portraitOnly} style={{ height: mt }}></div>
-    <div className={`${container} ${className} ${noMobileFade ? noMobileFadeContainer : ''}`} ref={node}>
+    {!noShim && <div className={shim}></div>}
+    <div className={`${container} ${className} ${fluidLayout ? fluidLayoutContainer : ''}`} ref={node}>
       {children}
     </div>
     </>
