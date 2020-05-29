@@ -30,8 +30,8 @@ export default function ({slug, name}) {
       />
       <ProjectCover>
           <Image
-            img="https://drive.google.com/uc?export=view&id=1Nt77hayEZpybJiOi57UgsP0fHDAi36wE"
-            a="https://drive.google.com/uc?export=view&id=1Nt77hayEZpybJiOi57UgsP0fHDAi36wE"
+            img="https://users.dma.ucla.edu/~mpeyton/thesis_assets/1.jpg"
+            a="https://users.dma.ucla.edu/~mpeyton/thesis_assets/1.jpg"
             alt="Projection of liquid on grey board. A radial pattern, slightly degraded on the edges, is visible, as well as the liquid which has areas of blue and orange."
           />
       </ProjectCover>
@@ -55,8 +55,8 @@ export default function ({slug, name}) {
       <ProjectColumns>
         <Column>
           <Image
-            img="https://drive.google.com/uc?export=view&id=1jrvrYr0gSS7GiN8xnpgtUxf_bh2ttzFB"
-            a="https://drive.google.com/uc?export=view&id=1jrvrYr0gSS7GiN8xnpgtUxf_bh2ttzFB"
+            img="https://users.dma.ucla.edu/~mpeyton/thesis_assets/2.jpg"
+            a="https://users.dma.ucla.edu/~mpeyton/thesis_assets/2.jpg"
             alt="View of projection from further back, showing the room and the projection apparatus. The projection surface is in focus and the apparatus is out of focus. The room has white walls and a carpeted floor. "
           />
         </Column>
@@ -64,8 +64,8 @@ export default function ({slug, name}) {
       <ProjectColumns>
         <Column>
           <Image
-            img="https://drive.google.com/uc?export=view&id=1FaPAQq59rzVFwG1rJ1oTgheDZKDxeavG"
-            a="https://drive.google.com/uc?export=view&id=1FaPAQq59rzVFwG1rJ1oTgheDZKDxeavG"
+            img="https://users.dma.ucla.edu/~mpeyton/thesis_assets/3.jpg"
+            a="https://users.dma.ucla.edu/~mpeyton/thesis_assets/3.jpg"
             alt="Apparatus on the ground in front of a window. Lenses are held by a vertical steel rod, and a rectangular lens sits on a semi-transparent box that is lit by sunlight. The various lenses cast patterns on the wall, some of which are white and others are more like rainbows."
           />
         </Column>
@@ -73,8 +73,8 @@ export default function ({slug, name}) {
       <ProjectColumns>
         <Column>
           <Image
-            img="https://drive.google.com/uc?export=view&id=12438aDBCD1XaOHtDxBGAIJZtqbSpWgUt"
-            a="https://drive.google.com/uc?export=view&id=12438aDBCD1XaOHtDxBGAIJZtqbSpWgUt"
+            img="https://users.dma.ucla.edu/~mpeyton/thesis_assets/4.jpg"
+            a="https://users.dma.ucla.edu/~mpeyton/thesis_assets/4.jpg"
             alt="Closeup of a liquid on a glass plate, which is lit from below. Cables extend from the plate, and are held together by a braid."
           />
         </Column>
@@ -83,15 +83,15 @@ export default function ({slug, name}) {
         <Column>
           <Spacer>
             <Image
-              img="https://drive.google.com/uc?export=view&id=1z86giGe9wpW6TIvJAU6tVp8ggKp7cVx5"
-              a="https://drive.google.com/uc?export=view&id=1z86giGe9wpW6TIvJAU6tVp8ggKp7cVx5"
+              img="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass1.jpg"
+              a="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass1.jpg"
               alt="Radial pattern with eight curving lines etched on glass"
             />
           </Spacer>
           <Spacer>
             <Image
-              img="https://drive.google.com/uc?export=view&id=1trCCPE11jdaUrXvP3qNd7J5Cfawh96nA"
-              a="https://drive.google.com/uc?export=view&id=1trCCPE11jdaUrXvP3qNd7J5Cfawh96nA"
+              img="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass2.jpg"
+              a="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass2.jpg"
               alt="Radial pattern with eight curving lines etched on glass"
             />
           </Spacer>
@@ -99,15 +99,15 @@ export default function ({slug, name}) {
         <Column>
           <Spacer>
             <Image
-              img="https://drive.google.com/uc?export=view&id=1W7dEvsC2-jbDiMtiLwVyT10H4hYk1I2I"
-              a="https://drive.google.com/uc?export=view&id=1W7dEvsC2-jbDiMtiLwVyT10H4hYk1I2I"
+              img="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass3.jpg"
+              a="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass3.jpg"
               alt="Radial pattern with eight curving lines etched on glass"
             />
           </Spacer>
           <Spacer>
             <Image
-              img="https://drive.google.com/uc?export=view&id=1qq_Q_0kRNopCWl4MxpKemKPuaV0RFmQR"
-              a="https://drive.google.com/uc?export=view&id=1qq_Q_0kRNopCWl4MxpKemKPuaV0RFmQR"
+              img="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass4.jpg"
+              a="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass4.jpg"
               alt="Radial pattern with eight curving lines etched on glass"
             />
           </Spacer>
@@ -121,8 +121,8 @@ export default function ({slug, name}) {
       <ProjectColumns>
         <Column>
           <Image
-            img="https://drive.google.com/uc?export=view&id=1WbSAaWqVfp2nWl5v5LVKQhCwIW5FMIpG"
-            a="https://drive.google.com/uc?export=view&id=1WbSAaWqVfp2nWl5v5LVKQhCwIW5FMIpG"
+            img="https://users.dma.ucla.edu/~mpeyton/thesis_assets/5.jpg"
+            a="https://users.dma.ucla.edu/~mpeyton/thesis_assets/5.jpg"
             alt="Ten radial patterns, each with a date listed above it, weekdays from June first to June twelvth"
           />
         </Column>
