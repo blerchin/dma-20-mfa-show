@@ -3,7 +3,8 @@
 .container {
   @include container;
   text-align: left;
-  font-size: 21px;
+  font-size: 18px;
+  line-height: 24px;
 }
 
 .columnContainer {
@@ -14,7 +15,8 @@
 }
 
 .header {
-  margin: 0 0 37px;
+  margin-bottom: 18px;
   font-size: 36px;
+  line-height: 42px;
   font-family: var(--header-font);
 }
