@@ -91,12 +91,12 @@ const Seo = ({
       schema,
     })}
     title={title ? `${title} | NEARREST NEIGHBOR` : "NEARREST NEIGHBOR"}
-    link={[{ rel: "canonical", href: absoluteUrl(path) }]}
+    link={[{ rel: "canonical", href: path ? absoluteUrl(path) : rootURL }]}
     meta={getMetaTags({
       title: title ? `${title} | NEARREST NEIGHBOR` : "NEARREST NEIGHBOR",
       description: description
         ? description
-        : "Online exhibition featuring thesis work from the 2020 graduating MFA class of the UCLA Design Media Arts department. Works span the genres of interactive installation, performance, sculpture, software, sound, print and video.",
+        : "UCLA Design Media Arts 2020 MFA Cohort | Online Thesis Exhibition",
       contentType: contentType ? contentType : "website",
       url: path ? absoluteUrl(path) : rootURL,
       published,

@@ -17,7 +17,10 @@ import {
 export default function Info() {
   return (
     <div className={container}>
-      <Seo />
+      <Seo
+      title="Info"
+      path="info"
+      />
       <ProjectColumns className={infoWrapper}>
         <Column>
           <h2 className={infoTitle}>
