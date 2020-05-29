@@ -11,7 +11,7 @@ export default function ({slug, name}) {
     <Artist noCover="true">
       <Seo
         title={name}
-        description="Scelerisque venenatis nibh fames ad quam feugiat leo commodo vitae sed lacus."
+        description="The moment just before a fight. Something I have experienced many times as a Muay Thai fighter."
         path={slug}
       />
       <ProjectHeader

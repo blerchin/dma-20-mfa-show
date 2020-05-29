@@ -18,7 +18,7 @@ import DalenaTran from '../../work/DalenaTran';
 import ErinCooney from '../../work/ErinCooney';
 import GrahamAkins from '../../work/GrahamAkins';
 import HiradSab from '../../work/HiradSab';
-import LemingZc from '../../work/LemingZc';
+import LemingZhong from '../../work/LemingZhong';
 import MilesPeyton from '../../work/MilesPeyton';
 import ZeynepAbes from '../../work/ZeynepAbes';
 
@@ -31,7 +31,7 @@ const comps = {
   ErinCooney,
   GrahamAkins,
   HiradSab,
-  LemingZc,
+  LemingZhong,
   MilesPeyton,
   ZeynepAbes,
 };
