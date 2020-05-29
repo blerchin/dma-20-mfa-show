@@ -15,8 +15,10 @@
 }
 
 .headerArtist {
-  font-size: 22px;
-  line-height: 24px;
+  font-family: var(--header-font);
+  font-size: 20px;
+  line-height: 30px;
+  text-transform: uppercase;
   display: block;
 }
 
