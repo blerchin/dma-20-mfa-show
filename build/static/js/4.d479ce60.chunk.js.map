@@ -1,0 +1,1 @@
+{"version":3,"sources":["polyfill.js"],"names":["cssVars"],"mappings":"igEAIAA","file":"static/js/4.d479ce60.chunk.js","sourcesContent":["import 'core-js';\nimport 'whatwg-fetch';\nimport cssVars from 'css-vars-ponyfill';\n\ncssVars();"],"sourceRoot":""}
