@@ -2,12 +2,9 @@ import React, { useRef, useState, useEffect } from "react";
 import { useLocation, useHistory } from "react-router-dom";
 import config from "src/config";
 import paper from "paper";
-import FontFaceObserver from 'fontfaceobserver';
+import FontFaceObserver from "fontfaceobserver";
 
-import {
-  wrapper,
-  popover,
-} from './style.module.css';
+import { wrapper, popover } from "./style.module.css";
 
 import Blobs from "./blobs";
 
@@ -19,13 +16,14 @@ export default function BlobField() {
   const blobsRef = useRef(null);
   const history = useHistory();
   const [activeArtist, setActiveArtist] = useState(null);
-  const [parentWidth, setParentWidth] = useState('100vw');
-  const [parentHeight, setParentHeight] = useState('100vh');
+  const [parentWidth, setParentWidth] = useState("100vw");
+  const [parentHeight, setParentHeight] = useState("100vh");
   const [popoverStyle, setPopooverStyle] = useState(null);
   const [displayTitle, setDisplayTitle] = useState(false);
+  const [sizeCalculated, setSizeCalculated] = useState(false);
 
   let location = useLocation();
-  const collapsed = location.pathname !== '/';
+  const collapsed = location.pathname !== "/";
 
   function calculateStyle(event, isCollapsed) {
     let style = {
@@ -63,7 +61,7 @@ export default function BlobField() {
       history.push(`/${event.target.artist.slug}`);
     };
 
-    const blobs = blobsRef.current = new Blobs(config.artists);
+    const blobs = (blobsRef.current = new Blobs(config.artists));
     blobs.setOnArtistClicked(onArtistClicked);
     blobs.collapsed = collapsed;
 
@@ -100,6 +98,7 @@ export default function BlobField() {
   useEffect(() => {
     setParentWidth(document.body.clientWidth);
     setParentHeight(window.innerHeight);
+    setSizeCalculated(true);
 
     if (blobsRef.current) {
       const blobs = blobsRef.current;
@@ -116,16 +115,26 @@ export default function BlobField() {
   }, [blobsRef, collapsed]);
 
   useEffect(() => {
-    new FontFaceObserver('Arial Black').load().then(() => {
-      setDisplayTitle(true);
-    }, err => {
-      setDisplayTitle(true); //Displaying the title regardless, but only after timeout
-      console.error('Failed to load fonts!', err);
-    });
+    var font = new FontFaceObserver('Arial Blur'); // Needs to switch to the final font
+    font.load(null, 5000).then(
+      () => {
+        if (navigator.userAgent === "ReactSnap") {
+          // This is to make sure that when pre-rendering we intentionally
+          // set title's "display:none". Meant for preventing FOUT
+          setDisplayTitle(false);
+        } else {
+          setDisplayTitle(true);
+        }
+      },
+      (err) => {
+        setDisplayTitle(true); //Displaying the title regardless, but only after timeout
+        console.error("Failed to load fonts!", err);
+      }
+    );
   }, []);
 
   const style = {
-    cursor: activeArtist ? 'pointer' : 'default'
+    cursor: activeArtist ? "pointer" : "default",
   };
   if (!collapsed) {
     style.width = parentWidth;
@@ -134,17 +143,18 @@ export default function BlobField() {
 
   return (
     <div className="blobs">
-      <div
-        className={wrapper}
-        ref={wrapperEl}
-        style={style}
-      >
+      <div className={wrapper} ref={wrapperEl} style={style}>
         <ArtistNav />
-        <canvas ref={animationEl}/>
+        <canvas ref={animationEl} />
         {collapsed ? (
           ""
         ) : (
-          <h1 className="title" style={{display: displayTitle ? "block" : "none"}}>
+          <h1
+            className="title"
+            style={{
+              display: (displayTitle && sizeCalculated) ? "block" : "none",
+            }}
+          >
             {activeArtist
               ? activeArtist.name.split(" ").map((item, i) => {
                   return <p key={item}>{item.toUpperCase()}</p>;

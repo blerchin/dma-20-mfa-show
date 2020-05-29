@@ -3,9 +3,9 @@
 .container {
   @include ml(m);
   @include mb(l);
-  font-family: var(--link-font);
-  font-size: 36px;
-  line-height: 42px;
+  font-family: var(--header-font);
+  font-size: 30px;
+  line-height: 36px;
   text-align: left;
   position: fixed;
   left: 0;
@@ -29,7 +29,7 @@
 
 .container li a {
   color: white;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .container li a:hover {
