@@ -11,6 +11,9 @@ import Seo from "src/Components/Seo";
 
 import { video } from "./style.module.scss";
 
+import OGImage from "./assets/Graham-ogimage.png";
+
+
 export default function ({slug, name}) {
   const [isFluid, setIsFluid] = useState(false)
   useEffect(() => {
@@ -27,6 +30,7 @@ export default function ({slug, name}) {
         title={name}
         description="A performative investigation of our desire to be close to the animal other in the Anthropocene"
         path={slug}
+        image={OGImage}
       />
       <ProjectHeader
         artistName={name}
