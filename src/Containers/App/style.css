@@ -3,12 +3,10 @@
 body {
   margin: 0;
   font-family: var(--body-font);
-  color: #ffffff;
+  /* color: #ffffff; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  background-color: var(--background-color);
-
+  /* background-color: var(--background-color); */
   /* Disables pull-to-refresh but allows overscroll glow effects. */
   overscroll-behavior-y: none;
 }
@@ -21,11 +19,11 @@ body {
   font-size: 21px;
   line-height: 1.2em;
   position: relative;
-  color: white;
+  /* color: white; */
 }
 
 .title {
-  color: var(--text-accent);
+  /* color: var(--text-accent); */
   font-size: 13vw;
   font-family: var(--title-font);
   font-weight: 400;
@@ -76,6 +74,12 @@ ol {
   z-index:999;
 }
 
+button {
+  position: absolute;
+  margin-top: 20px;
+  /* background: red; */
+  z-index: 99999;
+}
 
 html {
   --scrollbarBG: rgb(155, 155, 155);
