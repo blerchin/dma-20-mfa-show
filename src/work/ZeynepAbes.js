@@ -16,7 +16,7 @@ export default function ({slug, name}) {
     <Artist>
       <Seo
         title={name}
-        description="Memory place navigates through three moments of memory when I visit my home."
+        description="An exploration of three moments of memory particular to the fraying certainty of my home."
         path={slug}
       />
       <ProjectHeader
@@ -100,25 +100,16 @@ export default function ({slug, name}) {
         <Column>
           <ProjectDescription>
             <p>
-              Memory place navigates through three moments of memory when I
-              visit my home. These emotional spaces attempt to explore the
-              relationship between personal and public memories and how specific
-              moments from our past remain as a constant reminder of what home
-              can be. In a time where many of our interactions are mediated,
-              Memory Place investigates the specific kind of alienation that
-              arises from experiencing significant events at home in mediated
-              ways.
+            An exploration of three moments of memory particular to the fraying certainty of my home. The piece navigates through visualizations of private and public recollections, delving into the Istanbul I once called home, now existing increasingly more as an idea than a place.
             </p>
             <p>
               Credits:
               <br />
               Sounds Designer - Devin Embil
               <br />
-              Point cloud model of Turkish airlines flight - Adam Ciler
+              Point cloud model of Turkish airlines flight - Adam Cigler
               <br />
-              Special thanks to Jennifer Steinkamp, Steve Anderson, Eddo Stern,
-              Noa Kaplan, Emine S. Tonguc &amp; Ayse Torfilli. Your support is
-              immensely appreciated.
+              Special thanks to Jennifer Steinkamp, Steve Anderson, Eddo Stern, Noa Kaplan, Emine S. Tonguc &amp; Ayse Torfilli. Your support is immensely appreciated.
             </p>
           </ProjectDescription>
         </Column>

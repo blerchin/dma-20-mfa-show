@@ -17,7 +17,11 @@ export default function ({slug, name}) {
     <Artist>
       <Seo
         title={name}
-        description="Scelerisque venenatis nibh fames ad quam feugiat leo commodo vitae sed lacus."
+        description="An analysis of the digital proliferation and mediation of the body
+              in the contemporary politics of image, “Body Troubles“ is a
+              rhetorical and discursive attempt at locating the virtual body and
+              its implications in a climate of economic disparity and political
+              discontent."
         path={slug}
       />
       <ProjectHeader

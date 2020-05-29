@@ -3,19 +3,20 @@
 .container {
   @include container;
   text-align: left;
-  font-size: 21px;
+  font-size: 18px;
+  line-height: 24px;
 }
 
 .columnContainer {
   margin-top: 1em !important;
-  @include ph(0);
-  @include medium {
-    max-width: 100% !important;
-  }
+  max-width: 100% !important;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .header {
-  margin: 0 0 37px;
+  margin-bottom: 18px;
   font-size: 36px;
+  line-height: 42px;
   font-family: var(--header-font);
 }

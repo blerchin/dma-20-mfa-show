@@ -21,7 +21,7 @@
 :root {
   --background-color: #000;
   --body-font: Arial, Helvetica, sans-serif;
-  --header-font: Arial Black, Gadget, sans-serif;
+  --header-font: "Arial Black", Gadget, sans-serif;
   --title-font: "Arial Blur";
   --link-font: "Arial Narrow", sans-serif;
   --text-accent: #ffffe6;

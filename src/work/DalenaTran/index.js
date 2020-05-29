@@ -24,7 +24,6 @@ import ProjectCover from "../../Components/ProjectCover";
 import ProjectHeader from "../../Components/ProjectHeader";
 import ArtistBio from "../../Components/ArtistBio";
 import ProjectColumns, { Column } from "../../Components/ProjectColumns";
-// import ProjectLink from "../../Components/ProjectLink";
 import ProjectDescription from "../../Components/ProjectDescription";
 import Image from "../../Components/Image";
 
@@ -93,8 +92,9 @@ export default function ({slug, name}) {
     <Artist>
       <Seo
         title={name}
-        description="A dynamic web installation about the void that occurs in the process of translation"
+        description="A web installation about the void that occurs in the process of translation"
         path={slug}
+        image={DalenaImage2}
       />
       <ProjectHeader
         artistName="Dalena Tran"
