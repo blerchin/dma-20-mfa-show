@@ -1,15 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-import Artist from "../Containers/Artist";
-import Gradient from "../Components/Gradient";
-import ProjectHeader from "../Components/ProjectHeader";
-import { CoverItem } from "../Components/ProjectCover";
-import ProjectDescription from "../Components/ProjectDescription";
-import ProjectColumns, { Column } from "../Components/ProjectColumns";
-import Vimeo from "../Components/VideoVimeo";
-import Seo from "../Components/Seo";
+import Artist from "src/Containers/Artist";
+import Gradient from "src/Components/Gradient";
+import ProjectHeader from "src/Components/ProjectHeader";
+import { CoverItem } from "src/Components/ProjectCover";
+import ProjectDescription from "src/Components/ProjectDescription";
+import ProjectColumns, { Column } from "src/Components/ProjectColumns";
+import Vimeo from "src/Components/VideoVimeo";
+import Seo from "src/Components/Seo";
+
+import { video } from "./style.module.scss";
 
 export default function ({slug, name}) {
+  const [isFluid, setIsFluid] = useState(false)
+  useEffect(() => {
+    const onResize = () => {
+      setIsFluid(document.body.clientWidth < 769);
+    };
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  });
   return (
     <Artist>
       <Gradient/>
@@ -23,12 +33,13 @@ export default function ({slug, name}) {
         title="Approximate Other (Tower &amp; Stage)"
         materials="trail cameras, wooden stages, wooden tower, zentai suit, &amp; photogrammetry"
         link="https://grahamakins.cargo.site"
-        fluidLayout
+        fluidLayout={isFluid}
       />
-      <CoverItem fluidLayout>
+      <CoverItem fluidLayout={isFluid}>
         <ProjectColumns>
           <Column>
             <Vimeo
+              className={video}
               url="https://player.vimeo.com/video/422619346?color=ffffff&amp;title=0&amp;byline=0&amp;portrait=0"
               padding="125%"
             />
