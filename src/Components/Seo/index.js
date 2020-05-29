@@ -4,7 +4,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
 
-const rootURL = `https://kind-tesla-a088c1.netlify.app`;
+const rootURL = `http://deploy-preview-102--kind-tesla-a088c1.netlify.app/`;
 const absoluteUrl = (path) => `${rootURL}/${path}`;
 const seoImageURL = (file) => `${rootURL}${file}`;
 
@@ -97,7 +97,7 @@ const Seo = ({
       description: description
         ? description
         : "Online exhibition featuring thesis work from the 2020 graduating MFA class of the UCLA Design Media Arts department. Works span the genres of interactive installation, performance, sculpture, software, sound, print and video.",
-      contentType,
+      contentType: contentType ? contentType : "website",
       url: path ? absoluteUrl(path) : rootURL,
       published,
       updated,
