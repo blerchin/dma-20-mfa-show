@@ -33,9 +33,9 @@ export default function Info() {
               with some luck slides into more substantial intimacy. The 2020
               UCLA DMA MFA thesis exhibition{" "}
               <span className={nnTitle}>NEARREST NEIGHBOR</span> reflects and
-              enacts a navigation of proximity, with the title referring to at
-              once to permutations of closeness, as well as its various
-              applications as an algorithm (the nearest neighbor search).
+              enacts a navigation of proximity, with the title referring at once
+              to permutations of closeness, as well as its various applications
+              as an algorithm (the nearest neighbor search).
             </p>
             <p>
               The swift and unexpected transition from an IRL to online format
@@ -58,21 +58,20 @@ export default function Info() {
               AI, bees, and sunlight among its agents.
             </p>
             <p>
-              The increasingly more apparent tensions between embodied and
-              mediated experience is a through line. Dalena Tran's{" "}
+              TThe increasingly more apparent tensions between embodied and
+              mediated experience is a through line. Dalena Tran’s{" "}
               <Link to="/dalena-tran" className={infoLink}>
                 Acts in Translation
               </Link>{" "}
-              is a dynamic web installation, consisting of a static video shot
-              of two windows, overlaid with infinite configurations of ambient
-              audio recordings collected from individuals in isolation around
-              the world and stories written by the artist. Tran’s use of
-              cinematic framing emphasizes the fixed and limited format in which
-              we are being given information: the ambient audio originates in
-              specific human moments but now complicates context. These kinds of
-              cultural gaps and losses that occur through mediation and
-              translation are a key interest of Tran’s, which the narratives we
-              hear reflect.
+              is a dynamic web installation, consisting of a video of two
+              windows, overlaid with infinite configurations of ambient audio
+              recordings collected from individuals in isolation around the
+              world and stories written by the artist. Tran’s use of cinematic
+              framing emphasizes the fixed and limited format in which we are
+              being given information: the ambient audio originates in specific
+              human moments but now complicates context. These kinds of cultural
+              gaps and losses that occur through mediation and translation are
+              key interests of Tran’s, which are reflected in the narratives.
             </p>
             <p>
               Hirad Sab’s{" "}
@@ -135,40 +134,40 @@ export default function Info() {
               software to explore the American West, its existence in images,
               and the physical yet often invisible structures that make it
               habitable. Lerchin has been developing interventions relating to
-              recently purchased land use and energy production in the Antelope
-              Valley, where electrical transmission lines, the LA aqueduct, a
-              wind farm, solar farms, and mines dominate the landscape. The work
-              shares a name with the video presented for the exhibition:{" "}
+              land use and energy production in the Antelope Valley, where
+              electrical transmission lines, the LA aqueduct, a wind farm, solar
+              farms, and mines dominate the landscape. The work shares a name
+              with the video presented for the exhibition:{" "}
               <Link to="/ben-lerchin" className={infoLink}>
-                YIMBY
-              </Link>{" "}
-              (Yes, in My Backyard), in response to the NIMBY movement, which,
-              among other things, has had the effect of relegating
-              infrastructure to rural communities with limited political power.
-              The video is a stand-in for the Lerchin’s material explorations,
-              consisting of drone footage, cell phone videos, and photos of
-              Lerchin’s trips there. Confinement and distance have come to have
-              a two-fold effect, as the site exists to be used, visited, and
-              experienced in response to alienation from the natural world.
+                YIMBY (Yes, in My Backyard)
+              </Link>
+              , in response to the NIMBY movement, which, among other things,
+              has had the effect of relegating infrastructure to rural
+              communities with limited political power. The video is a stand-in
+              for the Lerchin’s material explorations, consisting of drone
+              footage, cell phone videos, and photos of Lerchin’s trips there.
+              Confinement and distance have come to have a two-fold effect, as
+              the site exists to be used, visited, and experienced in response
+              to alienation from the natural world.
             </p>
             <p>
-              Zeynep Abes's{" "}
+              In{" "}
               <Link to="/zeynep-abes" className={infoLink}>
                 Memory Place
               </Link>{" "}
-              considers the social distancing particular to those in chosen or
-              imposed displacement from the place they once considered home.
-              From Turkey, Abes’s mother sends her photos of the childhood home,
-              street, and city she left a decade ago. These are processed as
-              photogrammetry scans, whose tenuous appearance makes visual the
-              tender pain of fading memories. While the domestic space remains
-              largely untouched, with the same foods and furniture waiting to
-              welcome her, the Istanbul she called home exists increasingly more
-              as an idea than a place. Private and public memories overlap like
-              images and their referents, with significant sociopolitical events
-              experienced via social media and family coming together on
-              screens. Now, this alienation only proliferates, too nimbly
-              grafting onto our collective moment.
+              , Zeynep Abes considers the social distancing particular to those
+              in chosen or imposed displacement from the place they once
+              considered home. From Turkey, Abes’s mother sends her photos of
+              the childhood home, street, and city she left a decade ago. These
+              are processed as photogrammetry scans, whose tenuous appearance
+              makes visual the tender pain of fading memories. While the
+              domestic space remains largely untouched, with the same foods and
+              furniture waiting to welcome her, the Istanbul she called home
+              exists increasingly more as an idea than a place. Private and
+              public memories overlap like images and their referents, with
+              significant sociopolitical events experienced via social media and
+              family coming together on screens. Now, this alienation only
+              proliferates, too nimbly grafting onto our collective moment.
             </p>
             <p>
               Erin Cooney’s{" "}
@@ -180,7 +179,8 @@ export default function Info() {
               environments, situated knowledge, and place to the surroundings
               that she suddenly was forced into sustained intimacy with. Mapping
               a labyrinth based on the one in Chartres Cathedral onto the entire
-              apartment, Cooney follows it from wall-to-wall, scaling every
+              apartment, Cooney walks the entire pathway, which covers the
+              apartment's surface area from wall-to-wall,, scaling every
               surface, including furniture, recording the journey with cameras
               attached to her feet. As with any pilgrimage, transformation, both
               external and internal, is at stake. Cooney makes the unfamiliar
@@ -197,7 +197,7 @@ export default function Info() {
               <Link to="/graham-akins" className={infoLink}>
                 Approximate Other
               </Link>
-              , Landscape and place become non-spaces created through layers of
+              , landscape and place become non-spaces created through layers of
               both digital and sculptural means. In this hyper saturated world,
               human movement and its motivations are awkward and non-sensical,
               only as knowable as any other animal’s.
@@ -206,23 +206,23 @@ export default function Info() {
               The blurring of previously sacrosanct boundaries is another
               negotiation of intimacy. Miles Peyton’s interest in membranes that
               enclose material from the outside world as the minimal entity that
-              can be considered a self led to this piece consisting of a liquid
-              lens, which sits on conductive glass etched with a pattern,
-              becoming both image and electrical circuit when illuminated by the
-              sun - electricity animates the liquid. In{" "}
+              can be considered a self led to{" "}
               <Link to="/miles-peyton" className={infoLink}>
                 Sunlit waterneither
               </Link>
-              , the elements lend an alchemical bent to Peyton’s image-making
-              technology, as well as his use of the word “sigil” to describe the
-              etched patterns. Faced with the projection, one is caught between
-              an identifying moment, a recognition of life in its primordial
-              form, and the creepy uncertainty of whether what is moving is dead
-              or alive.
+              , consisting of a liquid lens, which sits on conductive glass
+              etched with a pattern, becoming both image and electrical circuit
+              when the liquid is illuminated by the sun by the sun. The elements
+              lend an alchemical bent to Peyton’s image-making technology, as
+              well as his use of the word “sigil” to describe the etched
+              patterns. Faced with the projection, one is caught between an
+              identifying moment, a recognition of life in its primordial form,
+              and the creepy uncertainty of whether what is moving is dead or
+              alive.
             </p>
             <p>
               The slipperiness between the living and the non-living is also
-              explored through Berfin Ataman’s kinetic fabric sculptures in{" "}
+              explored through Berfin Ataman’s kinetic fabric sculpture{" "}
               <Link to="/berfin-ataman" className={infoLink}>
                 Raising Quills
               </Link>
@@ -236,29 +236,29 @@ export default function Info() {
               perception and its emotional effects.
             </p>
             <p>
-              Continuing this vein of inquiry, Leming Chung presents the video
-              element of a larger installation stemming from her interest in
-              biopolitics and networks. In{" "}
-              <Link to="/berfin-ataman" className={infoLink}>
+              Continuing this vein of inquiry, Leming Chung presents{" "}
+              <Link to="/leming-zc" className={infoLink}>
                 My doctor's prescription for my pollen allergy is to let the
                 light illuminate everywhere
-              </Link>
-              , the uneasy division between the self and the other, what belongs
-              and what does not, is narrated through the story of a single bee
-              who experiences an allergic reaction. Like the allergen itself,
-              this bee is an innocuous part of a whole turned into an invader.
-              Unlike say, a virus, an allergy is an internal process that
-              consists of the body’s overreaction to an otherwise harmless
-              event. Taking these minuscule life forms as starting points, Chung
-              encourages reflection on the diseased and disrupted individual
-              body, as well the social body’s efforts to control it.
+              </Link>{" "}
+              the video element of a larger installation stemming from her
+              interest in biopolitics and networks. The uneasy division between
+              the self and the other, what belongs and what does not, is
+              narrated through the story of a single bee who experiences an
+              allergic reaction. Like the allergen itself, this bee is an
+              innocuous part of a whole turned into an invader. Unlike say, a
+              virus, an allergy is an internal process that consists of the
+              body’s overreaction to an otherwise harmless event. Taking these
+              minuscule life forms as starting points, Chung encourages
+              reflection on the diseased and disrupted individual body, as well
+              the social body’s efforts to control it.
             </p>
             <p>
               The artists negotiate movement through landscapes and networks,
               among the human, non-human, and the in-between. This with a
               recognition of nearness, the gravity of our intimacies, calculated
               proximity and distance in computation, within a cohort, a socially
-              distant society, an exhibition.
+              distant society, an exhibition.n.
             </p>
             <p>
               <b>-Ana Iwataki</b>
