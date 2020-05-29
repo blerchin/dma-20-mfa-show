@@ -62,7 +62,7 @@ export default function Info() {
               AI, bees, and sunlight among its agents.
             </p>
             <p>
-              TThe increasingly more apparent tensions between embodied and
+              The increasingly more apparent tensions between embodied and
               mediated experience is a through line. Dalena Tran’s{" "}
               <Link to="/dalena-tran" className={infoLink}>
                 Acts in Translation
