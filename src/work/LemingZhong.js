@@ -17,13 +17,13 @@ export default function ({slug, name}) {
     <Artist>
       <Seo
         title={name}
-        description="This is a three-character monologue about be-ing, bee, and bees. This video is part of a future sculpture."
+        description="This is a three-character monologue about be-ing, bee, and bees."
         path={slug}
       />
       <ProjectHeader
         artistName={name}
         title="My doctor's prescription for my pollen allergy is to let the light illuminate everywhere"
-        materials="8 minute video"
+        materials="Video"
         link="https://lemingchung.com"
       />
       <ProjectCover>
@@ -35,7 +35,7 @@ export default function ({slug, name}) {
         <Column>
           <ProjectDescription>
             <p>
-              This is a three-character monologue about be-ing, bee, and bees. This video is part of a future sculpture.
+            This is a three-character monologue about be-ing, bee, and bees.
             </p>
           </ProjectDescription>
         </Column>
@@ -45,11 +45,18 @@ export default function ({slug, name}) {
           <Vimeo url="https://www.youtube.com/embed/7CJ8DJtU9bE" />
         </Column>
       </ProjectColumns>
+      <ProjectColumns>
+        <Column>
+          <ProjectDescription>
+            <p>
+            This video is alongside a future sculpture.
+            </p>
+          </ProjectDescription>
+        </Column>
+      </ProjectColumns>
       <ArtistBio>
         <p>
-          Leming Zhong is having an interdisciplinary practice with diagram, sculpture installation and video.
-          <br/>I am currently exploring the inferior and external body and system, anthropomorphizing inanimate matter while objectifying power dynamics. 
-          <br/>Leming lives in Los Angeles. 
+        Leming Zhong's interdisciplinary practice spans drawing, sculpture, installation and video. I am currently exploring bodies and systems, from inside and outside, and strategies to anthropomorphize inanimate matter while objectifying power dynamics. Leming lives in Los Angeles.
         </p>
       </ArtistBio>
     </Artist>

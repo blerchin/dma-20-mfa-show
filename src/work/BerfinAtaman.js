@@ -65,7 +65,7 @@ export default function ({slug, name}) {
         <Column>
           <ProjectDescription>
             <p>
-              “Raising Quills” evokes curiosity by putting the audience into bizzare interactions in a surreal world. The piece connects the ceiling to the floor as a way to draw attention to the structure of the building, and the movement is designed to entice people to interact with the piece as well as the environment, bringing life to an otherwise lifeless space. I am passionate about creating physically interactive installations and sculptures in order to investigate our relations to the non-human objects and systems we interrupt or become part of everyday. We have a tendency to humanize objects, and my work focuses on exploiting this natural instinct by combining movement, color, shape, and location.
+            I stretch above and below to connect the ends in a new way. They’re a part of me and I of them.  I hold out my quills to extend my home. If you and I should share a touch, I would show you the spaces between. I move on my own, not with the wind, not towards the sun, nor do I need water. I contain all within myself. You decide who I am, what I am, where I am from.
             </p>
           </ProjectDescription>
         </Column>

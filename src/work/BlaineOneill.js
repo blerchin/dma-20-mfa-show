@@ -17,7 +17,7 @@ export default function ({slug, name}) {
     <Artist>
       <Seo
         title={name}
-        description="Scelerisque venenatis nibh fames ad quam feugiat leo commodo vitae sed lacus."
+        description="Interest ↝ Enjoyment ↝ Surprise ↝ Shame ↺"
         path={slug}
       />
       <ProjectHeader
