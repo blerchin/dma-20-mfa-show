@@ -44,7 +44,7 @@ export default function ({slug, name}) {
           muted
           autoPlay
           loop
-          poster={Enclosure}
+          poster={Enclosure.images.find(({ width }) => width === 1200 ).path}
           style={{ width: '100%', height: 'auto'}}
           src={EnclosureLoopMp4}
           srcOgg={EnclosureLoopOgg}
