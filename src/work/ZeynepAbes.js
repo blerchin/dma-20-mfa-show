@@ -11,6 +11,9 @@ import VideoVimeo from "../Components/VideoVimeo";
 import Seo from "../Components/Seo";
 import ProjectDescription from "../Components/ProjectDescription";
 
+import OGImage from "./assets/Zeynep-ogimage.png";
+
+
 export default function ({slug, name}) {
   return (
     <Artist>
@@ -18,6 +21,7 @@ export default function ({slug, name}) {
         title={name}
         description="An exploration of three moments of memory particular to the fraying certainty of my home."
         path={slug}
+        image={OGImage}
       />
       <ProjectHeader
         artistName={name}
