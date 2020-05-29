@@ -53,9 +53,9 @@ export default function Info() {
               being-in-common”…applied to “doings, engagements, or unfoldings
               amongst and between (human, non-human, chemical, physical,
               biological, meteorological, other) bodies.”{" "}
-              <Link to="#c1" className={citeLink}>
+              <a href="#c1" id="c1f" className={citeLink}>
                 <sup>[1]</sup>
-              </Link>{" "}
+              </a>{" "}
               A focus on transhuman collaborations and ways of making offers a
               common ground from which to consider the eleven individual
               practices that together make this single exhibition that counts
@@ -148,7 +148,7 @@ export default function Info() {
               , in response to the NIMBY movement, which, among other things,
               has had the effect of relegating infrastructure to rural
               communities with limited political power. The video is a stand-in
-              for the Lerchin’s material explorations, consisting of drone
+              for Lerchin’s material explorations, consisting of drone
               footage, cell phone videos, and photos of Lerchin’s trips there.
               Confinement and distance have come to have a two-fold effect, as
               the site exists to be used, visited, and experienced in response
@@ -267,9 +267,9 @@ export default function Info() {
               <strong>—Ana Iwataki</strong>
             </p>
             <p className={citeText}>
-              <Link id="c1" className={citeLink}>
+              <a id="c1" href="#c1f" className={citeLink}>
                 <sup>[1]</sup>
-              </Link>{" "}
+              </a>{" "}
               Neimanis, Astrida. “On Collaboration (for Barbara Godard).” NORA -
               Nordic Journal of Feminist and Gender Research, vol. 20, no. 3,
               2012, pp. 215–221., doi:10.1080/08038740.2012.703689.
