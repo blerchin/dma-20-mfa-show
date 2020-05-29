@@ -216,7 +216,7 @@ export default function Info() {
               </Link>
               , consisting of a liquid lens, which sits on conductive glass
               etched with a pattern, becoming both image and electrical circuit
-              when the liquid is illuminated by the sun by the sun. The elements
+              when the liquid is illuminated by the sun. The elements
               lend an alchemical bent to Peyton’s image-making technology, as
               well as his use of the word “sigil” to describe the etched
               patterns. Faced with the projection, one is caught between an
