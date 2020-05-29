@@ -1,7 +1,7 @@
 export default function TimeEngine(cb) {
   this.globalOffset = null;
   this.globalCurrent = null;
-  this.systemTime = null;
+  this.systemTime = new Date().getTime();
   this.currentTime = null;
   this.globalCurrMin = null;
   this.globalCurrSec = null;
@@ -27,7 +27,7 @@ TimeEngine.prototype = {
         // this.globalOffset = minutes % 60;
         this.globalOffset = utcLocal;
   
-        this.systemTime = new Date();
+        this.systemTime = new Date().getTime();
   
         this.tick();
         this.isSetup = true;
@@ -36,7 +36,7 @@ TimeEngine.prototype = {
 
   tick() {
     this.currentTime = new Date();
-    var diff = this.currentTime.getTime() - this.systemTime.getTime();
+    var diff = this.currentTime.getTime() - this.systemTime;
     this.globalCurrent = diff / 1000;
     if (this.keepTicking){
       requestAnimationFrame(this.tick.bind(this));

@@ -4,8 +4,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
 
-const rootURL = `https://kind-tesla-a088c1.netlify.app`;
-const absoluteUrl = (path) => `${rootURL}/${path}`;
+const rootURL = `https://near.rest`;
+const absoluteUrl = (path) => `${rootURL}/${path}/`;
 const seoImageURL = (file) => `${rootURL}${file}`;
 
 const getMetaTags = ({
@@ -91,13 +91,13 @@ const Seo = ({
       schema,
     })}
     title={title ? `${title} | NEARREST NEIGHBOR` : "NEARREST NEIGHBOR"}
-    link={[{ rel: "canonical", href: absoluteUrl(path) }]}
+    link={[{ rel: "canonical", href: path ? absoluteUrl(path) : rootURL }]}
     meta={getMetaTags({
       title: title ? `${title} | NEARREST NEIGHBOR` : "NEARREST NEIGHBOR",
       description: description
         ? description
-        : "Online exhibition featuring thesis work from the 2020 graduating MFA class of the UCLA Design Media Arts department. Works span the genres of interactive installation, performance, sculpture, software, sound, print and video.",
-      contentType,
+        : "UCLA Design Media Arts 2020 MFA Cohort | Online Thesis Exhibition",
+      contentType: contentType ? contentType : "website",
       url: path ? absoluteUrl(path) : rootURL,
       published,
       updated,
