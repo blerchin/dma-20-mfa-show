@@ -28,41 +28,28 @@ export default function ({slug, name}) {
         materials="solar projection of liquid lens"
         link="http://www.milespeyton.info"
       />
-      <ProjectCover mt="15em" noMobileFade="true">
+      <ProjectCover>
+          <Image
+            img="https://drive.google.com/uc?export=view&id=1Nt77hayEZpybJiOi57UgsP0fHDAi36wE"
+            a="https://drive.google.com/uc?export=view&id=1Nt77hayEZpybJiOi57UgsP0fHDAi36wE"
+            alt="Projection of liquid on grey board. A radial pattern, slightly degraded on the edges, is visible, as well as the liquid which has areas of blue and orange."
+          />
+      </ProjectCover>
+      <ProjectColumns>
+        <Column>
           <Vimeo
             url="https://player.vimeo.com/video/419788716"
             padding="56.25%"
-            isFullHeight="true"
           />
-      </ProjectCover>
+        </Column>
+      </ProjectColumns>
       <ProjectColumns>
         <Column>
           <ProjectDescription>
             <p>
               <i>water, sunlight, silicone oil, laser etched conductive glass, lenses, 3d printed plastic, electronics, hardware</i>
             </p>
-            <p>
-            I was born from mud, unearthed from the ocean floor and sealed in a jar. The workers who extracted me were aboard the Cyclops, a ship that was laying network cables between Europe and North America. When the ship returned to land, the jar containing my body was sent to a biologist for examination.
-            </p>
-            <p>
-            After ten years of neglect, the biologist removed the mud sample from storage and dispensed a droplet onto a glass slide. Through the lens of the microscope, he observed a network of veins. He watched as a section of my body protruded across the glass, and engulfed a small particle.
-            </p>
-            <p>
-            The presence of animation was enough to convince him that I was an ancient slime organism called protoplasm, thought to be the first instance, and fundamental unit of life. The biologist recalled that I was dredged up from the ocean floor. He imagined slime streaming and pulsating in a deep abyss, and was taken by this image of creation in total darkness. He named me <i>Bathybius</i>, which means “deep life," and declared in speeches that my body, in the form of a continuous mat, spanned the ocean floor, and likely covered the entire earth.
-            </p>
-            <p>
-            For several years, I was classified as a living organism. My arrival gave weight to a certain narrative of how life first emerged from nonliving matter, and the imagery associated with primordial ocean slime had its own appeal. Then, to the biologist's humiliation, a paper was published that demonstrated that my movements were not caused by any living process, but instead by a reaction between mud and alcohol, which was added to the sample as a preservative. My lifelike, animate qualities were shown to be the unintended byproduct of human intervention. Aside from questions of animacy, the author had reasons to doubt the primordial story attached to my name. The first life on earth, she wrote, was the transmutation of sunlight, accessible on the ocean's surface but absent in its depths. I was reclassified as nonlife, a found automaton. 
-            </p>
           </ProjectDescription>
-        </Column>
-      </ProjectColumns>
-      <ProjectColumns>
-        <Column>
-          <Image
-            img="https://drive.google.com/uc?export=view&id=1Nt77hayEZpybJiOi57UgsP0fHDAi36wE"
-            a="https://drive.google.com/uc?export=view&id=1Nt77hayEZpybJiOi57UgsP0fHDAi36wE"
-            alt="Projection of liquid on grey board. A radial pattern, slightly degraded on the edges, is visible, as well as the liquid which has areas of blue and orange."
-          />
         </Column>
       </ProjectColumns>
       <ProjectColumns>
@@ -138,6 +125,24 @@ export default function ({slug, name}) {
             a="https://drive.google.com/uc?export=view&id=1WbSAaWqVfp2nWl5v5LVKQhCwIW5FMIpG"
             alt="Ten radial patterns, each with a date listed above it, weekdays from June first to June twelvth"
           />
+        </Column>
+      </ProjectColumns>
+      <ProjectColumns>
+        <Column>
+          <ProjectDescription>
+            <p>
+            I was born from mud, unearthed from the ocean floor and sealed in a jar. The workers who extracted me were aboard the Cyclops, a ship that was laying network cables between Europe and North America. When the ship returned to land, the jar containing my body was sent to a biologist for examination.
+            </p>
+            <p>
+            After ten years of neglect, the biologist removed the mud sample from storage and dispensed a droplet onto a glass slide. Through the lens of the microscope, he observed a network of veins. He watched as a section of my body protruded across the glass, and engulfed a small particle.
+            </p>
+            <p>
+            The presence of animation was enough to convince him that I was an ancient slime organism called protoplasm, thought to be the first instance, and fundamental unit of life. The biologist recalled that I was dredged up from the ocean floor. He imagined slime streaming and pulsating in a deep abyss, and was taken by this image of creation in total darkness. He named me <i>Bathybius</i>, which means “deep life," and declared in speeches that my body, in the form of a continuous mat, spanned the ocean floor, and likely covered the entire earth.
+            </p>
+            <p>
+            For several years, I was classified as a living organism. My arrival gave weight to a certain narrative of how life first emerged from nonliving matter, and the imagery associated with primordial ocean slime had its own appeal. Then, to the biologist's humiliation, a paper was published that demonstrated that my movements were not caused by any living process, but instead by a reaction between mud and alcohol, which was added to the sample as a preservative. My lifelike, animate qualities were shown to be the unintended byproduct of human intervention. Aside from questions of animacy, the author had reasons to doubt the primordial story attached to my name. The first life on earth, she wrote, was the transmutation of sunlight, accessible on the ocean's surface but absent in its depths. I was reclassified as nonlife, a found automaton. 
+            </p>
+          </ProjectDescription>
         </Column>
       </ProjectColumns>
       <ArtistBio>
