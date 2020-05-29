@@ -6,6 +6,9 @@ import Vimeo from "../Components/VideoVimeo";
 import Seo from "../Components/Seo";
 import ProjectDescription from "../Components/ProjectDescription";
 
+import OGImage from "./assets/Clara-ogimage.png";
+
+
 export default function ({slug, name}) {
   return (
     <Artist noCover="true">
@@ -13,12 +16,14 @@ export default function ({slug, name}) {
         title={name}
         description="The moment just before a fight. Something I have experienced many times as a Muay Thai fighter."
         path={slug}
+        image={OGImage}
       />
       <ProjectHeader
         artistName={name}
         title="I am defeat"
         materials="60 minute video"
         link="http://leivas.se"
+        fluidLayout
       />
       <ProjectColumns>
         <Column>

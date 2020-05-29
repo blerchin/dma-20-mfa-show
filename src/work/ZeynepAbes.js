@@ -4,49 +4,57 @@ import Artist from "../Containers/Artist";
 import ProjectHeader from "../Components/ProjectHeader";
 import ArtistBio from "../Components/ArtistBio";
 import ProjectColumns, { Column } from "../Components/ProjectColumns";
+import { CoverItem } from "../Components/ProjectCover";
 import Spacer from "../Components/Spacer";
 import VideoVimeo from "../Components/VideoVimeo";
 
 import Seo from "../Components/Seo";
 import ProjectDescription from "../Components/ProjectDescription";
 
+import OGImage from "./assets/Zeynep-ogimage.png";
+
+
 export default function ({slug, name}) {
   return (
-    <Artist noCover="true">
+    <Artist>
       <Seo
         title={name}
         description="An exploration of three moments of memory particular to the fraying certainty of my home."
         path={slug}
+        image={OGImage}
       />
       <ProjectHeader
         artistName={name}
         title="Memory Place"
         materials="Point cloud models: Istiklal street, My mother's dinner table, Turkish airlines flight"
         link="https://www.zeynepmadethis.com"
+        fluidLayout
       />
-      <ProjectColumns>
-        <Column>
-          <>
-            <VideoVimeo
-              url="https://player.vimeo.com/video/423320003?title=0&byline=0&portrait=0"
-              padding="56.25%"
-            />
-            <Spacer isPartialWidth="true">
-              <p>
-              My home has felt like a different place every time I visit. I
-              shared a hope like many others who leave their home countries, the
-              hope to bring something of value back. Yet, this dream has become
-              a harder reality, a reality that we fear will never happen. A
-              naive imagination of emotion freed from the fetters of tradition;
-              individual creativity; justice and tolerance; respect for
-              difference. With such a loss of freedom of thought, home now
-              represents the loss of a collective memory of a peculiar city. A
-              site of intense melancholy that I’m afraid to dream a future in.
-              </p>
-            </Spacer>
-          </>
-        </Column>
-      </ProjectColumns>
+      <CoverItem fluidLayout>
+        <ProjectColumns>
+          <Column>
+            <>
+              <VideoVimeo
+                url="https://player.vimeo.com/video/423320003?title=0&byline=0&portrait=0"
+                padding="56.25%"
+              />
+              <Spacer isPartialWidth="true">
+                <p>
+                My home has felt like a different place every time I visit. I
+                shared a hope like many others who leave their home countries, the
+                hope to bring something of value back. Yet, this dream has become
+                a harder reality, a reality that we fear will never happen. A
+                naive imagination of emotion freed from the fetters of tradition;
+                individual creativity; justice and tolerance; respect for
+                difference. With such a loss of freedom of thought, home now
+                represents the loss of a collective memory of a peculiar city. A
+                site of intense melancholy that I’m afraid to dream a future in.
+                </p>
+              </Spacer>
+            </>
+          </Column>
+        </ProjectColumns>
+      </CoverItem>
       <ProjectColumns>
         <Column>
           <>

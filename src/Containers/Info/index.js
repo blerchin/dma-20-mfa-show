@@ -17,7 +17,10 @@ import {
 export default function Info() {
   return (
     <div className={container}>
-      <Seo />
+      <Seo
+      title="Info"
+      path="info"
+      />
       <ProjectColumns className={infoWrapper}>
         <Column>
           <h2 className={infoTitle}>
@@ -62,7 +65,7 @@ export default function Info() {
               AI, bees, and sunlight among its agents.
             </p>
             <p>
-              TThe increasingly more apparent tensions between embodied and
+              The increasingly more apparent tensions between embodied and
               mediated experience is a through line. Dalena Tran’s{" "}
               <Link to="/dalena-tran" className={infoLink}>
                 Acts in Translation
@@ -80,7 +83,7 @@ export default function Info() {
             <p>
               Hirad Sab’s{" "}
               <Link to="/hirad-sab" className={infoLink}>
-                Figure 1
+                Figure 1.
               </Link>{" "}
               probes the ontology of digital personhood in a video populated by
               computer generated bodies, faces, and voices. Sab’s video

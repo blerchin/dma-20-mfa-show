@@ -103,7 +103,7 @@ export default function ({slug, name}) {
         materials="Web Installation, Infinite Duration"
         link="https://dalena.me"
       />
-      <ProjectCover className={dtPCover}>
+      <ProjectCover className={dtPCover} noShim>
         <Column>
           <Image
             img={DalenaImage1}
