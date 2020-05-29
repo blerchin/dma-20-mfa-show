@@ -80,7 +80,7 @@ export default function Info() {
             <p>
               Hirad Sab’s{" "}
               <Link to="/hirad-sab" className={infoLink}>
-                Figure 1
+                Figure 1.
               </Link>{" "}
               probes the ontology of digital personhood in a video populated by
               computer generated bodies, faces, and voices. Sab’s video
