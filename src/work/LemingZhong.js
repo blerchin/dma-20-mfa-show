@@ -43,7 +43,7 @@ export default function ({slug, name}) {
       </ProjectColumns>
       <ProjectColumns>
         <Column>
-          <Vimeo url="https://www.youtube.com/embed/7CJ8DJtU9bE" />
+          <Vimeo url="https://player.vimeo.com/video/422977500?title=0&byline=0&portrait=0" />
         </Column>
       </ProjectColumns>
       <ProjectColumns>

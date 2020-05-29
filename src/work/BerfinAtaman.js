@@ -34,7 +34,7 @@ export default function ({slug, name}) {
         <Column>
           <Column>
             <Vimeo
-              url="https://player.vimeo.com/video/422667288?color=ffffff&amp;title=0&amp;byline=0&amp;portrait=0&amp;autoplay=1"
+              url="https://player.vimeo.com/video/422667288?color=ffffff&amp;title=0&amp;byline=0&amp;portrait=0"
               padding="133.33%"
               isFullHeight="true"
             />
