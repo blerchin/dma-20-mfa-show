@@ -10,6 +10,7 @@ import {
   dtPCover,
   dtText,
   dtButWrapper,
+  dtButton,
   dtCurtImg,
   dtCurtainCol,
   dtContribCol,
@@ -17,7 +18,6 @@ import {
   dtInfoCol,
 } from "./style.module.css";
 
-import ProjectLinkStyle from "../../Components/ProjectLink/style.module.scss";
 
 import Artist from "../../Containers/Artist";
 import ProjectCover from "../../Components/ProjectCover";
@@ -29,6 +29,7 @@ import Image from "../../Components/Image";
 
 import DalenaImage1 from "./assets/DalenaTran-1.png";
 import DalenaImage2 from "./assets/DalenaTran-2.png";
+import DalenaImage3 from "./assets/DalenaTran-3.png";
 import PosterImage from "./img/aitPoster.png";
 
 import audioJson from "./data/data";
@@ -94,7 +95,7 @@ export default function ({slug, name}) {
         title={name}
         description="A web installation about the void that occurs in the process of translation"
         path={slug}
-        image={DalenaImage2}
+        image={DalenaImage3}
       />
       <ProjectHeader
         artistName="Dalena Tran"
@@ -118,7 +119,7 @@ export default function ({slug, name}) {
         </p>
         <p className={p2}>
           Ambient recordings from different cities at separate times are
-          procedurally sequenced in relationship to each other.
+          procedurally sequenced in relationship to each other.<br/><br/> S͓̽O͓̽U͓̽N͓̽D͓̽ ͓̽O͓̽N͓̽
         </p>
         <p className={p3}>
           {" "}
@@ -127,7 +128,7 @@ export default function ({slug, name}) {
           are never quite the same.
         </p>
         <div className={dtButWrapper}>
-          <div className={ProjectLinkStyle.container}>
+          <div className={dtButton}>
             <Link to="#" onClick={beginProject}>
               VIEW ACTS IN TRANSLATION
             </Link>
@@ -248,7 +249,8 @@ export default function ({slug, name}) {
                   id="AITVidElem"
                   autoPlay
                   loop
-                  muted={false}
+                  playsInline
+                  muted={true}
                   width={960}
                   poster={
                     PosterImage.images[PosterImage.images.length - 1].path
@@ -262,17 +264,9 @@ export default function ({slug, name}) {
                     type="video/mp4"
                     src="https://users.dma.ucla.edu/~dalena/ait/vid/aith264.mp4"
                   />
-                  {/* <source
-                    type='video/webm;codecs="vp9,vorbis'
-                    src="https://users.dma.ucla.edu/~dalena/ait/vid/aitvp9recomm.webm"
-                  />
-                  <source
-                    type='video/webm;codecs="vp9,vorbis'
-                    src="https://users.dma.ucla.edu/~dalena/ait/vid/aitvp9.webm"
-                  /> */}
                   <source
                     type='video/webm;codecs="vp8,vorbis'
-                    src="https://users.dma.ucla.edu/~dalena/ait/vid/aitvp8.webm"
+                    src="https://users.dma.ucla.edu/~dalena/ait/vid/aitvp9.webm"
                   />
                 </video>
                 <div id="AITTitleBox">
@@ -289,12 +283,13 @@ export default function ({slug, name}) {
               <br />
             </div>
             <div id="AITCountDown">
-              <p id="AITCountTitle">Story begins in:</p>
-              <br />
               <p id="AITCountTxt">
                 00:<span id="AITCountMins">00</span>:
                 <span id="AITCountSecs">00</span>
               </p>
+              <br />
+              <p id="AITCountTitle">until the story begins<br/>feel free to stay a while</p>
+              <br />
             </div>
           </div>
         </div>

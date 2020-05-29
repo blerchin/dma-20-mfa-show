@@ -148,6 +148,7 @@
   opacity: .2;
   transition: opacity 2s ease-in-out;
 }
+
 #AITCountTitle {
   font-size: 18px;
 }
@@ -276,9 +277,7 @@
     /* padding: 20px; */
     font-size: 1.2em;
   }
-  #AITCountDown {
-    grid-row: 4/6;
-  }
+
   #AITCountTitle {
     font-size: 24px;
   }
@@ -319,6 +318,9 @@
   #AITCityLabB {
     grid-column: 6/8;
     grid-row: 2/5;
+  }
+  #AITCountDown {
+    grid-row: 4/6;
   }
 
 }
