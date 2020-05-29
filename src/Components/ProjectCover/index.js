@@ -3,14 +3,12 @@ import React, { useEffect, useRef } from 'react';
 import {
   container,
   shim,
-  item,
-  fluidLayoutContainer,
   fluidLayoutItem
 } from './style.module.scss';
 
 export const CoverItem = ({ children, fluidLayout = false }) => {
   return (
-    <div className={ fluidLayout ? fluidLayoutItem : item }>
+    <div className={ fluidLayout ? fluidLayoutItem : '' }>
       { children }
     </div>
   );
@@ -29,7 +27,7 @@ const ProjectCover = ({fadeOut = true, fluidLayout = false, children, noShim = f
   }
 
   const onScroll = (event) => {
-    if (fluidLayout && document.body.clientWidth < 769) {
+    if (fluidLayout) {
       fadeLevel = 1;
     } else {
       fadeLevel = Math.min(1, window.scrollY / window.innerHeight);
@@ -49,7 +47,7 @@ const ProjectCover = ({fadeOut = true, fluidLayout = false, children, noShim = f
   return (
     <>
     {!noShim && <div className={shim}></div>}
-    <div className={`${container} ${className} ${fluidLayout ? fluidLayoutContainer : ''}`} ref={node}>
+    <div className={`${container} ${className}`} ref={node}>
       {children}
     </div>
     </>

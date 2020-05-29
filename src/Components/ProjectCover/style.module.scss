@@ -28,19 +28,6 @@
   height: 100vh;
 }
 
-.fluidLayoutContainer {
-
-
-}
-
 .fluidLayoutItem {
   @include mt(l);
-}
-
-.portraitOnly {
-  display: none;
-  @include portrait {
-    display: inherit;
-  }
-
 }
