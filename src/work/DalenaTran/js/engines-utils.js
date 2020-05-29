@@ -22,7 +22,7 @@ export default function Engines() {
   this.bgSoundBase = "audio-bg";
   this.startOn = 0;
   this.startEveryXMins = 60;
-  this.startOnTheHour = false;
+  this.startOnTheHour = true;
   this.isHalted = false;
 }
 

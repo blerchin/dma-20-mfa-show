@@ -3,6 +3,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './style.css';
 import BlobField from 'src/BlobField';
+import Info from 'src/Containers/Info';
 import config from '../../config';
 import Seo from 'src/Components/Seo'
 import Nav from '../../Components/Nav';
@@ -17,7 +18,7 @@ import DalenaTran from '../../work/DalenaTran';
 import ErinCooney from '../../work/ErinCooney';
 import GrahamAkins from '../../work/GrahamAkins';
 import HiradSab from '../../work/HiradSab';
-import LemingZc from '../../work/LemingZc';
+import LemingZhong from '../../work/LemingZhong';
 import MilesPeyton from '../../work/MilesPeyton';
 import ZeynepAbes from '../../work/ZeynepAbes';
 
@@ -30,7 +31,7 @@ const comps = {
   ErinCooney,
   GrahamAkins,
   HiradSab,
-  LemingZc,
+  LemingZhong,
   MilesPeyton,
   ZeynepAbes,
 };
@@ -56,6 +57,9 @@ export default () => (
         <Route path='/' exact>
           <Seo/>
           {/* no-op */}
+        </Route>
+        <Route path='/info'>
+          <Info />
         </Route>
         <Route path="*">
           <NotFound />

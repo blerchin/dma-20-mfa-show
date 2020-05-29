@@ -1,17 +1,17 @@
 import React from "react";
-
 import Artist from "../Containers/Artist";
 import ProjectHeader from "../Components/ProjectHeader";
 import ProjectColumns, { Column } from "../Components/ProjectColumns";
 import Vimeo from "../Components/VideoVimeo";
 import Seo from "../Components/Seo";
 import ProjectDescription from "../Components/ProjectDescription";
+
 export default function ({slug, name}) {
   return (
     <Artist noCover="true">
       <Seo
         title={name}
-        description="Scelerisque venenatis nibh fames ad quam feugiat leo commodo vitae sed lacus."
+        description="The moment just before a fight. Something I have experienced many times as a Muay Thai fighter."
         path={slug}
       />
       <ProjectHeader

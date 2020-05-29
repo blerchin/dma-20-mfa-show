@@ -41,9 +41,9 @@ export default {
             slug: 'dalena-tran',
             component: 'DalenaTran',
         }, {
-            name: 'Leming Z/C',
-            slug: 'leming-zc',
-            component: 'LemingZc',
+            name: 'Leming Zhong',
+            slug: 'leming-zhong',
+            component: 'LemingZhong',
         }
 
     ],
