@@ -2,20 +2,54 @@
 
 .container {
   @include m;
-  text-align: left;
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 1;
+  // text-align: left;
+  // position: absolute;
+  // left: 0;
+  // top: 0;
+  // z-index: 1;
+
   @include medium {
     margin-top: var(--page-gutter);
     margin-right: var(--page-gutter);
     margin-left: var(--page-gutter);
   }
+
 }
 
+.infoWrapper h3 {
+  margin-top: 1em;
+}
+
+.infoContainer {
+  column-count: 2;
+  text-align: justify;
+  -webkit-column-width: 350px;
+  -moz-column-width: 350px;
+  column-width: 350px;
+  column-gap: 2.5rem;
+  line-height: 1.3em;
+}
+
+.infoLink{
+color: var(--bg-accent);
+border-bottom: solid #fff 1px;
+font-style: italic;
+}
+
+.citeLink{
+  color: var(--bg-accent);
+  // font-weight: bold;
+  }
+
+.infoLink:hover, .citeLink:hover {
+  color:   var(--text-accent);
+}
 .intoTitle {
-  margin-bottom: 1em;
   font-size: 36px;
   font-family: var(--header-font);
+}
+.citeText {
+  font-size: 16px;
+  line-height: 1em;
+  text-align: left;
 }
