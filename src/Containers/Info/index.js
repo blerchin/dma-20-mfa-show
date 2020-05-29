@@ -122,7 +122,7 @@ export default function Info() {
               before a fight, in which intense training, anticipatory jitters,
               and potential energy collapse into a meditative state of hyper
               focus.{" "}
-              <Link to="/clara-levias" className={infoLink}>
+              <Link to="/clara-leivas" className={infoLink}>
                 I am defeat
               </Link>{" "}
               is a looped video with no start or stop point consisting of
@@ -240,7 +240,7 @@ export default function Info() {
             </p>
             <p>
               Continuing this vein of inquiry, Leming Chung presents{" "}
-              <Link to="/leming-zc" className={infoLink}>
+              <Link to="/leming-zhong" className={infoLink}>
                 My doctor's prescription for my pollen allergy is to let the
                 light illuminate everywhere
               </Link>{" "}
