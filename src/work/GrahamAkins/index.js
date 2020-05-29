@@ -11,7 +11,7 @@ import Seo from "src/Components/Seo";
 
 import { video } from "./style.module.scss";
 
-import OGImage from "./assets/Graham-ogimage.png";
+import OGImage from "../assets/Graham-ogimage.png";
 
 
 export default function ({slug, name}) {
