@@ -1,11 +1,11 @@
 import React from "react";
-
 import Artist from "../Containers/Artist";
 import ProjectHeader from "../Components/ProjectHeader";
 import ProjectColumns, { Column } from "../Components/ProjectColumns";
 import Vimeo from "../Components/VideoVimeo";
 import Seo from "../Components/Seo";
 import ProjectDescription from "../Components/ProjectDescription";
+
 export default function ({slug, name}) {
   return (
     <Artist noCover="true">
