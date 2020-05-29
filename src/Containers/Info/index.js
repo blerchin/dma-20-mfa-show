@@ -10,6 +10,7 @@ import {
   infoLink,
   citeLink,
   citeText,
+  nnTitle,
 } from "./style.module.scss";
 
 export default function Info() {
@@ -30,7 +31,8 @@ export default function Info() {
               to, by choice or otherwise, comes easily. Like our neighbors, a
               cohort is a relationship that begins with an imposition and only
               with some luck slides into more substantial intimacy. The 2020
-              UCLA DMA MFA thesis exhibition NEARREST NEIGHBOR reflects and
+              UCLA DMA MFA thesis exhibition{" "}
+              <span className={nnTitle}>NEARREST NEIGHBOR</span> reflects and
               enacts a navigation of proximity, with the title referring to at
               once to permutations of closeness, as well as its various
               applications as an algorithm (the nearest neighbor search).
@@ -258,6 +260,9 @@ export default function Info() {
               proximity and distance in computation, within a cohort, a socially
               distant society, an exhibition.
             </p>
+            <p>
+              <b>-Ana Iwataki</b>
+            </p>
             <p className={citeText}>
               <Link className={citeLink}>
                 <sup>[1]</sup>
@@ -267,7 +272,6 @@ export default function Info() {
               2012, pp. 215–221., doi:10.1080/08038740.2012.703689.
             </p>
           </div>
-          <b>-Ana Iwataki</b>
         </Column>
       </ProjectColumns>
       <ProjectColumns className={infoWrapper}>

@@ -16,6 +16,11 @@
 
 }
 
+.nnTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
 .infoWrapper h3 {
   margin-top: 1em;
 }
@@ -30,26 +35,30 @@
   line-height: 1.3em;
 }
 
-.infoLink{
-color: var(--bg-accent);
-border-bottom: solid #fff 1px;
-font-style: italic;
+.infoLink {
+  color: var(--bg-accent);
+  border-bottom: solid #fff 1px;
+  font-style: italic;
 }
 
-.citeLink{
+.citeLink {
   color: var(--bg-accent);
   // font-weight: bold;
-  }
-
-.infoLink:hover, .citeLink:hover {
-  color:   var(--text-accent);
 }
+
+.infoLink:hover,
+.citeLink:hover {
+  color: var(--text-accent);
+}
+
 .intoTitle {
-  font-size: 36px;
+  font-size: 2.3rem;
+  line-height: 1.3em;
   font-family: var(--header-font);
 }
+
 .citeText {
-  font-size: 16px;
-  line-height: 1em;
+  font-size: .75em;
+  line-height: 1.2em;
   text-align: left;
 }
