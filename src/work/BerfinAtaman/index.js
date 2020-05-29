@@ -1,7 +1,7 @@
 import React from "react";
 
 import Artist from "src/Containers/Artist";
-import ProjectCover from "src/Components/ProjectCover";
+import { CoverItem } from "src/Components/ProjectCover";
 import ProjectHeader from "src/Components/ProjectHeader";
 import ArtistBio from "src/Components/ArtistBio";
 import ProjectColumns, { Column } from "src/Components/ProjectColumns";
@@ -31,15 +31,19 @@ export default function ({slug, name}) {
         title="Raising Quills"
         materials="Fabric, electronics, wood,cement,steel"
         link="http://www.berfinataman.com/bio-contact"
-
+        fluidLayout
       />
-      <ProjectCover>
-        <Vimeo
-          className={video}
-          url="https://player.vimeo.com/video/422667288?color=ffffff&amp;title=0&amp;byline=0&amp;portrait=0"
-          padding="133.33%"
-        />
-      </ProjectCover>
+      <CoverItem fluidLayout>
+        <ProjectColumns>
+          <Column>
+            <Vimeo
+              className={video}
+              url="https://player.vimeo.com/video/422667288?color=ffffff&amp;title=0&amp;byline=0&amp;portrait=0"
+              padding="133.33%"
+            />
+          </Column>
+        </ProjectColumns>
+      </CoverItem>
       <ProjectColumns>
         <Column>
           <Image
