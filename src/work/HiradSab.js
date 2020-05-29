@@ -156,7 +156,7 @@ export default function ({ slug, name }) {
           />
           <ImageCaption title="HUMANS OF NOYORK" materials="9 hour looping video" />
           <p>
-          ASMR, cult of personality, makeup tutorials, video logs, voyeurism, entertainment, education, lurking, disgust, gratification, identity, culture wars, Youtube!
+          ASMR, cult of personality, makeup tutorials, video logs, voyeurism, entertainment, education, lurking, disgust, gratification, identity, culture wars, YouTube!
           </p>
           <p>
           <i>HUMANS OF NOYORK</i> is 9 hours of pure content, 20,000 unique personalities, no eyes to stare you back, and no stories to tell.
