@@ -30,7 +30,7 @@ export default function ({ slug, name }) {
       <ProjectHeader
         artistName={name}
         title="Body Troubles"
-        materials="15 Minute Video"
+        materials="Video, Dataset, Generative Content"
         link="http://hiradsab.com"
       />
       <ProjectCover>
