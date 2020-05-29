@@ -22,7 +22,7 @@ export default function Info() {
         <Column>
           <h2 className={infoTitle}>
             Curatorial Statement
-            <br/>
+            <br />
             <span className={infoSub}>May 20, 2020</span>
           </h2>
           <br />
@@ -67,7 +67,7 @@ export default function Info() {
               <Link to="/dalena-tran" className={infoLink}>
                 Acts in Translation
               </Link>{" "}
-              is a dynamic web installation, consisting of a video of two
+              is a web installation, consisting of a video of two
               windows, overlaid with infinite configurations of ambient audio
               recordings collected from individuals in isolation around the
               world and stories written by the artist. Tran’s use of cinematic
@@ -234,10 +234,9 @@ export default function Info() {
               fabric, whose shape and color is designed in conjunction with its
               gestures. They are meant to be interacted with, as people’s
               reactions to these animate objects are key to Ataman’s practice.
-              Again, a synthetic system is designed to induce affect. Underwater
-              animals, poison, and the emotional pull of a silent but sentient
-              creature are all called to mind, layers of stimuli to invite
-              perception and its emotional effects.
+              Again, a synthetic system is designed to induce the emotional pull
+              of a silent but sentient creature to create layers of stimuli to
+              invite perception and its emotional effects.
             </p>
             <p>
               Continuing this vein of inquiry, Leming Chung presents{" "}
@@ -282,7 +281,7 @@ export default function Info() {
         <Column>
           <h2 className={infoTitle}>
             The New Dematerialization of Art under “Covid-19 Rule”
-            <br/>
+            <br />
             <span className={infoSub}>
               A Response from UCLA Design Media Arts Department
             </span>
