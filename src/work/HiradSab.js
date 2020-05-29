@@ -14,10 +14,6 @@ import DBCover from "./assets/HiradSab-cover.jpg";
 import DBGridVert from "./assets/HiradSab-gridvert.jpg";
 import DBLandmarks from "./assets/HiradSab-landmarks.png";
 
-import {
-  header,
-} from '../Components/ArtistBio/style.module.scss';
-
 import Seo from "../Components/Seo";
 import ProjectDescription from "../Components/ProjectDescription";
 export default function ({ slug, name }) {
@@ -25,8 +21,11 @@ export default function ({ slug, name }) {
     <Artist>
       <Seo
         title={name}
-        description="Scelerisque venenatis nibh fames ad quam feugiat leo commodo vitae sed lacus."
+        description="“Body Troubles” or how there were too many bodies and not enough people."
         path={slug}
+        contentType="video.other"
+        twitter = "@hiradsab"
+        image={DBGrid}
       />
       <ProjectHeader
         artistName={name}
@@ -44,7 +43,7 @@ export default function ({ slug, name }) {
         <Column>
           <ProjectDescription>
             <p>
-              <i>Body Troubles</i> is an ongoing research in the proliferation
+              <i>Body Troubles</i> is an ongoing research on the proliferation
               and mediation of the digital body in the contemporary politics of
               images. Rhetorical, discursive, and disjointed, it is an attempt
               at locating the virtual body in the processes of production,
@@ -151,18 +150,12 @@ export default function ({ slug, name }) {
      
         <Column>
           <Vimeo
-            alt="HUMANS OF NOYORK"
+            alt="Humans of Noyork"
             url="https://www.youtube.com/embed/nZFJRKwnmik"
           />
-          <ImageCaption title="HUMANS OF NOYORK" materials="9 hour looping video" />
+          <ImageCaption title="Humans of Noyork" materials="9 hour looping video" />
           <p>
-          ASMR, cult of personality, makeup tutorials, video logs, voyeurism, entertainment, education, lurking, disgust, gratification, identity, culture wars, YouTube!
-          </p>
-          <p>
-          <i>HUMANS OF NOYORK</i> is 9 hours of pure content, 20,000 unique personalities, no eyes to stare you back, and no stories to tell.
-          </p>
-          <p>
-          More videos?
+          ASMR, cult of personality, makeup tutorials, video logs, voyeurism, entertainment, education, lurking, disgust, gratification, identity, culture wars, YouTube! <i>Humans of Noyork</i> is 9 hours of pure content, 20,000 unique personalities, no eyes to stare you back, and no stories to tell. More videos?
           </p>
         </Column>
       </ProjectColumns>
