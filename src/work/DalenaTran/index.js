@@ -77,6 +77,9 @@ export default function ({slug, name}) {
   }
 
   useEffect(() => {
+    if (navigator.userAgent === "ReactSnap") {
+      return;
+    }
     engines.setup(audioJson, voiceoversJson, "AITSub");
 
     document.getElementById("AITLocA").className = "hidden";

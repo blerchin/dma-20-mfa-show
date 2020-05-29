@@ -1,17 +1,28 @@
 import React from "react";
 
-import Artist from "../Containers/Artist";
-import ProjectCover from "../Components/ProjectCover";
-import ProjectHeader from "../Components/ProjectHeader";
-import ArtistBio from "../Components/ArtistBio";
-import ProjectDescription from "../Components/ProjectDescription";
-import ProjectColumns, { Column } from "../Components/ProjectColumns";
-import Image from "../Components/Image";
-import Vimeo from "../Components/VideoVimeo";
-import Spacer from "../Components/Spacer";
-import Seo from "../Components/Seo";
+import Artist from "src/Containers/Artist";
+import ProjectCover from "src/Components/ProjectCover";
+import ProjectHeader from "src/Components/ProjectHeader";
+import ArtistBio from "src/Components/ArtistBio";
+import ProjectDescription from "src/Components/ProjectDescription";
+import ProjectColumns, { Column } from "src/Components/ProjectColumns";
+import Image from "src/Components/Image";
+import Vimeo from "src/Components/VideoVimeo";
+import Spacer from "src/Components/Spacer";
+import Seo from "src/Components/Seo";
 
-import MilesImage1 from "./assets/MilesPeyton-1.jpg";
+import MilesImage1 from "../assets/MilesPeyton-1.jpg";
+
+import img1 from "./1.jpg";
+import img2 from "./2.jpg";
+import img3 from "./3.jpg";
+import img4 from "./4.jpg";
+import img5 from "./5.jpg";
+
+import glass1 from "./glass1.jpg";
+import glass2 from "./glass2.jpg";
+import glass3 from "./glass3.jpg";
+import glass4 from "./glass4.jpg";
 
 export default function ({slug, name}) {
   return (
@@ -30,8 +41,7 @@ export default function ({slug, name}) {
       />
       <ProjectCover>
           <Image
-            img="https://drive.google.com/uc?export=view&id=1Nt77hayEZpybJiOi57UgsP0fHDAi36wE"
-            a="https://drive.google.com/uc?export=view&id=1Nt77hayEZpybJiOi57UgsP0fHDAi36wE"
+            img={img1}
             alt="Projection of liquid on grey board. A radial pattern, slightly degraded on the edges, is visible, as well as the liquid which has areas of blue and orange."
           />
       </ProjectCover>
@@ -55,8 +65,7 @@ export default function ({slug, name}) {
       <ProjectColumns>
         <Column>
           <Image
-            img="https://drive.google.com/uc?export=view&id=1jrvrYr0gSS7GiN8xnpgtUxf_bh2ttzFB"
-            a="https://drive.google.com/uc?export=view&id=1jrvrYr0gSS7GiN8xnpgtUxf_bh2ttzFB"
+            img={img2}
             alt="View of projection from further back, showing the room and the projection apparatus. The projection surface is in focus and the apparatus is out of focus. The room has white walls and a carpeted floor. "
           />
         </Column>
@@ -64,8 +73,7 @@ export default function ({slug, name}) {
       <ProjectColumns>
         <Column>
           <Image
-            img="https://drive.google.com/uc?export=view&id=1FaPAQq59rzVFwG1rJ1oTgheDZKDxeavG"
-            a="https://drive.google.com/uc?export=view&id=1FaPAQq59rzVFwG1rJ1oTgheDZKDxeavG"
+            img={img3}
             alt="Apparatus on the ground in front of a window. Lenses are held by a vertical steel rod, and a rectangular lens sits on a semi-transparent box that is lit by sunlight. The various lenses cast patterns on the wall, some of which are white and others are more like rainbows."
           />
         </Column>
@@ -73,8 +81,7 @@ export default function ({slug, name}) {
       <ProjectColumns>
         <Column>
           <Image
-            img="https://drive.google.com/uc?export=view&id=12438aDBCD1XaOHtDxBGAIJZtqbSpWgUt"
-            a="https://drive.google.com/uc?export=view&id=12438aDBCD1XaOHtDxBGAIJZtqbSpWgUt"
+            img={img4}
             alt="Closeup of a liquid on a glass plate, which is lit from below. Cables extend from the plate, and are held together by a braid."
           />
         </Column>
@@ -83,15 +90,13 @@ export default function ({slug, name}) {
         <Column>
           <Spacer>
             <Image
-              img="https://drive.google.com/uc?export=view&id=1z86giGe9wpW6TIvJAU6tVp8ggKp7cVx5"
-              a="https://drive.google.com/uc?export=view&id=1z86giGe9wpW6TIvJAU6tVp8ggKp7cVx5"
+              img={glass1}
               alt="Radial pattern with eight curving lines etched on glass"
             />
           </Spacer>
           <Spacer>
             <Image
-              img="https://drive.google.com/uc?export=view&id=1trCCPE11jdaUrXvP3qNd7J5Cfawh96nA"
-              a="https://drive.google.com/uc?export=view&id=1trCCPE11jdaUrXvP3qNd7J5Cfawh96nA"
+              img={glass2}
               alt="Radial pattern with eight curving lines etched on glass"
             />
           </Spacer>
@@ -99,15 +104,13 @@ export default function ({slug, name}) {
         <Column>
           <Spacer>
             <Image
-              img="https://drive.google.com/uc?export=view&id=1W7dEvsC2-jbDiMtiLwVyT10H4hYk1I2I"
-              a="https://drive.google.com/uc?export=view&id=1W7dEvsC2-jbDiMtiLwVyT10H4hYk1I2I"
+              img={glass3}
               alt="Radial pattern with eight curving lines etched on glass"
             />
           </Spacer>
           <Spacer>
             <Image
-              img="https://drive.google.com/uc?export=view&id=1qq_Q_0kRNopCWl4MxpKemKPuaV0RFmQR"
-              a="https://drive.google.com/uc?export=view&id=1qq_Q_0kRNopCWl4MxpKemKPuaV0RFmQR"
+              img={glass4}
               alt="Radial pattern with eight curving lines etched on glass"
             />
           </Spacer>
@@ -121,8 +124,7 @@ export default function ({slug, name}) {
       <ProjectColumns>
         <Column>
           <Image
-            img="https://drive.google.com/uc?export=view&id=1WbSAaWqVfp2nWl5v5LVKQhCwIW5FMIpG"
-            a="https://drive.google.com/uc?export=view&id=1WbSAaWqVfp2nWl5v5LVKQhCwIW5FMIpG"
+            img={img5}
             alt="Ten radial patterns, each with a date listed above it, weekdays from June first to June twelvth"
           />
         </Column>

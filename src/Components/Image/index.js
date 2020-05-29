@@ -35,7 +35,7 @@ const Image = ({
         <div style={{ ...parentStyles }}>
           {a ? 
             <a href={a} target="_blank" rel="noopener noreferrer"><img src={img} alt={alt} style={style} /></a> :
-            useLazy ?
+            useLazy && navigator.userAgent !== "ReactSnap" ?
               <LazyLoadImage
                 src={img.src}
                 srcSet={img.srcSet}
