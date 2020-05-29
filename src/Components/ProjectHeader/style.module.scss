@@ -11,47 +11,45 @@
     margin-top: var(--page-gutter);
     margin-right: var(--page-gutter);
     margin-left: var(--page-gutter);
-    position: fixed;
   }
 }
 
 .headerArtist {
-  margin: 0;
-  font-size: 24px;
+  font-family: var(--header-font);
+  font-size: 20px;
   line-height: 30px;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
   display: block;
 }
 
 .headerTitle {
-  margin: 0;
+  margin-bottom: 12px;
+  letter-spacing: 0;
+  display: block;
+  max-width: 800px;
   font-size: 42px;
-  line-height: 50px;
+  line-height: 48px;
   font-family: var(--header-font);
 }
 
 .headerMaterials {
   font-style: italic;
   font-size: 18px;
-  line-height: 32px;
+  line-height: 24px;
 }
 
 .headerLink {
   color: #ffffff;
   font-size: 16px;
-  line-height: 16px;
+  line-height: 42px;
   display: inline-block;
-  padding: 2px;
   text-decoration: underline;
 }
 
 
 .headerLink:hover {
-  // background-color: #ffffff;
   color: white;
-  font-size: 16px;
-  line-height: 16px;
-  // font-weight: bold;
-  display: inline-block;
 }
 
 .headerLink a:hover {
@@ -62,4 +60,3 @@ a {
   color: #ffffff;
   text-decoration: none;
 }
-
