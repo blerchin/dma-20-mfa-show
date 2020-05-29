@@ -50,7 +50,7 @@ export default function Info() {
               built a website to host the exhibition, using in part the nearest
               neighbor algorithm. Feminist theorist Astrida Neimanis calls
               collaboration “a doing-in-common, more than a
-              being-in-common”…applied to “doings, engagements, or unfoldings
+              being-in-common…” applied to “doings, engagements, or unfoldings
               amongst and between (human, non-human, chemical, physical,
               biological, meteorological, other) bodies.”{" "}
               <a href="#c1" id="c1f" className={citeLink}>
@@ -261,7 +261,7 @@ export default function Info() {
               among the human, non-human, and the in-between. This with a
               recognition of nearness, the gravity of our intimacies, calculated
               proximity and distance in computation, within a cohort, a socially
-              distant society, an exhibition.n.
+              distant society, an exhibition.
             </p>
             <p>
               <strong>—Ana Iwataki</strong>
