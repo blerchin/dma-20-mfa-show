@@ -3,6 +3,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './style.css';
 import BlobField from 'src/BlobField';
+import Info from 'src/Containers/Info';
 import config from '../../config';
 import Seo from 'src/Components/Seo'
 import Nav from '../../Components/Nav';
@@ -56,6 +57,9 @@ export default () => (
         <Route path='/' exact>
           <Seo/>
           {/* no-op */}
+        </Route>
+        <Route path='/info'>
+          <Info />
         </Route>
         <Route path="*">
           <NotFound />
