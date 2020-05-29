@@ -1,7 +1,5 @@
 @import '../../common/reset.css';
 @import '../../common/variables.css';
-@import '../../common/type.css';
-
 body {
   margin: 0;
   font-family: var(--body-font);
@@ -29,9 +27,11 @@ body {
 .title {
   color: var(--text-accent);
   font-size: 13vw;
-  font-family: 'Days One', sans-serif;;
-  font-weight: 500;
-  line-height: 14vw; 
+  font-family: var(--title-font);
+  font-weight: 400;
+  line-height: 14vw;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; 
 }
 
 .blobs {
@@ -112,4 +112,24 @@ html {
 	width: 0;
 	height: 0;
 	display: none;
+}
+
+@media screen and (max-width: 767px) {
+  .smallOnly {
+    display: inherit !important;
+  }
+  
+  .mediumOnly {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .smallOnly {
+    display: none !important;
+  }
+  
+  .mediumOnly {
+    display: flex !important;
+  }
 }

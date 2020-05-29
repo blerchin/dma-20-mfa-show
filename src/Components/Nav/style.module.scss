@@ -3,7 +3,7 @@
 .container {
   @include ml(m);
   @include mb(l);
-  font-family: var(--header-font);
+  font-family: var(--link-font);
   font-size: 36px;
   line-height: 42px;
   text-align: left;
@@ -11,7 +11,7 @@
   left: 0;
   bottom: 0;
   z-index: 1000;
-  font-weight: 700;
+  font-weight: 100;
   @include medium {
     margin-left: var(--page-gutter);
     margin-bottom: 7vh;
@@ -29,9 +29,11 @@
 
 .container li a {
   color: white;
+  text-decoration: underline;
 }
 
 .container li a:hover {
   text-decoration: underline;
+  color: var(--bg-accent);
   /* border-bottom: 1px solid #fff; */
 }

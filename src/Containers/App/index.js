@@ -8,6 +8,7 @@ import config from '../../config';
 import Seo from 'src/Components/Seo'
 import Nav from '../../Components/Nav';
 import ScrollToTop from 'src/Components/ScrollToTop';
+import NotFound from 'src/Containers/NotFound';
 
 import BenLerchin from '../../work/BenLerchin';
 import BerfinAtaman from '../../work/BerfinAtaman';
@@ -53,15 +54,15 @@ export default () => (
             )
           })
         }
-        <Route path='/'>
+        <Route path='/' exact>
+          <Seo/>
+          {/* no-op */}
+        </Route>
         <Route path='/info'>
           <Info />
         </Route>
-        <Seo/>
-          {/* no-op */}
-          </Route>
         <Route path="*">
-          Page not Found ✧・ﾟ:*
+          <NotFound />
         </Route>
       </Switch>
     </div>

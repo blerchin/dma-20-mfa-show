@@ -34,7 +34,7 @@ export default function ({slug, name}) {
       <ProjectCover>
         <Column>
           <Vimeo
-            url="https://player.vimeo.com/video/422499171?color=ffffff&title=0&byline=0&portrait=0"
+            url="https://player.vimeo.com/video/423211265?color=ffffff&title=0&byline=0&portrait=0"
             padding="56.25%"
           />
         </Column>

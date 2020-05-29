@@ -17,52 +17,39 @@ export default function ({slug, name}) {
     <Artist>
       <Seo
         title={name}
-        description="Scelerisque venenatis nibh fames ad quam feugiat leo commodo vitae sed lacus."
+        description="This is a three-character monologue about be-ing, bee, and bees. This video is part of a future sculpture."
         path={slug}
       />
       <ProjectHeader
         artistName={name}
-        title="(TBA) Report a Hypersensitive Ensemble"
-        materials="7 minute video"
-        link="https://vimeo.com/llleming"
+        title="My doctor's prescription for my pollen allergy is to let the light illuminate everywhere"
+        materials="8 minute video"
+        link="https://lemingchung.com"
       />
       <ProjectCover>
         <Column>
-          <Image img={LemingImage1} alt="" />
+          <Image img={LemingImage1} alt="A small piece of honeycomb in the nature, its odor still attracting bees from its own hive" />
         </Column>
       </ProjectCover>
       <ProjectColumns>
         <Column>
           <ProjectDescription>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non
-              justo non elit fringilla imperdiet ut nec purus. Quisque egestas
-              consequat sem, quis volutpat felis vestibulum eu. Integer elementum
-              eros non nulla consequat blandit. Donec elit erat, ullamcorper et
-              varius vitae, volutpat sed tellus. In tempus lorem vitae ex
-              pulvinar, at molestie orci sodales. Donec eget nisl tincidunt,
-              fringilla purus a, accumsan diam. Sed non ipsum a est lobortis
-              varius.
+              This is a three-character monologue about be-ing, bee, and bees. This video is part of a future sculpture.
             </p>
           </ProjectDescription>
         </Column>
       </ProjectColumns>
       <ProjectColumns>
         <Column>
-          <Vimeo url="https://player.vimeo.com/video/418431195?color=ffffff&amp;title=0&amp;byline=0&amp;portrait=0" />
+          <Vimeo url="https://www.youtube.com/embed/7CJ8DJtU9bE" />
         </Column>
       </ProjectColumns>
       <ArtistBio>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget
-          eros ullamcorper, ultrices neque at, ultrices ipsum. Vestibulum ut
-          mauris at ex interdum consectetur. Phasellus eget tempus tellus. Morbi
-          id ante eu augue tempus congue. Curabitur risus ex, ornare sed varius
-          et, tristique a ipsum. Mauris non lorem orci. Etiam eu porta nisi.
-          Proin id luctus purus. Sed viverra et tortor ac posuere. Nam rhoncus
-          tristique eleifend. Proin ac augue dui. Proin diam orci, feugiat quis
-          posuere nec, iaculis ac neque. Aliquam suscipit metus nibh, ut
-          tristique odio dapibus vitae.
+          Leming Zhong is having an interdisciplinary practice with diagram, sculpture installation and video.
+          <br/>I am currently exploring the inferior and external body and system, anthropomorphizing inanimate matter while objectifying power dynamics. 
+          <br/>Leming lives in Los Angeles. 
         </p>
       </ArtistBio>
     </Artist>

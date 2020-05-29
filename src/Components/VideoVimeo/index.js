@@ -4,7 +4,7 @@ import {
   responsiveVimeo,
   vimeo,
   fullHeight
-} from './style.module.css';
+} from './style.module.scss';
 
 const Vimeo = ({
   url,

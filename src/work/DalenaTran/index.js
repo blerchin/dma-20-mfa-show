@@ -6,8 +6,6 @@ import {
   p1,
   p2,
   p3,
-  p4,
-  p5,
   audioHeading,
   dtPCover,
   dtText,
@@ -19,7 +17,7 @@ import {
   dtInfoCol,
 } from "./style.module.css";
 
-import ProjectLinkStyle from "../../Components/ProjectLink/style.module.css";
+import ProjectLinkStyle from "../../Components/ProjectLink/style.module.scss";
 
 import Artist from "../../Containers/Artist";
 import ProjectCover from "../../Components/ProjectCover";
@@ -38,22 +36,24 @@ import audioJson from "./data/data";
 import voiceoversJson from "./data/voiceovers";
 import Engines from "./js/engines-utils";
 
+import Seo from "../../Components/Seo";
+
 import { Link } from "react-router-dom";
 
-export default function () {
-  const engines = new Engines();
+export default function ({slug, name}) {
+  let engines = new Engines();
   const aitContainer = useRef(null);
 
   const rootNodes = [document.body, document.documentElement];
 
   function beginProject() {
-    engines.audioEngine.beginAudio();
-    engines.prepareVoiceover();
+    engines.init();
+
     aitContainer.current.className = "";
     var video = document.getElementById("AITVidElem");
     video.muted = true;
     video.play();
-    
+
     rootNodes.forEach((n) => {
       n.style.overflow = "hidden";
       n.style.height = "100%";
@@ -61,31 +61,41 @@ export default function () {
   }
 
   function stopProject() {
-    // engines = null;
-    engines.stopEngine();
+    engines.halt();
+
     aitContainer.current.className = "AITHide";
     window.setTimeout(() => {
       var video = document.getElementById("AITVidElem");
-      video.pause();
-      rootNodes.forEach((n) => {
-        n.style.overflow = "auto";
-        n.style.height = "auto";
-      });
+      if (video) {
+        video.pause();
+        rootNodes.forEach((n) => {
+          n.style.overflow = "auto";
+          n.style.height = "auto";
+        });
+      }
     }, 800);
   }
 
   useEffect(() => {
-    engines.setup(audioJson, voiceoversJson);
-    engines.setHTMLElement(document.getElementById("AITSub"));
+    engines.setup(audioJson, voiceoversJson, "AITSub");
+
     document.getElementById("AITLocA").className = "hidden";
     document.getElementById("AITLocB").className = "hidden";
     // $("#AITVidElem").prop('muted', true);
     var video = document.getElementById("AITVidElem");
     video.muted = true;
+    return function cleanup() {
+      stopProject();
+    };
   }, []);
 
   return (
     <Artist>
+      <Seo
+        title={name}
+        description="A dynamic web installation about the void that occurs in the process of translation"
+        path={slug}
+      />
       <ProjectHeader
         artistName="Dalena Tran"
         title="Acts in Translation"
@@ -103,7 +113,8 @@ export default function () {
       <Column className={dtText}>
         <p className={p0}>Two windows having a moment together.</p>
         <p className={p1}>
-          A range of stories emerge every hour on the hour in global synchronicity (GST). Each one marks the passing of time but does not keep it.
+          A story emerges every hour on the hour in universal coordinated time
+          (UTC), marking the passing of time without keeping it.
         </p>
         <p className={p2}>
           Ambient recordings from different cities at separate times are
@@ -115,7 +126,6 @@ export default function () {
           <br />
           are never quite the same.
         </p>
-        <p className={p4}>🅢🅞🅤🅝🅓 🅞🅝</p>
         <div className={dtButWrapper}>
           <div className={ProjectLinkStyle.container}>
             <Link to="#" onClick={beginProject}>
@@ -137,7 +147,7 @@ export default function () {
           <ProjectDescription>
             <p>
               In the beginning, there was the window. Now there are plenty of
-              other things than windows. There is heat, ice, sweat, and Mickey Mouse. Not to forget blood: The dark and runny that pumps through veins carrying a tempo that make possible the highest highs and lowest lows.
+              other things than windows. There is heat, ice, sweat, and Mickey Mouse. Not to forget blood: The dark and runny that pumps through veins carrying a tempo that makes possible the highest highs and lowest lows.
             </p>
           </ProjectDescription>
         </Column>
@@ -212,14 +222,8 @@ export default function () {
       <ProjectColumns>
         <Column>
           <p>
-            A special thanks to جیگر من Hirad Sab for his love &amp; technical
-            contributions to the project
-          </p>
-          <br />
-          <p>
-            &amp; Chandler McWilliams, Danny Snelson, Lauren McCarthy, Casey
-            Reas, Erkki Huhtamo, Cayetano Ferrer, Jennifer Steinkamp &amp; Noa
-            Kaplan for their support and mentorship
+            A special thanks to جیگر من Hirad Sab for his love &amp; technical contributions to the project &amp; Chandler McWilliams, Danny Snelson, Lauren McCarthy, Casey
+            Reas, Erkki Huhtamo, Cayetano Ferrer, Jennifer Steinkamp &amp; Noa Kaplan for their support and mentorship
           </p>
         </Column>
       </ProjectColumns>
@@ -245,6 +249,7 @@ export default function () {
                   autoPlay
                   loop
                   muted={false}
+                  width={960}
                   poster={
                     PosterImage.images[PosterImage.images.length - 1].path
                   }
@@ -255,19 +260,19 @@ export default function () {
                   /> */}
                   <source
                     type="video/mp4"
-                    src="https://github.com/dalena/acts-in-translation-data/releases/download/vid/aith264.mp4"
+                    src="https://users.dma.ucla.edu/~dalena/ait/vid/aith264.mp4"
                   />
                   {/* <source
                     type='video/webm;codecs="vp9,vorbis'
-                    src="https://github.com/dalena/acts-in-translation-data/releases/download/vid/aitvp9recomm.webm"
+                    src="https://users.dma.ucla.edu/~dalena/ait/vid/aitvp9recomm.webm"
                   />
                   <source
                     type='video/webm;codecs="vp9,vorbis'
-                    src="https://github.com/dalena/acts-in-translation-data/releases/download/vid/aitvp9.webm"
+                    src="https://users.dma.ucla.edu/~dalena/ait/vid/aitvp9.webm"
                   /> */}
                   <source
                     type='video/webm;codecs="vp8,vorbis'
-                    src="https://github.com/dalena/acts-in-translation-data/releases/download/vid/aitvp8.webm"
+                    src="https://users.dma.ucla.edu/~dalena/ait/vid/aitvp8.webm"
                   />
                 </video>
                 <div id="AITTitleBox">
@@ -284,6 +289,8 @@ export default function () {
               <br />
             </div>
             <div id="AITCountDown">
+              <p id="AITCountTitle">Story begins in:</p>
+              <br />
               <p id="AITCountTxt">
                 00:<span id="AITCountMins">00</span>:
                 <span id="AITCountSecs">00</span>

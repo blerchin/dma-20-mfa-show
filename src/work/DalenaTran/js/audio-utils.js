@@ -1,4 +1,4 @@
-import {Howl} from 'howler';
+import {Howl, Howler} from 'howler';
 
 function AudioEngine(voiceovers, cb) {
   this.isDataLoaded = false;
@@ -18,6 +18,7 @@ function AudioEngine(voiceovers, cb) {
     howlerB: "",
     len: "",
   };
+  this.bgInitVolume = 1;
 }
 
 AudioEngine.prototype = {
@@ -82,6 +83,15 @@ AudioEngine.prototype = {
     }
   },
 
+  halt(){
+    console.log(`[🎵] 🛑 Halting all sounds`);
+    for (let i = 0; i < this.voiceovers.length; i++){
+      this.voiceovers[i].howler.stop();
+    }
+    this.pauseAudio();
+    // Howler.stop();
+  },
+
   getVoiceOverHowler(idx){
     return this.voiceovers[idx].howler;
   },
@@ -138,7 +148,7 @@ AudioEngine.prototype = {
 
     let aud = new Howl({
       src: audioPath,
-      volume: 1,
+      volume: this.bgInitVolume,
       html5: true,
       preload: true,
       // Change below from initPerInterval to step if want to

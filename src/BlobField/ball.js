@@ -32,21 +32,21 @@ export default class Ball {
 		this.shadowInactiveColor = new paper.Color(this.col2);
 		this.shadowInactiveColor.alpha = 1; // When hovered, make inactive ball's shadow fully transparent
 		
-		this.path = new paper.Path({
+		this.defaultPathStyle = {
 			fillColor: {
 				gradient: {
 					stops: [this.col1,  this.col3, this.col4],
 					radial: true,
 				},
-				// origin: this.point,
-				// destination: this.point + [this.radius, 0],
 			},
 			blendMode: 'normal',
 			closed: true,
 			shadowColor: this.shadowInactiveColor,
 			shadowBlur: 5,
 			shadowOffset: new paper.Point(5, 5),
-		});
+		};
+		
+		this.path = new paper.Path({ ...this.defaultPathStyle });
 		this.path.artist = a;
 
 		for (let i = 0; i < this.numSegment; i++) {
@@ -90,12 +90,21 @@ export default class Ball {
 	setIdx(val) {
 		this.idx = val;
 		this.path.idx = val;
+		if (this.label)
+			this.label.idx = val;
 	}
 
-	updateColor() {
-		this.path.fillColor.origin = this.path.position;
-		this.path.fillColor.destination = this.path.bounds.rightCenter;
-		this.path.fillColor.radial = true;
+	updateColor(enhanced = false) {
+		if (enhanced) {
+			this.path.fillColor = this.defaultPathStyle.fillColor;
+			this.path.fillColor.origin = this.path.position;
+			this.path.fillColor.destination = this.path.bounds.rightCenter;
+			this.path.fillColor.radial = true;
+			this.path.shadowBlur = this.defaultPathStyle.shadowBlur;
+		} else {
+			this.path.fillColor = this.col4
+			this.path.shadowBlur = null;
+		}
 	}
 
 	updateFont() {

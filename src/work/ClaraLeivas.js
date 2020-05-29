@@ -1,14 +1,11 @@
 import React from "react";
-
-import Artist from '../Containers/Artist';
-import ProjectCover from '../Components/ProjectCover';
-import ProjectHeader from '../Components/ProjectHeader';
-import ArtistBio from '../Components/ArtistBio';
-import ProjectColumns, { Column } from '../Components/ProjectColumns';
-import Vimeo from '../Components/VideoVimeo';
-
+import Artist from "../Containers/Artist";
+import ProjectHeader from "../Components/ProjectHeader";
+import ProjectColumns, { Column } from "../Components/ProjectColumns";
+import Vimeo from "../Components/VideoVimeo";
 import Seo from "../Components/Seo";
 import ProjectDescription from "../Components/ProjectDescription";
+
 export default function ({slug, name}) {
   return (
     <Artist noCover="true">
