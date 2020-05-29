@@ -1,6 +1,9 @@
 import React from 'react';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
+
+import ReactGA from 'react-ga';
 import './style.css';
 import BlobField from 'src/BlobField';
 import Info from 'src/Containers/Info';
@@ -22,6 +25,13 @@ import LemingZhong from '../../work/LemingZhong';
 import MilesPeyton from '../../work/MilesPeyton';
 import ZeynepAbes from '../../work/ZeynepAbes';
 
+ReactGA.initialize("UA-167991786-1");
+
+const history = createBrowserHistory();
+history.listen((location) => {
+  ReactGA.pageview(location.pathname + location.search);
+});
+
 const comps = {
   BenLerchin,
   BerfinAtaman,
@@ -37,7 +47,7 @@ const comps = {
 };
 
 export default () => (
-  <Router>
+  <Router history={history}>
     <ScrollToTop />
     <div className="app">
       <a className="sr-only" href="#main">Skip to main content</a>
