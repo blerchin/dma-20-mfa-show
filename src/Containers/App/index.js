@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { createBrowserHistory } from 'history';
+import { BrowserRouter as Router, Switch, Route, useLocation } from 'react-router-dom';
 
 import ReactGA from 'react-ga';
 import './style.css';
@@ -27,11 +26,6 @@ import ZeynepAbes from '../../work/ZeynepAbes';
 
 ReactGA.initialize("UA-167991786-1");
 
-const history = createBrowserHistory();
-history.listen((location) => {
-  ReactGA.pageview(location.pathname + location.search);
-});
-
 const comps = {
   BenLerchin,
   BerfinAtaman,
@@ -46,35 +40,48 @@ const comps = {
   ZeynepAbes,
 };
 
+const App = () => {
+  const location = useLocation();
+  useEffect(() => {
+    ReactGA.pageview(location.pathname + location.search);
+  }, [location]);
+  
+  return (
+    <>
+      <ScrollToTop />
+      <div className="app">
+        <a className="sr-only" href="#main">Skip to main content</a>
+        <BlobField />
+        <Nav />
+        <Switch>
+          {
+            config.artists.map(({slug, name, component}) => {
+              const Comp = comps[component];
+              return (
+                <Route path={`/${slug}`} key={slug}>
+                  <Comp slug={slug} name={name} />
+                </Route>
+              )
+            })
+          }
+          <Route path='/' exact>
+            <Seo/>
+            {/* no-op */}
+          </Route>
+          <Route path='/info'>
+            <Info />
+          </Route>
+          <Route path="*">
+            <NotFound />
+          </Route>
+        </Switch>
+      </div>
+    </>
+  );
+};
+
 export default () => (
-  <Router history={history}>
-    <ScrollToTop />
-    <div className="app">
-      <a className="sr-only" href="#main">Skip to main content</a>
-      <BlobField />
-      <Nav />
-      <Switch>
-        {
-          config.artists.map(({slug, name, component}) => {
-            const Comp = comps[component];
-            return (
-              <Route path={`/${slug}`} key={slug}>
-                <Comp slug={slug} name={name} />
-              </Route>
-            )
-          })
-        }
-        <Route path='/' exact>
-          <Seo/>
-          {/* no-op */}
-        </Route>
-        <Route path='/info'>
-          <Info />
-        </Route>
-        <Route path="*">
-          <NotFound />
-        </Route>
-      </Switch>
-    </div>
+  <Router>
+    <App />
   </Router>
 );
