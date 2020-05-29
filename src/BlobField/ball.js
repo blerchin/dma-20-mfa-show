@@ -63,7 +63,7 @@ export default class Ball {
 			this.label = new paper.PointText(p);
 			this.label.artist = a;
 			this.label.justification = "center";
-			this.label.fontFamily = "Days One, sans-serif";
+			this.label.fontFamily = "Arial Blur, sans-serif";
 			this.label.fontWeight = 500; 
 			this.label.fillColor = '#fff';
 			this.label.opacity = 0.5;
