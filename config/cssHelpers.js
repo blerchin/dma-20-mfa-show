@@ -22,7 +22,7 @@ function getCSSModuleLocalIdentFunc(production = false) {
         5
       );
       // Use loaderUtils to find the file or folder name
-      const identName = production ? '[hash:base64]' : fileNameOrFolder + '_' + localName + '__' + hash;
+      const identName = production ? hash : fileNameOrFolder + '_' + localName + '__' + hash;
       const className = loaderUtils.interpolateName(
         context,
         identName,
