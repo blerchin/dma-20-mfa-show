@@ -73,7 +73,7 @@ export default function ({slug, name}) {
       </ProjectColumns>
       <ProjectColumns>
         <Column>
-          <ProjectLink href="https://yimby.space" text="Sign up for updates" />
+          <ProjectLink href="https://www.yimby.space" text="Sign up for updates" />
         </Column>
       </ProjectColumns>
       <ProjectColumns>
