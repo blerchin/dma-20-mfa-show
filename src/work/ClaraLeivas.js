@@ -11,7 +11,7 @@ import OGImage from "./assets/Clara-ogimage.png";
 
 export default function ({slug, name}) {
   return (
-    <Artist noCover="true">
+    <Artist noCover="true" scrollIndicator={false}>
       <Seo
         title={name}
         description="The moment just before a fight. Something I have experienced many times as a Muay Thai fighter."
