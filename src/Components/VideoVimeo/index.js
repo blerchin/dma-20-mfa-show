@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import {
   responsiveVimeo,
@@ -16,19 +16,41 @@ const Vimeo = ({
   const style = {
     maxHeight,
   };
+  const container = useRef(null);
+  const [height, setHeight] = useState(null);
 
   if (maxHeight !== "auto" && isFullHeight === false) {
     style.width = "auto";
   }
 
+  useEffect(() => {
+    const onResize = () => {
+      if (!container.current) { return }
+      const width = container.current.getBoundingClientRect().width;
+      const height = parseFloat(padding) * .01 * width;
+      console.log(width, height);
+      setHeight(height);
+    }
+    window.addEventListener('resize', onResize);
+    onResize();
+    return () => window.removeEventListener('resize', onResize);
+  });
+
   return (
     <div 
     className={`${isFullHeight ? fullHeight : ""} ${responsiveVimeo} ${className}`}
-      style={{ 
-        paddingBottom: `${padding}`
-      }}
+    style={{ height: `${height}px` }}
+    ref={container}
     >
-      <iframe src={url} className={vimeo} title="vimeo" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowFullScreen=""></iframe>
+      <iframe 
+        src={url}
+        className={vimeo}
+        title="vimeo"
+        frameBorder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+        allowFullScreen=""
+      >
+      </iframe>
     </div>
   );
 }
