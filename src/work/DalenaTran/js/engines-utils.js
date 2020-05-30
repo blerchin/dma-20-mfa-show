@@ -207,6 +207,8 @@ Engines.prototype = {
   },
 
   voiceoverUpdate() {
+    // console.log(this.timeEngine, this.audioEngine);
+    
     if (!this.isHalted) {
       requestAnimationFrame(this.voiceoverUpdate.bind(this));
 

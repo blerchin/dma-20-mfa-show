@@ -41,13 +41,13 @@ import Seo from "../../Components/Seo";
 import { Link } from "react-router-dom";
 
 export default function ({slug, name}) {
-  let engines = new Engines();
   const aitContainer = useRef(null);
+  const enginesRef = useRef(null);
 
   const rootNodes = [document.body, document.documentElement];
 
   function beginProject() {
-    engines.init();
+    enginesRef.current.init();
 
     aitContainer.current.className = "";
     var video = document.getElementById("AITVidElem");
@@ -61,7 +61,7 @@ export default function ({slug, name}) {
   }
 
   function stopProject() {
-    engines.halt();
+    enginesRef.current.halt();
 
     aitContainer.current.className = "AITHide";
     window.setTimeout(() => {
@@ -77,9 +77,10 @@ export default function ({slug, name}) {
   }
 
   useEffect(() => {
-    if (navigator.userAgent === "ReactSnap") {
-      return;
-    }
+    // if (navigator.userAgent === "ReactSnap") {
+    //   return;
+    // }
+    const engines = (enginesRef.current = new Engines());
     engines.setup(audioJson, voiceoversJson, "AITSub");
 
     document.getElementById("AITLocA").className = "hidden";
