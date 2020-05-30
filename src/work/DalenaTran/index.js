@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import "./css/style.css";
 
 import {
@@ -40,11 +40,12 @@ import Seo from "../../Components/Seo";
 
 import { Link } from "react-router-dom";
 
+const rootNodes = [document.body, document.documentElement];
+
 export default function ({slug, name}) {
   const aitContainer = useRef(null);
   const enginesRef = useRef(null);
 
-  const rootNodes = [document.body, document.documentElement];
 
   function beginProject() {
     enginesRef.current.init();
@@ -91,6 +92,7 @@ export default function ({slug, name}) {
     return function cleanup() {
       stopProject();
     };
+  //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
