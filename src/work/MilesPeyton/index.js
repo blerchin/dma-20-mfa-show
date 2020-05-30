@@ -13,17 +13,6 @@ import Seo from "src/Components/Seo";
 
 import MilesImage1 from "../assets/MilesPeyton-1.jpg";
 
-import img1 from "./1.jpg";
-import img2 from "./2.jpg";
-import img3 from "./3.jpg";
-import img4 from "./4.jpg";
-import img5 from "./5.jpg";
-
-import glass1 from "./glass1.jpg";
-import glass2 from "./glass2.jpg";
-import glass3 from "./glass3.jpg";
-import glass4 from "./glass4.jpg";
-
 export default function ({slug, name}) {
   return (
     <Artist>
@@ -41,7 +30,8 @@ export default function ({slug, name}) {
       />
       <ProjectCover>
           <Image
-            img={img1}
+            img="https://users.dma.ucla.edu/~mpeyton/thesis_assets/1.jpg"
+            a="https://users.dma.ucla.edu/~mpeyton/thesis_assets/1.jpg"
             alt="Projection of liquid on grey board. A radial pattern, slightly degraded on the edges, is visible, as well as the liquid which has areas of blue and orange."
           />
       </ProjectCover>
@@ -65,7 +55,8 @@ export default function ({slug, name}) {
       <ProjectColumns>
         <Column>
           <Image
-            img={img2}
+            img="https://users.dma.ucla.edu/~mpeyton/thesis_assets/2.jpg"
+            a="https://users.dma.ucla.edu/~mpeyton/thesis_assets/2.jpg"
             alt="View of projection from further back, showing the room and the projection apparatus. The projection surface is in focus and the apparatus is out of focus. The room has white walls and a carpeted floor. "
           />
         </Column>
@@ -73,7 +64,8 @@ export default function ({slug, name}) {
       <ProjectColumns>
         <Column>
           <Image
-            img={img3}
+            img="https://users.dma.ucla.edu/~mpeyton/thesis_assets/3.jpg"
+            a="https://users.dma.ucla.edu/~mpeyton/thesis_assets/3.jpg"
             alt="Apparatus on the ground in front of a window. Lenses are held by a vertical steel rod, and a rectangular lens sits on a semi-transparent box that is lit by sunlight. The various lenses cast patterns on the wall, some of which are white and others are more like rainbows."
           />
         </Column>
@@ -81,7 +73,8 @@ export default function ({slug, name}) {
       <ProjectColumns>
         <Column>
           <Image
-            img={img4}
+            img="https://users.dma.ucla.edu/~mpeyton/thesis_assets/4.jpg"
+            a="https://users.dma.ucla.edu/~mpeyton/thesis_assets/4.jpg"
             alt="Closeup of a liquid on a glass plate, which is lit from below. Cables extend from the plate, and are held together by a braid."
           />
         </Column>
@@ -90,13 +83,15 @@ export default function ({slug, name}) {
         <Column>
           <Spacer>
             <Image
-              img={glass1}
+              img="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass1.jpg"
+              a="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass1.jpg"
               alt="Radial pattern with eight curving lines etched on glass"
             />
           </Spacer>
           <Spacer>
             <Image
-              img={glass2}
+              img="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass2.jpg"
+              a="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass2.jpg"
               alt="Radial pattern with eight curving lines etched on glass"
             />
           </Spacer>
@@ -104,13 +99,15 @@ export default function ({slug, name}) {
         <Column>
           <Spacer>
             <Image
-              img={glass3}
+              img="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass3.jpg"
+              a="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass3.jpg"
               alt="Radial pattern with eight curving lines etched on glass"
             />
           </Spacer>
           <Spacer>
             <Image
-              img={glass4}
+              img="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass4.jpg"
+              a="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass4.jpg"
               alt="Radial pattern with eight curving lines etched on glass"
             />
           </Spacer>
@@ -124,7 +121,8 @@ export default function ({slug, name}) {
       <ProjectColumns>
         <Column>
           <Image
-            img={img5}
+            img="https://users.dma.ucla.edu/~mpeyton/thesis_assets/5.jpg"
+            a="https://users.dma.ucla.edu/~mpeyton/thesis_assets/5.jpg"
             alt="Ten radial patterns, each with a date listed above it, weekdays from June first to June twelvth"
           />
         </Column>
