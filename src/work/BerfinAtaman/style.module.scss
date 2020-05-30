@@ -1,3 +1,14 @@
 .video {
-  max-width: 65vh !important;
+  margin: 0px auto;
+  /**
+   * explanation for the following silly line of CSS:
+   * because we are using a proportional-padded div to
+   * contain the video, it does not work to set max-height. 
+   * However, we know the ratio of the video, which in this 
+   * case is 1:1.33. Therefore, we can set max-width to the 
+   * (inverse of ratio * 100)vh and get a video that fits.
+   * Back off by 2 or 3 vh to get a max-width.
+   * That was fun, wasn't it?
+  **/
+  max-width: 72vh !important;
 }
