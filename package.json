@@ -159,7 +159,8 @@
     ]
   },
   "reactSnap": {
-    "puppeteerIgnoreHTTPSErrors": true
+    "puppeteerIgnoreHTTPSErrors": true,
+    "skipThirdPartyRequests": true
   },
   "devDependencies": {
     "react-helmet": "^6.0.0",
