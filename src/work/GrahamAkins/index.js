@@ -14,7 +14,7 @@ import OGImage from "../assets/Graham-ogimage.png";
 
 export default function ({slug, name}) {
   return (
-    <Artist>
+    <Artist scrollIndicator={false}>
       <Gradient/>
       <Seo
         title={name}

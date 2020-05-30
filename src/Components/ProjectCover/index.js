@@ -30,7 +30,7 @@ const ProjectCover = ({fadeOut = true, fluidLayout = false, children, noShim = f
     if (fluidLayout) {
       fadeLevel = 1;
     } else {
-      fadeLevel = Math.min(1, window.scrollY / window.innerHeight);
+      fadeLevel = Math.min(1, 2 * (window.scrollY / window.innerHeight));
       animationId = requestAnimationFrame(step);
     }
   }

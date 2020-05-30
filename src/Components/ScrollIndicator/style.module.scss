@@ -1,0 +1,23 @@
+@import "../../common/util.scss";
+
+.scrollIndicator {
+  @include bouncing(4s);
+  position: fixed;
+  right: calc(100vh / 11 + 30px);
+  bottom: 7vh;
+  z-index: 100;
+  
+  @include portrait {
+    right: 20px;
+    bottom: calc(100vw / 11);
+  }
+  &:active, &:focus {
+    border: 0px;
+    outline: none;
+  }
+  span {
+    display: block;
+    font-size: 30px;
+    transform: rotate(90deg);
+  }
+}
