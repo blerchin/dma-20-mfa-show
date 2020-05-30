@@ -17,7 +17,7 @@ TimeEngine.prototype = {
       fetch("https://worldtimeapi.org/api/timezone/Etc/UTC")
         .then((body) => body.json())
         .then(fn)
-        .catch((err) => `Jeepers: ${err}`);
+        .catch((err) => console.log(`Jeepers: ${err}`));
   },
 
   getGlobalTime(json){
