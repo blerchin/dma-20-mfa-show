@@ -13,16 +13,11 @@ import Seo from "src/Components/Seo";
 
 import MilesImage1 from "../assets/MilesPeyton-1.jpg";
 
-import img1 from "./1.jpg";
-import img2 from "./2.jpg";
-import img3 from "./3.jpg";
-import img4 from "./4.jpg";
+import img1 from "./1.jpg";	
+import img2 from "./2.jpg";	
+import img3 from "./3.jpg";	
+import img4 from "./4.jpg";	
 import img5 from "./5.jpg";
-
-import glass1 from "./glass1.jpg";
-import glass2 from "./glass2.jpg";
-import glass3 from "./glass3.jpg";
-import glass4 from "./glass4.jpg";
 
 export default function ({slug, name}) {
   return (
@@ -90,13 +85,15 @@ export default function ({slug, name}) {
         <Column>
           <Spacer>
             <Image
-              img={glass1}
+              img="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass1.jpg"
+              a="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass1.jpg"
               alt="Radial pattern with eight curving lines etched on glass"
             />
           </Spacer>
           <Spacer>
             <Image
-              img={glass2}
+              img="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass2.jpg"
+              a="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass2.jpg"
               alt="Radial pattern with eight curving lines etched on glass"
             />
           </Spacer>
@@ -104,13 +101,15 @@ export default function ({slug, name}) {
         <Column>
           <Spacer>
             <Image
-              img={glass3}
+              img="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass3.jpg"
+              a="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass3.jpg"
               alt="Radial pattern with eight curving lines etched on glass"
             />
           </Spacer>
           <Spacer>
             <Image
-              img={glass4}
+              img="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass4.jpg"
+              a="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass4.jpg"
               alt="Radial pattern with eight curving lines etched on glass"
             />
           </Spacer>
