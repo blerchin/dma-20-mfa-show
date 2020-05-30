@@ -22,10 +22,9 @@ function getCSSModuleLocalIdentFunc(production = false) {
         5
       );
       // Use loaderUtils to find the file or folder name
-      const identName = production ? hash : fileNameOrFolder + '_' + localName + '__' + hash;
       const className = loaderUtils.interpolateName(
         context,
-        identName,
+        fileNameOrFolder + '_' + localName + '__' + hash,
         options
       );
       // Remove the .module that appears in every classname when based on the file and replace all "." with "_".
