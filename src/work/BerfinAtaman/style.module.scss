@@ -7,7 +7,7 @@
    * However, we know the ratio of the video, which in this 
    * case is 1:1.33. Therefore, we can set max-width to the 
    * (inverse of ratio * 100)vh and get a video that fits.
-   * Back off by 2 or 3 vh to get a margin.
+   * Back off by 2 or 3 vh to get a max-width.
    * That was fun, wasn't it?
   **/
   max-width: 72vh !important;
