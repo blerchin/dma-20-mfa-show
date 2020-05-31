@@ -24,11 +24,10 @@ const Vimeo = ({
   return (
     <div 
     className={`${isFullHeight ? fullHeight : ""} ${responsiveVimeo} ${className}`}
-      style={{ 
-        paddingBottom: `${padding}`
-      }}
     >
-      <iframe src={url} className={vimeo} title="vimeo" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowFullScreen=""></iframe>
+      <div style={{ paddingBottom: `${padding}` }}>
+        <iframe src={url} className={vimeo} title="vimeo" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowFullScreen=""></iframe>
+      </div>
     </div>
   );
 }

@@ -9,22 +9,12 @@ import ProjectColumns, { Column } from "src/Components/ProjectColumns";
 import Vimeo from "src/Components/VideoVimeo";
 import Seo from "src/Components/Seo";
 
-import { video } from "./style.module.scss";
-
 import OGImage from "../assets/Graham-ogimage.png";
 
 
 export default function ({slug, name}) {
-  const [isFluid, setIsFluid] = useState(false)
-  useEffect(() => {
-    const onResize = () => {
-      setIsFluid(document.body.clientWidth < 769);
-    };
-    window.addEventListener('resize', onResize);
-    return () => window.removeEventListener('resize', onResize);
-  });
   return (
-    <Artist>
+    <Artist scrollIndicator={false}>
       <Gradient/>
       <Seo
         title={name}
@@ -37,15 +27,13 @@ export default function ({slug, name}) {
         title="Approximate Other (Tower &amp; Stage)"
         materials="trail cameras, wooden stages, wooden tower, zentai suit, &amp; photogrammetry"
         link="https://grahamakins.cargo.site"
-        fluidLayout={isFluid}
+        fluidLayout
       />
-      <CoverItem fluidLayout={isFluid}>
+      <CoverItem fluidLayout>
         <ProjectColumns>
           <Column>
             <Vimeo
-              className={video}
               url="https://player.vimeo.com/video/422619346?color=ffffff&amp;title=0&amp;byline=0&amp;portrait=0"
-              padding="125%"
             />
           </Column>
         </ProjectColumns>

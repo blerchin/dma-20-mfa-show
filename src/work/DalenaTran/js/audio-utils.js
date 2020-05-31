@@ -1,4 +1,4 @@
-import {Howl, Howler} from 'howler';
+import { Howl } from 'howler';
 
 function AudioEngine(voiceovers, cb) {
   this.isDataLoaded = false;

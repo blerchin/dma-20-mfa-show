@@ -281,7 +281,7 @@ export default function Info() {
           </div>
         </Column>
       </ProjectColumns>
-      <ProjectColumns className={infoWrapper, sectionSmall}>
+      <ProjectColumns className={`${infoWrapper} ${sectionSmall}`}>
         <Column>
           <h2 className={infoTitle}>
             The New Dematerialization of Art under “Covid-19 Rule”

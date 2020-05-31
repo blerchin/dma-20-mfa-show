@@ -145,6 +145,6 @@ $spacing: (
     transform: scale(1) translateY(0)
   }
 }
-@mixin bouncing() {
-  animation: bounce 2s ease infinite;
+@mixin bouncing($duration: 2s) {
+  animation: bounce $duration ease infinite;
 }
