@@ -58,6 +58,17 @@ export default class Ball {
 				length: 1,
 			}));
 		}
+
+		this.path.name = "mask";
+
+		this.raster = new paper.Raster("raster-blob.jpg");
+		this.raster.position = this.path.position;
+		this.raster.opacity = 0;
+		this.raster.name = "raster";
+		
+		this.group = new paper.Group(this.path, this.raster);
+		this.group.artist = a;
+
 		
 		if (a) {
 			this.label = new paper.PointText(p);
@@ -90,6 +101,7 @@ export default class Ball {
 	setIdx(val) {
 		this.idx = val;
 		this.path.idx = val;
+		this.group.idx = val;
 		if (this.label)
 			this.label.idx = val;
 	}
@@ -102,9 +114,9 @@ export default class Ball {
 			this.path.fillColor.radial = true;
 			this.path.shadowBlur = this.defaultPathStyle.shadowBlur;
 		} else {
-			this.path.fillColor = this.col4
-			this.path.shadowBlur = null;
-		}
+			this.raster.position = this.path.position;
+			this.raster.fitBounds(this.path.bounds, true);
+		}		
 	}
 
 	updateFont() {
