@@ -158,28 +158,29 @@ export default class Blobs {
 				currBall.group.children.mask.fillColor = null;
 				currBall.path.shadowBlur = null;
 				currBall.group.children.mask.shadowBlur = null;
-				
+
 				currBall.raster.position = currBall.path.position;
 				currBall.raster.opacity = 1;
-				currBall.group.clipped=true;
-			} 
+				currBall.group.clipped = true;
+			}
 		}
 	}
 
-	onFrame() {
+	onFrame(event) {
+
 		for (let i = 0; i < this.balls.length - 1; i++)
 			for (let j = i + 1; j < this.balls.length; j++)
 				this.balls[i].react(this.balls[j]);
 
 		for (let i = 1; i < this.balls.length; i++) {
 			this.balls[i].iterate();
-			this.balls[i].updateColor(this.isEnhanced);
+			this.balls[i].updateColor(this.isEnhanced, event.count);
 			this.balls[i].updateFont();
 			this.balls[i].label.visible = this.isMobile && !this.collapsed;
 		}
 
 		this.balls[0].updateShape();
-		this.balls[0].updateColor(this.isEnhanced);
+		this.balls[0].updateColor(this.isEnhanced, event.count);
 
 		// Mouse Easing
 		let easeFactor = this.defaultEasing;
@@ -291,7 +292,7 @@ export default class Blobs {
 
 	pathOnMouseEnter(event) {
 		this.isSlowSim = true;
-		
+
 		const idx = event.target.idx;
 		this.balls[idx].mouseEnterPt = event.point;
 
