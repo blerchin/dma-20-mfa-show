@@ -151,11 +151,17 @@ export default class Blobs {
 			this.isEnhanced = false;
 
 			for (let i = 0; i < this.balls.length; i++) {
-				this.balls[i].raster.position = this.balls[i].path.position;
-				this.balls[i].raster.opacity = 1;
-				this.balls[i].path.shadowBlur = null;
-				this.balls[i].path.fillColor = this.this.balls[i].col4;	
-				this.balls[i].group.clipped=true;
+				let currBall = this.balls[i];
+				currBall.path.style = currBall.emptyPathStyle;
+				currBall.group.children.mask.style = currBall.emptyPathStyle;
+				currBall.path.fillColor = null;
+				currBall.group.children.mask.fillColor = null;
+				currBall.path.shadowBlur = null;
+				currBall.group.children.mask.shadowBlur = null;
+				
+				currBall.raster.position = currBall.path.position;
+				currBall.raster.opacity = 1;
+				currBall.group.clipped=true;
 			} 
 		}
 	}

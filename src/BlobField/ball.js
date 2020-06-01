@@ -45,6 +45,15 @@ export default class Ball {
 			shadowBlur: 5,
 			shadowOffset: new paper.Point(5, 5),
 		};
+
+		this.emptyPathStyle = {
+			fillColor: "#000",
+			blendMode: 'normal',
+			closed: true,
+			shadowColor: null,
+			shadowBlur: null,
+			shadowOffset: null,
+		};
 		
 		this.path = new paper.Path({ ...this.defaultPathStyle });
 		this.path.artist = a;
