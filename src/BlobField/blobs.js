@@ -154,7 +154,7 @@ export default class Blobs {
 				this.balls[i].raster.position = this.balls[i].path.position;
 				this.balls[i].raster.opacity = 1;
 				this.balls[i].path.shadowBlur = null;
-				this.balls[i].path.fillColor = this.col4;	
+				this.balls[i].path.fillColor = this.this.balls[i].col4;	
 				this.balls[i].group.clipped=true;
 			} 
 		}
