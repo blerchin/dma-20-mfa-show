@@ -1,7 +1,7 @@
 import React from "react";
 
 import Artist from "../Containers/Artist";
-import ProjectCover from "../Components/ProjectCover";
+import { CoverItem } from "../Components/ProjectCover";
 import ProjectHeader from "../Components/ProjectHeader";
 import ArtistBio from "../Components/ArtistBio";
 import ProjectColumns, { Column } from "../Components/ProjectColumns";
@@ -26,12 +26,15 @@ export default function ({ slug, name }) {
         title="My doctor's prescription for my pollen allergy is to let the light illuminate everywhere"
         materials="Video"
         link="https://lemingchung.com"
+        fluidLayout
       />
-      <ProjectCover>
-        <Column>
-          <Vimeo url="https://player.vimeo.com/video/422977500?title=0&byline=0&portrait=0" />
-        </Column>
-      </ProjectCover>
+      <CoverItem>
+        <ProjectColumns>
+          <Column>
+            <Vimeo url="https://player.vimeo.com/video/422977500?title=0&byline=0&portrait=0" />
+          </Column>
+        </ProjectColumns>
+      </CoverItem>
       <ProjectColumns>
         <Column>
           <ProjectDescription>
