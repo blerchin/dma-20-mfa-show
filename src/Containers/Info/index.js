@@ -186,9 +186,9 @@ export default function Info() {
               to be temporary, Cooney redirected her ongoing research on built
               environments, situated knowledge, and place to the surroundings
               that she suddenly was forced into sustained intimacy with. Mapping
-              a labyrinth based on the one in Chartres Cathedral onto the entire
+              a labyrinth based on the one in Chartres Cathedral onto the
               apartment, Cooney walks the entire pathway, which covers the
-              apartment's surface area from wall-to-wall,, scaling every
+              apartment's surface area from wall-to-wall, scaling every
               surface, including furniture, recording the journey with cameras
               attached to her feet. As with any pilgrimage, transformation, both
               external and internal, is at stake. Cooney makes the unfamiliar

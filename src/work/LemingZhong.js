@@ -12,7 +12,7 @@ import LemingImage1 from "./assets/LemingZhong-1.jpg";
 
 import Seo from "../Components/Seo";
 import ProjectDescription from "../Components/ProjectDescription";
-export default function ({slug, name}) {
+export default function ({ slug, name }) {
   return (
     <Artist>
       <Seo
@@ -29,35 +29,25 @@ export default function ({slug, name}) {
       />
       <ProjectCover>
         <Column>
-          <Image img={LemingImage1} alt="A small piece of honeycomb in the nature, its odor still attracting bees from its own hive" />
+          <Vimeo url="https://player.vimeo.com/video/422977500?title=0&byline=0&portrait=0" />
         </Column>
       </ProjectCover>
       <ProjectColumns>
         <Column>
           <ProjectDescription>
             <p>
-            This is a three-character monologue about be-ing, bee, and bees.
+              This is a three-character monologue about be-ing, bee, and bees.
             </p>
-          </ProjectDescription>
-        </Column>
-      </ProjectColumns>
-      <ProjectColumns>
-        <Column>
-          <Vimeo url="https://player.vimeo.com/video/422977500?title=0&byline=0&portrait=0" />
-        </Column>
-      </ProjectColumns>
-      <ProjectColumns>
-        <Column>
-          <ProjectDescription>
-            <p>
-            This video is alongside a future sculpture.
-            </p>
+            <p>This video is alongside a future sculpture.</p>
           </ProjectDescription>
         </Column>
       </ProjectColumns>
       <ArtistBio>
         <p>
-        Leming Zhong's interdisciplinary practice spans drawing, sculpture, installation and video. I am currently exploring bodies and systems, from inside and outside, and strategies to anthropomorphize inanimate matter while objectifying power dynamics. Leming lives in Los Angeles.
+          Leming Zhong's interdisciplinary practice spans drawing, sculpture,
+          installation and video. I am currently exploring bodies and systems,
+          from inside and outside, and strategies to anthropomorphize inanimate
+          matter while objectifying power dynamics. Leming lives in Los Angeles.
         </p>
       </ArtistBio>
     </Artist>

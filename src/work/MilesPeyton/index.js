@@ -117,7 +117,7 @@ export default function ({slug, name}) {
       </ProjectColumns>
       <ProjectColumns>
         <Column>
-          <p>From 6/1 to 6/12, ten live streams, each using a different sigil, will take place at 3PM PST / 6PM EST, when the sunlight is strongest in the space. <a href="https://docs.google.com/forms/d/e/1FAIpQLSdCdj85UU8-9UfNzLJeLgv6y16NWtaiAID9MMp1caQIUA378g/viewform" target="_blank" rel="noopener noreferrer">Attend a livestream.</a></p>
+          <p>From 6/1 to 6/12, ten live streams, each using a different sigil, will take place at 3PM PST / 6PM EST, when the sunlight is strongest in the space. <a href="http://waterneither.live" target="_blank" rel="noopener noreferrer">Attend a livestream.</a></p>
         </Column>
       </ProjectColumns>
       <ProjectColumns>
