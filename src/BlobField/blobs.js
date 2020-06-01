@@ -100,8 +100,7 @@ export default class Blobs {
 			new paper.Point(0, 0)
 		);
 		mouseBall.radius = this.calcRadius(0);
-		mouseBall.path.opacity = 0;
-		mouseBall.path.isMouse = true;
+		mouseBall.group.opacity = 0;
 		mouseBall.isVertical = document.body.clientWidth > window.innerHeight;
 		mouseBall.setIdx(0);
 		this.balls.push(mouseBall);
@@ -117,15 +116,15 @@ export default class Blobs {
 				length: Math.random() * 10,
 			});
 			const currBall = new Ball(this.calcRadius(i), position, force, this.artists[i]);
-			currBall.path.opacity = this.opacity;
+			currBall.group.opacity = this.opacity;
 			currBall.shadowColor.alpha = this.opacity / 2;
 			currBall.setIdx(this.balls.length);
 			currBall.isVertical = document.body.clientWidth > window.innerHeight;
-			currBall.path.onMouseEnter = this.pathOnMouseEnter.bind(this);
-			currBall.path.onMouseLeave = this.pathOnMouseLeave.bind(this);
+			currBall.group.onMouseEnter = this.pathOnMouseEnter.bind(this);
+			currBall.group.onMouseLeave = this.pathOnMouseLeave.bind(this);
 			currBall.label.onMouseEnter = this.pathOnMouseEnter.bind(this);
 			currBall.label.onMouseLeave = this.pathOnMouseLeave.bind(this);
-			currBall.path.onClick = this.pathOnClick.bind(this);
+			currBall.group.onClick = this.pathOnClick.bind(this);
 			currBall.label.onClick = this.pathOnClick.bind(this);
 			this.balls.push(currBall);
 		}
@@ -142,31 +141,46 @@ export default class Blobs {
 		const now = Date.now();
 		data.frames[data.cur] = now - data.lastTimestamp;
 		data.lastTimestamp = now;
-		const sum = data.frames.reduce((a,b) => a + b, 0);
+		const sum = data.frames.reduce((a, b) => a + b, 0);
 		data.fps = 1000 / (sum / data.frames.length);
 		data.frameCount++;
 		if (this.debug && data.frameCount % FRAMERATE_MA_LEN === 0) {
 			console.log(`Framerate: ${data.fps}`);
 		}
-		if(data.frameCount > BOOT_UP_FRAMES && data.fps < ENHANCED_MIN_FPS) {
+		if (data.frameCount > BOOT_UP_FRAMES && data.fps < ENHANCED_MIN_FPS) {
 			this.isEnhanced = false;
+
+			for (let i = 0; i < this.balls.length; i++) {
+				let currBall = this.balls[i];
+				currBall.path.style = currBall.emptyPathStyle;
+				currBall.group.children.mask.style = currBall.emptyPathStyle;
+				currBall.path.fillColor = null;
+				currBall.group.children.mask.fillColor = null;
+				currBall.path.shadowBlur = null;
+				currBall.group.children.mask.shadowBlur = null;
+
+				currBall.raster.position = currBall.path.position;
+				currBall.raster.opacity = 1;
+				currBall.group.clipped = true;
+			}
 		}
 	}
 
-	onFrame() {
+	onFrame(event) {
+
 		for (let i = 0; i < this.balls.length - 1; i++)
 			for (let j = i + 1; j < this.balls.length; j++)
 				this.balls[i].react(this.balls[j]);
 
 		for (let i = 1; i < this.balls.length; i++) {
 			this.balls[i].iterate();
-			this.balls[i].updateColor(this.isEnhanced);
+			this.balls[i].updateColor(this.isEnhanced, event.count);
 			this.balls[i].updateFont();
 			this.balls[i].label.visible = this.isMobile && !this.collapsed;
 		}
 
 		this.balls[0].updateShape();
-		this.balls[0].updateColor();
+		this.balls[0].updateColor(this.isEnhanced, event.count);
 
 		// Mouse Easing
 		let easeFactor = this.defaultEasing;
@@ -199,7 +213,7 @@ export default class Blobs {
 		}
 	}
 
-	recalcCanvasSize() {		
+	recalcCanvasSize() {
 		let currWidth = document.body.clientWidth;
 		let currHeight = window.innerHeight;
 		if (this.collapsed) {
@@ -214,14 +228,14 @@ export default class Blobs {
 		this.isMobile = document.body.clientWidth < 769;
 
 		// toggle true/false to see animated and immediate resizing on homepage
-		this.resizeCanvas(false); 
+		this.resizeCanvas(false);
 	}
 
 	resizeCanvas(resizeOnHompage = false) {
 		for (let i = 0; i < this.balls.length; i++) {
 			this.balls[i].isVertical = document.body.clientWidth > window.innerHeight;
 		}
-		
+
 		if (this.isEnhanced && (resizeOnHompage || this.collapsed)) {
 			// Animated resizing
 			this.animateCanvasSize();
@@ -283,9 +297,9 @@ export default class Blobs {
 		this.balls[idx].mouseEnterPt = event.point;
 
 		for (let i = 1; i < this.balls.length; i++) {
-			if (this.balls[i].idx !== event.target.idx) {
-				this.balls[i].path.tween({
-						opacity: this.balls[i].path.opacity,
+			if (this.balls[i].idx !== idx) {
+				this.balls[i].group.tween({
+						opacity: this.balls[i].group.opacity,
 						shadowColor: this.balls[i].path.shadowColor,
 					}, {
 						opacity: this.hoverFadedOpacity,
@@ -294,8 +308,8 @@ export default class Blobs {
 					this.animationDuration
 				);
 			} else {
-				this.balls[i].path.tween({
-						opacity: this.balls[i].path.opacity,
+				this.balls[i].group.tween({
+						opacity: this.balls[i].group.opacity,
 						// shadowColor: this.balls[i].path.shadowColor,
 					}, {
 						opacity: this.hoverActiveOpacity,
@@ -318,8 +332,8 @@ export default class Blobs {
 		// this.repulseBall(idx);
 
 		for (let i = 1; i < this.balls.length; i++) {
-			this.balls[i].path.tween({
-					opacity: this.balls[i].path.opacity,
+			this.balls[i].group.tween({
+					opacity: this.balls[i].group.opacity,
 					shadowColor: this.balls[i].path.shadowColor,
 				}, {
 					opacity: this.opacity,
@@ -353,8 +367,8 @@ export default class Blobs {
 
 	onKeyDown(event) {
 		for (let i = 1; i < this.balls.length; i++) {
-			let curr = this.balls[i].path.blendMode;
-			this.balls[i].path.blendMode =
+			let curr = this.balls[i].group.blendMode;
+			this.balls[i].group.blendMode =
 				curr === "normal" ? "color-burn" : "normal";
 		}
 	}

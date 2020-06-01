@@ -31,11 +31,11 @@ export default class Ball {
 		this.shadowColor = new paper.Color(this.col1);
 		this.shadowInactiveColor = new paper.Color(this.col2);
 		this.shadowInactiveColor.alpha = 1; // When hovered, make inactive ball's shadow fully transparent
-		
+
 		this.defaultPathStyle = {
 			fillColor: {
 				gradient: {
-					stops: [this.col1,  this.col3, this.col4],
+					stops: [this.col1, this.col3, this.col4],
 					radial: true,
 				},
 			},
@@ -45,8 +45,19 @@ export default class Ball {
 			shadowBlur: 5,
 			shadowOffset: new paper.Point(5, 5),
 		};
-		
-		this.path = new paper.Path({ ...this.defaultPathStyle });
+
+		this.emptyPathStyle = {
+			fillColor: "#000",
+			blendMode: 'normal',
+			closed: true,
+			shadowColor: null,
+			shadowBlur: null,
+			shadowOffset: null,
+		};
+
+		this.path = new paper.Path({
+			...this.defaultPathStyle
+		});
 		this.path.artist = a;
 
 		for (let i = 0; i < this.numSegment; i++) {
@@ -58,13 +69,24 @@ export default class Ball {
 				length: 1,
 			}));
 		}
-		
+
+		this.path.name = "mask";
+
+		this.raster = new paper.Raster("raster-blob.jpg");
+		this.raster.position = new paper.Point(-512, -512);
+		this.raster.opacity = 0;
+		this.raster.name = "raster";
+
+		this.group = new paper.Group(this.path, this.raster);
+		this.group.artist = a;
+
+
 		if (a) {
 			this.label = new paper.PointText(p);
 			this.label.artist = a;
 			this.label.justification = "center";
 			this.label.fontFamily = "Arial Blur, sans-serif";
-			this.label.fontWeight = 500; 
+			this.label.fontWeight = 500;
 			this.label.fillColor = '#fff';
 			this.label.opacity = 0.5;
 			this.label.content = a.name.toUpperCase().split(' ').join('\n');
@@ -90,11 +112,12 @@ export default class Ball {
 	setIdx(val) {
 		this.idx = val;
 		this.path.idx = val;
+		this.group.idx = val;
 		if (this.label)
 			this.label.idx = val;
 	}
 
-	updateColor(enhanced = false) {
+	updateColor(enhanced = false, currentFrame) {
 		if (enhanced) {
 			this.path.fillColor = this.defaultPathStyle.fillColor;
 			this.path.fillColor.origin = this.path.position;
@@ -102,8 +125,11 @@ export default class Ball {
 			this.path.fillColor.radial = true;
 			this.path.shadowBlur = this.defaultPathStyle.shadowBlur;
 		} else {
-			this.path.fillColor = this.col4
-			this.path.shadowBlur = null;
+			if (currentFrame % 2 === 0)
+				this.raster.position = this.path.position;
+			if (currentFrame % 3 === 0)
+				this.raster.fitBounds(this.path.bounds, true);
+
 		}
 	}
 
