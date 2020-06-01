@@ -284,16 +284,16 @@ export default class Blobs {
 	}
 
 	pathOnMouseEnter(event) {
-		let idx = event.target.idx;
-
 		this.isSlowSim = true;
+		
+		const idx = event.target.idx;
 		this.balls[idx].mouseEnterPt = event.point;
 
 		for (let i = 1; i < this.balls.length; i++) {
 			if (this.balls[i].idx !== idx) {
 				this.balls[i].group.tween({
 						opacity: this.balls[i].group.opacity,
-						shadowColor: this.balls[i].group.shadowColor,
+						shadowColor: this.balls[i].path.shadowColor,
 					}, {
 						opacity: this.hoverFadedOpacity,
 						shadowColor: this.balls[i].shadowInactiveColor,
@@ -327,7 +327,7 @@ export default class Blobs {
 		for (let i = 1; i < this.balls.length; i++) {
 			this.balls[i].group.tween({
 					opacity: this.balls[i].group.opacity,
-					shadowColor: this.balls[i].group.shadowColor,
+					shadowColor: this.balls[i].path.shadowColor,
 				}, {
 					opacity: this.opacity,
 					shadowColor: this.balls[i].shadowInactiveColor,
