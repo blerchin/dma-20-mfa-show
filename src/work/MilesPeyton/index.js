@@ -105,8 +105,29 @@ export default function ({slug, name}) {
           </Spacer>
           <Spacer>
             <Image
-              img="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass2.jpg"
-              a="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass2.jpg"
+              img="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass3.jpg"
+              a="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass3.jpg"
+              alt="Radial pattern with eight curving lines etched on glass"
+            />
+          </Spacer>
+          <Spacer>
+            <Image
+              img="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass5.jpg"
+              a="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass5.jpg"
+              alt="Radial pattern with eight curving lines etched on glass"
+            />
+          </Spacer>
+          <Spacer>
+            <Image
+              img="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass7.jpg"
+              a="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass7.jpg"
+              alt="Radial pattern with eight curving lines etched on glass"
+            />
+          </Spacer>
+          <Spacer>
+            <Image
+              img="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass9.jpg"
+              a="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass9.jpg"
               alt="Radial pattern with eight curving lines etched on glass"
             />
           </Spacer>
@@ -114,8 +135,8 @@ export default function ({slug, name}) {
         <Column>
           <Spacer>
             <Image
-              img="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass3.jpg"
-              a="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass3.jpg"
+              img="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass2.jpg"
+              a="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass2.jpg"
               alt="Radial pattern with eight curving lines etched on glass"
             />
           </Spacer>
@@ -126,15 +147,6 @@ export default function ({slug, name}) {
               alt="Radial pattern with eight curving lines etched on glass"
             />
           </Spacer>
-        </Column>
-        <Column>
-          <Spacer>
-            <Image
-              img="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass5.jpg"
-              a="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass5.jpg"
-              alt="Radial pattern with eight curving lines etched on glass"
-            />
-          </Spacer>
           <Spacer>
             <Image
               img="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass6.jpg"
@@ -142,28 +154,10 @@ export default function ({slug, name}) {
               alt="Radial pattern with eight curving lines etched on glass"
             />
           </Spacer>
-        </Column>
-        <Column>
-          <Spacer>
-            <Image
-              img="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass7.jpg"
-              a="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass7.jpg"
-              alt="Radial pattern with eight curving lines etched on glass"
-            />
-          </Spacer>
           <Spacer>
             <Image
               img="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass8.jpg"
               a="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass8.jpg"
-              alt="Radial pattern with eight curving lines etched on glass"
-            />
-          </Spacer>
-        </Column>
-        <Column>
-          <Spacer>
-            <Image
-              img="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass9.jpg"
-              a="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass9.jpg"
               alt="Radial pattern with eight curving lines etched on glass"
             />
           </Spacer>
