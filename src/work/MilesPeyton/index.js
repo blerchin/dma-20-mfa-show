@@ -83,6 +83,19 @@ export default function ({slug, name}) {
       </ProjectColumns>
       <ProjectColumns>
         <Column>
+          <p>From 6/1 to 6/12, ten live streams will take place at 3PM PST / 6PM EST, when the sunlight is strongest in the space, weather permitting. Each livestream will use a different sigil, following the schedule below. <a href="https://waterneither.live" target="_blank" rel="noopener noreferrer">Attend a livestream.</a></p>
+        </Column>
+      </ProjectColumns>
+      <ProjectColumns>
+        <Column>
+          <Image
+            img={img5}
+            alt="Ten radial patterns, each with a date listed above it, weekdays from June first to June twelvth"
+          />
+        </Column>
+      </ProjectColumns>
+      <ProjectColumns>
+        <Column>
           <Spacer>
             <Image
               img="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass1.jpg"
@@ -114,18 +127,53 @@ export default function ({slug, name}) {
             />
           </Spacer>
         </Column>
-      </ProjectColumns>
-      <ProjectColumns>
         <Column>
-          <p>From 6/1 to 6/12, ten live streams will take place at 3PM PST / 6PM EST, when the sunlight is strongest in the space, weather permitting. Each livestream will use a different sigil, following the schedule below. <a href="https://waterneither.live" target="_blank" rel="noopener noreferrer">Attend a livestream.</a></p>
+          <Spacer>
+            <Image
+              img="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass5.jpg"
+              a="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass5.jpg"
+              alt="Radial pattern with eight curving lines etched on glass"
+            />
+          </Spacer>
+          <Spacer>
+            <Image
+              img="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass6.jpg"
+              a="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass6.jpg"
+              alt="Radial pattern with eight curving lines etched on glass"
+            />
+          </Spacer>
         </Column>
-      </ProjectColumns>
-      <ProjectColumns>
         <Column>
-          <Image
-            img={img5}
-            alt="Ten radial patterns, each with a date listed above it, weekdays from June first to June twelvth"
-          />
+          <Spacer>
+            <Image
+              img="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass7.jpg"
+              a="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass7.jpg"
+              alt="Radial pattern with eight curving lines etched on glass"
+            />
+          </Spacer>
+          <Spacer>
+            <Image
+              img="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass8.jpg"
+              a="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass8.jpg"
+              alt="Radial pattern with eight curving lines etched on glass"
+            />
+          </Spacer>
+        </Column>
+        <Column>
+          <Spacer>
+            <Image
+              img="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass9.jpg"
+              a="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass9.jpg"
+              alt="Radial pattern with eight curving lines etched on glass"
+            />
+          </Spacer>
+          <Spacer>
+            <Image
+              img="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass10.jpg"
+              a="https://users.dma.ucla.edu/~mpeyton/thesis_assets/glass10.jpg"
+              alt="Radial pattern with eight curving lines etched on glass"
+            />
+          </Spacer>
         </Column>
       </ProjectColumns>
       <ProjectColumns>
