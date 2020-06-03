@@ -24,18 +24,17 @@ export default class Ball {
 		this.idx = null;
 		this.isVertical = true;
 		this.col1 = '#ffffe6'; // Radial gradient center color
-		// this.col2 = '#a4ffed'; // Radial gradient outer color
-		this.col3 = '#c0e8f1'; // Radial gradient center color
-		this.col4 = '#9cbaf9'; // Radial gradient outer color
-		this.shadowCol = '#e66c27'; // Color of shadows
+		this.col2 = '#c0e8f1'; // Radial gradient center color
+		this.col3 = '#a8c3ff'; // Radial gradient outer color
+		this.shadowCol = '#a8c3ff'; // Color of shadows
 		this.shadowColor = new paper.Color(this.col1);
-		this.shadowInactiveColor = new paper.Color(this.col2);
+		this.shadowInactiveColor = new paper.Color('#000000');
 		this.shadowInactiveColor.alpha = 1; // When hovered, make inactive ball's shadow fully transparent
 		
 		this.defaultPathStyle = {
 			fillColor: {
 				gradient: {
-					stops: [this.col1,  this.col3, this.col4],
+					stops: [this.col1,  this.col2, this.col3],
 					radial: true,
 				},
 			},
@@ -66,7 +65,7 @@ export default class Ball {
 			this.label.fontFamily = "Arial Blur, sans-serif";
 			this.label.fontWeight = 500; 
 			this.label.fillColor = '#fff';
-			this.label.opacity = 0.5;
+			this.label.opacity = 0.5
 			this.label.content = a.name.toUpperCase().split(' ').join('\n');
 		}
 	}
@@ -102,7 +101,7 @@ export default class Ball {
 			this.path.fillColor.radial = true;
 			this.path.shadowBlur = this.defaultPathStyle.shadowBlur;
 		} else {
-			this.path.fillColor = this.col4
+			this.path.fillColor = '#a1c0f4';
 			this.path.shadowBlur = null;
 		}
 	}
