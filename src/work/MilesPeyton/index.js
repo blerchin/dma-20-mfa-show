@@ -83,6 +83,14 @@ export default function ({slug, name}) {
       </ProjectColumns>
       <ProjectColumns>
         <Column>
+          <Vimeo
+            url="https://player.vimeo.com/video/425330982"
+            padding="56.25%"
+          />
+        </Column>
+      </ProjectColumns>
+      <ProjectColumns>
+        <Column>
           <p>From 6/1 to 6/12, ten live streams will take place at 3PM PST / 6PM EST, when the sunlight is strongest in the space, weather permitting. Each livestream will use a different sigil, following the schedule below. <a href="https://waterneither.live" target="_blank" rel="noopener noreferrer">Attend a livestream.</a></p>
         </Column>
       </ProjectColumns>
