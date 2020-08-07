@@ -155,7 +155,7 @@ export default function ({ slug, name }) {
           />
           <ImageCaption title="Humans of Noyork" materials="9 hour looping video" />
           <p>
-          <i>Humans of Noyork</i> is 10 hours of pure content, 33.5 gigabytes of occupied storage space, 20,000 unique personalities, no eyes to stare back at you, and no stories to tell. It is a cult of personality, a makeup tutorial, a video log, and a lengthy ASMR video. It is voyeurism, entertainment, education, and gratification, simultaneously repulses and attracts. It lurks, disgusts, cringes, and appeals. It is available and accessible. And although it masks its presence under a facade of impartiality as content with no higher ambitions other than being content, it is the accumulation of years of preconception and biases in computational systems and computer graphics. More videos?
+          <i>Humans of Noyork</i> is 9 hours of pure content, 33.5 gigabytes of occupied storage space, 20,000 unique personalities, no eyes to stare back at you, and no stories to tell. It is a cult of personality, a makeup tutorial, a video log, and a lengthy ASMR video. It is voyeurism, entertainment, education, and gratification, simultaneously repulses and attracts. It lurks, disgusts, cringes, and appeals. It is available and accessible. And although it masks its presence under a facade of impartiality as content with no higher ambitions other than being content, it is the accumulation of years of preconception and biases in computational systems and computer graphics. More videos?
           </p>
         </Column>
       </ProjectColumns>
