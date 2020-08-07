@@ -12,7 +12,7 @@ import ImageCaption from "src/Components/ImageCaption";
 import DBGrid from "./assets/HiradSab-grid.jpg";
 import DBCover from "./assets/HiradSab-cover.jpg";
 import DBGridVert from "./assets/HiradSab-gridvert1.jpg";
-import DBLandmarks from "./assets/HiradSab-landmarks.png";
+// import DBLandmarks from "./assets/HiradSab-landmarks.png";
 
 import Seo from "../Components/Seo";
 import ProjectDescription from "../Components/ProjectDescription";

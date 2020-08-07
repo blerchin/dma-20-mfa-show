@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import Artist from "src/Containers/Artist";
 import Gradient from "src/Components/Gradient";
