@@ -6,7 +6,7 @@ import ProjectHeader from "../Components/ProjectHeader";
 import ArtistBio from "../Components/ArtistBio";
 import ProjectColumns, { Column } from "../Components/ProjectColumns";
 import Vimeo from "../Components/VideoVimeo";
-import Image from "../Components/Image";
+// import Image from "../Components/Image";
 
 import LemingImage1 from "./assets/LemingZhong-1.jpg";
 

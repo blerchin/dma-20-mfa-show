@@ -22,7 +22,7 @@ export default function Info() {
       title="Info"
       path="info"
       />
-      <ProjectColumns className={infoWrapper, sectionSmall}>
+      <ProjectColumns className={`${infoWrapper} ${sectionSmall}`}>
         <Column>
           <h2 className={infoTitle}>
             Curatorial Statement
