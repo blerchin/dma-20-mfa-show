@@ -81,14 +81,34 @@ export default function ({slug, name}) {
     // if (navigator.userAgent === "ReactSnap") {
     //   return;
     // }
+
+
     const engines = (enginesRef.current = new Engines());
     engines.setup(audioJson, voiceoversJson, "AITSub");
 
     document.getElementById("AITLocA").className = "hidden";
     document.getElementById("AITLocB").className = "hidden";
     // $("#AITVidElem").prop('muted', true);
+
+
     var video = document.getElementById("AITVidElem");
     video.muted = true;
+
+    const query = window.location.search;
+    if (query.substring(1) === 'frame'){
+      console.log(query);
+      beginProject();
+
+      var link = document.createElement("a");
+
+      document.body.appendChild(link); // for Firefox
+  
+      link.setAttribute("href", PosterImage.images[PosterImage.images.length - 1].path);
+      link.setAttribute("download", "Dalena_Tran.png");
+      link.click();
+      }
+
+
     return function cleanup() {
       stopProject();
     };
